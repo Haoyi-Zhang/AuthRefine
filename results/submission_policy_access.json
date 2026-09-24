@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "usable_toplas_specific_page": false,
+  "records": [
+    {
+      "name": "toplas_author_guidelines",
+      "url": "https://dl.acm.org/journal/toplas/author-guidelines",
+      "curl_returncode": 6,
+      "http_status": 0,
+      "effective_url": "https://dl.acm.org/journal/toplas/author-guidelines",
+      "bytes": 0,
+      "title": null,
+      "text_excerpt": "",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: dl.acm.org\n"
+    },
+    {
+      "name": "toplas_journal",
+      "url": "https://dl.acm.org/journal/toplas",
+      "curl_returncode": 6,
+      "http_status": 0,
+      "effective_url": "https://dl.acm.org/journal/toplas",
+      "bytes": 0,
+      "title": null,
+      "text_excerpt": "",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0curl: (6) Could not resolve host: dl.acm.org\n"
+    },
+    {
+      "name": "acm_submissions",
+      "url": "https://www.acm.org/publications/authors/submissions",
+      "curl_returncode": 6,
+      "http_status": 0,
+      "effective_url": "https://www.acm.org/publications/authors/submissions",
+      "bytes": 0,
+      "title": null,
+      "text_excerpt": "",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: www.acm.org\n"
+    },
+    {
+      "name": "acm_journal_authors",
+      "url": "https://authors.acm.org/journals",
+      "curl_returncode": 6,
+      "http_status": 0,
+      "effective_url": "https://authors.acm.org/journals",
+      "bytes": 0,
+      "title": null,
+      "text_excerpt": "",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0curl: (6) Could not resolve host: authors.acm.org\n"
+    },
+    {
+      "name": "acm_latex",
+      "url": "https://authors.acm.org/proceedings/production-information/preparing-your-article-with-latex",
+      "curl_returncode": 6,
+      "http_status": 0,
+      "effective_url": "https://authors.acm.org/proceedings/production-information/preparing-your-article-with-latex",
+      "bytes": 0,
+      "title": null,
+      "text_excerpt": "",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: authors.acm.org\n"
+    },
+    {
+      "name": "acm_template",
+      "url": "https://www.acm.org/publications/proceedings-template",
+      "curl_returncode": 6,
+      "http_status": 0,
+      "effective_url": "https://www.acm.org/publications/proceedings-template",
+      "bytes": 0,
+      "title": null,
+      "text_excerpt": "",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0curl: (6) Could not resolve host: www.acm.org\n"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "principals": [
+    "alice",
+    "bob",
+    "unlisted"
+  ],
+  "resources": [
+    "data1",
+    "data2",
+    "unlisted"
+  ],
+  "actions": [
+    "read",
+    "unlisted",
+    "write"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [
+    [
+      "available",
+      false
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "principal",
+          "name": "alice",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "principal",
+          "name": "bob",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    }
+  ]
+}

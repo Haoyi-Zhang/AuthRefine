@@ -1,0 +1,34 @@
+{
+  "earlier_startup_boundary": {
+    "outcome": "timeout, not a completed replication",
+    "outer_limit_seconds": 120,
+    "completed_chunks": 37,
+    "completed_primary_cases": 9250,
+    "partial_primary_counted_operations": 774471,
+    "partial_primary_timed_cpu_seconds": 6.918831739000001,
+    "semantic_mismatch_reported": false,
+    "cause_assessment": "Repeated interpreter startup outside the timed case bodies dominated orchestration.",
+    "repair": "At most ten unchanged 250-case chunks share one sequential worker process.",
+    "repaired_fresh_reproduction": "clean_reproduction.json"
+  },
+  "current_repair_round_boundary": {
+    "outcome": "enclosing tool cutoff after all scientific records; not accepted as a completed clean reproduction",
+    "outer_limit_seconds": 180,
+    "completed_chunks": 40,
+    "completed_primary_cases": 10000,
+    "counted_operations": 1340425,
+    "timed_experiment_cpu_seconds": 17.622172858000003,
+    "semantic_mismatch_reported": false,
+    "repair": "repeat from a freshly extracted candidate archive without resumption",
+    "successful_reproduction": "clean_reproduction.json"
+  },
+  "latest_successful_clean_reproduction": {
+    "wall_seconds": 36.691729974000054,
+    "recorded_parent_and_child_cpu_seconds": 45.926900904,
+    "unit_test_methods": 45,
+    "documented_commands": 7,
+    "resumed": false,
+    "fresh_archive_extraction": true,
+    "scientific_records_match": true
+  }
+}

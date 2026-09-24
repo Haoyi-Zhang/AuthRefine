@@ -1,0 +1,6 @@
+principals are "name \"with\" quotes", "名字".
+resources are "path\\item".
+actions are "inspect".
+roles are none.
+allow when principal is "名字" then keep state.
+otherwise deny.

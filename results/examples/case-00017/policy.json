@@ -1,0 +1,225 @@
+{
+  "principals": [
+    "alice",
+    "bob",
+    "data1_deny_group",
+    "data2_allow_group",
+    "unlisted"
+  ],
+  "resources": [
+    "data1",
+    "data2",
+    "unlisted"
+  ],
+  "actions": [
+    "read",
+    "unlisted",
+    "write"
+  ],
+  "roles": [
+    "alice",
+    "bob",
+    "data1_deny_group",
+    "data2_allow_group"
+  ],
+  "members": [
+    [
+      "alice",
+      "alice"
+    ],
+    [
+      "alice",
+      "data1_deny_group"
+    ],
+    [
+      "bob",
+      "bob"
+    ],
+    [
+      "bob",
+      "data2_allow_group"
+    ],
+    [
+      "data1_deny_group",
+      "data1_deny_group"
+    ],
+    [
+      "data2_allow_group",
+      "data2_allow_group"
+    ]
+  ],
+  "state": [
+    [
+      "available",
+      false
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "alice",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "deny",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data1_deny_group",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": []
+    },
+    {
+      "decision": "deny",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data1_deny_group",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": []
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "alice",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data2_allow_group",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "deny",
+      "guard": [
+        {
+          "field": "role",
+          "name": "bob",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": []
+    },
+    {
+      "decision": "deny",
+      "guard": [
+        {
+          "field": "role",
+          "name": "bob",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": []
+    }
+  ]
+}

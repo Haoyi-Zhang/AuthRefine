@@ -1,0 +1,42 @@
+{
+  "principals": [
+    "u"
+  ],
+  "resources": [
+    "o"
+  ],
+  "actions": [
+    "a"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [
+    [
+      "left",
+      false
+    ],
+    [
+      "right",
+      true
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [],
+      "updates": [
+        {
+          "name": "left",
+          "from": "right",
+          "negated": false
+        },
+        {
+          "name": "right",
+          "from": "left",
+          "negated": false
+        }
+      ]
+    }
+  ]
+}

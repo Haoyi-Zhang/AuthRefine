@@ -1,0 +1,187 @@
+{
+  "principals": [
+    "[\"admin\",\"domain1\"]",
+    "[\"admin\",\"domain2\"]",
+    "[\"admin\",\"unlisted\"]",
+    "[\"alice\",\"domain1\"]",
+    "[\"alice\",\"domain2\"]",
+    "[\"alice\",\"unlisted\"]",
+    "[\"bob\",\"domain1\"]",
+    "[\"bob\",\"domain2\"]",
+    "[\"bob\",\"unlisted\"]",
+    "[\"unlisted\",\"domain1\"]",
+    "[\"unlisted\",\"domain2\"]",
+    "[\"unlisted\",\"unlisted\"]"
+  ],
+  "resources": [
+    "[\"data1\",\"domain1\"]",
+    "[\"data1\",\"domain2\"]",
+    "[\"data1\",\"unlisted\"]",
+    "[\"data2\",\"domain1\"]",
+    "[\"data2\",\"domain2\"]",
+    "[\"data2\",\"unlisted\"]",
+    "[\"unlisted\",\"domain1\"]",
+    "[\"unlisted\",\"domain2\"]",
+    "[\"unlisted\",\"unlisted\"]"
+  ],
+  "actions": [
+    "read",
+    "unlisted",
+    "write"
+  ],
+  "roles": [
+    "[\"admin\",\"domain1\"]",
+    "[\"admin\",\"domain2\"]"
+  ],
+  "members": [
+    [
+      "[\"admin\",\"domain1\"]",
+      "[\"admin\",\"domain1\"]"
+    ],
+    [
+      "[\"admin\",\"domain2\"]",
+      "[\"admin\",\"domain2\"]"
+    ],
+    [
+      "[\"alice\",\"domain1\"]",
+      "[\"admin\",\"domain1\"]"
+    ],
+    [
+      "[\"bob\",\"domain2\"]",
+      "[\"admin\",\"domain2\"]"
+    ]
+  ],
+  "state": [
+    [
+      "available",
+      true
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "[\"admin\",\"domain1\"]",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "[\"data1\",\"domain1\"]",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "[\"admin\",\"domain1\"]",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "[\"data1\",\"domain1\"]",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "[\"admin\",\"domain2\"]",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "[\"data2\",\"domain2\"]",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "[\"admin\",\"domain2\"]",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "[\"data2\",\"domain2\"]",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "principals": [
+    "name \"with\" quotes",
+    "名字"
+  ],
+  "resources": [
+    "path\\item"
+  ],
+  "actions": [
+    "inspect"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "principal",
+          "name": "名字",
+          "negated": false
+        }
+      ],
+      "updates": []
+    }
+  ]
+}

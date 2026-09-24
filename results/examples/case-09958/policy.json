@@ -1,0 +1,295 @@
+{
+  "principals": [
+    "u"
+  ],
+  "resources": [
+    "o"
+  ],
+  "actions": [
+    "a00",
+    "a01",
+    "a02",
+    "a03",
+    "a04"
+  ],
+  "roles": [
+    "r",
+    "s"
+  ],
+  "members": [
+    [
+      "u",
+      "r"
+    ]
+  ],
+  "state": [
+    [
+      "b",
+      false
+    ]
+  ],
+  "aliases": [
+    {
+      "name": "x00",
+      "kind": "role",
+      "candidates": [
+        "r",
+        "s"
+      ]
+    },
+    {
+      "name": "x01",
+      "kind": "role",
+      "candidates": [
+        "r",
+        "s"
+      ]
+    },
+    {
+      "name": "x02",
+      "kind": "role",
+      "candidates": [
+        "r",
+        "s"
+      ]
+    },
+    {
+      "name": "x03",
+      "kind": "role",
+      "candidates": [
+        "r",
+        "s"
+      ]
+    },
+    {
+      "name": "x04",
+      "kind": "role",
+      "candidates": [
+        "r",
+        "s"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a00",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x00",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a00",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x00",
+          "negated": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a01",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x01",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a01",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x01",
+          "negated": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a02",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x02",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a02",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x02",
+          "negated": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a03",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x03",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a03",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x03",
+          "negated": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a04",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x04",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "action",
+          "name": "a04",
+          "negated": false
+        },
+        {
+          "field": "role",
+          "alias": "x04",
+          "negated": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "b",
+          "from": "b",
+          "negated": true
+        }
+      ]
+    }
+  ]
+}

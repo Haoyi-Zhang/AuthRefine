@@ -1,0 +1,48 @@
+{
+  "principals": [
+    "u"
+  ],
+  "resources": [
+    "o"
+  ],
+  "actions": [
+    "a"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [
+    [
+      "b0",
+      false
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        }
+      ]
+    }
+  ]
+}

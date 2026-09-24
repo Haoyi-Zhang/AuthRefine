@@ -1,0 +1,7 @@
+principals are "u".
+resources are "o".
+actions are "a".
+roles are none.
+state "used" initially false.
+allow when state "used" is false then set state "used" to true.
+otherwise deny.

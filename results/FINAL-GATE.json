@@ -1,0 +1,1548 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-20T16:13:16Z",
+  "root": "project",
+  "facts": {
+    "test_methods": 45,
+    "bibliography_entries": 58,
+    "cited_keys": 58,
+    "citation_occurrences": 73,
+    "pdf_pages": 50,
+    "result_json_files": 340,
+    "reference_online_unresolved": null
+  },
+  "key_hashes": {
+    "pdf_sha256": "b10ec8c8990495a4c76ccb0fc469efbcabbaee5942139bbf0feba077f271696f",
+    "main_tex_sha256": "4238cd1812a8d5f3d7c01f04d9bb3e6e67239d069e8dff4b8a3305949cf25633",
+    "bib_sha256": "0648325bc689b817a7bfd618318626f3d7bb11a6937600f24e20abfe454eaa58",
+    "source_manifest_sha256": "d2bc622506f071459b1bcfc4b02ea48dc7d121ad439236605915a6471928f8df"
+  },
+  "checks": [
+    {
+      "name": "at_least_50_test_methods",
+      "ok": false,
+      "detail": 45
+    },
+    {
+      "name": "tests_ordinary",
+      "ok": true,
+      "detail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 7.001s\n\nOK\n"
+    },
+    {
+      "name": "tests_optimized",
+      "ok": true,
+      "detail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 7.107s\n\nOK\n"
+    },
+    {
+      "name": "at_least_60_references",
+      "ok": false,
+      "detail": 58
+    },
+    {
+      "name": "all_references_cited",
+      "ok": true,
+      "detail": {
+        "uncited": [],
+        "missing": []
+      }
+    },
+    {
+      "name": "exactly_50_pages",
+      "ok": true,
+      "detail": 50
+    },
+    {
+      "name": "reference_identifiers_unique",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "reference_metadata_no_demonstrated_mismatch",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "two_environment_reproduction",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "static_no_p0_p1",
+      "ok": false,
+      "detail": [
+        {
+          "severity": "P1",
+          "file": "src/exhaustive_audit.py",
+          "line": 120,
+          "kind": "assert-in-production",
+          "detail": "assert may be removed by -O/-OO"
+        },
+        {
+          "severity": "P1",
+          "file": "src/reference_check.py",
+          "line": 20,
+          "kind": "dynamic-execution",
+          "detail": "compile"
+        },
+        {
+          "severity": "P1",
+          "file": "src/reference_check.py",
+          "line": 21,
+          "kind": "dynamic-execution",
+          "detail": "compile"
+        },
+        {
+          "severity": "P1",
+          "file": "src/reference_check.py",
+          "line": 93,
+          "kind": "dynamic-execution",
+          "detail": "compile"
+        }
+      ]
+    },
+    {
+      "name": "paper_integrity",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "proof_structure",
+      "ok": true,
+      "detail": {
+        "schema_version": 1,
+        "theorem_like_count": 36,
+        "environments": [
+          {
+            "type": "theorem",
+            "position": 6166,
+            "label": "thm:uniformexist",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 8302,
+            "label": "prop:switching",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 11322,
+            "label": "prop:least-support",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 14191,
+            "label": "thm:conp",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 17082,
+            "label": "thm:relevance",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 22663,
+            "label": "lem:step-projection",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 23993,
+            "label": "thm:projection",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 29036,
+            "label": "prop:decisionbound",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 32876,
+            "label": "lem:support",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "corollary",
+            "position": 34498,
+            "label": "cor:localquant",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 36475,
+            "label": "lem:region",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 36924,
+            "label": "thm:soundness",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 38173,
+            "label": "thm:complete",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 41662,
+            "label": "lem:prefix",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 42303,
+            "label": "thm:shortest",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 44349,
+            "label": "prop:tight",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 47309,
+            "label": "thm:profile",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "corollary",
+            "position": 51318,
+            "label": "cor:classification",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "corollary",
+            "position": 57322,
+            "label": "cor:quotient-bound",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 61326,
+            "label": "prop:restricted",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 69975,
+            "label": "thm:compile",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 75799,
+            "label": "lem:reify-table",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 76591,
+            "label": "thm:reify",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 80147,
+            "label": "prop:quotient",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "corollary",
+            "position": 84762,
+            "label": "cor:behavioralroundtrip",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 131425,
+            "label": "lem:symbolic",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 138751,
+            "label": "prop:outside",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 142133,
+            "label": "lem:ordinary-adapter",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 144787,
+            "label": "prop:domain",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 164550,
+            "label": "lem:typedstep",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 166418,
+            "label": "lem:normalization",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 167873,
+            "label": "lem:uniqueparse",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "theorem",
+            "position": 169069,
+            "label": "thm:roundtrip",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 172872,
+            "label": "prop:bridge-front",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "lemma",
+            "position": 180074,
+            "label": "lem:containment",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          },
+          {
+            "type": "proposition",
+            "position": 181306,
+            "label": "prop:bridge-traces",
+            "has_end": true,
+            "has_proof": true,
+            "immediate_proof": true,
+            "proof_elsewhere": false
+          }
+        ],
+        "missing_end": [],
+        "missing_label": [],
+        "missing_proof": []
+      }
+    },
+    {
+      "name": "pdf_visual_integrity",
+      "ok": true,
+      "detail": {
+        "schema_version": 1,
+        "pdf": "paper/main.pdf",
+        "pages": 50,
+        "page_dimensions": [
+          [
+            810,
+            1200
+          ]
+        ],
+        "blank_pages": [],
+        "edge_failures": [],
+        "unembedded_font_lines": [],
+        "rows": [
+          {
+            "page": 1,
+            "file": "page-01.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.13699794238683127,
+            "ink_bbox": [
+              75,
+              140,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 2,
+            "file": "page-02.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12852057613168724,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 3,
+            "file": "page-03.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11013683127572016,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 4,
+            "file": "page-04.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.08846810699588477,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 5,
+            "file": "page-05.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10876748971193416,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 6,
+            "file": "page-06.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.13609876543209876,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 7,
+            "file": "page-07.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.058305555555555555,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 8,
+            "file": "page-08.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1119238683127572,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 9,
+            "file": "page-09.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12483744855967079,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 10,
+            "file": "page-10.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1264537037037037,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 11,
+            "file": "page-11.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.09995576131687242,
+            "ink_bbox": [
+              75,
+              145,
+              735,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 12,
+            "file": "page-12.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.08963477366255145,
+            "ink_bbox": [
+              75,
+              146,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 13,
+            "file": "page-13.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10667078189300412,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 14,
+            "file": "page-14.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1258477366255144,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 15,
+            "file": "page-15.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12792283950617284,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 16,
+            "file": "page-16.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10485905349794239,
+            "ink_bbox": [
+              75,
+              145,
+              735,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 17,
+            "file": "page-17.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1001275720164609,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 18,
+            "file": "page-18.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1097417695473251,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 19,
+            "file": "page-19.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12212037037037037,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 20,
+            "file": "page-20.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10926851851851851,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 21,
+            "file": "page-21.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1154320987654321,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 22,
+            "file": "page-22.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11028086419753086,
+            "ink_bbox": [
+              75,
+              142,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 23,
+            "file": "page-23.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1258199588477366,
+            "ink_bbox": [
+              75,
+              145,
+              735,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 24,
+            "file": "page-24.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11767283950617284,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 25,
+            "file": "page-25.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12423456790123456,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 26,
+            "file": "page-26.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10922839506172839,
+            "ink_bbox": [
+              75,
+              145,
+              737,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 27,
+            "file": "page-27.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12489609053497942,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 28,
+            "file": "page-28.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12762139917695473,
+            "ink_bbox": [
+              75,
+              144,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 29,
+            "file": "page-29.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11575,
+            "ink_bbox": [
+              75,
+              145,
+              737,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 30,
+            "file": "page-30.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11779115226337449,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 31,
+            "file": "page-31.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12880349794238682,
+            "ink_bbox": [
+              76,
+              145,
+              735,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 32,
+            "file": "page-32.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.13112345679012347,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 33,
+            "file": "page-33.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12587962962962962,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 34,
+            "file": "page-34.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.133190329218107,
+            "ink_bbox": [
+              75,
+              145,
+              735,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 35,
+            "file": "page-35.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.13077674897119343,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 36,
+            "file": "page-36.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1250462962962963,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 37,
+            "file": "page-37.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12580761316872427,
+            "ink_bbox": [
+              75,
+              145,
+              735,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 38,
+            "file": "page-38.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1076522633744856,
+            "ink_bbox": [
+              75,
+              142,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 39,
+            "file": "page-39.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10726851851851851,
+            "ink_bbox": [
+              75,
+              142,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 40,
+            "file": "page-40.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11262757201646091,
+            "ink_bbox": [
+              75,
+              142,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 41,
+            "file": "page-41.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.07963683127572016,
+            "ink_bbox": [
+              75,
+              142,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 42,
+            "file": "page-42.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.112119341563786,
+            "ink_bbox": [
+              75,
+              142,
+              735,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 43,
+            "file": "page-43.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.14374588477366254,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 44,
+            "file": "page-44.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.11822222222222223,
+            "ink_bbox": [
+              76,
+              142,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 45,
+            "file": "page-45.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.1328477366255144,
+            "ink_bbox": [
+              75,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 46,
+            "file": "page-46.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.10630864197530865,
+            "ink_bbox": [
+              75,
+              142,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 47,
+            "file": "page-47.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.13455349794238683,
+            "ink_bbox": [
+              76,
+              145,
+              736,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 48,
+            "file": "page-48.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12081481481481482,
+            "ink_bbox": [
+              75,
+              145,
+              735,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          },
+          {
+            "page": 49,
+            "file": "page-49.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12887345679012346,
+            "ink_bbox": [
+              89,
+              147,
+              736,
+              1134
+            ],
+            "minimum_edge_margin_px": 66
+          },
+          {
+            "page": 50,
+            "file": "page-50.png",
+            "size": [
+              810,
+              1200
+            ],
+            "ink_fraction": 0.12105864197530865,
+            "ink_bbox": [
+              89,
+              147,
+              737,
+              1135
+            ],
+            "minimum_edge_margin_px": 65
+          }
+        ],
+        "contact_sheets": [
+          "/mnt/data/reviewer_final_work/rendered_pages/contact-01-10.png",
+          "/mnt/data/reviewer_final_work/rendered_pages/contact-11-20.png",
+          "/mnt/data/reviewer_final_work/rendered_pages/contact-21-30.png",
+          "/mnt/data/reviewer_final_work/rendered_pages/contact-31-40.png",
+          "/mnt/data/reviewer_final_work/rendered_pages/contact-41-50.png"
+        ],
+        "pdfinfo": "Title:           Trace-Refinement Certificates for Controlled-Language Authorization Policies\nSubject:         -  Security and privacy  ->  Access control.-  Software and its engineering  ->  Compilers.\nCreator:         \nProducer:        \nCustom Metadata: no\nMetadata Stream: yes\nTagged:          no\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           50\nEncrypted:       no\nPage size:       486 x 720 pts\nPage rot:        0\nFile size:       734514 bytes\nOptimized:       no\nPDF version:     1.7\n",
+        "pdffonts": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nKCZKSS+LinBiolinumTB                 Type 1            Custom           yes yes yes     17  0\nNUHDAF+LinBiolinumT                  Type 1            Custom           yes yes yes     18  0\nEUROHQ+LinLibertineT                 Type 1            Custom           yes yes yes     19  0\nEUROHQ+LinLibertineT                 Type 1            Custom           yes yes yes     21  0\nPSEARO+LinLibertineTB                Type 1            Custom           yes yes yes     22  0\nOIPAEH+txsys                         Type 1            Builtin          yes yes yes     23  0\nRRSPOU+LinLibertineTI                Type 1            Custom           yes yes yes     24  0\nWGHTOH+LibertineMathMI               Type 1            Builtin          yes yes yes     33  0\nEUROHQ+LinLibertineT                 Type 1            Custom           yes yes yes     35  0\nHDTXWZ+LibertineMathMI7              Type 1            Builtin          yes yes yes     36  0\nUZJQXT+txmiaX                        Type 1            Builtin          yes yes yes     37  0\nMIFILD+txexs                         Type 1            Builtin          yes yes yes     38  0\nNUHDAF+LinBiolinumT                  Type 1            Custom           yes yes yes     51  0\nRRSPOU+LinLibertineTI                Type 1            Custom           yes yes yes     55  0\nEUROHQ+LinLibertineT                 Type 1            Custom           yes yes yes     63  0\nDEVVXX+txsym                         Type 1            Builtin          yes yes yes     64  0\nBCGWSP+Inconsolatazi4-Regular        Type 1            Custom           yes yes yes     74  0\nFAGAHI+LibertineMathRM               Type 1            Builtin          yes yes yes     86  0\nLBAMVH+LibertineMathMI5              Type 1            Builtin          yes yes yes    131  0\nZMKHJD+NewTXMI                       Type 1            Builtin          yes yes yes    178  0\nFYTFWO+txsyc                         Type 1            Builtin          yes yes yes    184  0\nPCSSPC+NewTXMI7                      Type 1            Builtin          yes yes yes    195  0\nGETGJU+LibertineMathBMI              Type 1            Builtin          yes yes yes    239  0\n"
+      }
+    },
+    {
+      "name": "archive_hygiene",
+      "ok": false,
+      "detail": {
+        "schema_version": 1,
+        "root": "project",
+        "issue_count": 35,
+        "issues": [
+          {
+            "kind": "cache_or_vcs",
+            "path": "artifact/__pycache__"
+          },
+          {
+            "kind": "cache_or_vcs",
+            "path": "artifact/src/__pycache__"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/__pycache__/reproduce.cpython-313.pyc"
+          },
+          {
+            "kind": "private_mnt_path",
+            "path": "artifact/results/coverage_audit.json"
+          },
+          {
+            "kind": "cache_or_vcs",
+            "path": "artifact/tests/__pycache__"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/tests/__pycache__/test_core.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/tests/__pycache__/test_core.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/compiler.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/reference_check.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/experiments.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/extension_checks.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/policy.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/theory_checks.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/adversarial_checks.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/symbolic.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/experiments.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/reference_check.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/symbolic.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/public_inputs.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/compiler.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/extensions.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/exhaustive_audit.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/policy.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/checker.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/oracle.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/checker.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/language.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/public_inputs.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/summarize.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/language.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/oracle.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/cases.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/extensions.cpython-313.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/cases.cpython-313.opt-2.pyc"
+          },
+          {
+            "kind": "nested_archive_or_bytecode",
+            "path": "artifact/src/__pycache__/exhaustive_audit.cpython-313.pyc"
+          }
+        ]
+      }
+    },
+    {
+      "name": "self_verifier",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "self_verifier_campaign",
+      "ok": false,
+      "detail": {
+        "schema_version": 1,
+        "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+        "root": "/mnt/data/reviewer_final_work/project/artifact",
+        "checks": [
+          {
+            "name": "archive_hygiene",
+            "ok": true,
+            "links": [],
+            "cache_entries": []
+          },
+          {
+            "name": "json_parse",
+            "ok": false,
+            "files": 342,
+            "errors": [
+              {
+                "file": "results/final_release_verifier.json",
+                "error": "Expecting value: line 1 column 1 (char 0)"
+              }
+            ]
+          },
+          {
+            "name": "source_manifest",
+            "ok": true,
+            "expected_files": 53,
+            "actual_files": 53,
+            "missing": [],
+            "extra": [],
+            "changed": []
+          },
+          {
+            "name": "unit_tests",
+            "ok": true,
+            "test_methods": 45,
+            "ordinary": {
+              "cmd": [
+                "/opt/pyvenv/bin/python",
+                "-W",
+                "error",
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                "tests"
+              ],
+              "returncode": 0,
+              "output_tail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 7.079s\n\nOK\n"
+            },
+            "optimized": {
+              "cmd": [
+                "/opt/pyvenv/bin/python",
+                "-OO",
+                "-W",
+                "error",
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                "tests"
+              ],
+              "returncode": 0,
+              "output_tail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 7.235s\n\nOK\n"
+            }
+          },
+          {
+            "name": "campaign",
+            "ok": false,
+            "run": {
+              "cmd": [
+                "/opt/pyvenv/bin/python",
+                "reproduce.py"
+              ],
+              "returncode": 2,
+              "output_tail": "usage: reproduce.py [-h] --output OUTPUT [--compare COMPARE] [--resume]\nreproduce.py: error: the following arguments are required: --output\n"
+            }
+          }
+        ],
+        "ok": false
+      }
+    },
+    {
+      "name": "minimal_observation_scope",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "minimization_tests_executed",
+      "ok": false,
+      "detail": null
+    },
+    {
+      "name": "all_result_json_parse",
+      "ok": true,
+      "detail": {
+        "count": 340,
+        "bad": []
+      }
+    },
+    {
+      "name": "reference_audit_rows",
+      "ok": true,
+      "detail": 58
+    },
+    {
+      "name": "no_private_build_paths",
+      "ok": false,
+      "detail": [
+        "artifact/results/coverage_audit.json",
+        "artifact/results/pdf_visual_audit.json",
+        "artifact/results/final_release_verifier.json"
+      ]
+    }
+  ],
+  "ok": false
+}

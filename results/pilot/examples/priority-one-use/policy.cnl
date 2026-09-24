@@ -1,0 +1,17 @@
+principals are "alice", "bob", "data1_deny_group", "data2_allow_group", "unlisted".
+resources are "data1", "data2", "unlisted".
+actions are "read", "unlisted", "write".
+roles are "alice", "bob", "data1_deny_group", "data2_allow_group".
+principal "alice" has roles "alice", "data1_deny_group".
+principal "bob" has roles "bob", "data2_allow_group".
+principal "data1_deny_group" has roles "data1_deny_group".
+principal "data2_allow_group" has roles "data2_allow_group".
+state "available" initially true.
+allow when principal has role "alice" and resource is "data1" and action is "read" and state "available" is true then set state "available" to false.
+deny when principal has role "data1_deny_group" and resource is "data1" and action is "read".
+deny when principal has role "data1_deny_group" and resource is "data1" and action is "write".
+allow when principal has role "alice" and resource is "data1" and action is "write" and state "available" is true then set state "available" to false.
+allow when principal has role "data2_allow_group" and resource is "data2" and action is "read" and state "available" is true then set state "available" to false.
+deny when principal has role "bob" and resource is "data2" and action is "read".
+deny when principal has role "bob" and resource is "data2" and action is "write".
+otherwise deny.

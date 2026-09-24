@@ -1,0 +1,31 @@
+{
+  "state_names": [],
+  "alphabet": [
+    [
+      "name \"with\" quotes",
+      "path\\item",
+      "inspect"
+    ],
+    [
+      "名字",
+      "path\\item",
+      "inspect"
+    ]
+  ],
+  "observations": [
+    0
+  ],
+  "initial": 0,
+  "transitions": [
+    [
+      [
+        "deny",
+        0
+      ],
+      [
+        "allow",
+        0
+      ]
+    ]
+  ]
+}

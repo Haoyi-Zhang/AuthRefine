@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "root": "/mnt/data/reviewer_final_work/project/artifact",
+  "checks": [
+    {
+      "name": "archive_hygiene",
+      "ok": true,
+      "links": [],
+      "cache_entries": []
+    },
+    {
+      "name": "json_parse",
+      "ok": false,
+      "files": 342,
+      "errors": [
+        {
+          "file": "results/final_release_verifier.json",
+          "error": "Expecting value: line 1 column 1 (char 0)"
+        }
+      ]
+    },
+    {
+      "name": "source_manifest",
+      "ok": true,
+      "expected_files": 53,
+      "actual_files": 53,
+      "missing": [],
+      "extra": [],
+      "changed": []
+    },
+    {
+      "name": "unit_tests",
+      "ok": true,
+      "test_methods": 45,
+      "ordinary": {
+        "cmd": [
+          "/opt/pyvenv/bin/python",
+          "-W",
+          "error",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "returncode": 0,
+        "output_tail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 7.079s\n\nOK\n"
+      },
+      "optimized": {
+        "cmd": [
+          "/opt/pyvenv/bin/python",
+          "-OO",
+          "-W",
+          "error",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "returncode": 0,
+        "output_tail": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 7.235s\n\nOK\n"
+      }
+    },
+    {
+      "name": "campaign",
+      "ok": false,
+      "run": {
+        "cmd": [
+          "/opt/pyvenv/bin/python",
+          "reproduce.py"
+        ],
+        "returncode": 2,
+        "output_tail": "usage: reproduce.py [-h] --output OUTPUT [--compare COMPARE] [--resume]\nreproduce.py: error: the following arguments are required: --output\n"
+      }
+    }
+  ],
+  "ok": false
+}

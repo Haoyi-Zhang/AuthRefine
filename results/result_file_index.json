@@ -1,0 +1,4136 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "results/FINAL-GATE.json",
+      "root_type": "object",
+      "bytes": 43222,
+      "top_level_keys": [
+        "checks",
+        "facts",
+        "generated_at_utc",
+        "key_hashes",
+        "ok",
+        "root",
+        "schema_version"
+      ]
+    },
+    {
+      "path": "results/adversarial.json",
+      "root_type": "object",
+      "bytes": 459729,
+      "top_level_keys": [
+        "action_alias_cases",
+        "alias_sort_occurrences",
+        "boundary_controls",
+        "coherent_quotients",
+        "collapsed_quotients",
+        "count",
+        "cpu_seconds",
+        "full_case_target",
+        "length_zero_witnesses",
+        "mutations",
+        "operation_breakdown",
+        "operation_limit",
+        "operations",
+        "peak_rss_kib",
+        "positive_length_witnesses",
+        "profile_bindings",
+        "profile_cases",
+        "projection_comparisons",
+        "projection_eligible_case_limit",
+        "quotient_cases",
+        "records",
+        "seed",
+        "step_semantics_cases",
+        "step_semantics_comparisons",
+        "switching_cases",
+        "verdicts",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/archive_hygiene_audit.json",
+      "root_type": "object",
+      "bytes": 4387,
+      "top_level_keys": [
+        "issue_count",
+        "issues",
+        "root",
+        "schema_version"
+      ]
+    },
+    {
+      "path": "results/chunks/00000-00249.metrics.json",
+      "root_type": "object",
+      "bytes": 158,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/00250-00499.metrics.json",
+      "root_type": "object",
+      "bytes": 160,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/00500-00749.metrics.json",
+      "root_type": "object",
+      "bytes": 160,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/00750-00999.metrics.json",
+      "root_type": "object",
+      "bytes": 153,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/01000-01249.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/01250-01499.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/01500-01749.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/01750-01999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/02000-02249.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/02250-02499.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/02500-02749.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/02750-02999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/03000-03249.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/03250-03499.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/03500-03749.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/03750-03999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/04000-04249.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/04250-04499.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/04500-04749.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/04750-04999.metrics.json",
+      "root_type": "object",
+      "bytes": 152,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/05000-05249.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/05250-05499.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/05500-05749.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/05750-05999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/06000-06249.metrics.json",
+      "root_type": "object",
+      "bytes": 160,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/06250-06499.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/06500-06749.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/06750-06999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/07000-07249.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/07250-07499.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/07500-07749.metrics.json",
+      "root_type": "object",
+      "bytes": 154,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/07750-07999.metrics.json",
+      "root_type": "object",
+      "bytes": 160,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/08000-08249.metrics.json",
+      "root_type": "object",
+      "bytes": 154,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/08250-08499.metrics.json",
+      "root_type": "object",
+      "bytes": 161,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/08500-08749.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/08750-08999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/09000-09249.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/09250-09499.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/09500-09749.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/chunks/09750-09999.metrics.json",
+      "root_type": "object",
+      "bytes": 162,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "start",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/clean_reproduction.json",
+      "root_type": "object",
+      "bytes": 6351,
+      "top_level_keys": [
+        "adversarial",
+        "adversarial_cases",
+        "adversarial_operations",
+        "all_internal_comparisons_agree",
+        "auxiliary_cases",
+        "baseline_scientific_records_match",
+        "counted_obligations",
+        "detected_reachable_mutations",
+        "documented_command_count",
+        "documented_commands_succeeded",
+        "exhaustive",
+        "exhaustive_operations",
+        "exhaustive_pairs",
+        "experimental_cpu_seconds",
+        "extension_cases",
+        "extension_obligations",
+        "extensions",
+        "fresh_archive_extraction",
+        "generated_distinct_canonical_asts",
+        "generated_duplicate_occurrences",
+        "generated_syntax_semantics",
+        "groups",
+        "invocation_child_cpu_seconds",
+        "invocation_cpu_seconds",
+        "largest_structural_multiplicity",
+        "peak_rss_kib",
+        "pilot_cases",
+        "primary_cases",
+        "primary_cpu_seconds",
+        "primary_wall_seconds",
+        "public",
+        "reference_verification",
+        "reification",
+        "reproduction_wall_seconds",
+        "resumed",
+        "symbolic_cases",
+        "symbolic_cells",
+        "symbolic_cpu_seconds",
+        "symbolic_maximum_nodes",
+        "symbolic_operations",
+        "unit_test_methods",
+        "witness_lengths"
+      ]
+    },
+    {
+      "path": "results/coverage.json",
+      "root_type": "object",
+      "bytes": 202202,
+      "top_level_keys": [
+        "files",
+        "meta",
+        "totals"
+      ]
+    },
+    {
+      "path": "results/coverage_audit.json",
+      "root_type": "object",
+      "bytes": 8406,
+      "top_level_keys": [
+        "available",
+        "core_below_90",
+        "core_files",
+        "runs",
+        "schema_version",
+        "totals"
+      ]
+    },
+    {
+      "path": "results/documented_commands.json",
+      "root_type": "array",
+      "bytes": 14100,
+      "top_level_keys": []
+    },
+    {
+      "path": "results/examples/case-00000/automaton.json",
+      "root_type": "object",
+      "bytes": 2882,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00000/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00000/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00000/policy.json",
+      "root_type": "object",
+      "bytes": 1070,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00001/automaton.json",
+      "root_type": "object",
+      "bytes": 4081,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00001/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00001/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00001/policy.json",
+      "root_type": "object",
+      "bytes": 1489,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00002/automaton.json",
+      "root_type": "object",
+      "bytes": 4083,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00002/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00002/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00002/policy.json",
+      "root_type": "object",
+      "bytes": 1346,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00003/automaton.json",
+      "root_type": "object",
+      "bytes": 3855,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00003/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00003/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00003/policy.json",
+      "root_type": "object",
+      "bytes": 2113,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00004/automaton.json",
+      "root_type": "object",
+      "bytes": 5441,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00004/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00004/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00004/policy.json",
+      "root_type": "object",
+      "bytes": 2906,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00005/automaton.json",
+      "root_type": "object",
+      "bytes": 5447,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00005/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00005/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00005/policy.json",
+      "root_type": "object",
+      "bytes": 2619,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00006/automaton.json",
+      "root_type": "object",
+      "bytes": 3854,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00006/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00006/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00006/policy.json",
+      "root_type": "object",
+      "bytes": 2509,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00007/automaton.json",
+      "root_type": "object",
+      "bytes": 5440,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00007/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00007/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00007/policy.json",
+      "root_type": "object",
+      "bytes": 3302,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00008/automaton.json",
+      "root_type": "object",
+      "bytes": 5445,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00008/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00008/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00008/policy.json",
+      "root_type": "object",
+      "bytes": 3015,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00009/automaton.json",
+      "root_type": "object",
+      "bytes": 45035,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00009/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00009/diagnostic.json",
+      "root_type": "object",
+      "bytes": 75,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00009/policy.json",
+      "root_type": "object",
+      "bytes": 2963,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00010/automaton.json",
+      "root_type": "object",
+      "bytes": 59005,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00010/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00010/diagnostic.json",
+      "root_type": "object",
+      "bytes": 75,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00010/policy.json",
+      "root_type": "object",
+      "bytes": 3756,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00011/automaton.json",
+      "root_type": "object",
+      "bytes": 59013,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00011/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00011/diagnostic.json",
+      "root_type": "object",
+      "bytes": 75,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00011/policy.json",
+      "root_type": "object",
+      "bytes": 3469,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00012/automaton.json",
+      "root_type": "object",
+      "bytes": 5206,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00012/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00012/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00012/policy.json",
+      "root_type": "object",
+      "bytes": 2580,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00013/automaton.json",
+      "root_type": "object",
+      "bytes": 7308,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00013/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00013/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00013/policy.json",
+      "root_type": "object",
+      "bytes": 3560,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00014/automaton.json",
+      "root_type": "object",
+      "bytes": 7316,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00014/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00014/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00014/policy.json",
+      "root_type": "object",
+      "bytes": 3201,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00015/automaton.json",
+      "root_type": "object",
+      "bytes": 4920,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00015/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00015/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00015/policy.json",
+      "root_type": "object",
+      "bytes": 3511,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00016/automaton.json",
+      "root_type": "object",
+      "bytes": 6893,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00016/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00016/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00016/policy.json",
+      "root_type": "object",
+      "bytes": 4117,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-00017/automaton.json",
+      "root_type": "object",
+      "bytes": 6896,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-00017/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-00017/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-00017/policy.json",
+      "root_type": "object",
+      "bytes": 3902,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09954/automaton.json",
+      "root_type": "object",
+      "bytes": 291,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09954/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09954/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09954/policy.json",
+      "root_type": "object",
+      "bytes": 1155,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09955/automaton.json",
+      "root_type": "object",
+      "bytes": 426,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09955/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09955/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09955/policy.json",
+      "root_type": "object",
+      "bytes": 2050,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09956/automaton.json",
+      "root_type": "object",
+      "bytes": 561,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09956/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09956/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09956/policy.json",
+      "root_type": "object",
+      "bytes": 2945,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09957/automaton.json",
+      "root_type": "object",
+      "bytes": 696,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09957/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09957/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09957/policy.json",
+      "root_type": "object",
+      "bytes": 3840,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09958/automaton.json",
+      "root_type": "object",
+      "bytes": 831,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09958/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09958/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09958/policy.json",
+      "root_type": "object",
+      "bytes": 4735,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09959/automaton.json",
+      "root_type": "object",
+      "bytes": 966,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09959/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09959/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09959/policy.json",
+      "root_type": "object",
+      "bytes": 5630,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09960/automaton.json",
+      "root_type": "object",
+      "bytes": 1101,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09960/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09960/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09960/policy.json",
+      "root_type": "object",
+      "bytes": 6525,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09961/automaton.json",
+      "root_type": "object",
+      "bytes": 1236,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09961/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09961/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09961/policy.json",
+      "root_type": "object",
+      "bytes": 7420,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09962/automaton.json",
+      "root_type": "object",
+      "bytes": 1371,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09962/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09962/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09962/policy.json",
+      "root_type": "object",
+      "bytes": 8315,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09963/automaton.json",
+      "root_type": "object",
+      "bytes": 1506,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09963/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09963/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09963/policy.json",
+      "root_type": "object",
+      "bytes": 9210,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09964/automaton.json",
+      "root_type": "object",
+      "bytes": 1641,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09964/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09964/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09964/policy.json",
+      "root_type": "object",
+      "bytes": 10105,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09965/automaton.json",
+      "root_type": "object",
+      "bytes": 1776,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09965/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09965/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09965/policy.json",
+      "root_type": "object",
+      "bytes": 11000,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09966/automaton.json",
+      "root_type": "object",
+      "bytes": 1911,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09966/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09966/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09966/policy.json",
+      "root_type": "object",
+      "bytes": 11895,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09967/automaton.json",
+      "root_type": "object",
+      "bytes": 2046,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09967/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09967/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09967/policy.json",
+      "root_type": "object",
+      "bytes": 12790,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09968/automaton.json",
+      "root_type": "object",
+      "bytes": 2181,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09968/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09968/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09968/policy.json",
+      "root_type": "object",
+      "bytes": 13685,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09969/automaton.json",
+      "root_type": "object",
+      "bytes": 2316,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09969/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09969/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/examples/case-09969/policy.json",
+      "root_type": "object",
+      "bytes": 14580,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09970/automaton.json",
+      "root_type": "object",
+      "bytes": 214,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09970/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09970/diagnostic.json",
+      "root_type": "object",
+      "bytes": 334,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09970/policy.json",
+      "root_type": "object",
+      "bytes": 252,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09971/automaton.json",
+      "root_type": "object",
+      "bytes": 289,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09971/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09971/diagnostic.json",
+      "root_type": "object",
+      "bytes": 527,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09971/policy.json",
+      "root_type": "object",
+      "bytes": 625,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09972/automaton.json",
+      "root_type": "object",
+      "bytes": 424,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09972/certificate.json",
+      "root_type": "object",
+      "bytes": 45,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09972/diagnostic.json",
+      "root_type": "object",
+      "bytes": 720,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09972/policy.json",
+      "root_type": "object",
+      "bytes": 1525,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09973/automaton.json",
+      "root_type": "object",
+      "bytes": 425,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09973/certificate.json",
+      "root_type": "object",
+      "bytes": 52,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09973/diagnostic.json",
+      "root_type": "object",
+      "bytes": 913,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09973/policy.json",
+      "root_type": "object",
+      "bytes": 1157,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09974/automaton.json",
+      "root_type": "object",
+      "bytes": 684,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09974/certificate.json",
+      "root_type": "object",
+      "bytes": 59,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09974/diagnostic.json",
+      "root_type": "object",
+      "bytes": 1106,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09974/policy.json",
+      "root_type": "object",
+      "bytes": 3250,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09975/automaton.json",
+      "root_type": "object",
+      "bytes": 685,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09975/certificate.json",
+      "root_type": "object",
+      "bytes": 66,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09975/diagnostic.json",
+      "root_type": "object",
+      "bytes": 1299,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09975/policy.json",
+      "root_type": "object",
+      "bytes": 3840,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09976/automaton.json",
+      "root_type": "object",
+      "bytes": 686,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09976/certificate.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09976/diagnostic.json",
+      "root_type": "object",
+      "bytes": 1492,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09976/policy.json",
+      "root_type": "object",
+      "bytes": 4431,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09977/automaton.json",
+      "root_type": "object",
+      "bytes": 687,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09977/certificate.json",
+      "root_type": "object",
+      "bytes": 80,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09977/diagnostic.json",
+      "root_type": "object",
+      "bytes": 1685,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09977/policy.json",
+      "root_type": "object",
+      "bytes": 1856,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09978/automaton.json",
+      "root_type": "object",
+      "bytes": 1206,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09978/certificate.json",
+      "root_type": "object",
+      "bytes": 93,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09978/diagnostic.json",
+      "root_type": "object",
+      "bytes": 1878,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09978/policy.json",
+      "root_type": "object",
+      "bytes": 7163,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09979/automaton.json",
+      "root_type": "object",
+      "bytes": 1207,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09979/certificate.json",
+      "root_type": "object",
+      "bytes": 100,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09979/diagnostic.json",
+      "root_type": "object",
+      "bytes": 2073,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09979/policy.json",
+      "root_type": "object",
+      "bytes": 7921,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09980/automaton.json",
+      "root_type": "object",
+      "bytes": 1209,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09980/certificate.json",
+      "root_type": "object",
+      "bytes": 114,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09980/diagnostic.json",
+      "root_type": "object",
+      "bytes": 2465,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09980/policy.json",
+      "root_type": "object",
+      "bytes": 9436,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09981/automaton.json",
+      "root_type": "object",
+      "bytes": 1213,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09981/certificate.json",
+      "root_type": "object",
+      "bytes": 142,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09981/diagnostic.json",
+      "root_type": "object",
+      "bytes": 3244,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09981/policy.json",
+      "root_type": "object",
+      "bytes": 2722,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09982/automaton.json",
+      "root_type": "object",
+      "bytes": 2263,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09982/certificate.json",
+      "root_type": "object",
+      "bytes": 270,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09982/diagnostic.json",
+      "root_type": "object",
+      "bytes": 6364,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09982/policy.json",
+      "root_type": "object",
+      "bytes": 3755,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09983/automaton.json",
+      "root_type": "object",
+      "bytes": 4353,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09983/certificate.json",
+      "root_type": "object",
+      "bytes": 526,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09983/diagnostic.json",
+      "root_type": "object",
+      "bytes": 12604,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09983/policy.json",
+      "root_type": "object",
+      "bytes": 4955,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/examples/case-09984/automaton.json",
+      "root_type": "object",
+      "bytes": 8579,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/examples/case-09984/certificate.json",
+      "root_type": "object",
+      "bytes": 1066,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/examples/case-09984/diagnostic.json",
+      "root_type": "object",
+      "bytes": 25143,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/examples/case-09984/policy.json",
+      "root_type": "object",
+      "bytes": 6322,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/exhaustive.json",
+      "root_type": "object",
+      "bytes": 1167,
+      "top_level_keys": [
+        "binding_multiplicities",
+        "comparisons",
+        "cpu_seconds",
+        "machines_per_policy",
+        "operations",
+        "peak_rss_kib",
+        "policy_machine_pairs",
+        "policy_semantic_representatives",
+        "scope",
+        "shortest_lengths",
+        "status",
+        "verdicts",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/extensions.json",
+      "root_type": "object",
+      "bytes": 124741,
+      "top_level_keys": [
+        "count",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "profiles",
+        "projections",
+        "quotients",
+        "restricted_families",
+        "switching",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/external_input_manifest.json",
+      "root_type": "object",
+      "bytes": 4348,
+      "top_level_keys": [
+        "file_count",
+        "files",
+        "generated_at_utc",
+        "note",
+        "root",
+        "schema_version",
+        "total_bytes"
+      ]
+    },
+    {
+      "path": "results/final_release_quick.json",
+      "root_type": "object",
+      "bytes": 1660,
+      "top_level_keys": [
+        "checks",
+        "ok",
+        "python",
+        "root",
+        "schema_version"
+      ]
+    },
+    {
+      "path": "results/final_release_verifier.json",
+      "root_type": "object",
+      "bytes": 2026,
+      "top_level_keys": [
+        "checks",
+        "ok",
+        "python",
+        "root",
+        "schema_version"
+      ]
+    },
+    {
+      "path": "results/pdf_visual_audit.json",
+      "root_type": "object",
+      "bytes": 16983,
+      "top_level_keys": [
+        "blank_pages",
+        "contact_sheets",
+        "edge_failures",
+        "page_dimensions",
+        "pages",
+        "pdf",
+        "pdffonts",
+        "pdfinfo",
+        "rows",
+        "schema_version",
+        "unembedded_font_lines"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-base/automaton.json",
+      "root_type": "object",
+      "bytes": 2882,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-base/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-base/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-base/policy.json",
+      "root_type": "object",
+      "bytes": 1070,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-one-use/automaton.json",
+      "root_type": "object",
+      "bytes": 4081,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-one-use/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-one-use/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/basic-one-use/policy.json",
+      "root_type": "object",
+      "bytes": 1489,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-0/automaton.json",
+      "root_type": "object",
+      "bytes": 431,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-0/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-0/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-0/policy.json",
+      "root_type": "object",
+      "bytes": 540,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-1/automaton.json",
+      "root_type": "object",
+      "bytes": 214,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-1/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-1/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-1/policy.json",
+      "root_type": "object",
+      "bytes": 330,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-2/automaton.json",
+      "root_type": "object",
+      "bytes": 215,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-2/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-2/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-2/policy.json",
+      "root_type": "object",
+      "bytes": 330,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-3/automaton.json",
+      "root_type": "object",
+      "bytes": 426,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-3/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-3/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-3/policy.json",
+      "root_type": "object",
+      "bytes": 2050,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-4/automaton.json",
+      "root_type": "object",
+      "bytes": 291,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-4/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-4/diagnostic.json",
+      "root_type": "object",
+      "bytes": 354,
+      "top_level_keys": [
+        "binding",
+        "equivalent",
+        "indices",
+        "length",
+        "local_evaluations",
+        "maximum_width",
+        "trace"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-4/policy.json",
+      "root_type": "object",
+      "bytes": 769,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-5/automaton.json",
+      "root_type": "object",
+      "bytes": 291,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-5/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-5/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-5/policy.json",
+      "root_type": "object",
+      "bytes": 476,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-6/automaton.json",
+      "root_type": "object",
+      "bytes": 214,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-6/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-6/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-6/policy.json",
+      "root_type": "object",
+      "bytes": 171,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-7/automaton.json",
+      "root_type": "object",
+      "bytes": 357,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-7/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-7/diagnostic.json",
+      "root_type": "object",
+      "bytes": 73,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/control-7/policy.json",
+      "root_type": "object",
+      "bytes": 414,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-base/automaton.json",
+      "root_type": "object",
+      "bytes": 4920,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-base/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-base/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-base/policy.json",
+      "root_type": "object",
+      "bytes": 3511,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-one-use/automaton.json",
+      "root_type": "object",
+      "bytes": 6893,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-one-use/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-one-use/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/priority-one-use/policy.json",
+      "root_type": "object",
+      "bytes": 4117,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-base/automaton.json",
+      "root_type": "object",
+      "bytes": 3855,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-base/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-base/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-base/policy.json",
+      "root_type": "object",
+      "bytes": 2113,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-one-use/automaton.json",
+      "root_type": "object",
+      "bytes": 5441,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-one-use/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-one-use/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac-one-use/policy.json",
+      "root_type": "object",
+      "bytes": 2906,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-base/automaton.json",
+      "root_type": "object",
+      "bytes": 3854,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-base/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-base/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-base/policy.json",
+      "root_type": "object",
+      "bytes": 2509,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-one-use/automaton.json",
+      "root_type": "object",
+      "bytes": 5440,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-one-use/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-one-use/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_deny-one-use/policy.json",
+      "root_type": "object",
+      "bytes": 3302,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-base/automaton.json",
+      "root_type": "object",
+      "bytes": 45035,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-base/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-base/diagnostic.json",
+      "root_type": "object",
+      "bytes": 75,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-base/policy.json",
+      "root_type": "object",
+      "bytes": 2963,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-one-use/automaton.json",
+      "root_type": "object",
+      "bytes": 59005,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-one-use/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-one-use/diagnostic.json",
+      "root_type": "object",
+      "bytes": 75,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_domains-one-use/policy.json",
+      "root_type": "object",
+      "bytes": 3756,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-base/automaton.json",
+      "root_type": "object",
+      "bytes": 5206,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-base/certificate.json",
+      "root_type": "object",
+      "bytes": 31,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-base/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-base/policy.json",
+      "root_type": "object",
+      "bytes": 2580,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-one-use/automaton.json",
+      "root_type": "object",
+      "bytes": 7308,
+      "top_level_keys": [
+        "alphabet",
+        "initial",
+        "observations",
+        "state_names",
+        "transitions"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-one-use/certificate.json",
+      "root_type": "object",
+      "bytes": 38,
+      "top_level_keys": [
+        "reachable"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-one-use/diagnostic.json",
+      "root_type": "object",
+      "bytes": 74,
+      "top_level_keys": [
+        "equivalent",
+        "local_evaluations",
+        "maximum_width"
+      ]
+    },
+    {
+      "path": "results/pilot/examples/rbac_with_resource_roles-one-use/policy.json",
+      "root_type": "object",
+      "bytes": 3560,
+      "top_level_keys": [
+        "actions",
+        "aliases",
+        "members",
+        "principals",
+        "resources",
+        "roles",
+        "rules",
+        "state"
+      ]
+    },
+    {
+      "path": "results/pilot/pilot.json",
+      "root_type": "object",
+      "bytes": 66035,
+      "top_level_keys": [
+        "all_internal_comparisons_agree",
+        "case_count",
+        "cases",
+        "controls",
+        "cpu_seconds",
+        "obligations",
+        "peak_rss_kib",
+        "public",
+        "wall_seconds"
+      ]
+    },
+    {
+      "path": "results/proof_structure_audit.json",
+      "root_type": "object",
+      "bytes": 7599,
+      "top_level_keys": [
+        "environments",
+        "missing_end",
+        "missing_label",
+        "missing_proof",
+        "schema_version",
+        "theorem_like_count"
+      ]
+    },
+    {
+      "path": "results/reference_verification.json",
+      "root_type": "object",
+      "bytes": 651,
+      "top_level_keys": [
+        "all_references_cited",
+        "audit_access_date",
+        "citation_occurrences",
+        "current_manuscript_parsed",
+        "identifier_distribution",
+        "references",
+        "scope",
+        "status",
+        "unique_publication_identifiers"
+      ]
+    },
+    {
+      "path": "results/reference_verification_project.json",
+      "root_type": "object",
+      "bytes": 650,
+      "top_level_keys": [
+        "all_references_cited",
+        "audit_access_date",
+        "citation_occurrences",
+        "current_manuscript_parsed",
+        "identifier_distribution",
+        "references",
+        "scope",
+        "status",
+        "unique_publication_identifiers"
+      ]
+    },
+    {
+      "path": "results/release_facts.json",
+      "root_type": "object",
+      "bytes": 10233,
+      "top_level_keys": [
+        "bibliography_entries",
+        "citation_occurrences",
+        "cited_keys",
+        "generated_at_utc",
+        "main_tex",
+        "missing_bibliography",
+        "paper_sha256",
+        "pdf_pages",
+        "result_values",
+        "schema_version",
+        "stale_test_count_mentions_in_paper",
+        "test_method_count",
+        "test_methods",
+        "uncited_bibliography"
+      ]
+    },
+    {
+      "path": "results/reproduction_boundary.json",
+      "root_type": "object",
+      "bytes": 1443,
+      "top_level_keys": [
+        "current_repair_round_boundary",
+        "earlier_startup_boundary",
+        "latest_successful_clean_reproduction"
+      ]
+    },
+    {
+      "path": "results/resource_accounting.json",
+      "root_type": "object",
+      "bytes": 7004,
+      "top_level_keys": [
+        "accounting_limit",
+        "budget_scope",
+        "latest_campaign_counted_operations",
+        "latest_successful_clean_reproduction_cpu_seconds",
+        "latest_successful_clean_reproduction_documented_commands",
+        "latest_successful_clean_reproduction_unit_test_methods",
+        "latest_successful_clean_reproduction_wall_seconds",
+        "measurements",
+        "prior_successful_clean_reproduction_wall_seconds",
+        "total_lifecycle_cpu_seconds",
+        "tracked_counted_operations_across_these_executions",
+        "tracked_cpu_seconds_lower_bound"
+      ]
+    },
+    {
+      "path": "results/result_file_index.json",
+      "root_type": "object",
+      "bytes": 91392,
+      "top_level_keys": [
+        "files",
+        "parse_failures",
+        "schema_version"
+      ]
+    },
+    {
+      "path": "results/reviewer_risk_audit.json",
+      "root_type": "object",
+      "bytes": 7267,
+      "top_level_keys": [
+        "facts",
+        "generated_at_utc",
+        "risks",
+        "schema_version"
+      ]
+    },
+    {
+      "path": "results/static_quality_audit.json",
+      "root_type": "object",
+      "bytes": 2640,
+      "top_level_keys": [
+        "findings",
+        "imports",
+        "runs",
+        "schema_version",
+        "stats",
+        "third_party_import_candidates"
+      ]
+    },
+    {
+      "path": "results/submission_policy_access.json",
+      "root_type": "object",
+      "bytes": 4917,
+      "top_level_keys": [
+        "records",
+        "schema_version",
+        "usable_toplas_specific_page"
+      ]
+    },
+    {
+      "path": "results/summary.json",
+      "root_type": "object",
+      "bytes": 6017,
+      "top_level_keys": [
+        "adversarial",
+        "adversarial_cases",
+        "adversarial_operations",
+        "all_internal_comparisons_agree",
+        "auxiliary_cases",
+        "counted_obligations",
+        "detected_reachable_mutations",
+        "exhaustive",
+        "exhaustive_operations",
+        "exhaustive_pairs",
+        "experimental_cpu_seconds",
+        "extension_cases",
+        "extension_obligations",
+        "extensions",
+        "generated_distinct_canonical_asts",
+        "generated_duplicate_occurrences",
+        "generated_syntax_semantics",
+        "groups",
+        "largest_structural_multiplicity",
+        "peak_rss_kib",
+        "pilot_cases",
+        "primary_cases",
+        "primary_cpu_seconds",
+        "primary_wall_seconds",
+        "public",
+        "reference_verification",
+        "reification",
+        "symbolic_cases",
+        "symbolic_cells",
+        "symbolic_cpu_seconds",
+        "symbolic_maximum_nodes",
+        "symbolic_operations",
+        "witness_lengths"
+      ]
+    },
+    {
+      "path": "results/theory.json",
+      "root_type": "object",
+      "bytes": 1544249,
+      "top_level_keys": [
+        "aliases",
+        "cnf",
+        "count",
+        "cpu_seconds",
+        "machines",
+        "obligations",
+        "peak_rss_kib",
+        "relevance",
+        "wall_seconds"
+      ]
+    }
+  ],
+  "parse_failures": []
+}

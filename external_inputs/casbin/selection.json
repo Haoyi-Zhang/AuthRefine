@@ -1,0 +1,38 @@
+{
+  "access_date": "2026-09-11",
+  "base_url": "https://raw.githubusercontent.com/casbin/casbin/master/",
+  "representation": "Normalized text obtained through public source rendering; no upstream byte-identity claim.",
+  "models": [
+    "basic",
+    "rbac",
+    "rbac_with_deny",
+    "rbac_with_domains",
+    "rbac_with_resource_roles",
+    "priority"
+  ],
+  "files": [
+    "basic_model.conf",
+    "basic_policy.csv",
+    "rbac_model.conf",
+    "rbac_policy.csv",
+    "rbac_with_deny_model.conf",
+    "rbac_with_deny_policy.csv",
+    "rbac_with_domains_model.conf",
+    "rbac_with_domains_policy.csv",
+    "rbac_with_resource_roles_model.conf",
+    "rbac_with_resource_roles_policy.csv",
+    "priority_model.conf",
+    "priority_policy.csv"
+  ],
+  "assertions_source": "model_test.go",
+  "assertion_functions": [
+    "TestBasicModel",
+    "TestRBACModel",
+    "TestRBACModelWithDeny",
+    "TestRBACModelWithResourceRoles",
+    "TestRBACModelWithDomains"
+  ],
+  "assertion_count": 40,
+  "license": "Apache-2.0",
+  "mutated_upstream_internals": false
+}

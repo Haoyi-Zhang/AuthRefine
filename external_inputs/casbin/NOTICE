@@ -1,0 +1,2 @@
+Casbin example policy and model content. Copyright 2017 The casbin Authors. Licensed under the Apache License, 2.0.
+The files here are normalized text transcriptions of the public source, not byte-identical upstream copies. Blank lines and terminal newlines are normalized. Policy rows, model expressions, and their order are preserved. assertions.json is a data conversion of 40 initial-state assertions in the five named upstream model tests; no dynamic-edit tests are consumed.

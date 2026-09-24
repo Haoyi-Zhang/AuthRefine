@@ -1,0 +1,7 @@
+principals are "u".
+resources are "o".
+actions are "a".
+roles are none.
+deny when always.
+allow when always then keep state.
+otherwise deny.

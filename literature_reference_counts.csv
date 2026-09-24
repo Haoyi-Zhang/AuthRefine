@@ -1,0 +1,23 @@
+citation_key,sample,reference_entries,readable_copy_pages,reference_pages,copy_url,included_in_median
+foster2007lenses,same-journal method comparison,57,64,61-63; page 64 is an online-material notice,https://www.cis.upenn.edu/~bcpierce/papers/lenses-toplas-final.pdf,yes
+fournet2007authorization,same-journal method comparison,38,37,35-37,https://people.mpi-sws.org/~dg/teaching/lis2014/modules/refinement-1-fournet07.pdf,yes
+bengtson2008refinement,same-journal method comparison,93,45,41-45,https://andrewdgordon.github.io/papers/refinement-types-for-secure-implementations.pdf,yes
+lamport1994tla,same-journal method comparison,34,52,50-52,https://lamport.azurewebsites.net/pubs/lamport-actions.pdf,yes
+clarke1994abstraction,same-journal method comparison,33,31,30-31,https://www.cs.cmu.edu/~emc/papers/Papers%20In%20Refereed%20Journals/Model%20Checking%20and%20Abstraction94.pdf,yes
+rival2007partitioning,same-journal method comparison,34,44,43-44,https://www.di.ens.fr/~rival/papers/toplas07.pdf,yes
+hamlen2006enforcement,same-journal method comparison,32,30,29-30,https://www.cs.cornell.edu/fbs/publications/EnfClasses.pdf,yes
+barthe2009translation,same-journal method comparison,39,44,42-44,https://www-sop.inria.fr/members/Benjamin.Gregoire/Publi/toplas08.pdf,yes
+barthe2011abstract,same-journal method comparison,51,46,43-46,https://software.imdea.org/~ckunz/toplas2.pdf,yes
+clements2004stack,same-journal method comparison,21,24,23-24,https://www.brinckerhoff.org/clements/papers/cf-toplas04.pdf,yes
+lamport2022prophecy,same-journal method comparison,13,33,32-33; author copy,https://lamport.azurewebsites.net/pubs/simple.pdf,yes
+din2024lagc,same-journal method comparison,89,58,54-58; numbered bibliography,https://ebjohnsen.org/publication/24-toplas1/24-toplas1.pdf,yes
+odersky2023capabilities,journal high-visibility comparison,44,41,25-27; 15+21+8,https://abgru.me/publication/capturing-types/capturing-types.pdf,no
+economou2023focusing,journal high-visibility comparison,90,303,59-62; 28+29+27+6; appendices follow,https://arxiv.org/pdf/2209.13000,no
+patrignani2024uc,journal high-visibility comparison,95,64,60-64; numbered entries 1-95,https://squera.github.io/pdf/uc-is-sc-j.pdf,no
+divincenzo2025gradual,journal high-visibility comparison,36,50,"38-39; 24+12; author copy, not final 57-page article",https://jennalwise.github.io/assets/pdf/divincenzo2024gradualc0.pdf,no
+moine2025heap,journal high-visibility comparison,101,71,67-71; 15+22+23+25+16,https://iris-project.org/pdfs/2025-toplas-willitfit.pdf,no
+swamy2010fine,adjacent-venue comparison,25,20,20; numbered entries 1-25,https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper-78.pdf,no
+liu2009linearizability,adjacent-venue comparison,32,16,15-16; numbered entries 1-32,https://www.comp.nus.edu.sg/~pat/publications/linearizability.pdf,no
+necula2000validation,adjacent-venue comparison,25,12,11-12; 6+19 labeled entries,https://people.eecs.berkeley.edu/~necula/Papers/tv_pldi00.pdf,no
+doenges2022leapfrog,adjacent-venue comparison,57,21,15-16; numbered entries 1-57,https://arxiv.org/pdf/2205.08762,no
+jourdan2012parsers,adjacent-venue comparison,25,20,19-20; numbered entries 1-25,https://xavierleroy.org/publi/validated-parser.pdf,no

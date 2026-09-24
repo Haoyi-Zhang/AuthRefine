@@ -1,0 +1,59 @@
+citation_key,title,authors,year,publication_identifier,identifier_type,citation_occurrences
+xing2025cnlp,When Prompt Engineering Meets Software Engineering: {CNL-P} as Natural and Robust ``{APIs}'' for Human-{AI} Interaction,Zhenchang Xing and Yang Liu and Zhuo Cheng and Qing Huang and Dehai Zhao and Daniel Sun and Chenhua Liu,2025,https://arxiv.org/abs/2508.06942,arxiv,2
+swamy2010fine,Enforcing Stateful Authorization and Information Flow Policies in {FINE},Nikhil Swamy and Juan Chen and Ravi Chugh,2010,https://doi.org/10.1007/978-3-642-11957-6_28,doi,1
+cutler2024cedar,"{Cedar}: A New Language for Expressive, Fast, Safe, and Analyzable Authorization",Joseph W. Cutler and Craig Disselkoen and Aaron Eline and Shaobo He and Kyle Headley and Michael Hicks and Kesha Hietala and Eleftherios Ioannidis and John Kastner and Anwar Mamat and Darin McAdams and Matt McCutchen and Neha Rungta and Emina Torlak and Andrew M. Wells,2024,https://doi.org/10.1145/3649835,doi,2
+liu2009linearizability,Model Checking Linearizability via Refinement,Yang Liu and Wei Chen and Yanhong A. Liu and Jun Sun,2009,https://doi.org/10.1007/978-3-642-05089-3_21,doi,2
+foster2007lenses,Combinators for Bidirectional Tree Transformations: A Linguistic Approach to the View-Update Problem,J. Nathan Foster and Michael B. Greenwald and Jonathan T. Moore and Benjamin C. Pierce and Alan Schmitt,2007,https://doi.org/10.1145/1232420.1232424,doi,2
+lamport1996refinement,Refinement in State-Based Formalisms,Leslie Lamport,1996,https://lamport.azurewebsites.net/pubs/refinement.pdf,technical_report,2
+leroy2009backend,A Formally Verified Compiler Back-End,Xavier Leroy,2009,https://doi.org/10.1007/s10817-009-9155-4,doi,1
+lang2003independence,Propositional Independence: Formula-Variable Independence and Forgetting,J{\'e}r{\^o}me Lang and Paolo Liberatore and Pierre Marquis,2003,https://doi.org/10.1613/jair.1113,doi,2
+bryant1986graphs,Graph-Based Algorithms for Boolean Function Manipulation,Randal E. Bryant,1986,https://doi.org/10.1109/TC.1986.1676819,doi,2
+vatsa2026autocedar,{AutoCedar}: An Agentic Framework for Verifier-Guided Access Control Policy Synthesis,Adarsh Vatsa and Sachi Shome and Yingming Zhou and William Eiers,2026,https://arxiv.org/abs/2607.03656,arxiv,1
+fournet2007authorization,A Type Discipline for Authorization Policies,C{\'e}dric Fournet and Andrew D. Gordon and Sergio Maffeis,2007,https://doi.org/10.1145/1275497.1275500,doi,1
+bengtson2008refinement,Refinement Types for Secure Implementations,Jesper Bengtson and Karthikeyan Bhargavan and C{\'e}dric Fournet and Andrew D. Gordon and Sergio Maffeis,2011,https://doi.org/10.1145/1890028.1890031,doi,1
+lamport1994tla,The Temporal Logic of Actions,Leslie Lamport,1994,https://doi.org/10.1145/177492.177726,doi,1
+clarke1994abstraction,Model Checking and Abstraction,Edmund M. Clarke and Orna Grumberg and David E. Long,1994,https://doi.org/10.1145/186025.186051,doi,1
+rival2007partitioning,The Trace Partitioning Abstract Domain,Xavier Rival and Laurent Mauborgne,2007,https://doi.org/10.1145/1275497.1275501,doi,1
+necula2000validation,Translation Validation for an Optimizing Compiler,George C. Necula,2000,https://doi.org/10.1145/349299.349314,doi,2
+schneider2000enforceable,Enforceable Security Policies,Fred B. Schneider,2000,https://doi.org/10.1145/353323.353382,doi,1
+hamlen2006enforcement,Computability Classes for Enforcement Mechanisms,Kevin W. Hamlen and Greg Morrisett and Fred B. Schneider,2006,https://doi.org/10.1145/1111596.1111601,doi,1
+barthe2009translation,Certificate Translation for Optimizing Compilers,Gilles Barthe and Benjamin Gr{\'e}goire and C{\'e}sar Kunz and Tamara Rezk,2009,https://doi.org/10.1145/1538917.1538919,doi,1
+barthe2011abstract,An Abstract Model of Certificate Translation,Gilles Barthe and C{\'e}sar Kunz,2011,https://doi.org/10.1145/1985342.1985344,doi,1
+clements2004stack,A Tail-Recursive Machine with Stack Inspection,John Clements and Matthias Felleisen,2004,https://doi.org/10.1145/1034774.1034778,doi,1
+lamport2022prophecy,Prophecy Made Simple,Leslie Lamport and Stephan Merz,2022,https://doi.org/10.1145/3492545,doi,1
+rendel2010invertible,Invertible Syntax Descriptions: Unifying Parsing and Pretty Printing,Tillmann Rendel and Klaus Ostermann,2010,https://doi.org/10.1145/1863523.1863525,doi,1
+kuhn2014survey,A Survey and Classification of Controlled Natural Languages,Tobias Kuhn,2014,https://doi.org/10.1162/COLI_a_00168,doi,1
+horwitz1990slicing,Interprocedural Slicing Using Dependence Graphs,Susan Horwitz and Thomas Reps and David Binkley,1990,https://doi.org/10.1145/77606.77608,doi,2
+jourdan2012parsers,Validating {LR(1)} Parsers,Jacques-Henri Jourdan and Fran{\c c}ois Pottier and Xavier Leroy,2012,https://doi.org/10.1007/978-3-642-28869-2_20,doi,1
+tristan2008validators,Formal Verification of Translation Validators: A Case Study on Instruction Scheduling Optimizations,Jean-Baptiste Tristan and Xavier Leroy,2008,https://doi.org/10.1145/1328438.1328444,doi,1
+bourke2017lustre,A Formally Verified Compiler for {Lustre},Timothy Bourke and L{\'e}lio Brun and Pierre-{\'E}variste Dagand and Xavier Leroy and Marc Pouzet and Lionel Rieg,2017,https://doi.org/10.1145/3062341.3062358,doi,1
+doenges2022leapfrog,{Leapfrog}: Certified Equivalence for Protocol Parsers,Ryan Doenges and Tobias Kapp{\'e} and John Sarracino and Nate Foster and Greg Morrisett,2022,https://doi.org/10.1145/3519939.3523715,doi,1
+classen2011symbolic,Symbolic Model Checking of Software Product Lines,Andreas Classen and Patrick Heymans and Pierre-Yves Schobbens and Axel Legay,2011,https://doi.org/10.1145/1985793.1985838,doi,1
+abate2021traces,An Extended Account of Trace-Relating Compiler Correctness and Secure Compilation,Carmine Abate and Roberto Blanco and {\c S}tefan Ciob{\^a}c{\u a} and Adrien Durier and Deepak Garg and C{\u a}t{\u a}lin Hri{\c t}cu and Marco Patrignani and {\'E}ric Tanter and J{\'e}r{\'e}my Thibault,2021,https://doi.org/10.1145/3460860,doi,1
+patrignani2024uc,Universal Composability Is Robust Compilation,"Marco Patrignani and Robert K{\""u}nnemann and Riad S. Wahby and Ethan Cecchetti",2024,https://doi.org/10.1145/3698234,doi,1
+chakarov2025cloud,Formally Verified Cloud-Scale Authorization,Aleks Chakarov and Jaco Geldenhuys and Matthew Heck and Michael Hicks and Sam Huang and Georges-Axel Jaloyan and Anjali Joshi and K. Rustan M. Leino and Mikael Mayer and Sean McLaughlin and Akhilesh Mritunjai and Cl{\'e}ment Pit-Claudel and Sorawee Porncharoenwase and Florian Rabe and Marianna Rapoport and Giles Reger and Cody Roux and Neha Rungta and Robin Salkeld and Matthias Schlaipfer and Daniel Schoepe and Johanna Schwartzentruber and Serdar Tasiran and Aaron Tomb and Emina Torlak and Jean-Baptiste Tristan and Lucas Wagner and Michael Whalen and Remy Willems and Tongtong Xiang and Tae Joon Byun and Joshua Cohen and Ruijie Fang and Junyoung Jang and Jakob Rath and Hira Taqdees Syeda and Dominik Wagner and Yongwei Yuan,2025,https://doi.org/10.1109/ICSE55347.2025.00166,doi,1
+abadi1991mappings,The Existence of Refinement Mappings,Mart{\'i}n Abadi and Leslie Lamport,1991,https://doi.org/10.1016/0304-3975(91)90224-P,doi,1
+lynch1995simulations,Forward and Backward Simulations. Part {I}: Untimed Systems,Nancy Lynch and Frits Vaandrager,1995,https://doi.org/10.1006/inco.1995.1134,doi,1
+necula1997pcc,Proof-Carrying Code,George C. Necula,1997,https://doi.org/10.1145/263699.263712,doi,1
+pnueli1998validation,Translation Validation,Amir Pnueli and Michael Siegel and Eli Singerman,1998,https://doi.org/10.1007/BFb0054170,doi,1
+fisler2005margrave,Verification and Change-Impact Analysis of Access-Control Policies,Kathi Fisler and Shriram Krishnamurthi and Leo A. Meyerovich and Michael Carl Tschantz,2005,https://doi.org/10.1145/1062455.1062502,doi,3
+dougherty2006dynamic,Specifying and Reasoning about Dynamic Access-Control Policies,Daniel J. Dougherty and Kathi Fisler and Shriram Krishnamurthi,2006,https://doi.org/10.1007/11814771_51,doi,3
+backes2018zelkova,Semantic-based Automated Reasoning for {AWS} Access Policies using {SMT},John Backes and Pauline Bolignano and Byron Cook and Catherine Dodge and Andrew Gacek and Kasper Luckow and Neha Rungta and Oksana Tkachuk and Carsten Varming,2018,https://doi.org/10.23919/FMCAD.2018.8602994,doi,1
+bouchet2020public,Block Public Access: Trust Safety Verification of Access Control Policies,Malik Bouchet and Byron Cook and Bryant Cutler and Anna Druzkina and Andrew Gacek and Liana Hadarean and Ranjit Jhala and Brad Marshall and Dan Peebles and Neha Rungta and Cole Schlesinger and Chriss Stephens and Carsten Varming and Andy Warfield,2020,https://doi.org/10.1145/3368089.3409728,doi,1
+abadi1993access,A Calculus for Access Control in Distributed Systems,Mart{\'i}n Abadi and Michael Burrows and Butler Lampson and Gordon Plotkin,1993,https://doi.org/10.1145/155183.155225,doi,1
+becker2009dynpal,Specification and Analysis of Dynamic Authorisation Policies,Moritz Y. Becker,2009,https://doi.org/10.1109/CSF.2009.14,doi,2
+kozen1997kat,Kleene Algebra with Tests,Dexter Kozen,1997,https://doi.org/10.1145/256167.256195,doi,1
+anderson2014netkat,{NetKAT}: Semantic Foundations for Networks,Carolyn Jane Anderson and Nate Foster and Arjun Guha and Jean-Baptiste Jeannin and Dexter Kozen and Cole Schlesinger and David Walker,2014,https://doi.org/10.1145/2535838.2535862,doi,1
+foster2015coalgebraic,A Coalgebraic Decision Procedure for {NetKAT},Nate Foster and Dexter Kozen and Matthew Milano and Alexandra Silva and Laure Thompson,2015,https://doi.org/10.1145/2676726.2677011,doi,1
+pous2015symbolic,Symbolic Algorithms for Language Equivalence and {Kleene} Algebra with Tests,Damien Pous,2015,https://doi.org/10.1145/2676726.2677007,doi,1
+smolka2020gkat,Guarded {Kleene} Algebra with Tests: Verification of Uninterpreted Programs in Nearly Linear Time,Steffen Smolka and Nate Foster and Justin Hsu and Tobias Kapp{\'e} and Dexter Kozen and Alexandra Silva,2020,https://doi.org/10.1145/3371129,doi,1
+bonchi2013congruence,Checking {NFA} Equivalence with Bisimulations up to Congruence,Filippo Bonchi and Damien Pous,2013,https://doi.org/10.1145/2429069.2429124,doi,1
+cousot1977abstract,Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints,Patrick Cousot and Radhia Cousot,1977,https://doi.org/10.1145/512950.512973,doi,1
+clarke2000cegar,Counterexample-Guided Abstraction Refinement,Edmund Clarke and Orna Grumberg and Somesh Jha and Yuan Lu and Helmut Veith,2000,https://doi.org/10.1007/10722167_15,doi,1
+clarkson2010hyperproperties,Hyperproperties,Michael R. Clarkson and Fred B. Schneider,2010,https://doi.org/10.3233/JCS-2009-0393,doi,1
+alpern1985liveness,Defining Liveness,Bowen Alpern and Fred B. Schneider,1985,https://doi.org/10.1016/0020-0190(85)90056-0,doi,1
+fuchs2008attempto,Attempto Controlled {English} for Knowledge Representation,Norbert E. Fuchs and Kaarel Kaljurand and Tobias Kuhn,2008,https://doi.org/10.1007/978-3-540-85658-0_3,doi,1
+park2004ucon,The {UCON$_{ABC}$} Usage Control Model,Jaehong Park and Ravi Sandhu,2004,https://doi.org/10.1145/984334.984339,doi,1
+moeller2024katch,{KATch}: A Fast Symbolic Verifier for {NetKAT},Mark Moeller and Jules Jacobs and Olivier Savary B{\'e}langer and David Darais and Cole Schlesinger and Steffen Smolka and Nate Foster and Alexandra Silva,2024,https://doi.org/10.1145/3656454,doi,1
+harrison1976protection,Protection in Operating Systems,Michael A. Harrison and Walter L. Ruzzo and Jeffrey D. Ullman,1976,https://doi.org/10.1145/360303.360333,doi,1
+xu2026relational,Network Change Validation with Relational {NetKAT},Han Xu and Zachary Kincaid and Ratul Mahajan and David Walker,2026,https://doi.org/10.1145/3776656,doi,2

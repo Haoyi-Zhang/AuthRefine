@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-20T16:08:43Z",
+  "root": "external_inputs",
+  "files": [
+    {
+      "path": "external_inputs/casbin/LICENSE",
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "embedded_urls": [
+        "http://www.apache.org/licenses/",
+        "http://www.apache.org/licenses/LICENSE-2.0"
+      ],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/NOTICE",
+      "bytes": 481,
+      "sha256": "d2bbfcce202999a669eb850f8988b723c9e67fbef8162908f64547cf0018b43b",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/assertions.json",
+      "bytes": 5094,
+      "sha256": "abf1855f1a69312df76512dc4cfa611b9c2c4865db4837d0c0e28ea5bc4feda9",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/basic_model.conf",
+      "bytes": 195,
+      "sha256": "10f281d006f6e3b3210e56fa0ffc1771993156fdc5e131f8bdc975b03ef0ef26",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/basic_policy.csv",
+      "bytes": 43,
+      "sha256": "7aba71a2a952e57d99fe49b9d58e12887b9ff407a3fccf615e4d2425e559396f",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/priority_model.conf",
+      "bytes": 224,
+      "sha256": "ff953afc54f85d65b23a9966f0bc197a9dfc2ebf34d36927810961085ac63fc3",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/priority_policy.csv",
+      "bytes": 288,
+      "sha256": "2d2e5e5a7562c1d33d9519d2946fa1fc59cd609969c1b42206a675c00e164f07",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_model.conf",
+      "bytes": 224,
+      "sha256": "280b90d2f371388abe18d74ad883753eba9e2f9ae658ce371b6a815a50cc9c46",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_policy.csv",
+      "bytes": 123,
+      "sha256": "2bcf0f78cde638a7ba5786daeb4bfefd0fef5535c0445f75e16fa3007ab2879a",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_with_deny_model.conf",
+      "bytes": 261,
+      "sha256": "07c7fe8ac18d427f829f5ef08353a5a9e6112cb113ee8a659a5d9139cc044bc0",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_with_deny_policy.csv",
+      "bytes": 180,
+      "sha256": "99e7a2caa84beb0c9ea0c76deb77e3c7698a5bf0021122c89daf16de85be5e4a",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_with_domains_model.conf",
+      "bytes": 262,
+      "sha256": "a7735f01149cd51e2048eeb55084ac1f6ea7134afccf4fc72a83395a287bc848",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_with_domains_policy.csv",
+      "bytes": 174,
+      "sha256": "42b33853bec91cf70a5bed8597d38f44cc0244c30cfa0f8708fb992ac4812bdd",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_with_resource_roles_model.conf",
+      "bytes": 236,
+      "sha256": "3b7eb2dc08e4166858facc921c50a274fd89a39d8314690a41966b4b3da0891f",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/rbac_with_resource_roles_policy.csv",
+      "bytes": 154,
+      "sha256": "4e68fad96a5e091e2320bc489f601c9001d5b1c4e0672214410469e3cf3a3067",
+      "embedded_urls": [],
+      "embedded_commit_hashes": []
+    },
+    {
+      "path": "external_inputs/casbin/selection.json",
+      "bytes": 1052,
+      "sha256": "c8511ddbfeb0cb1f095861dbde7c1872f1f549619d06a5f655dfd302ea95433b",
+      "embedded_urls": [
+        "https://raw.githubusercontent.com/casbin/casbin/master/"
+      ],
+      "embedded_commit_hashes": []
+    }
+  ],
+  "file_count": 16,
+  "total_bytes": 20349,
+  "note": "Hashes identify the exact frozen bytes used by the artifact. Embedded URLs are reported, not inferred; absence of a URL is not replaced by a guessed source."
+}

@@ -1,0 +1,135 @@
+{
+  "measurements": [
+    {
+      "measurement_scope": "complete campaign before the symbolic comparison",
+      "cpu_seconds": 7.489195779999999,
+      "counted_operations": 557378,
+      "cpu_coverage": "timed experiment bodies; excludes startup and some orchestration"
+    },
+    {
+      "measurement_scope": "complete augmented measurement",
+      "cpu_seconds": 8.187706939000002,
+      "counted_operations": 946221,
+      "cpu_coverage": "timed experiment bodies; excludes startup and some orchestration"
+    },
+    {
+      "measurement_scope": "completed bodies in the interrupted reproduction",
+      "cpu_seconds": 7.381463042,
+      "counted_operations": 858393,
+      "cpu_coverage": "completed timed bodies only; the enclosing invocation timed out"
+    },
+    {
+      "measurement_scope": "fresh complete reproduction invocation",
+      "cpu_seconds": 23.349530155,
+      "counted_operations": 946221,
+      "cpu_coverage": "recorded parent and child process CPU; experimental bodies are included, not added again"
+    },
+    {
+      "measurement_scope": "derived-construction finite cross-check development run A",
+      "cpu_seconds": 0.3709641429999999,
+      "counted_operations": 25882,
+      "cpu_coverage": "timed experiment body; excludes interpreter startup and orchestration"
+    },
+    {
+      "measurement_scope": "derived-construction finite cross-check development run B",
+      "cpu_seconds": 0.2914261060000001,
+      "counted_operations": 25882,
+      "cpu_coverage": "timed experiment body; excludes interpreter startup and orchestration"
+    },
+    {
+      "measurement_scope": "fresh complete reproduction including derived constructions",
+      "cpu_seconds": 34.049051293999995,
+      "counted_operations": 972103,
+      "cpu_coverage": "recorded parent and child process CPU; experimental bodies are included, not added again"
+    },
+    {
+      "measurement_scope": "adversarial repair calibration pilot",
+      "cpu_seconds": 0.12033661000000007,
+      "counted_operations": 23318,
+      "cpu_coverage": "timed adversarial pilot body; excludes interpreter startup and orchestration"
+    },
+    {
+      "measurement_scope": "adversarial repair development full run",
+      "cpu_seconds": 1.247727746,
+      "counted_operations": 244830,
+      "cpu_coverage": "timed adversarial campaign body; excludes interpreter startup and orchestration"
+    },
+    {
+      "measurement_scope": "repaired derived-construction evidence regeneration",
+      "cpu_seconds": 0.22291067899999994,
+      "counted_operations": 25882,
+      "cpu_coverage": "timed extension campaign body; excludes interpreter startup and orchestration"
+    },
+    {
+      "measurement_scope": "working-tree complete reproduction with adversarial campaign",
+      "cpu_seconds": 32.691201522,
+      "counted_operations": 1216933,
+      "cpu_coverage": "recorded parent and child process CPU; experimental bodies are included, not added again"
+    },
+    {
+      "measurement_scope": "code-frozen fresh archive extraction reproduction",
+      "cpu_seconds": 32.78201121399999,
+      "counted_operations": 1216933,
+      "cpu_coverage": "recorded parent and child process CPU; experimental bodies are included, not added again"
+    },
+    {
+      "measurement_scope": "direct tiny-domain semantic audit prototype",
+      "cpu_seconds": 9.08,
+      "counted_operations": null,
+      "cpu_coverage": "whole prototype process from the operating-system timer; no frozen counted-operation metric was defined for this precursor run"
+    },
+    {
+      "measurement_scope": "integrated complete tiny-domain semantic audit",
+      "cpu_seconds": 8.38,
+      "counted_operations": 123492,
+      "cpu_coverage": "whole audit process from the operating-system timer; includes interpreter startup"
+    },
+    {
+      "measurement_scope": "fresh-extraction finalization attempt A; semantic records completed, enclosing orchestration interrupted before the reproduction manifest",
+      "cpu_seconds": 17.592888823,
+      "counted_operations": 1340425,
+      "cpu_coverage": "timed experiment bodies only; the enclosing invocation did not complete"
+    },
+    {
+      "measurement_scope": "fresh-extraction finalization attempt B; semantic records completed, enclosing orchestration interrupted before the reproduction manifest",
+      "cpu_seconds": 17.586821419,
+      "counted_operations": 1340425,
+      "cpu_coverage": "timed experiment bodies only; the enclosing invocation did not complete"
+    },
+    {
+      "measurement_scope": "code-frozen fresh-extraction reproduction with tiny-domain and bibliography-integrity checks",
+      "cpu_seconds": 45.781144039,
+      "counted_operations": 1340425,
+      "cpu_coverage": "recorded parent and child process CPU; experimental bodies are included and are not added again"
+    },
+    {
+      "measurement_scope": "working-tree control-and-replay repair reproduction; science records completed before enclosing tool cutoff",
+      "cpu_seconds": 17.622172858000003,
+      "counted_operations": 1340425,
+      "cpu_coverage": "timed experiment bodies only; enclosing invocation was interrupted after the scientific files completed and before its manifest was emitted"
+    },
+    {
+      "measurement_scope": "resumed working-tree orchestration after the cutoff",
+      "cpu_seconds": 18.244433635,
+      "counted_operations": 0,
+      "cpu_coverage": "recorded parent and child CPU for tests, documented commands, comparison and manifest creation; no campaign body was rerun"
+    },
+    {
+      "measurement_scope": "fresh candidate-archive reproduction after identifier and diagnostic-replay repairs",
+      "cpu_seconds": 45.926900904,
+      "counted_operations": 1340425,
+      "cpu_coverage": "recorded parent and child process CPU; experimental bodies are included and are not added again"
+    }
+  ],
+  "tracked_cpu_seconds_lower_bound": 328.397886908,
+  "tracked_counted_operations_across_these_executions": 13885593,
+  "total_lifecycle_cpu_seconds": null,
+  "accounting_limit": "Some earlier startup work, directed audits, unit tests, documented-command checks, bibliography validation, and document work were not included in one lifecycle counter. The first direct tiny-domain prototype also lacked a frozen operation metric. The stated CPU and counted-operation totals are therefore lower bounds, not complete lifecycle measurements.",
+  "budget_scope": "The implemented plan applies two million counted operations to one frozen campaign. The final campaign uses 1,340,425. Repeated executions exceed two million in aggregate; no lifetime-compliance claim is made.",
+  "prior_successful_clean_reproduction_wall_seconds": 17.790842532999704,
+  "latest_successful_clean_reproduction_wall_seconds": 36.691729974000054,
+  "latest_campaign_counted_operations": 1340425,
+  "latest_successful_clean_reproduction_cpu_seconds": 45.926900904,
+  "latest_successful_clean_reproduction_unit_test_methods": 45,
+  "latest_successful_clean_reproduction_documented_commands": 7
+}

@@ -1,0 +1,523 @@
+{
+  "equivalent": false,
+  "binding": {},
+  "indices": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "trace": [
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        1
+      ],
+      "target": [
+        "allow",
+        1
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        2
+      ],
+      "target": [
+        "allow",
+        2
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        3
+      ],
+      "target": [
+        "allow",
+        3
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        4
+      ],
+      "target": [
+        "allow",
+        4
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        5
+      ],
+      "target": [
+        "allow",
+        5
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        6
+      ],
+      "target": [
+        "allow",
+        6
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        7
+      ],
+      "target": [
+        "allow",
+        7
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        8
+      ],
+      "target": [
+        "allow",
+        8
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        9
+      ],
+      "target": [
+        "allow",
+        9
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        10
+      ],
+      "target": [
+        "allow",
+        10
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        11
+      ],
+      "target": [
+        "allow",
+        11
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        12
+      ],
+      "target": [
+        "allow",
+        12
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        13
+      ],
+      "target": [
+        "allow",
+        13
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        14
+      ],
+      "target": [
+        "allow",
+        14
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        15
+      ],
+      "target": [
+        "allow",
+        15
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        16
+      ],
+      "target": [
+        "allow",
+        16
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        17
+      ],
+      "target": [
+        "allow",
+        17
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        18
+      ],
+      "target": [
+        "allow",
+        18
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        19
+      ],
+      "target": [
+        "allow",
+        19
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        20
+      ],
+      "target": [
+        "allow",
+        20
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        21
+      ],
+      "target": [
+        "allow",
+        21
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        22
+      ],
+      "target": [
+        "allow",
+        22
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        23
+      ],
+      "target": [
+        "allow",
+        23
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        24
+      ],
+      "target": [
+        "allow",
+        24
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        25
+      ],
+      "target": [
+        "allow",
+        25
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        26
+      ],
+      "target": [
+        "allow",
+        26
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        27
+      ],
+      "target": [
+        "allow",
+        27
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        28
+      ],
+      "target": [
+        "allow",
+        28
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        29
+      ],
+      "target": [
+        "allow",
+        29
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        30
+      ],
+      "target": [
+        "allow",
+        30
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        31
+      ],
+      "target": [
+        "allow",
+        31
+      ]
+    },
+    {
+      "request": [
+        "u",
+        "o",
+        "a"
+      ],
+      "source": [
+        "allow",
+        0
+      ],
+      "target": [
+        "deny",
+        31
+      ]
+    }
+  ],
+  "length": 32,
+  "local_evaluations": 32,
+  "maximum_width": 0
+}

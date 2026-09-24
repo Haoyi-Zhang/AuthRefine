@@ -1,0 +1,13 @@
+principals are "alice", "bob", "data_group_admin", "unlisted".
+resources are "data1", "data2", "data_group", "unlisted".
+actions are "read", "unlisted", "write".
+roles are "alice", "bob", "data_group_admin".
+principal "alice" has roles "alice", "data_group_admin".
+principal "bob" has roles "bob".
+principal "data_group_admin" has roles "data_group_admin".
+allow when principal has role "alice" and resource is "data1" and action is "read" then keep state.
+allow when principal has role "bob" and resource is "data2" and action is "write" then keep state.
+allow when principal has role "data_group_admin" and resource is "data1" and action is "write" then keep state.
+allow when principal has role "data_group_admin" and resource is "data2" and action is "write" then keep state.
+allow when principal has role "data_group_admin" and resource is "data_group" and action is "write" then keep state.
+otherwise deny.

@@ -1,0 +1,370 @@
+[
+  {
+    "model": "basic",
+    "request": [
+      "alice",
+      "data1",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "basic",
+    "request": [
+      "alice",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "basic",
+    "request": [
+      "alice",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "basic",
+    "request": [
+      "alice",
+      "data2",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "basic",
+    "request": [
+      "bob",
+      "data1",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "basic",
+    "request": [
+      "bob",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "basic",
+    "request": [
+      "bob",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "basic",
+    "request": [
+      "bob",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "alice",
+      "data1",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "alice",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "alice",
+      "data2",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "alice",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "bob",
+      "data1",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "bob",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "bob",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac",
+    "request": [
+      "bob",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "alice",
+      "data1",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "alice",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "alice",
+      "data2",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "alice",
+      "data2",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "bob",
+      "data1",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "bob",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "bob",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_deny",
+    "request": [
+      "bob",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "alice",
+      "data1",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "alice",
+      "data1",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "alice",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "alice",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "bob",
+      "data1",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "bob",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "bob",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_resource_roles",
+    "request": [
+      "bob",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "alice",
+      "domain1",
+      "data1",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "alice",
+      "domain1",
+      "data1",
+      "write"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "alice",
+      "domain1",
+      "data2",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "alice",
+      "domain1",
+      "data2",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "bob",
+      "domain2",
+      "data1",
+      "read"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "bob",
+      "domain2",
+      "data1",
+      "write"
+    ],
+    "allow": false
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "bob",
+      "domain2",
+      "data2",
+      "read"
+    ],
+    "allow": true
+  },
+  {
+    "model": "rbac_with_domains",
+    "request": [
+      "bob",
+      "domain2",
+      "data2",
+      "write"
+    ],
+    "allow": true
+  }
+]

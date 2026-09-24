@@ -1,0 +1,206 @@
+{
+  "principals": [
+    "alice",
+    "bob",
+    "data_group_admin",
+    "unlisted"
+  ],
+  "resources": [
+    "data1",
+    "data2",
+    "data_group",
+    "unlisted"
+  ],
+  "actions": [
+    "read",
+    "unlisted",
+    "write"
+  ],
+  "roles": [
+    "alice",
+    "bob",
+    "data_group_admin"
+  ],
+  "members": [
+    [
+      "alice",
+      "alice"
+    ],
+    [
+      "alice",
+      "data_group_admin"
+    ],
+    [
+      "bob",
+      "bob"
+    ],
+    [
+      "data_group_admin",
+      "data_group_admin"
+    ]
+  ],
+  "state": [
+    [
+      "available",
+      true
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "alice",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "bob",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data_group_admin",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data_group_admin",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data_group_admin",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data_group",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        },
+        {
+          "field": "state",
+          "name": "available",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "value": false
+        }
+      ]
+    }
+  ]
+}
