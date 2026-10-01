@@ -5,17 +5,31 @@ import argparse
 import json
 import os
 import re
-import resource
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import time
 
+try:
+    import resource
+except ImportError:  # Native Windows does not provide this POSIX module.
+    resource = None
+
 ROOT = Path(__file__).resolve().parent
 
 
+def require_supported_environment():
+    if not sys.platform.startswith("linux") or resource is None:
+        raise SystemExit(
+            "This reproduction entry point is supported on Linux CPython with the POSIX "
+            "resource module. Native Windows is not a supported execution environment."
+        )
+
+
+
 def main():
+    require_supported_environment()
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--compare", type=Path)
@@ -146,6 +160,16 @@ def main():
     summary["invocation_cpu_seconds"] = time.process_time()
     summary["resumed"] = args.resume
     summary["fresh_archive_extraction"] = not args.resume
+    summary["execution_environment"] = {
+        "platform": "Linux",
+        "python_implementation": sys.implementation.name,
+        "python_major_minor": f"{sys.version_info.major}.{sys.version_info.minor}",
+        "python_hash_seed": env.get("PYTHONHASHSEED", "not-set"),
+        "timezone": env.get("TZ", "not-set"),
+        "peak_rss_unit": "KiB",
+        "cpu_time_unit": "seconds",
+        "wall_time_unit": "seconds",
+    }
     (output / "documented_commands.json").write_text(json.dumps(documented, indent=2) + "\n")
     (output / "reproduction.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(json.dumps(summary, indent=2))

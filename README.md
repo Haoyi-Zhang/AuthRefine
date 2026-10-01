@@ -20,16 +20,30 @@ The proof notes also give the canonical observed-state quotient, an exact earlie
 
 ## Reproduction
 
-Use a Python interpreter with the standard library. There are no third-party Python packages to install. Run from this directory. The process uses one worker. Each child experiment has a 120-second timeout, and one frozen campaign has at most two million counted operations. The commands below are available for independent reproduction, not a request to restart a campaign whose aggregate budget has already been exceeded. Choose an output path that does not already exist:
+The supported execution environment is CPython on Linux with the POSIX `resource` module. The current release-entry repair was exercised with CPython 3.13 on Linux. Native Windows is not a supported runtime because its standard library does not provide `resource`; use a Linux container or a Linux distribution under WSL when starting from Windows. No third-party Python package is required. On Linux, every `peak_rss_kib` field is the `ru_maxrss` high-water value in KiB; CPU and wall-time fields are seconds. These measurements are environmental fields and are excluded from scientific-record comparison.
+
+From this directory, the quick release check and the full deterministic matrix are:
 
 ```sh
-python -m unittest discover -s tests -v
+python verify_release.py
+python verify_release.py --campaign
+```
+
+The quick check verifies the supported platform, required scientific files, frozen-input paths and byte counts, JSON readability, the exact forty-chunk/10,000-record baseline shape, forty-nine policy/certificate/diagnostic examples by actual semantic replay, and all 47 unit-test methods in ordinary and optimized modes. It deliberately does **not** claim a whole-source-tree checksum or snapshot fingerprint.
+
+The campaign command copies the artifact into an isolated temporary directory and runs four fresh, non-resumed reproductions: the Cartesian product of Python hash seeds 1729 and 2718 with `UTC` and `America/Los_Angeles`. Each invocation receives both a new `--output` directory and the copied frozen `results` directory through `--compare`. The verifier accepts a configuration only after the new output contains exactly forty JSONL chunks, forty metric files, 10,000 ordered primary records, and both `summary.json` and `reproduction.json` explicitly report scientific-field agreement with the baseline. A zero process return code without those files is a failure.
+
+`results/reproducibility_entry_check.json` records the compact, path-free outcome of the current four-configuration entry-point validation. The verifier does not trust that record as a substitute for executing a new campaign.
+
+For one direct reconstruction instead of the four-configuration matrix, choose an output path that does not already exist:
+
+```sh
 python reproduce.py --output ../reproduced --compare results
 ```
 
-The second command repeats the 45 unit-test methods, the offline 58-reference inventory check, the 52-case pilot, the 3,330 original auxiliary cases, the 592 extension cross-checks, the 1,024 adversarial cases, the 23,040-pair complete tiny-domain audit, and all 10,000 primary cases in forty chunks of 250. Up to ten sequential chunks share one worker process; each worker still has a 120-second timeout. It regenerates the summary and compares every primary, pilot, auxiliary, extension, adversarial, exhaustive-audit, and reference-integrity record against the delivered evidence after removing only timing and RSS fields. The same invocation also reruns the seven documented inspection/example commands in temporary destinations and records their exit status. A nonzero exit means reproduction has not completed successfully. The summary does not infer a passing campaign from missing case files.
+That command repeats the 47 unit-test methods, the offline 58-reference inventory check, the 52-case pilot, the 3,330 original auxiliary cases, the 592 extension cross-checks, the 1,024 adversarial cases, the 23,040-pair complete tiny-domain audit, and all 10,000 primary cases in forty chunks of 250. Up to ten sequential chunks share one worker process; each worker still has a 120-second timeout. It regenerates the summary and compares every primary, pilot, auxiliary, extension, adversarial, exhaustive-audit, and reference-integrity record against the delivered evidence after removing only timing and Linux RSS fields. The same invocation reruns the seven documented inspection/example commands in temporary destinations and records their exit status.
 
-A deliberately interrupted campaign can be continued with the same output path and `--resume`. Incomplete chunk pairs are not silently replaced. A resumed invocation's elapsed and child-CPU measurements describe that invocation, not earlier processes. `results/clean_reproduction.json` records the code-frozen fresh archive extraction used for the delivered evidence: all scientific fields matched, seven documented commands and 45 unit-test methods succeeded, and the non-resumed invocation took 36.691729974000054 seconds wall time. The primary measurement tables come from `results/summary.json` and its raw chunks.
+A deliberately interrupted campaign can be continued with the same output path and `--resume`. Incomplete chunk pairs are not silently replaced. A resumed invocation's elapsed and child-CPU measurements describe that invocation, not earlier processes. `results/clean_reproduction.json` is retained as an earlier code-frozen reconstruction record; it is not used as a substitute for the materialized-output checks performed by the current release entry point. The primary measurement tables come from `results/summary.json` and its raw chunks.
 
 To regenerate only the tables from already complete records:
 
@@ -89,4 +103,4 @@ Original code, proof notes and generated data are provided under the MIT license
 
 ## Release verification
 
-Run `python verify_release.py` for archive hygiene, immutable-source hashes, JSON parsing, and tests in ordinary and optimized modes. Run `python verify_release.py --campaign` to repeat the deterministic campaign in an isolated temporary copy. The verifier never treats a timeout or exhausted work budget as semantic rejection.
+`python verify_release.py` checks required scientific assets, frozen result structure, JSON readability, example-level semantic replay, archive hygiene, and tests in ordinary and optimized modes. `python verify_release.py --campaign` adds the four-configuration fresh reconstruction matrix described above. The verifier has no dependency on `SOURCE-MANIFEST.sha256`, does not claim a fingerprint of the complete source snapshot, and never treats a timeout or exhausted work budget as semantic rejection.

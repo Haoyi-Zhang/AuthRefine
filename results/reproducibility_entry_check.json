@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "scope": {
+    "release_entry_contract": true,
+    "scientific_claims_changed": false,
+    "whole_source_fingerprint_checked": false,
+    "novelty_review_performed": false,
+    "venue_rule_review_performed": false
+  },
+  "supported_environment": {
+    "platform": "Linux",
+    "python_implementation": "CPython",
+    "python_major_minor": "3.13",
+    "resource_module": true,
+    "required": "CPython on Linux with the POSIX resource module",
+    "peak_rss_unit": "KiB on Linux",
+    "cpu_and_wall_time_unit": "seconds"
+  },
+  "quick_checks": {
+    "required_scientific_assets": true,
+    "json_parse": true,
+    "frozen_chunks": 40,
+    "frozen_primary_records": 10000,
+    "semantic_examples": 49,
+    "semantic_examples_accepted": 34,
+    "semantic_examples_non_equivalent": 15,
+    "unit_test_methods": 47,
+    "ordinary_and_optimized_tests_passed": true
+  },
+  "campaign_matrix": [
+    {
+      "python_hash_seed": "1729",
+      "timezone": "UTC",
+      "chunks": 40,
+      "metric_files": 40,
+      "primary_records": 10000,
+      "baseline_scientific_records_match": true,
+      "documented_commands_succeeded": true
+    },
+    {
+      "python_hash_seed": "1729",
+      "timezone": "America/Los_Angeles",
+      "chunks": 40,
+      "metric_files": 40,
+      "primary_records": 10000,
+      "baseline_scientific_records_match": true,
+      "documented_commands_succeeded": true
+    },
+    {
+      "python_hash_seed": "2718",
+      "timezone": "UTC",
+      "chunks": 40,
+      "metric_files": 40,
+      "primary_records": 10000,
+      "baseline_scientific_records_match": true,
+      "documented_commands_succeeded": true
+    },
+    {
+      "python_hash_seed": "2718",
+      "timezone": "America/Los_Angeles",
+      "chunks": 40,
+      "metric_files": 40,
+      "primary_records": 10000,
+      "baseline_scientific_records_match": true,
+      "documented_commands_succeeded": true
+    }
+  ],
+  "all_configurations_passed": true,
+  "cross_configuration_scientific_match": true
+}
