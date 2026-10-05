@@ -12,7 +12,7 @@
     "rule_count": "zero through two",
     "target_states": 2,
     "target_tables": "all total tables in the declared target shape",
-    "deduplication": "one policy per complete tiny-domain transition function"
+    "deduplication": "one policy per initial value and complete tiny-domain transition table"
   },
   "policy_semantic_representatives": 180,
   "binding_multiplicities": {

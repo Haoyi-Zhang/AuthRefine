@@ -4,7 +4,7 @@ The audit is exhaustive for the declared tiny family: one principal, resource,
 action, request, and Boolean state bit; two roles; zero or one two-candidate role
 alias; every role-membership pattern; every initial bit; zero, one, or two rules
 from the finite template family below; and every total two-state target table.
-Policies with the same complete tiny-domain transition function are represented
+Policies with the same initial value and complete tiny-domain transition table are represented
 once.  The direct source evaluator in this file shares policy data but not the
 compiler/checker stepping code.
 """
@@ -211,7 +211,7 @@ def semantic_signature(policy: dict[str, Any]) -> tuple[Any, ...]:
 
 
 def policy_representatives() -> list[dict[str, Any]]:
-    """One policy for every distinct transition function in the tiny templates."""
+    """One policy for each initial value and distinct tiny-domain transition table."""
     representatives: dict[tuple[Any, ...], dict[str, Any]] = {}
     for membership_mask in range(4):
         members = []
@@ -432,7 +432,7 @@ def audit(output: Path) -> dict[str, Any]:
             "rule_count": "zero through two",
             "target_states": 2,
             "target_tables": "all total tables in the declared target shape",
-            "deduplication": "one policy per complete tiny-domain transition function",
+            "deduplication": "one policy per initial value and complete tiny-domain transition table",
         },
         "policy_semantic_representatives": len(policies),
         "binding_multiplicities": {str(key): value for key, value in sorted(binding_multiplicities.items())},
