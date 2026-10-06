@@ -1,0 +1,25 @@
+principals are "u".
+resources are "o".
+actions are "a00", "a01", "a02", "a03", "a04", "a05".
+roles are "r", "s".
+principal "u" has roles "r".
+state "b" initially false.
+alias role "x00" is one of "r", "s".
+alias role "x01" is one of "r", "s".
+alias role "x02" is one of "r", "s".
+alias role "x03" is one of "r", "s".
+alias role "x04" is one of "r", "s".
+alias role "x05" is one of "r", "s".
+allow when action is "a00" and principal has role alias "x00" then set state "b" to not state "b".
+allow when action is "a00" and principal has no role alias "x00" then set state "b" to not state "b".
+allow when action is "a01" and principal has role alias "x01" then set state "b" to not state "b".
+allow when action is "a01" and principal has no role alias "x01" then set state "b" to not state "b".
+allow when action is "a02" and principal has role alias "x02" then set state "b" to not state "b".
+allow when action is "a02" and principal has no role alias "x02" then set state "b" to not state "b".
+allow when action is "a03" and principal has role alias "x03" then set state "b" to not state "b".
+allow when action is "a03" and principal has no role alias "x03" then set state "b" to not state "b".
+allow when action is "a04" and principal has role alias "x04" then set state "b" to not state "b".
+allow when action is "a04" and principal has no role alias "x04" then set state "b" to not state "b".
+allow when action is "a05" and principal has role alias "x05" then set state "b" to not state "b".
+allow when action is "a05" and principal has no role alias "x05" then set state "b" to not state "b".
+otherwise deny.

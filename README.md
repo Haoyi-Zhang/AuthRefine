@@ -20,7 +20,7 @@ The proof notes also give the canonical observed-state quotient, an exact earlie
 
 ## Reproduction
 
-The supported execution environment is CPython on Linux with the POSIX `resource` module. The retained earlier release-entry record was produced with CPython 3.13 on Linux; the current repairs have only portable Windows validation until the current Linux suite and campaign run. Native Windows is not a supported runtime because its standard library does not provide `resource`; use a Linux container or a Linux distribution under WSL when starting from Windows. No third-party Python package is required. On Linux, every `peak_rss_kib` field is the `ru_maxrss` high-water value in KiB; CPU and wall-time fields are seconds. These measurements are environmental fields and are excluded from scientific-record comparison.
+The supported execution environment is CPython on Linux with the POSIX `resource` module. Four current CPython 3.13 Linux campaigns, crossing hash seeds 1729/2718 with UTC/America/Los_Angeles, completed all 10,000 primary records, 56 unit methods and seven documented commands. Scientific primary records match the retained data after excluding CPU and wall times. Their complete representative data set and per-environment logs are in `results/current`; whole-run wall times range from 25.26 to 43.78 seconds. These new runs do not reset the historical cumulative resource ledger. Native Windows does not provide `resource`; use a Linux container or WSL. No third-party Python package is required. `peak_rss_kib` is Linux `ru_maxrss` in KiB; CPU and wall-time fields are seconds and are excluded from scientific-record comparison.
 
 From this directory, the quick release check and the full deterministic matrix are:
 

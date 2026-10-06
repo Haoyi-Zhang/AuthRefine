@@ -1,0 +1,29 @@
+{
+  "equivalent": false,
+  "binding": {
+    "x00": "s"
+  },
+  "indices": [
+    0
+  ],
+  "trace": [
+    {
+      "request": [
+        "u",
+        "o",
+        "a00"
+      ],
+      "source": [
+        "deny",
+        0
+      ],
+      "target": [
+        "allow",
+        1
+      ]
+    }
+  ],
+  "length": 1,
+  "local_evaluations": 2,
+  "maximum_width": 1
+}

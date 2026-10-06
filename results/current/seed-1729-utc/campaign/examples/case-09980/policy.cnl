@@ -1,0 +1,21 @@
+principals are "u".
+resources are "o".
+actions are "a".
+roles are none.
+state "b0" initially false.
+state "b1" initially false.
+state "b2" initially false.
+state "b3" initially false.
+allow when state "b0" is false and state "b1" is false and state "b2" is false and state "b3" is false then set state "b0" to true and set state "b1" to false and set state "b2" to false and set state "b3" to false.
+allow when state "b0" is true and state "b1" is false and state "b2" is false and state "b3" is false then set state "b0" to false and set state "b1" to true and set state "b2" to false and set state "b3" to false.
+allow when state "b0" is false and state "b1" is true and state "b2" is false and state "b3" is false then set state "b0" to true and set state "b1" to true and set state "b2" to false and set state "b3" to false.
+allow when state "b0" is true and state "b1" is true and state "b2" is false and state "b3" is false then set state "b0" to false and set state "b1" to false and set state "b2" to true and set state "b3" to false.
+allow when state "b0" is false and state "b1" is false and state "b2" is true and state "b3" is false then set state "b0" to true and set state "b1" to false and set state "b2" to true and set state "b3" to false.
+allow when state "b0" is true and state "b1" is false and state "b2" is true and state "b3" is false then set state "b0" to false and set state "b1" to true and set state "b2" to true and set state "b3" to false.
+allow when state "b0" is false and state "b1" is true and state "b2" is true and state "b3" is false then set state "b0" to true and set state "b1" to true and set state "b2" to true and set state "b3" to false.
+allow when state "b0" is true and state "b1" is true and state "b2" is true and state "b3" is false then set state "b0" to false and set state "b1" to false and set state "b2" to false and set state "b3" to true.
+allow when state "b0" is false and state "b1" is false and state "b2" is false and state "b3" is true then set state "b0" to true and set state "b1" to false and set state "b2" to false and set state "b3" to true.
+allow when state "b0" is true and state "b1" is false and state "b2" is false and state "b3" is true then set state "b0" to false and set state "b1" to true and set state "b2" to false and set state "b3" to true.
+allow when state "b0" is false and state "b1" is true and state "b2" is false and state "b3" is true then set state "b0" to true and set state "b1" to true and set state "b2" to false and set state "b3" to true.
+allow when state "b0" is true and state "b1" is true and state "b2" is false and state "b3" is true then set state "b0" to true and set state "b1" to true and set state "b2" to false and set state "b3" to true.
+otherwise deny.

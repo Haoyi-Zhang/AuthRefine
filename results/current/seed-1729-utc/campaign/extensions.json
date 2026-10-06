@@ -1,0 +1,7037 @@
+{
+  "profiles": {
+    "count": 128,
+    "binding_cases": 296,
+    "classifications": {
+      "some": 15,
+      "all": 113
+    },
+    "records": [
+      {
+        "generator_index": 0,
+        "classification": "some",
+        "bindings": 2,
+        "matching": 1,
+        "lengths": [
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 1,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 2,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 3,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 4,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 5,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 6,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 7,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 1,
+        "lengths": [
+          null,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "generator_index": 8,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 9,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 10,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 11,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 12,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 13,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 14,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 15,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 16,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 17,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 18,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 19,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 20,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 21,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 22,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 23,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 24,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 25,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 26,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 27,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 28,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          1,
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 29,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 30,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 31,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 32,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 33,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 34,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 35,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 36,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 37,
+        "classification": "some",
+        "bindings": 2,
+        "matching": 1,
+        "lengths": [
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 38,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 39,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 40,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 41,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 42,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 43,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 44,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 45,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 46,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 47,
+        "classification": "some",
+        "bindings": 2,
+        "matching": 1,
+        "lengths": [
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 48,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 49,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 50,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 51,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 52,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 1,
+        "lengths": [
+          null,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "generator_index": 53,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 54,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 55,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 56,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 57,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 58,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 59,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 60,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 61,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 62,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 63,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 64,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 65,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 66,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          null,
+          1,
+          1
+        ]
+      },
+      {
+        "generator_index": 67,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 68,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 69,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 70,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          null,
+          1,
+          1
+        ]
+      },
+      {
+        "generator_index": 71,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 72,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 73,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          1,
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 74,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 75,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 76,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 77,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 78,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 79,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 80,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 81,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 82,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 83,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 84,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 85,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 86,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 87,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 88,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 89,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 90,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 91,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 92,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 93,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 94,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 95,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 96,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          1,
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 97,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 98,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 99,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          null,
+          1,
+          1
+        ]
+      },
+      {
+        "generator_index": 100,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 101,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 102,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 103,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 104,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 105,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 106,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 107,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 108,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 109,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 110,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 111,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          1,
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 112,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 113,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          null,
+          1,
+          1
+        ]
+      },
+      {
+        "generator_index": 114,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 115,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 116,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 117,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 118,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          1,
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 119,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 120,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 121,
+        "classification": "some",
+        "bindings": 4,
+        "matching": 2,
+        "lengths": [
+          null,
+          1,
+          null,
+          1
+        ]
+      },
+      {
+        "generator_index": 122,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 123,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 124,
+        "classification": "all",
+        "bindings": 1,
+        "matching": 1,
+        "lengths": [
+          null
+        ]
+      },
+      {
+        "generator_index": 125,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 126,
+        "classification": "all",
+        "bindings": 4,
+        "matching": 4,
+        "lengths": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
+        "generator_index": 127,
+        "classification": "all",
+        "bindings": 2,
+        "matching": 2,
+        "lengths": [
+          null,
+          null
+        ]
+      }
+    ],
+    "obligations": 2538
+  },
+  "quotients": {
+    "count": 128,
+    "coherent": 112,
+    "incoherent": 16,
+    "collapsed": 16,
+    "records": [
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          0,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          0,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          0
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "allow",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": false,
+        "collapsed": null
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            0
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 0,
+        "coherent": true,
+        "collapsed": 1
+      },
+      {
+        "observations": [
+          1,
+          1
+        ],
+        "edges": [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ]
+        ],
+        "initial": 1,
+        "coherent": true,
+        "collapsed": 0
+      }
+    ],
+    "obligations": 480
+  },
+  "projections": {
+    "count": 192,
+    "step_cases": 10224,
+    "with_discarded_state": 152,
+    "records": [
+      {
+        "generator_index": 0,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 0,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 0,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 1,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 1,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 1,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 2,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 2,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 2,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 3,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 3,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 3,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 4,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 4,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 4,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 5,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 5,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 5,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 6,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 6,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 6,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 7,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 7,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 7,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 8,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 8,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 8,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 9,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 9,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 9,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 10,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 10,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 10,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 11,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 11,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 11,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 12,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 12,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 12,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 13,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 13,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 13,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 14,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 14,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 14,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 15,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 15,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 15,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 16,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 16,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 16,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 17,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 17,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 17,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 18,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 18,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 18,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 19,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 19,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 19,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 20,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 20,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 20,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 21,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 21,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 21,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 22,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 22,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 22,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      },
+      {
+        "generator_index": 23,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 23,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 23,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 24,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 24,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 24,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      },
+      {
+        "generator_index": 25,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 25,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 25,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 26,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 26,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 26,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 27,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 27,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 27,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 28,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 28,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 28,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 29,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 29,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 29,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 30,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 30,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 30,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 31,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 31,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 31,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 32,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 32,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 32,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      },
+      {
+        "generator_index": 33,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 33,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 33,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 34,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 34,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 34,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 35,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 35,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 35,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "b",
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      },
+      {
+        "generator_index": 36,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 36,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 36,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 37,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 37,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 37,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 38,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 38,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 38,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 39,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 39,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 39,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      },
+      {
+        "generator_index": 40,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 40,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 40,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 41,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 41,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 41,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      },
+      {
+        "generator_index": 42,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 42,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 42,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 43,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 43,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 43,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 44,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 44,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 44,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 45,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 45,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 45,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 46,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 46,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 46,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 47,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 47,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 47,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 48,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 48,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 48,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 49,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 49,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 49,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 50,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 50,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 50,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 51,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 51,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 51,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 52,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 52,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 52,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 53,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 53,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 53,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 54,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 54,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 54,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 55,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 55,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 55,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 56,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 56,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 56,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 57,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 57,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 57,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 58,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 58,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 58,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 59,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 59,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 59,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 60,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 60,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 60,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "carry"
+        ],
+        "discarded": [
+          "b"
+        ]
+      },
+      {
+        "generator_index": 61,
+        "required": [],
+        "full_bits": 3,
+        "retained": [
+          "b"
+        ],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 61,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 61,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit",
+          "b",
+          "carry"
+        ],
+        "discarded": []
+      },
+      {
+        "generator_index": 62,
+        "required": [],
+        "full_bits": 3,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 62,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "b",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 62,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 3,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit",
+          "b"
+        ]
+      },
+      {
+        "generator_index": 63,
+        "required": [],
+        "full_bits": 2,
+        "retained": [],
+        "discarded": [
+          "audit",
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 63,
+        "required": [
+          "audit"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "audit"
+        ],
+        "discarded": [
+          "carry"
+        ]
+      },
+      {
+        "generator_index": 63,
+        "required": [
+          "carry"
+        ],
+        "full_bits": 2,
+        "retained": [
+          "carry"
+        ],
+        "discarded": [
+          "audit"
+        ]
+      }
+    ],
+    "obligations": 20448
+  },
+  "restricted_families": {
+    "count": 15,
+    "accepted": 3,
+    "rejected": 12,
+    "records": [
+      {
+        "mask": 1,
+        "size": 1,
+        "accepted": true
+      },
+      {
+        "mask": 2,
+        "size": 1,
+        "accepted": false
+      },
+      {
+        "mask": 3,
+        "size": 2,
+        "accepted": false
+      },
+      {
+        "mask": 4,
+        "size": 1,
+        "accepted": false
+      },
+      {
+        "mask": 5,
+        "size": 2,
+        "accepted": false
+      },
+      {
+        "mask": 6,
+        "size": 2,
+        "accepted": false
+      },
+      {
+        "mask": 7,
+        "size": 3,
+        "accepted": false
+      },
+      {
+        "mask": 8,
+        "size": 1,
+        "accepted": true
+      },
+      {
+        "mask": 9,
+        "size": 2,
+        "accepted": true
+      },
+      {
+        "mask": 10,
+        "size": 2,
+        "accepted": false
+      },
+      {
+        "mask": 11,
+        "size": 3,
+        "accepted": false
+      },
+      {
+        "mask": 12,
+        "size": 2,
+        "accepted": false
+      },
+      {
+        "mask": 13,
+        "size": 3,
+        "accepted": false
+      },
+      {
+        "mask": 14,
+        "size": 3,
+        "accepted": false
+      },
+      {
+        "mask": 15,
+        "size": 4,
+        "accepted": false
+      }
+    ],
+    "obligations": 54
+  },
+  "switching": {
+    "count": 129,
+    "full_state_cases": 128,
+    "full_state_uniform": 113,
+    "decision_only_separation": true,
+    "records": [
+      {
+        "generator_index": 0,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 1,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 2,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 3,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 4,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 5,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 6,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 7,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 8,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 9,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 10,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 11,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 12,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 13,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 14,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 15,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 16,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 17,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 18,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 19,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 20,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 21,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 22,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 23,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 24,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 25,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 26,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 27,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 28,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 29,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 30,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 31,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 32,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 33,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 34,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 35,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 36,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 37,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 38,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 39,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 40,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 41,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 42,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 43,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 44,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 45,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 46,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 47,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 48,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 49,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 50,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 51,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 52,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 53,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 54,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 55,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 56,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 57,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 58,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 59,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 60,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 61,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 62,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 63,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 64,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 65,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 66,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 67,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 68,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 69,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 70,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 71,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 72,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 73,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 74,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 75,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 76,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 77,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 78,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 79,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 80,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 81,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 82,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 83,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 84,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 85,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 86,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 87,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 88,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 89,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 90,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 91,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 92,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 93,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 94,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 95,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 96,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 97,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 98,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 99,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 100,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 101,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 102,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 103,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 104,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 105,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 106,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 107,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 108,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 109,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 110,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 111,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 112,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 113,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 114,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 115,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 116,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 117,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 118,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 119,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 120,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 121,
+        "uniform": false,
+        "switching_equivalent": false,
+        "length": 1
+      },
+      {
+        "generator_index": 122,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 123,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 124,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 125,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 126,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": 127,
+        "uniform": true,
+        "switching_equivalent": true,
+        "length": null
+      },
+      {
+        "generator_index": null,
+        "uniform": true,
+        "switching_equivalent": false,
+        "length": 2,
+        "decisions_only": true
+      }
+    ],
+    "obligations": 2362
+  },
+  "count": 592,
+  "obligations": 25882,
+  "cpu_seconds": 0.38354988100000004,
+  "wall_seconds": 0.38364224900000465,
+  "peak_rss_kib": 16676
+}

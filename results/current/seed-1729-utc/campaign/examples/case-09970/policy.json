@@ -1,0 +1,22 @@
+{
+  "principals": [
+    "u"
+  ],
+  "resources": [
+    "o"
+  ],
+  "actions": [
+    "a"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [],
+      "updates": []
+    }
+  ]
+}

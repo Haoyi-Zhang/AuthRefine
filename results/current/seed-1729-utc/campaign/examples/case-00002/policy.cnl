@@ -1,0 +1,8 @@
+principals are "alice", "bob", "unlisted".
+resources are "data1", "data2", "unlisted".
+actions are "read", "unlisted", "write".
+roles are none.
+state "available" initially false.
+allow when principal is "alice" and resource is "data1" and action is "read" then set state "available" to not state "available".
+allow when principal is "bob" and resource is "data2" and action is "write" then set state "available" to not state "available".
+otherwise deny.

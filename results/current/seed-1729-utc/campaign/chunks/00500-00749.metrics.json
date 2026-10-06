@@ -1,0 +1,8 @@
+{
+  "start": 500,
+  "count": 250,
+  "cpu_seconds": 0.27849215399999994,
+  "wall_seconds": 0.278512639000013,
+  "peak_rss_kib": 17708,
+  "obligations": 18743
+}

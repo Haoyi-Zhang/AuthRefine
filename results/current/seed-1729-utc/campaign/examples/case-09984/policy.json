@@ -1,0 +1,381 @@
+{
+  "principals": [
+    "u"
+  ],
+  "resources": [
+    "o"
+  ],
+  "actions": [
+    "a"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [
+    [
+      "b0",
+      false
+    ],
+    [
+      "b1",
+      false
+    ],
+    [
+      "b2",
+      false
+    ],
+    [
+      "b3",
+      false
+    ],
+    [
+      "b4",
+      false
+    ],
+    [
+      "b5",
+      false
+    ],
+    [
+      "b6",
+      false
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b3",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": false
+        },
+        {
+          "name": "b3",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b3",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b4",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": false
+        },
+        {
+          "name": "b3",
+          "value": false
+        },
+        {
+          "name": "b4",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b3",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b4",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b5",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": false
+        },
+        {
+          "name": "b3",
+          "value": false
+        },
+        {
+          "name": "b4",
+          "value": false
+        },
+        {
+          "name": "b5",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b3",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b4",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b5",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b6",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": false
+        },
+        {
+          "name": "b3",
+          "value": false
+        },
+        {
+          "name": "b4",
+          "value": false
+        },
+        {
+          "name": "b5",
+          "value": false
+        },
+        {
+          "name": "b6",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": false
+        },
+        {
+          "name": "b3",
+          "value": false
+        },
+        {
+          "name": "b4",
+          "value": false
+        },
+        {
+          "name": "b5",
+          "value": false
+        },
+        {
+          "name": "b6",
+          "value": false
+        }
+      ]
+    }
+  ]
+}

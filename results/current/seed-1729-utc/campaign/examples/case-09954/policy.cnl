@@ -1,0 +1,10 @@
+principals are "u".
+resources are "o".
+actions are "a00".
+roles are "r", "s".
+principal "u" has roles "r".
+state "b" initially false.
+alias role "x00" is one of "r", "s".
+allow when action is "a00" and principal has role alias "x00" then set state "b" to not state "b".
+allow when action is "a00" and principal has no role alias "x00" then set state "b" to not state "b".
+otherwise deny.

@@ -1,0 +1,14 @@
+principals are "[\"admin\",\"domain1\"]", "[\"admin\",\"domain2\"]", "[\"admin\",\"unlisted\"]", "[\"alice\",\"domain1\"]", "[\"alice\",\"domain2\"]", "[\"alice\",\"unlisted\"]", "[\"bob\",\"domain1\"]", "[\"bob\",\"domain2\"]", "[\"bob\",\"unlisted\"]", "[\"unlisted\",\"domain1\"]", "[\"unlisted\",\"domain2\"]", "[\"unlisted\",\"unlisted\"]".
+resources are "[\"data1\",\"domain1\"]", "[\"data1\",\"domain2\"]", "[\"data1\",\"unlisted\"]", "[\"data2\",\"domain1\"]", "[\"data2\",\"domain2\"]", "[\"data2\",\"unlisted\"]", "[\"unlisted\",\"domain1\"]", "[\"unlisted\",\"domain2\"]", "[\"unlisted\",\"unlisted\"]".
+actions are "read", "unlisted", "write".
+roles are "[\"admin\",\"domain1\"]", "[\"admin\",\"domain2\"]".
+principal "[\"admin\",\"domain1\"]" has roles "[\"admin\",\"domain1\"]".
+principal "[\"admin\",\"domain2\"]" has roles "[\"admin\",\"domain2\"]".
+principal "[\"alice\",\"domain1\"]" has roles "[\"admin\",\"domain1\"]".
+principal "[\"bob\",\"domain2\"]" has roles "[\"admin\",\"domain2\"]".
+state "available" initially true.
+allow when principal has role "[\"admin\",\"domain1\"]" and resource is "[\"data1\",\"domain1\"]" and action is "read" and state "available" is true then set state "available" to false.
+allow when principal has role "[\"admin\",\"domain1\"]" and resource is "[\"data1\",\"domain1\"]" and action is "write" and state "available" is true then set state "available" to false.
+allow when principal has role "[\"admin\",\"domain2\"]" and resource is "[\"data2\",\"domain2\"]" and action is "read" and state "available" is true then set state "available" to false.
+allow when principal has role "[\"admin\",\"domain2\"]" and resource is "[\"data2\",\"domain2\"]" and action is "write" and state "available" is true then set state "available" to false.
+otherwise deny.

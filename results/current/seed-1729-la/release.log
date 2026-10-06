@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "root": ".",
+  "checks": [
+    {
+      "name": "supported_environment",
+      "ok": true,
+      "platform": "Linux",
+      "python_implementation": "CPython",
+      "python_major_minor": "3.13",
+      "resource_module": true,
+      "required": "CPython on Linux with the POSIX resource module",
+      "peak_rss_unit": "KiB on Linux",
+      "cpu_and_wall_time_unit": "seconds"
+    },
+    {
+      "name": "archive_hygiene",
+      "ok": true,
+      "links": [],
+      "cache_entries": []
+    },
+    {
+      "name": "required_scientific_assets",
+      "ok": true,
+      "required_files": 36,
+      "missing": [],
+      "forbidden_present": [],
+      "frozen_input_entries": 16,
+      "frozen_input_errors": [],
+      "whole_source_fingerprint_checked": false
+    },
+    {
+      "name": "json_parse",
+      "ok": true,
+      "files": 333,
+      "errors": []
+    },
+    {
+      "name": "frozen_result_structure",
+      "ok": true,
+      "chunks": 40,
+      "metric_files": 40,
+      "primary_records": 10000,
+      "summary_primary_cases": 10000,
+      "errors": []
+    },
+    {
+      "name": "semantic_example_replay",
+      "ok": true,
+      "examples": 49,
+      "accepted": 34,
+      "non_equivalent": 15,
+      "errors": []
+    },
+    {
+      "name": "unit_tests",
+      "ok": true,
+      "test_methods": 56,
+      "ordinary": {
+        "cmd": [
+          "/opt/hostedtoolcache/Python/3.13.15/x64/bin/python",
+          "-W",
+          "error",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "returncode": 0,
+        "output_tail": "........................................................\n----------------------------------------------------------------------\nRan 56 tests in 5.791s\n\nOK\n"
+      },
+      "optimized": {
+        "cmd": [
+          "/opt/hostedtoolcache/Python/3.13.15/x64/bin/python",
+          "-OO",
+          "-W",
+          "error",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests"
+        ],
+        "returncode": 0,
+        "output_tail": "........................................................\n----------------------------------------------------------------------\nRan 56 tests in 5.632s\n\nOK\n"
+      }
+    }
+  ],
+  "ok": true,
+  "scope": {
+    "source_snapshot_fingerprint": false,
+    "novelty_review": false,
+    "venue_rule_review": false
+  }
+}

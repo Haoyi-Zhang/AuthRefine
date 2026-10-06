@@ -1,0 +1,46 @@
+{
+  "scope": {
+    "principals": 1,
+    "resources": 1,
+    "actions": 1,
+    "requests": 1,
+    "state_bits": 1,
+    "roles": 2,
+    "aliases": "zero or one two-candidate role alias",
+    "membership_patterns": 4,
+    "initial_valuations": 2,
+    "rule_count": "zero through two",
+    "target_states": 2,
+    "target_tables": "all total tables in the declared target shape",
+    "deduplication": "one policy per initial value and complete tiny-domain transition table"
+  },
+  "policy_semantic_representatives": 180,
+  "binding_multiplicities": {
+    "1": 18,
+    "2": 162
+  },
+  "machines_per_policy": 128,
+  "policy_machine_pairs": 23040,
+  "verdicts": {
+    "different": 22056,
+    "equivalent": 984
+  },
+  "shortest_lengths": {
+    "0": 11520,
+    "1": 10176,
+    "2": 360
+  },
+  "comparisons": {
+    "source_step_cross_checks": 684,
+    "uniform_verdict_cross_checks": 23040,
+    "shortest_length_cross_checks": 22056,
+    "profile_binding_cross_checks": 43776,
+    "switching_cross_checks": 23040,
+    "diagnostic_trace_cells": 10896
+  },
+  "operations": 123492,
+  "status": "pass",
+  "cpu_seconds": 14.31268688,
+  "wall_seconds": 14.315370058000013,
+  "peak_rss_kib": 16948
+}

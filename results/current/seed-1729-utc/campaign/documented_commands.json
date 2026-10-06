@@ -1,0 +1,97 @@
+[
+  {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 8.200219031000003,
+    "stdout": "",
+    "stderr": "test_action_aliases_participate_in_profiles_and_support (test_core.CoreTests.test_action_aliases_participate_in_profiles_and_support) ... ok\ntest_binding_profiles_match_single_binding_products (test_core.CoreTests.test_binding_profiles_match_single_binding_products) ... ok\ntest_bounded_cli_output_and_roundtrip (test_core.CoreTests.test_bounded_cli_output_and_roundtrip) ... ok\ntest_budget_is_inconclusive (test_core.CoreTests.test_budget_is_inconclusive) ... ok\ntest_canonical_round_trip (test_core.CoreTests.test_canonical_round_trip) ... ok\ntest_checker_against_product_and_diagnostic (test_core.CoreTests.test_checker_against_product_and_diagnostic) ... ok\ntest_compiler_against_reference_all_small_states (test_core.CoreTests.test_compiler_against_reference_all_small_states) ... ok\ntest_complete_tiny_domain_audit_generators (test_core.CoreTests.test_complete_tiny_domain_audit_generators) ... ok\ntest_control_and_format_identifiers_are_rejected (test_core.CoreTests.test_control_and_format_identifiers_are_rejected) ... ok\ntest_decision_only_has_no_target_size_bound (test_core.CoreTests.test_decision_only_has_no_target_size_bound) ... ok\ntest_decision_only_observation_is_insufficient (test_core.CoreTests.test_decision_only_observation_is_insufficient) ... ok\ntest_decision_only_replay_marks_the_compared_observation (test_core.CoreTests.test_decision_only_replay_marks_the_compared_observation) ... ok\ntest_dependence_closed_projection_commutes_with_steps (test_core.CoreTests.test_dependence_closed_projection_commutes_with_steps) ... ok\ntest_derived_budgets_cover_preparation_and_graph_work (test_core.CoreTests.test_derived_budgets_cover_preparation_and_graph_work) ... ok\ntest_diagnose_reports_initial_mismatch_at_length_zero (test_core.CoreTests.test_diagnose_reports_initial_mismatch_at_length_zero) ... ok\ntest_diagnostic_replay_contract (test_core.CoreTests.test_diagnostic_replay_contract) ... ok\ntest_equal_decisions_do_not_imply_equal_updates (test_core.CoreTests.test_equal_decisions_do_not_imply_equal_updates) ... ok\ntest_explicit_restricted_binding_family (test_core.CoreTests.test_explicit_restricted_binding_family) ... ok\ntest_harmless_and_meaningful_choices (test_core.CoreTests.test_harmless_and_meaningful_choices) ... ok\ntest_initial_mismatch_has_empty_witness (test_core.CoreTests.test_initial_mismatch_has_empty_witness) ... ok\ntest_json_duplicate_keys (test_core.CoreTests.test_json_duplicate_keys) ... ok\ntest_large_valid_identifiers_preserve_round_trip (test_core.CoreTests.test_large_valid_identifiers_preserve_round_trip) ... ok\ntest_name_and_effect_rejections (test_core.CoreTests.test_name_and_effect_rejections) ... ok\ntest_negative_work_budgets_are_inconclusive (test_core.CoreTests.test_negative_work_budgets_are_inconclusive) ... ok\ntest_observable_quotient_collapses_only_coherent_fibers (test_core.CoreTests.test_observable_quotient_collapses_only_coherent_fibers) ... ok\ntest_priority_is_not_deny_overrides (test_core.CoreTests.test_priority_is_not_deny_overrides) ... ok\ntest_public_adapter_against_model_oracle (test_core.CoreTests.test_public_adapter_against_model_oracle) ... ok\ntest_reference_inventory_integrity (test_core.CoreTests.test_reference_inventory_integrity) ... ok\ntest_reification (test_core.CoreTests.test_reification) ... ok\ntest_reification_with_redundant_hidden_states (test_core.CoreTests.test_reification_with_redundant_hidden_states) ... ok\ntest_sequence_envelope (test_core.CoreTests.test_sequence_envelope) ... ok\ntest_shortest_witness_bound_and_tightness (test_core.CoreTests.test_shortest_witness_bound_and_tightness) ... ok\ntest_simultaneous_swap (test_core.CoreTests.test_simultaneous_swap) ... ok\ntest_structural_negatives_fail_closed (test_core.CoreTests.test_structural_negatives_fail_closed) ... ok\ntest_support_sufficiency (test_core.CoreTests.test_support_sufficiency) ... ok\ntest_switching_closure_and_decision_only_separation (test_core.CoreTests.test_switching_closure_and_decision_only_separation) ... ok\ntest_symbolic_cells_against_truth_tables (test_core.CoreTests.test_symbolic_cells_against_truth_tables) ... ok\ntest_symbolic_width_family (test_core.CoreTests.test_symbolic_width_family) ... ok\ntest_unbounded_binding_iterable_is_stopped_by_family_limit (test_core.CoreTests.test_unbounded_binding_iterable_is_stopped_by_family_limit) ... ok\ntest_unicode_scalar_identifiers (test_core.CoreTests.test_unicode_scalar_identifiers) ... ok\ntest_uniformity_is_not_union_refinement (test_core.CoreTests.test_uniformity_is_not_union_refinement) ... ok\ntest_unreachable_inconsistency_is_not_global_mismatch (test_core.CoreTests.test_unreachable_inconsistency_is_not_global_mismatch) ... ok\ntest_unsupported_public_matcher_is_rejected (test_core.CoreTests.test_unsupported_public_matcher_is_rejected) ... ok\ntest_whitespace_and_trailing_input (test_core.CoreTests.test_whitespace_and_trailing_input) ... ok\ntest_wide_binding_family_fails_before_materialization (test_core.CoreTests.test_wide_binding_family_fails_before_materialization) ... ok\ntest_campaign_acceptance_requires_materialized_records_not_return_code_only (test_release_cli.ReleaseCliContractTests.test_campaign_acceptance_requires_materialized_records_not_return_code_only) ... ok\ntest_campaign_command_passes_fresh_output_and_frozen_baseline (test_release_cli.ReleaseCliContractTests.test_campaign_command_passes_fresh_output_and_frozen_baseline) ... ok\ntest_command_failure_retains_raw_output (test_release_cli.ReleaseCliContractTests.test_command_failure_retains_raw_output) ... ok\ntest_command_success_retains_raw_output (test_release_cli.ReleaseCliContractTests.test_command_success_retains_raw_output) ... ok\ntest_command_timeout_preserves_partial_logs (test_release_cli.ReleaseCliContractTests.test_command_timeout_preserves_partial_logs) ... ok\ntest_empty_word_example_is_replayed_from_initial_observations (test_release_cli.ReleaseCliContractTests.test_empty_word_example_is_replayed_from_initial_observations) ... ok\ntest_failed_matrix_returns_failure_without_secondary_exception (test_release_cli.ReleaseCliContractTests.test_failed_matrix_returns_failure_without_secondary_exception) ... ok\ntest_fresh_reproduction_is_not_archive_extraction (test_release_cli.ReleaseCliContractTests.test_fresh_reproduction_is_not_archive_extraction) ... ok\ntest_invalid_certificate_is_not_semantic_non_equivalence (test_release_cli.ReleaseCliContractTests.test_invalid_certificate_is_not_semantic_non_equivalence) ... ok\ntest_owned_generated_semantics_and_frozen_public_projection (test_release_cli.ReleaseCliContractTests.test_owned_generated_semantics_and_frozen_public_projection) ... ok\ntest_verifier_timeout_is_reported_as_failure (test_release_cli.ReleaseCliContractTests.test_verifier_timeout_is_reported_as_failure) ... ok\n\n----------------------------------------------------------------------\nRan 56 tests in 7.896s\n\nOK\n"
+  },
+  {
+    "command": [
+      "python",
+      "src/checker.py",
+      "results/examples/case-00000/policy.json",
+      "results/examples/case-00000/automaton.json",
+      "results/examples/case-00000/certificate.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.04067489099998056,
+    "stdout": "{\n  \"accepted\": true,\n  \"states\": 1,\n  \"local_cells\": 27,\n  \"binding_evaluations\": 27,\n  \"maximum_width\": 0\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "src/policy.py",
+      "normalize",
+      "results/examples/case-00000/policy.cnl",
+      "temporary/normalized.cnl"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.05780611099999078,
+    "stdout": "{\"completed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "src/policy.py",
+      "compile",
+      "temporary/normalized.cnl",
+      "temporary/compiled-policy"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.0583041900000012,
+    "stdout": "{\"completed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "src/policy.py",
+      "diagnose",
+      "temporary/compiled-policy/policy.json",
+      "temporary/compiled-policy/automaton.json",
+      "temporary/diagnosis.json"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.058759005000013076,
+    "stdout": "{\"completed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "src/policy.py",
+      "reify",
+      "temporary/compiled-policy/policy.json",
+      "temporary/compiled-policy/automaton.json",
+      "temporary/reified.cnl"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.057351135999994085,
+    "stdout": "{\"completed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python",
+      "src/summarize.py",
+      "reproduction-output",
+      "--baseline",
+      "results"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.6624391039999864,
+    "stdout": "{\n  \"primary_cases\": 10000,\n  \"groups\": {\n    \"public\": {\n      \"cases\": 18,\n      \"accepted\": 18,\n      \"not_accepted\": 0,\n      \"global_oracle_cases\": 18,\n      \"obligations\": 46370,\n      \"cpu_seconds\": 0.22380493899999995\n    },\n    \"generated\": {\n      \"cases\": 9936,\n      \"accepted\": 8978,\n      \"not_accepted\": 958,\n      \"global_oracle_cases\": 9936,\n      \"obligations\": 783410,\n      \"cpu_seconds\": 10.20717714799998\n    },\n    \"width\": {\n      \"cases\": 16,\n      \"accepted\": 16,\n      \"not_accepted\": 0,\n      \"global_oracle_cases\": 8,\n      \"obligations\": 23284,\n      \"cpu_seconds\": 0.2412733570000012\n    },\n    \"chain\": {\n      \"cases\": 15,\n      \"accepted\": 0,\n      \"not_accepted\": 15,\n      \"global_oracle_cases\": 15,\n      \"obligations\": 9220,\n      \"cpu_seconds\": 0.0738592360000001\n    },\n    \"schema-negative\": {\n      \"cases\": 15,\n      \"accepted\": 0,\n      \"not_accepted\": 15,\n      \"global_oracle_cases\": 0,\n      \"obligations\": 15,\n      \"cpu_seconds\": 0.0013011559999993594\n    }\n  },\n  \"auxiliary_cases\": 3330,\n  \"extension_cases\": 592,\n  \"extension_obligations\": 25882,\n  \"adversarial_cases\": 1024,\n  \"adversarial_operations\": 244830,\n  \"exhaustive_pairs\": 23040,\n  \"exhaustive_operations\": 123492,\n  \"reference_verification\": {\n    \"references\": 58,\n    \"identifier_distribution\": {\n      \"doi\": 55,\n      \"arxiv\": 2,\n      \"technical_report\": 1\n    },\n    \"unique_publication_identifiers\": 58,\n    \"all_references_cited\": true,\n    \"citation_occurrences\": 73,\n    \"audit_access_date\": \"2026-09-16\"\n  },\n  \"pilot_cases\": 52,\n  \"generated_distinct_canonical_asts\": 9772,\n  \"generated_duplicate_occurrences\": 164,\n  \"largest_structural_multiplicity\": 5,\n  \"generated_syntax_semantics\": {\n    \"(False, False)\": 958,\n    \"(False, True)\": 5672,\n    \"(True, False)\": 0,\n    \"(True, True)\": 3306\n  },\n  \"detected_reachable_mutations\": 889,\n  \"witness_lengths\": {\n    \"1\": 927,\n    \"2\": 33,\n    \"3\": 1,\n    \"4\": 1,\n    \"5\": 1,\n    \"6\": 1,\n    \"7\": 1,\n    \"8\": 1,\n    \"9\": 1,\n    \"10\": 1,\n    \"12\": 1,\n    \"16\": 1,\n    \"32\": 1,\n    \"64\": 1,\n    \"128\": 1\n  },\n  \"primary_cpu_seconds\": 12.138411179,\n  \"primary_wall_seconds\": 12.140628340999967,\n  \"experimental_cpu_seconds\": 27.059250551,\n  \"peak_rss_kib\": 18608,\n  \"counted_obligations\": 1340425,\n  \"all_internal_comparisons_agree\": true,\n  \"public\": {\n    \"models\": [\n      {\n        \"model\": \"basic\",\n        \"requests\": 27,\n        \"matched\": true,\n        \"rules\": 2,\n        \"principals\": 3,\n        \"resources\": 3,\n        \"actions\": 3,\n        \"roles\": 0\n      },\n      {\n        \"model\": \"rbac\",\n        \"requests\": 36,\n        \"matched\": true,\n        \"rules\": 4,\n        \"principals\": 4,\n        \"resources\": 3,\n        \"actions\": 3,\n        \"roles\": 3\n      },\n      {\n        \"model\": \"rbac_with_deny\",\n        \"requests\": 36,\n        \"matched\": true,\n        \"rules\": 5,\n        \"principals\": 4,\n        \"resources\": 3,\n        \"actions\": 3,\n        \"roles\": 3\n      },\n      {\n        \"model\": \"rbac_with_domains\",\n        \"requests\": 324,\n        \"matched\": true,\n        \"rules\": 4,\n        \"principals\": 12,\n        \"resources\": 9,\n        \"actions\": 3,\n        \"roles\": 2\n      },\n      {\n        \"model\": \"rbac_with_resource_roles\",\n        \"requests\": 48,\n        \"matched\": true,\n        \"rules\": 5,\n        \"principals\": 4,\n        \"resources\": 4,\n        \"actions\": 3,\n        \"roles\": 3\n      },\n      {\n        \"model\": \"priority\",\n        \"requests\": 45,\n        \"matched\": true,\n        \"rules\": 7,\n        \"principals\": 5,\n        \"resources\": 3,\n        \"actions\": 3,\n        \"roles\": 4\n      }\n    ],\n    \"projected_requests\": 516,\n    \"original_assertions\": 40,\n    \"all_agree\": true,\n    \"obligations\": 1112\n  },\n  \"symbolic_cases\": 9985,\n  \"symbolic_operations\": 369803,\n  \"symbolic_cells\": 45500,\n  \"symbolic_maximum_nodes\": 258,\n  \"symbolic_cpu_seconds\": 1.1371513510000022,\n  \"reification\": {\n    \"checked\": 66\n  },\n  \"extensions\": {\n    \"profiles\": {\n      \"count\": 128,\n      \"binding_cases\": 296,\n      \"classifications\": {\n        \"some\": 15,\n        \"all\": 113\n      }\n    },\n    \"quotients\": {\n      \"count\": 128,\n      \"coherent\": 112,\n      \"incoherent\": 16,\n      \"collapsed\": 16\n    },\n    \"projections\": {\n      \"count\": 192,\n      \"step_cases\": 10224,\n      \"with_discarded_state\": 152\n    },\n    \"restricted_families\": {\n      \"count\": 15,\n      \"accepted\": 3,\n      \"rejected\": 12\n    },\n    \"switching\": {\n      \"count\": 129,\n      \"full_state_cases\": 128,\n      \"full_state_uniform\": 113,\n      \"decision_only_separation\": true\n    }\n  },\n  \"exhaustive\": {\n    \"policy_semantic_representatives\": 180,\n    \"machines_per_policy\": 128,\n    \"policy_machine_pairs\": 23040,\n    \"verdicts\": {\n      \"different\": 22056,\n      \"equivalent\": 984\n    },\n    \"shortest_lengths\": {\n      \"0\": 11520,\n      \"1\": 10176,\n      \"2\": 360\n    },\n    \"comparisons\": {\n      \"source_step_cross_checks\": 684,\n      \"uniform_verdict_cross_checks\": 23040,\n      \"shortest_length_cross_checks\": 22056,\n      \"profile_binding_cross_checks\": 43776,\n      \"switching_cross_checks\": 23040,\n      \"diagnostic_trace_cells\": 10896\n    }\n  },\n  \"adversarial\": {\n    \"verdicts\": {\n      \"different\": 728,\n      \"equivalent\": 296\n    },\n    \"mutations\": {\n      \"decision\": 205,\n      \"decision-fallback\": 74,\n      \"initial\": 204,\n      \"none\": 205,\n      \"observation\": 205,\n      \"successor\": 131\n    },\n    \"alias_sort_occurrences\": {\n      \"action\": 384,\n      \"principal\": 384,\n      \"resource\": 384,\n      \"role\": 384\n    },\n    \"action_alias_cases\": 384,\n    \"length_zero_witnesses\": 288,\n    \"positive_length_witnesses\": 440,\n    \"profile_cases\": 512,\n    \"profile_bindings\": 1462,\n    \"step_semantics_comparisons\": 30056,\n    \"projection_comparisons\": 28080,\n    \"coherent_quotients\": 1014,\n    \"collapsed_quotients\": 23,\n    \"boundary_controls\": {\n      \"wide_family_preflight\": true,\n      \"unbounded_iterable_stopped\": true,\n      \"zero_budget_preparation\": true,\n      \"decision_only_trace\": true\n    }\n  },\n  \"baseline_scientific_records_match\": true\n}\n",
+    "stderr": ""
+  }
+]

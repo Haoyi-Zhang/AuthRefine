@@ -1,0 +1,10 @@
+{"start": 2500, "count": 250, "cpu_seconds": 0.311580639, "wall_seconds": 0.311588176000015, "peak_rss_kib": 17588, "obligations": 21161}
+{"start": 2750, "count": 250, "cpu_seconds": 0.29699951899999993, "wall_seconds": 0.29711800900000185, "peak_rss_kib": 17588, "obligations": 19443}
+{"start": 3000, "count": 250, "cpu_seconds": 0.28665647299999997, "wall_seconds": 0.28675074700001346, "peak_rss_kib": 17588, "obligations": 19333}
+{"start": 3250, "count": 250, "cpu_seconds": 0.30214891099999996, "wall_seconds": 0.3022101229999805, "peak_rss_kib": 17592, "obligations": 20818}
+{"start": 3500, "count": 250, "cpu_seconds": 0.30367486300000013, "wall_seconds": 0.3037495490000026, "peak_rss_kib": 17600, "obligations": 20292}
+{"start": 3750, "count": 250, "cpu_seconds": 0.2938604690000002, "wall_seconds": 0.29389579000002186, "peak_rss_kib": 17628, "obligations": 19186}
+{"start": 4000, "count": 250, "cpu_seconds": 0.29493299800000017, "wall_seconds": 0.2949549539999907, "peak_rss_kib": 17660, "obligations": 19631}
+{"start": 4250, "count": 250, "cpu_seconds": 0.2943947699999998, "wall_seconds": 0.29443643399997654, "peak_rss_kib": 17688, "obligations": 19137}
+{"start": 4500, "count": 250, "cpu_seconds": 0.29412613200000015, "wall_seconds": 0.29420865099999105, "peak_rss_kib": 17700, "obligations": 19435}
+{"start": 4750, "count": 250, "cpu_seconds": 0.297672457, "wall_seconds": 0.2977335350000203, "peak_rss_kib": 17704, "obligations": 19365}

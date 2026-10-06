@@ -1,0 +1,13 @@
+principals are "alice", "bob", "data2_admin", "unlisted".
+resources are "data1", "data2", "unlisted".
+actions are "read", "unlisted", "write".
+roles are "alice", "bob", "data2_admin".
+principal "alice" has roles "alice", "data2_admin".
+principal "bob" has roles "bob".
+principal "data2_admin" has roles "data2_admin".
+state "available" initially false.
+allow when principal has role "alice" and resource is "data1" and action is "read" then set state "available" to not state "available".
+allow when principal has role "bob" and resource is "data2" and action is "write" then set state "available" to not state "available".
+allow when principal has role "data2_admin" and resource is "data2" and action is "read" then set state "available" to not state "available".
+allow when principal has role "data2_admin" and resource is "data2" and action is "write" then set state "available" to not state "available".
+otherwise deny.

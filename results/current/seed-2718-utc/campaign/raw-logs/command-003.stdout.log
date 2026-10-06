@@ -1,0 +1,8 @@
+{
+  "case_count": 52,
+  "cpu_seconds": 0.260183029,
+  "wall_seconds": 0.26018145800000525,
+  "peak_rss_kib": 17200,
+  "obligations": 32502,
+  "all_internal_comparisons_agree": true
+}

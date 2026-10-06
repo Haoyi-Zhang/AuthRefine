@@ -1,0 +1,31 @@
+{
+  "state_names": [
+    "b0"
+  ],
+  "alphabet": [
+    [
+      "u",
+      "o",
+      "a"
+    ]
+  ],
+  "observations": [
+    1,
+    0
+  ],
+  "initial": 1,
+  "transitions": [
+    [
+      [
+        "deny",
+        0
+      ]
+    ],
+    [
+      [
+        "allow",
+        0
+      ]
+    ]
+  ]
+}

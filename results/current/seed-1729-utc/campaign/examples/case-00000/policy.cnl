@@ -1,0 +1,7 @@
+principals are "alice", "bob", "unlisted".
+resources are "data1", "data2", "unlisted".
+actions are "read", "unlisted", "write".
+roles are none.
+allow when principal is "alice" and resource is "data1" and action is "read" then keep state.
+allow when principal is "bob" and resource is "data2" and action is "write" then keep state.
+otherwise deny.

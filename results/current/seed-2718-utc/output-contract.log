@@ -1,0 +1,9 @@
+{
+  "chunks": 40,
+  "metric_files": 40,
+  "primary_records": 10000,
+  "baseline_scientific_records_match": true,
+  "documented_commands_succeeded": true,
+  "python_hash_seed": "2718",
+  "timezone": "UTC"
+}

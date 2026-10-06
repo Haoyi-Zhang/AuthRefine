@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "references": 58,
+  "identifier_distribution": {
+    "doi": 55,
+    "arxiv": 2,
+    "technical_report": 1
+  },
+  "unique_publication_identifiers": 58,
+  "all_references_cited": true,
+  "citation_occurrences": 73,
+  "audit_access_date": "2026-09-16",
+  "current_manuscript_parsed": false,
+  "scope": "Offline integrity check over the frozen bibliography inventory, audit, and, when supplied, the current BibTeX and TeX sources. Formal metadata was manually rechecked against DOI, publisher, or author records on 2026-09-16; this command performs no live resolution and does not claim a new full-paper reread of every source."
+}

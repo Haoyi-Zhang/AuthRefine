@@ -1,0 +1,179 @@
+{
+  "principals": [
+    "alice",
+    "bob",
+    "data2_admin",
+    "unlisted"
+  ],
+  "resources": [
+    "data1",
+    "data2",
+    "unlisted"
+  ],
+  "actions": [
+    "read",
+    "unlisted",
+    "write"
+  ],
+  "roles": [
+    "alice",
+    "bob",
+    "data2_admin"
+  ],
+  "members": [
+    [
+      "alice",
+      "alice"
+    ],
+    [
+      "alice",
+      "data2_admin"
+    ],
+    [
+      "bob",
+      "bob"
+    ],
+    [
+      "data2_admin",
+      "data2_admin"
+    ]
+  ],
+  "state": [
+    [
+      "available",
+      false
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "deny",
+      "guard": [
+        {
+          "field": "role",
+          "name": "alice",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": []
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "alice",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data1",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "bob",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data2_admin",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "read",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "role",
+          "name": "data2_admin",
+          "negated": false
+        },
+        {
+          "field": "resource",
+          "name": "data2",
+          "negated": false
+        },
+        {
+          "field": "action",
+          "name": "write",
+          "negated": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "available",
+          "from": "available",
+          "negated": true
+        }
+      ]
+    }
+  ]
+}

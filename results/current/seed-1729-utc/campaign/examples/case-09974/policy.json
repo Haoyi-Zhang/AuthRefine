@@ -1,0 +1,200 @@
+{
+  "principals": [
+    "u"
+  ],
+  "resources": [
+    "o"
+  ],
+  "actions": [
+    "a"
+  ],
+  "roles": [],
+  "members": [],
+  "state": [
+    [
+      "b0",
+      false
+    ],
+    [
+      "b1",
+      false
+    ],
+    [
+      "b2",
+      false
+    ]
+  ],
+  "aliases": [],
+  "rules": [
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": false
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": false
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": true
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": false
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": true
+        },
+        {
+          "name": "b2",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": false
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": true
+        },
+        {
+          "name": "b1",
+          "value": true
+        },
+        {
+          "name": "b2",
+          "value": false
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": true
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": false
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": true
+        }
+      ]
+    },
+    {
+      "decision": "allow",
+      "guard": [
+        {
+          "field": "state",
+          "name": "b0",
+          "value": false
+        },
+        {
+          "field": "state",
+          "name": "b1",
+          "value": false
+        },
+        {
+          "field": "state",
+          "name": "b2",
+          "value": true
+        }
+      ],
+      "updates": [
+        {
+          "name": "b0",
+          "value": false
+        },
+        {
+          "name": "b1",
+          "value": false
+        },
+        {
+          "name": "b2",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

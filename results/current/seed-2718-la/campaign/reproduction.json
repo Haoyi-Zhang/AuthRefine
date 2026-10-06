@@ -1,0 +1,283 @@
+{
+  "primary_cases": 10000,
+  "groups": {
+    "public": {
+      "cases": 18,
+      "accepted": 18,
+      "not_accepted": 0,
+      "global_oracle_cases": 18,
+      "obligations": 46370,
+      "cpu_seconds": 0.12887629400000003
+    },
+    "generated": {
+      "cases": 9936,
+      "accepted": 8978,
+      "not_accepted": 958,
+      "global_oracle_cases": 9936,
+      "obligations": 783410,
+      "cpu_seconds": 6.356728965000012
+    },
+    "width": {
+      "cases": 16,
+      "accepted": 16,
+      "not_accepted": 0,
+      "global_oracle_cases": 8,
+      "obligations": 23284,
+      "cpu_seconds": 0.1457404009999994
+    },
+    "chain": {
+      "cases": 15,
+      "accepted": 0,
+      "not_accepted": 15,
+      "global_oracle_cases": 15,
+      "obligations": 9220,
+      "cpu_seconds": 0.04338266199999952
+    },
+    "schema-negative": {
+      "cases": 15,
+      "accepted": 0,
+      "not_accepted": 15,
+      "global_oracle_cases": 0,
+      "obligations": 15,
+      "cpu_seconds": 0.0010232350000003443
+    }
+  },
+  "auxiliary_cases": 3330,
+  "extension_cases": 592,
+  "extension_obligations": 25882,
+  "adversarial_cases": 1024,
+  "adversarial_operations": 244830,
+  "exhaustive_pairs": 23040,
+  "exhaustive_operations": 123492,
+  "reference_verification": {
+    "references": 58,
+    "identifier_distribution": {
+      "doi": 55,
+      "arxiv": 2,
+      "technical_report": 1
+    },
+    "unique_publication_identifiers": 58,
+    "all_references_cited": true,
+    "citation_occurrences": 73,
+    "audit_access_date": "2026-09-16"
+  },
+  "pilot_cases": 52,
+  "generated_distinct_canonical_asts": 9772,
+  "generated_duplicate_occurrences": 164,
+  "largest_structural_multiplicity": 5,
+  "generated_syntax_semantics": {
+    "(False, False)": 958,
+    "(False, True)": 5672,
+    "(True, False)": 0,
+    "(True, True)": 3306
+  },
+  "detected_reachable_mutations": 889,
+  "witness_lengths": {
+    "1": 927,
+    "2": 33,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 1,
+    "7": 1,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "12": 1,
+    "16": 1,
+    "32": 1,
+    "64": 1,
+    "128": 1
+  },
+  "primary_cpu_seconds": 7.550809028,
+  "primary_wall_seconds": 7.552335771999978,
+  "experimental_cpu_seconds": 17.410294626,
+  "peak_rss_kib": 18616,
+  "counted_obligations": 1340425,
+  "all_internal_comparisons_agree": true,
+  "public": {
+    "models": [
+      {
+        "model": "basic",
+        "requests": 27,
+        "matched": true,
+        "rules": 2,
+        "principals": 3,
+        "resources": 3,
+        "actions": 3,
+        "roles": 0
+      },
+      {
+        "model": "rbac",
+        "requests": 36,
+        "matched": true,
+        "rules": 4,
+        "principals": 4,
+        "resources": 3,
+        "actions": 3,
+        "roles": 3
+      },
+      {
+        "model": "rbac_with_deny",
+        "requests": 36,
+        "matched": true,
+        "rules": 5,
+        "principals": 4,
+        "resources": 3,
+        "actions": 3,
+        "roles": 3
+      },
+      {
+        "model": "rbac_with_domains",
+        "requests": 324,
+        "matched": true,
+        "rules": 4,
+        "principals": 12,
+        "resources": 9,
+        "actions": 3,
+        "roles": 2
+      },
+      {
+        "model": "rbac_with_resource_roles",
+        "requests": 48,
+        "matched": true,
+        "rules": 5,
+        "principals": 4,
+        "resources": 4,
+        "actions": 3,
+        "roles": 3
+      },
+      {
+        "model": "priority",
+        "requests": 45,
+        "matched": true,
+        "rules": 7,
+        "principals": 5,
+        "resources": 3,
+        "actions": 3,
+        "roles": 4
+      }
+    ],
+    "projected_requests": 516,
+    "original_assertions": 40,
+    "all_agree": true,
+    "obligations": 1112
+  },
+  "symbolic_cases": 9985,
+  "symbolic_operations": 369803,
+  "symbolic_cells": 45500,
+  "symbolic_maximum_nodes": 258,
+  "symbolic_cpu_seconds": 0.737364073999988,
+  "reification": {
+    "checked": 66
+  },
+  "extensions": {
+    "profiles": {
+      "count": 128,
+      "binding_cases": 296,
+      "classifications": {
+        "some": 15,
+        "all": 113
+      }
+    },
+    "quotients": {
+      "count": 128,
+      "coherent": 112,
+      "incoherent": 16,
+      "collapsed": 16
+    },
+    "projections": {
+      "count": 192,
+      "step_cases": 10224,
+      "with_discarded_state": 152
+    },
+    "restricted_families": {
+      "count": 15,
+      "accepted": 3,
+      "rejected": 12
+    },
+    "switching": {
+      "count": 129,
+      "full_state_cases": 128,
+      "full_state_uniform": 113,
+      "decision_only_separation": true
+    }
+  },
+  "exhaustive": {
+    "policy_semantic_representatives": 180,
+    "machines_per_policy": 128,
+    "policy_machine_pairs": 23040,
+    "verdicts": {
+      "different": 22056,
+      "equivalent": 984
+    },
+    "shortest_lengths": {
+      "0": 11520,
+      "1": 10176,
+      "2": 360
+    },
+    "comparisons": {
+      "source_step_cross_checks": 684,
+      "uniform_verdict_cross_checks": 23040,
+      "shortest_length_cross_checks": 22056,
+      "profile_binding_cross_checks": 43776,
+      "switching_cross_checks": 23040,
+      "diagnostic_trace_cells": 10896
+    }
+  },
+  "adversarial": {
+    "verdicts": {
+      "different": 728,
+      "equivalent": 296
+    },
+    "mutations": {
+      "decision": 205,
+      "decision-fallback": 74,
+      "initial": 204,
+      "none": 205,
+      "observation": 205,
+      "successor": 131
+    },
+    "alias_sort_occurrences": {
+      "action": 384,
+      "principal": 384,
+      "resource": 384,
+      "role": 384
+    },
+    "action_alias_cases": 384,
+    "length_zero_witnesses": 288,
+    "positive_length_witnesses": 440,
+    "profile_cases": 512,
+    "profile_bindings": 1462,
+    "step_semantics_comparisons": 30056,
+    "projection_comparisons": 28080,
+    "coherent_quotients": 1014,
+    "collapsed_quotients": 23,
+    "boundary_controls": {
+      "wide_family_preflight": true,
+      "unbounded_iterable_stopped": true,
+      "zero_budget_preparation": true,
+      "decision_only_trace": true
+    }
+  },
+  "baseline_scientific_records_match": true,
+  "documented_commands_succeeded": true,
+  "documented_command_count": 7,
+  "unit_test_methods": 56,
+  "reproduction_wall_seconds": 25.260929214000008,
+  "invocation_child_cpu_seconds": 25.196837,
+  "invocation_cpu_seconds": 0.055277899,
+  "resumed": false,
+  "fresh_reproduction": true,
+  "fresh_archive_extraction": false,
+  "execution_environment": {
+    "platform": "Linux",
+    "python_implementation": "cpython",
+    "python_major_minor": "3.13",
+    "python_hash_seed": "2718",
+    "timezone": "America/Los_Angeles",
+    "peak_rss_unit": "KiB",
+    "cpu_time_unit": "seconds",
+    "wall_time_unit": "seconds"
+  }
+}

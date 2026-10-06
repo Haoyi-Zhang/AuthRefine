@@ -1,0 +1,64 @@
+{
+  "seed": 20260915,
+  "count": 1024,
+  "full_case_target": 1024,
+  "operation_limit": 900000,
+  "operations": 244830,
+  "operation_breakdown": {
+    "boundary_iterator_work": 33,
+    "boundary_preflight_work": 16,
+    "boundary_switching_work": 8,
+    "checker_semantic_steps": 5438,
+    "diagnostic_replay_steps": 460,
+    "diagnostic_semantic_steps": 5438,
+    "product_semantic_steps": 11137,
+    "profile_singleton_steps": 6337,
+    "profile_work": 13585,
+    "projection_semantic_steps": 56160,
+    "quotient_construct_work": 41488,
+    "quotient_direct_work": 21120,
+    "quotient_trace_work": 10368,
+    "source_semantic_steps": 60112,
+    "switching_work": 13130
+  },
+  "verdicts": {
+    "different": 728,
+    "equivalent": 296
+  },
+  "mutations": {
+    "decision": 205,
+    "decision-fallback": 74,
+    "initial": 204,
+    "none": 205,
+    "observation": 205,
+    "successor": 131
+  },
+  "alias_sort_occurrences": {
+    "action": 384,
+    "principal": 384,
+    "resource": 384,
+    "role": 384
+  },
+  "action_alias_cases": 384,
+  "length_zero_witnesses": 288,
+  "positive_length_witnesses": 440,
+  "profile_cases": 512,
+  "profile_bindings": 1462,
+  "step_semantics_cases": 512,
+  "step_semantics_comparisons": 30056,
+  "projection_eligible_case_limit": 512,
+  "projection_comparisons": 28080,
+  "quotient_cases": 1024,
+  "coherent_quotients": 1014,
+  "collapsed_quotients": 23,
+  "switching_cases": 1024,
+  "boundary_controls": {
+    "wide_family_preflight": true,
+    "unbounded_iterable_stopped": true,
+    "zero_budget_preparation": true,
+    "decision_only_trace": true
+  },
+  "cpu_seconds": 2.071340508,
+  "wall_seconds": 2.071583227000019,
+  "peak_rss_kib": 18552
+}

@@ -1,0 +1,8 @@
+principals are "u".
+resources are "o".
+actions are "a".
+roles are none.
+state "b0" initially false.
+allow when state "b0" is false then set state "b0" to true.
+allow when always then set state "b0" to false.
+otherwise deny.

@@ -1,0 +1,8 @@
+principals are "u".
+resources are "o".
+actions are "a".
+roles are none.
+state "left" initially false.
+state "right" initially true.
+allow when always then set state "left" to state "right" and set state "right" to state "left".
+otherwise deny.
