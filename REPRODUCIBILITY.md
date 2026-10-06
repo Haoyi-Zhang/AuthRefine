@@ -4,7 +4,7 @@ The artifact distinguishes four outcomes: verified equivalent, verified non-equi
 
 ## Supported environment
 
-The reproducibility entry points are supported on CPython running on Linux with the POSIX `resource` module. The retained earlier release-entry record was produced with CPython 3.13 on Linux; the current repairs have only portable Windows validation until the current Linux suite and campaign run. Native Windows is not supported because `resource` is absent from that standard library build. A Windows user can enter the supported environment through a Linux distribution under WSL or a Linux container with the repository mounted as the working directory.
+The reproducibility entry points are supported on CPython running on Linux with the POSIX `resource` module. The retained earlier release-entry record was produced with CPython 3.13 on Linux. The four retained runs in `results/current` cover the current 56-method suite and whole campaign on CPython 3.13 Linux; earlier portable Windows checks have a narrower scope. Native Windows is not supported because `resource` is absent from that standard library build. A Windows user can enter the supported environment through a Linux distribution under WSL or a Linux container with the repository mounted as the working directory.
 
 A minimal preflight is:
 
@@ -49,7 +49,7 @@ Acceptance is based on the generated evidence, not merely the subprocess return 
 
 Freshness is recorded as `fresh_reproduction`; this directory-based entry point does not extract an archive and records `fresh_archive_extraction` as false. Existing historical records are preserved with their original metadata. Each child invocation retains full stdout, stderr, exit status and timeout information under the new output's `raw-logs/`, even if reproduction stops before a summary is produced. Timeouts and failed configurations remain failures in the matrix report.
 
-The Linux workflow executes all four configurations with one matrix worker at a time. Each runs the quick verifier (180-second enclosing limit) and the whole deterministic campaign (300-second enclosing limit, 120 seconds per child). An always-run upload preserves complete or partial output and logs. This prepared workflow is not evidence of a successful run. The current suite has 56 methods; the retained Linux entry record covers 47 methods, while the nine newer regressions have only portable local validation until the current Linux suite runs.
+The Linux workflow executes all four configurations with one matrix worker at a time. Each runs the quick verifier (180-second enclosing limit) and the whole deterministic campaign (300-second enclosing limit, 120 seconds per child). An always-run upload preserves complete or partial output and logs. Workflow configuration alone is not evidence of a successful run. The earlier retained Linux entry record covers 47 methods; `results/current` separately retains all four current 56-method runs, including the nine later regressions, plus seven documented commands and 10,000 primary records per configuration. Each current reconstruction reports scientific-field agreement and a fresh output directory, not archive extraction.
 
 For a single configuration, run `reproduce.py` directly with a new output directory and the delivered `results` baseline. `results/clean_reproduction.json` is an earlier retained reconstruction record and is not accepted as evidence that a current invocation succeeded.
 
