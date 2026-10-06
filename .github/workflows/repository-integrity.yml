@@ -34,7 +34,6 @@ jobs:
       TZ: ${{ matrix.timezone }}
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
-      EVIDENCE: ${{ runner.temp }}/p020-evidence
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -43,6 +42,8 @@ jobs:
         with:
           python-version: '3.13'
       - name: Check release and reproduce every scientific family
+        env:
+          EVIDENCE: ${{ runner.temp }}/p020-evidence
         shell: bash
         run: |
           set -euo pipefail
