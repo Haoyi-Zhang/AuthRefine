@@ -103,16 +103,17 @@ def run(
     timeout: int = 900,
     env: dict[str, str] | None = None,
 ) -> dict[str, Any]:
-    completed = subprocess.run(
-        command,
-        cwd=cwd,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        timeout=timeout,
-        env=env,
-        check=False,
-    )
+    try:
+        completed = subprocess.run(
+            command, cwd=cwd, text=True, stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT, timeout=timeout, env=env, check=False,
+        )
+    except subprocess.TimeoutExpired as error:
+        output = error.stdout or ""
+        if isinstance(output, bytes):
+            output = output.decode("utf-8", errors="replace")
+        return {"cmd": command, "returncode": 124, "timed_out": True,
+                "output_tail": output[-12000:], "timeout_seconds": timeout}
     return {
         "cmd": command,
         "returncode": completed.returncode,
@@ -280,6 +281,8 @@ def semantic_example_replay() -> dict[str, Any]:
         try:
             policy = checker.load(directory / "policy.json")
             machine = checker.load(directory / "automaton.json")
+            checker.inspect_policy(policy)
+            checker.inspect_machine(policy, machine, compare_initial=False)
             certificate = checker.load(directory / "certificate.json")
             stored_diagnostic = checker.load(directory / "diagnostic.json")
             if language.read_policy(directory / "policy.cnl") != policy:
@@ -290,8 +293,8 @@ def semantic_example_replay() -> dict[str, Any]:
                 equivalent = True
                 accepted += 1
             except checker.Rejected as error:
-                if error.kind == "inconclusive":
-                    raise ValueError("example verification exhausted its work limit") from error
+                if error.kind != "mismatch":
+                    raise ValueError(f"example verification is {error.kind}: {error}") from error
                 equivalent = False
                 rejected += 1
 
@@ -312,7 +315,12 @@ def semantic_example_replay() -> dict[str, Any]:
                     raise ValueError("replayed witness length differs")
                 if any(row["source"] != row["target"] for row in rows[:-1]):
                     raise ValueError("a proper witness prefix already differs")
-                if not rows or rows[-1]["source"] == rows[-1]["target"]:
+                if stored_diagnostic["length"] == 0:
+                    source_initial = language.initial(policy)
+                    target_initial = machine["observations"][machine["initial"]]
+                    if rows or source_initial == target_initial:
+                        raise ValueError("empty witness does not distinguish initial observations")
+                elif not rows or rows[-1]["source"] == rows[-1]["target"]:
                     raise ValueError("the final witness step does not distinguish the machines")
         except Exception as error:
             errors.append(f"{label}: {error}")
@@ -357,7 +365,7 @@ def inspect_campaign_output(
             raise ValueError(f"{name} does not report 10,000 primary cases")
         if value.get("baseline_scientific_records_match") is not True:
             raise ValueError(f"{name} does not confirm scientific-field agreement with the baseline")
-    if reproduction.get("fresh_archive_extraction") is not True or reproduction.get("resumed") is not False:
+    if reproduction.get("fresh_reproduction") is not True or reproduction.get("resumed") is not False:
         raise ValueError("campaign was not a fresh non-resumed run")
     if reproduction.get("documented_commands_succeeded") is not True:
         raise ValueError("documented command replay did not complete successfully")
@@ -448,7 +456,7 @@ def run_campaign_matrix() -> dict[str, Any]:
         "configurations": configurations,
         "configuration_count": len(configurations),
         "cross_configuration_scientific_match": all(
-            row.get("evidence", {}).get("baseline_scientific_records_match") is True
+            (row.get("evidence") or {}).get("baseline_scientific_records_match") is True
             for row in configurations
         ),
     }

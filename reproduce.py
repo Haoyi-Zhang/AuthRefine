@@ -19,6 +19,38 @@ except ImportError:  # Native Windows does not provide this POSIX module.
 ROOT = Path(__file__).resolve().parent
 
 
+def run_logged(command, *, cwd, env, log_prefix, timeout=120):
+    """Retain complete child output even when a bounded command fails."""
+    prefix = Path(log_prefix)
+    prefix.parent.mkdir(parents=True, exist_ok=True)
+    metadata = {"command": command, "timeout_seconds": timeout}
+    started = time.perf_counter()
+    stdout = stderr = ""
+    try:
+        completed = subprocess.run(
+            command, cwd=cwd, env=env, check=False, timeout=timeout,
+            capture_output=True, text=True,
+        )
+        stdout, stderr = completed.stdout, completed.stderr
+        metadata.update(exit_code=completed.returncode, timed_out=False)
+        completed.check_returncode()
+        return completed
+    except subprocess.TimeoutExpired as error:
+        stdout = error.stdout or ""
+        stderr = error.stderr or ""
+        if isinstance(stdout, bytes):
+            stdout = stdout.decode("utf-8", errors="replace")
+        if isinstance(stderr, bytes):
+            stderr = stderr.decode("utf-8", errors="replace")
+        metadata.update(exit_code=None, timed_out=True)
+        raise
+    finally:
+        metadata["wall_seconds"] = time.perf_counter() - started
+        prefix.with_suffix(".stdout.log").write_text(stdout, encoding="utf-8")
+        prefix.with_suffix(".stderr.log").write_text(stderr, encoding="utf-8")
+        prefix.with_suffix(".json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+
+
 def require_supported_environment():
     if not sys.platform.startswith("linux") or resource is None:
         raise SystemExit(
@@ -43,12 +75,17 @@ def main():
     env["PYTHONDONTWRITEBYTECODE"] = "1"
     begin = time.perf_counter()
     documented = []
+    logs = output / "raw-logs"
+    logs.mkdir(exist_ok=args.resume)
+    command_index = len(list(logs.glob("*.json")))
 
     def run(arguments, *, record=None):
+        nonlocal command_index
+        command_index += 1
         started = time.perf_counter()
-        completed = subprocess.run(
+        completed = run_logged(
             [sys.executable, *arguments], cwd=ROOT, env=env,
-            check=True, timeout=120, capture_output=True, text=True,
+            log_prefix=logs / f"command-{command_index:03d}", timeout=120,
         )
         if record is not None:
             documented.append({
@@ -159,7 +196,9 @@ def main():
     summary["invocation_child_cpu_seconds"] = usage.ru_utime + usage.ru_stime
     summary["invocation_cpu_seconds"] = time.process_time()
     summary["resumed"] = args.resume
-    summary["fresh_archive_extraction"] = not args.resume
+    summary["fresh_reproduction"] = not args.resume
+    # This entry runs a directory; it does not extract or attest an archive.
+    summary["fresh_archive_extraction"] = False
     summary["execution_environment"] = {
         "platform": "Linux",
         "python_implementation": sys.implementation.name,

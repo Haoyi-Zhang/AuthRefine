@@ -10,11 +10,61 @@ jobs:
       README_ENTRY: 'README.md'
       MIN_EXPECTED_PYTHON_SOURCES: '20'
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12'
       - name: Validate supplied materials and source/configuration syntax
         run: python .github/scripts/check_repository.py
+
+  scientific-campaign:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        seed: ['1729', '2718']
+        timezone: ['UTC', 'America/Los_Angeles']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONHASHSEED: ${{ matrix.seed }}
+      TZ: ${{ matrix.timezone }}
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      EVIDENCE: ${{ runner.temp }}/p020-evidence
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.13'
+      - name: Check release and reproduce every scientific family
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$EVIDENCE"
+          timeout 180s python verify_release.py --json 2>&1 | tee "$EVIDENCE/release.log"
+          timeout 300s python reproduce.py --output "$EVIDENCE/campaign" --compare results 2>&1 | tee "$EVIDENCE/campaign.log"
+          python - <<'PY' 2>&1 | tee "$EVIDENCE/output-contract.log"
+          import json, os
+          from pathlib import Path
+          import verify_release
+          report = verify_release.inspect_campaign_output(
+              Path(os.environ['EVIDENCE']) / 'campaign',
+              expected_seed=os.environ['PYTHONHASHSEED'],
+              expected_timezone=os.environ['TZ'],
+          )
+          print(json.dumps(report, indent=2))
+          PY
+      - name: Preserve raw logs and complete or partial scientific output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p020-seed-${{ matrix.seed }}-${{ strategy.job-index }}
+          path: ${{ runner.temp }}/p020-evidence
+          if-no-files-found: warn
+          retention-days: 14
