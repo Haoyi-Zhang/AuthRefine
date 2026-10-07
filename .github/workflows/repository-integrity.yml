@@ -18,6 +18,8 @@ jobs:
           python-version: '3.12'
       - name: Validate supplied materials and source/configuration syntax
         run: python .github/scripts/check_repository.py
+      - name: Check portable finite checker preparation regression
+        run: python -W error -m unittest discover -s tests -p test_prepared_checker.py -v
 
   scientific-campaign:
     runs-on: ubuntu-24.04

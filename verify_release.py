@@ -54,6 +54,7 @@ REQUIRED_FILES = (
     "proofs/semantics.md",
     "tests/test_core.py",
     "tests/test_release_cli.py",
+    "tests/test_prepared_checker.py",
     "src/adversarial_checks.py",
     "src/cases.py",
     "src/checker.py",

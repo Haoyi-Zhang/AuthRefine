@@ -115,6 +115,10 @@ def reference_step(p, state, request, valuation):
     old = {name: ((state // (2 ** i)) % 2 == 1) for i, (name, _) in enumerate(p['state'])}
     membership = {tuple(pair) for pair in p['members']}
     request_fields = dict(zip(('principal', 'resource', 'action'), request))
+    return _reference_step_prepared(p, state, request, valuation, old, membership, request_fields)
+
+def _reference_step_prepared(p, state, request, valuation, old, membership, request_fields):
+    # Checker-owned, invocation/cell-local preparation; never cache verdicts.
     decisions = []
     for position, rule in enumerate(p['rules']):
         truth_values = []
@@ -176,6 +180,7 @@ def verify(p, m, cert, budget=2_000_000):
         ensure(all(edge[1] in region for edge in m['transitions'][q]), 'certificate closure')
     count = 0; maximum_width = 0; cells = []
     filler = {name: item['candidates'][0] for name, item in aliases.items()}
+    membership = frozenset(tuple(pair) for pair in p['members'])
     for q in states:
         state = m['observations'][q]
         for index, request in enumerate(m['alphabet']):
@@ -185,10 +190,12 @@ def verify(p, m, cert, budget=2_000_000):
             for name in deps:
                 cases *= len(aliases[name]['candidates'])
             ensure(count + cases <= budget, 'checker obligation budget', 'inconclusive')
+            old = {name: ((state // (2 ** i)) % 2 == 1) for i, (name, _) in enumerate(p['state'])}
+            request_fields = dict(zip(('principal', 'resource', 'action'), request))
             for assignment in product(*(aliases[name]['candidates'] for name in deps)):
                 count += 1
                 valuation = dict(filler); valuation.update(zip(deps, assignment))
-                actual = reference_step(p, state, request, valuation)
+                actual = _reference_step_prepared(p, state, request, valuation, old, membership, request_fields)
                 edge = m['transitions'][q][index]
                 expected = (edge[0], m['observations'][edge[1]])
                 if actual != expected:

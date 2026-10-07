@@ -18,9 +18,21 @@ The proof notes also give the canonical observed-state quotient, an exact earlie
 
 `results/exhaustive.json` adds a third, direct source evaluator for a completely enumerated tiny domain. One representative is retained for each of 180 initialized source semantics (90 transition tables with both initial values) and crossed with all 128 total two-state targets in the declared target shape, for 23,040 pairs and 123,492 recorded comparisons. All local, product, symbolic, diagnostic, profile, and switching results agree. This is exhaustive only for the stated tiny family. `src/reference_check.py` separately validates the frozen bibliography inventory; the full project invocation also checks the current BibTeX, TeX citations, audit locations, and identifier distribution without network access.
 
+## Portable preparation regression
+
+The local checker prepares immutable membership once per validated invocation and a named old-state environment and request map once per cell. It still scans every guard, selects the earliest matching rule, and evaluates every admitted local binding with the same counters and budget preflight. The public `reference_step` interface prepares a fresh context for each call. No prepared verdict or policy-identity cache is shared with the producer, product search, or symbolic backend.
+
+The self-contained regression uses a test-local literal membership scan and Boolean-tuple Cartesian oracle, checks complete ordered reports and first-mismatch counters, simultaneous effects, all alias sorts, malformed evidence, and mutation between invocations. It reads no saved results and needs neither Linux resource accounting nor external programs:
+
+```sh
+python -W error -m unittest discover -s tests -p test_prepared_checker.py -v
+```
+
+This eight-method regression is discovered by the full suite and runs separately in the material-integrity workflow. It is bounded executable evidence, not a new theorem, full campaign, or speed measurement. The retained Linux campaigns and resource fields below precede preparation reuse and do not measure this implementation change.
+
 ## Reproduction
 
-The supported execution environment is CPython on Linux with the POSIX `resource` module. Four current CPython 3.13 Linux campaigns, crossing hash seeds 1729/2718 with UTC/America/Los_Angeles, completed all 10,000 primary records, 56 unit methods and seven documented commands. Scientific primary records match the retained data after excluding CPU and wall times. Their complete representative data set and per-environment logs are in `results/current`; whole-run wall times range from 25.26 to 43.78 seconds. These new runs do not reset the historical cumulative resource ledger. Native Windows does not provide `resource`; use a Linux container or WSL. No third-party Python package is required. `peak_rss_kib` is Linux `ru_maxrss` in KiB; CPU and wall-time fields are seconds and are excluded from scientific-record comparison.
+The supported full-reproduction environment is CPython on Linux with the POSIX `resource` module. Four retained CPython 3.13 Linux campaigns, crossing hash seeds 1729/2718 with UTC/America/Los_Angeles, completed all 10,000 primary records, the 56 unit methods recorded in those runs and seven documented commands. Scientific primary records match the retained data after excluding CPU and wall times. Their complete representative data set and per-environment logs are in `results/current`; whole-run wall times range from 25.26 to 43.78 seconds. Those runs do not reset the historical cumulative resource ledger. Native Windows does not provide `resource`; use a Linux container or WSL for full reproduction. No third-party Python package is required. `peak_rss_kib` is Linux `ru_maxrss` in KiB; CPU and wall-time fields are seconds and are excluded from scientific-record comparison.
 
 From this directory, the quick release check and the full deterministic matrix are:
 
@@ -29,7 +41,7 @@ python verify_release.py
 python verify_release.py --campaign
 ```
 
-The quick check verifies the supported platform, required scientific files, frozen-input paths and byte counts, JSON readability, the exact forty-chunk/10,000-record baseline shape, forty-nine policy/certificate/diagnostic examples by actual semantic replay, and the current 56 unit-test methods in ordinary and optimized modes. The retained Linux entry-check record covers the earlier 47-method suite, not the nine subsequently added regressions. It deliberately does **not** claim a whole-source-tree checksum or snapshot fingerprint.
+The quick check verifies the supported platform, required scientific files, frozen-input paths and byte counts, JSON readability, the exact forty-chunk/10,000-record baseline shape, forty-nine policy/certificate/diagnostic examples by actual semantic replay, and discovers the current unit-test methods in ordinary and optimized modes. The retained Linux entry-check record covers the earlier 47-method suite, not subsequent regressions. It deliberately does **not** claim a whole-source-tree checksum or snapshot fingerprint.
 
 The campaign command copies the artifact into an isolated temporary directory and runs four fresh, non-resumed reproductions: the Cartesian product of Python hash seeds 1729 and 2718 with `UTC` and `America/Los_Angeles`. Each invocation receives both a new `--output` directory and the copied frozen `results` directory through `--compare`. The verifier accepts a configuration only after the new output contains exactly forty JSONL chunks, forty metric files, 10,000 ordered primary records, and both `summary.json` and `reproduction.json` explicitly report scientific-field agreement with the baseline. A zero process return code without those files is a failure.
 
