@@ -1,6 +1,8 @@
 # Reproducibility Contract
 
-The artifact distinguishes four outcomes: verified equivalent, verified non-equivalent with a replayable witness, invalid input, and inconclusive because a declared work limit was exhausted. Inconclusive is never converted to semantic rejection.
+The list-free verifier distinguishes verified equivalent, verified non-equivalent with a replayable witness, invalid input, and inconclusive because a declared work limit was exhausted. The legacy region verifier can also reject evidence at an unreachable cell; use actual-reachability diagnosis before interpreting that as non-equivalence. Inconclusive is never converted to semantic rejection.
+
+The portable list-free tests and `src/baseline_checks.py` run on native Windows without `resource`. The new report `results/same_information.json` is a separate Windows semantic/interface comparison, not a Linux full reproduction or a replacement for historical timing/RSS. It preserves all original campaign files and the omission of eight wide complete-binding products. The 2,215-table diversity count applies to the generated 9,936-case cohort with the exact signature documented in that script. The ordinary BFS shares checker semantics and is not an independent evaluator. Full Linux reproduction below remains a separate obligation.
 
 ## Supported environment
 

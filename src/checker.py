@@ -4,6 +4,7 @@ No imports from the sentence parser, compiler, certificate producer, or adapter.
 All comparisons below concern the supplied finite data, not a live policy service.
 """
 from __future__ import annotations
+from collections import deque
 from itertools import product
 import json
 import unicodedata
@@ -168,6 +169,7 @@ def support(p, state, request):
     return sorted(set(dependencies))
 
 def verify(p, m, cert, budget=2_000_000):
+    """Legacy closed-region check; budget counts binding evaluations only."""
     ensure(integer(budget) and budget >= 0, 'checker obligation budget', 'inconclusive')
     aliases = inspect_policy(p)
     inspect_machine(p, m)
@@ -207,6 +209,141 @@ def verify(p, m, cert, budget=2_000_000):
     return {'accepted': True, 'states': len(states), 'local_cells': len(cells),
             'binding_evaluations': count, 'maximum_width': maximum_width, 'cells': cells}
 
+class _ReachableWork:
+    """Declared traversal/preparation/node charges, not CPU instructions.
+
+    Schema validation is separately bounded by the existing input envelopes.
+    Semantic node charges conservatively include all effects, even unselected ones.
+    """
+    def __init__(self, limit):
+        ensure(integer(limit) and limit >= 0, 'reachable work budget', 'inconclusive')
+        self.limit = limit
+        self.total = 0
+        self.parts = {}
+
+    def charge(self, amount, category):
+        if self.total + amount > self.limit:
+            error = Rejected('reachable work budget', 'inconclusive')
+            error.work_operations = self.total
+            error.work_breakdown = dict(self.parts)
+            raise error
+        self.total += amount
+        self.parts[category] = self.parts.get(category, 0) + amount
+
+def _reachable_support(p, old, request_fields, membership):
+    dependencies = set()
+    for rule in p['rules']:
+        viable = True
+        for atom in rule['guard']:
+            if 'alias' in atom:
+                continue
+            field = atom['field']
+            if field == 'state':
+                truth = old[atom['name']] == atom['value']
+            else:
+                truth = ((request_fields['principal'], atom['name']) in membership
+                         if field == 'role' else request_fields[field] == atom['name'])
+                truth = truth != atom['negated']
+            viable = viable and truth
+        if viable:
+            dependencies.update(atom['alias'] for atom in rule['guard'] if 'alias' in atom)
+    return sorted(dependencies)
+
+def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=False):
+    """Verify and diagnose by FIFO BFS, without a producer-supplied state list.
+
+    Same full-state/Cartesian criterion as verify with the exact reachable region.
+    Store one predecessor per discovered target state; reconstruct only a failed
+    path. Invalid data and exhausted caps raise Rejected; completed comparisons
+    return accepted/equivalent plus a shortest fixed-binding witness if negative.
+    The legacy budget remains a binding-evaluation cap. work_budget additionally
+    bounds declared preparation, traversal, support, evaluation and replay work.
+    """
+    ensure(integer(budget) and budget >= 0, 'checker obligation budget', 'inconclusive')
+    ensure(type(details) is bool, 'reachable details flag')
+    work = _ReachableWork(work_budget)
+    aliases = inspect_policy(p)
+    inspect_machine(p, m, compare_initial=False)
+    first = m['initial']
+    start = sum(2 ** i for i, (_, value) in enumerate(p['state']) if value)
+    count = maximum_width = cells_checked = 0
+    parents = {first: None}
+    cells = [] if details else None
+
+    def result(accepted, **witness):
+        report = {'accepted': accepted, 'equivalent': accepted,
+                  'status': 'equivalent' if accepted else 'mismatch',
+                  'states_discovered': len(parents), 'local_cells': cells_checked,
+                  'binding_evaluations': count, 'maximum_width': maximum_width,
+                  'work_operations': work.total, 'work_budget': work.limit,
+                  'work_breakdown': dict(sorted(work.parts.items())), **witness}
+        if details:
+            report['cells'] = cells
+        return report
+
+    if m['observations'][first] != start:
+        return result(False, length=0, indices=[], trace=[],
+                      binding={name: a['candidates'][0] for name, a in aliases.items()},
+                      reason='initial observation')
+    work.charge(1 + len(p['members']) + len(aliases), 'invocation_preparation')
+    membership = frozenset(tuple(pair) for pair in p['members'])
+    filler = {name: a['candidates'][0] for name, a in aliases.items()}
+    support_nodes = sum(1 + len(r['guard']) for r in p['rules'])
+    semantic_nodes = sum(1 + len(r['guard']) + len(r['updates']) for r in p['rules'])
+    queue = deque([first])
+    while queue:
+        q = queue.popleft()
+        state = m['observations'][q]
+        work.charge(1 + len(p['state']), 'state_preparation')
+        old = {name: bool((state >> i) & 1) for i, (name, _) in enumerate(p['state'])}
+        for index, request in enumerate(m['alphabet']):
+            work.charge(4 + 2 * support_nodes, 'cell_support')
+            request_fields = dict(zip(('principal', 'resource', 'action'), request))
+            deps = _reachable_support(p, old, request_fields, membership)
+            maximum_width = max(maximum_width, len(deps))
+            cases = 1
+            for name in deps:
+                cases *= len(aliases[name]['candidates'])
+            ensure(count + cases <= budget, 'checker obligation budget', 'inconclusive')
+            decision, successor = m['transitions'][q][index]
+            expected = (decision, m['observations'][successor])
+            cells_checked += 1
+            for values in product(*(aliases[name]['candidates'] for name in deps)):
+                work.charge(1 + len(aliases) + len(deps) + semantic_nodes + len(p['state']),
+                            'binding_semantics')
+                binding = dict(filler)
+                binding.update(zip(deps, values))
+                count += 1
+                actual = _reference_step_prepared(p, state, request, binding, old, membership, request_fields)
+                if actual != expected:
+                    prefix = []
+                    cursor = q
+                    while parents[cursor] is not None:
+                        work.charge(1, 'path_reconstruction')
+                        cursor, edge_index = parents[cursor]
+                        prefix.append(edge_index)
+                    indices = list(reversed(prefix)) + [index]
+                    source, target, trace = start, first, []
+                    for edge_index in indices:
+                        work.charge(1 + len(p['members']) + 2 * len(p['state']) + semantic_nodes,
+                                    'witness_replay')
+                        d, post = reference_step(p, source, m['alphabet'][edge_index], binding)
+                        md, target = m['transitions'][target][edge_index]
+                        trace.append({'request': m['alphabet'][edge_index], 'source': [d, post],
+                                      'target': [md, m['observations'][target]]})
+                        source = post
+                    ensure(all(row['source'] == row['target'] for row in trace[:-1])
+                           and trace[-1]['source'] != trace[-1]['target'], 'reachable replay invariant')
+                    return result(False, length=len(indices), indices=indices, binding=binding, trace=trace)
+            if details:
+                work.charge(1 + len(deps), 'cell_reporting')
+                cells.append({'state': q, 'request': index, 'support': deps, 'bindings': cases})
+            work.charge(1, 'graph_edges')
+            if successor not in parents:
+                parents[successor] = (q, index)
+                queue.append(successor)
+    return result(True, length=None)
+
 def load(path):
     bound = 32 * 1024 * 1024
     with Path(path).open('rb') as stream:
@@ -225,13 +362,20 @@ def load(path):
 
 if __name__ == '__main__':
     import argparse
-    parser = argparse.ArgumentParser(description='Check a typed policy, automaton, and closed-state certificate.')
-    parser.add_argument('policy'); parser.add_argument('machine'); parser.add_argument('certificate')
+    parser = argparse.ArgumentParser(description='Check finite full-state refinement; a closed-state certificate is optional.')
+    parser.add_argument('policy'); parser.add_argument('machine'); parser.add_argument('certificate', nargs='?')
+    parser.add_argument('--work-budget', type=int, default=2_000_000,
+                        help='declared work cap for list-free mode (legacy certificate mode counts only binding evaluations)')
     args = parser.parse_args()
     try:
-        result = verify(load(args.policy), load(args.machine), load(args.certificate))
-        result.pop('cells')
+        if args.certificate is None:
+            result = verify_reachable(load(args.policy), load(args.machine), work_budget=args.work_budget)
+        else:
+            result = verify(load(args.policy), load(args.machine), load(args.certificate))
+            result.pop('cells')
         print(json.dumps(result, indent=2))
+        if not result['accepted']:
+            raise SystemExit(1)
     except (Rejected, ValueError, TypeError, KeyError, OverflowError, RecursionError, OSError) as error:
         kind = error.kind if isinstance(error, Rejected) else 'invalid'
         print(json.dumps({'accepted': None if kind == 'inconclusive' else False, 'status': kind, 'reason': str(error)}))

@@ -50,8 +50,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$EVIDENCE"
-          timeout 180s python verify_release.py --json 2>&1 | tee "$EVIDENCE/release.log"
-          timeout 300s python reproduce.py --output "$EVIDENCE/campaign" --compare results 2>&1 | tee "$EVIDENCE/campaign.log"
+          timeout --kill-after=10s 180s python verify_release.py --json 2>&1 | tee "$EVIDENCE/release.log"
+          timeout --kill-after=10s 300s python reproduce.py --output "$EVIDENCE/campaign" --compare results 2>&1 | tee "$EVIDENCE/campaign.log"
           python - <<'PY' 2>&1 | tee "$EVIDENCE/output-contract.log"
           import json, os
           from pathlib import Path
@@ -62,6 +62,35 @@ jobs:
               expected_timezone=os.environ['TZ'],
           )
           print(json.dumps(report, indent=2))
+          PY
+      - name: Recompute the same-information comparison into fresh evidence
+        env:
+          EVIDENCE: ${{ runner.temp }}/p020-evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$EVIDENCE"
+          timeout --kill-after=10s 180s python -W error src/baseline_checks.py --output "$EVIDENCE/same-information.json" --repeats 7 2>&1 | tee "$EVIDENCE/same-information.log"
+          python - <<'PY' 2>&1 | tee "$EVIDENCE/same-information-contract.log"
+          import json, os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['EVIDENCE']) / 'same-information.json').read_text())
+          records = report['records']
+          methods = ('region_with_production', 'ordinary_bfs', 'reachable_compact', 'reachable_detailed')
+          checks = {
+              'completed_comparison': report.get('status') == 'pass',
+              'ordered_primary_records': [row['case'] for row in records] == [f'case-{i:05d}' for i in range(10000)],
+              'main_workflow_cases': report['totals']['completed_cases'] == 9985,
+              'executed_product_cases': report['totals']['product_cases'] == 9977,
+              'retained_negative_branch': report['negative_evidence_records_retained'] == 15,
+              'all_retained_examples': len(report['examples']) == 49,
+              'all_declared_widths': [row['aliases'] for row in report['width']] == list(range(1, 17)),
+              'seven_samples_each': all(len(report['timing_49_examples'][method]['seconds']) == 7 for method in methods),
+              'public_projection_agreement': report['public']['all_agree'] is True,
+          }
+          print(json.dumps(checks, indent=2))
+          if not all(checks.values()):
+              raise ValueError('incomplete same-information comparison output')
           PY
       - name: Preserve raw logs and complete or partial scientific output
         if: always()

@@ -55,7 +55,7 @@ Choose a fixed filler binding beta0. Any assignment alpha to D extends to a comp
 
 ## 5. Closed-state certificates
 
-A certificate is a finite set C of target state identifiers. Check structural validity, then the following obligations:
+An optional region certificate is a finite set C of target state identifiers. Check structural validity, then the following obligations:
 
 - q0 is in C, and delta(q,x) is in C for every q in C and x in X.
 - nu(q0)=s0.
@@ -71,7 +71,7 @@ The certificate needs O(|Q| log |Q|) bits for state identifiers, but its verific
 
 which is at most |C||X|b^w. Empty support contributes one evaluation. Structural validation, support discovery, source evaluation and representation allocation have additional polynomial costs. The explicit target can already be exponential in the number of source bits.
 
-A bounded implementation reports resource-inconclusive before exceeding its enumeration envelope. That outcome is not rejection of the ideal predicate, and relative completeness does not promise that an unlimited finite input fits a fixed operational budget.
+A bounded implementation reports resource-inconclusive before exceeding its enumeration envelope. That outcome is not rejection of the ideal predicate, and relative completeness does not promise that an unlimited finite input fits a fixed operational budget. The state list is not necessary when M's table is supplied: ordinary BFS discovers Reach(M) and checks the same equations. For a completed check with a BFS-ordered exact region, the local binding-evaluation counts are identical. Both BFS edge traversal and supplied-region closure checking require O(|Reach(M)||X|) work. There is no certificate-induced semantic or asymptotic gain in that comparison.
 
 ## 6. Globally shortest distinguishing traces
 
@@ -224,3 +224,11 @@ The enumerated source domain has one principal, resource, action, request, and B
 The target domain contains every total two-state, one-request machine with arbitrary binary observations, either initial state, and either decision and successor at each state. There are 128 such tables. Crossing all source representatives and targets gives 23,040 pairs. Direct search classifies 984 as uniformly equivalent and 22,056 as different. The minimum disagreements have lengths zero in 11,520 pairs, one in 10,176, and two in 360. For every pair, the local certificate checker, complete-binding product, symbolic backend, and public diagnostic agree with the direct verdict; all three reporting a minimum length agree with direct breadth-first search. Per-binding profiles agree on 43,776 bindings, and switching search agrees on all pairs. The audit records 123,492 comparisons in total.
 
 This result is complete only for the declared tiny family and selected rule templates. It is stronger than random testing inside that family but neither enumerates the bounded experimental grammar nor proves the host implementation. The mathematical theorems remain the basis for claims over the general finite model.
+
+## 20. List-free verification and the same-information control
+
+`verify_reachable` checks initial equality and then performs FIFO BFS over target states, applying the local-support equation at each discovered cell. A successor is queued only after its cell passes. Every target state of smaller distance is processed before a state of larger distance. Thus the first failed cell has minimum bad-cell distance, and Section 6 supplies one complete binding whose stored target prefix is replayable and globally shortest. A successful traversal checks precisely Reach(M); Section 5 supplies uniform equivalence. This is a specialization of those existing arguments, not a new hidden-state theorem.
+
+The implementation retains one predecessor per discovered target state rather than copying entire prefixes. It prepares named old state per visited state and immutable membership per invocation; it keeps no verdict cache between calls. Compact output is the default. A separate work cap precharges invocation/state preparation, support scans, graph edges, binding contexts and conservative semantic nodes, path reconstruction, replay, and optional cell reporting. Semantic charges include unselected effects; they are declared units, not exact processor operations. JSON and schema validation are outside this cap. Inconclusive replay is not exposed as a completed counterexample. The legacy region API and its binding-only budget remain compatible.
+
+`baseline_checks.py` supplies ordinary BFS using the same observations, support and reference step but no state list. It agrees with both interfaces on 49 retained examples and 9,985 main-workflow cases; each performs 54,398 local binding evaluations. Executed complete-binding products cover 9,977 cases, with eight wide cases still omitted. The separate diversity audit checks every initialized full one-step table of the 9,936 generated policies, including unreachable states and the named binding interface: 2,215 distinct tables versus 9,772 distinct ASTs, with maximum table multiplicity 791 and 139,088 compiler/reference step comparisons. Neither that count nor the close local timing samples establish novelty, native-engine compatibility, representative coverage, or a hidden-state result.

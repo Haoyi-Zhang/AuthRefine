@@ -1,10 +1,28 @@
-# Trace-refinement certificates
+# Uniform trace checking
 
-This artifact implements a finite controlled authorization language, a compiler, semantic reification, a standalone closed-state checker, shortest-trace diagnosis, two algorithmic cross-checks, and executable reference constructions for the paper's derived characterizations. It includes the consumed public example inputs, deterministic generators, all measured case records, an adversarial repair campaign, and proof notes. No network access is needed to reproduce the evidence.
+This artifact implements a finite controlled authorization language, a compiler, semantic reification, full-state trace checking with an optional closed-region list, shortest-trace diagnosis, algorithmic cross-checks, and the derived finite constructions. It includes frozen public inputs, deterministic generators, measured records, and proof notes. No network access is needed to reproduce the evidence.
 
 ## Meaning of a certificate
 
-A reference binding is chosen once and held fixed for the whole execution. A target transition exposes its decision and the complete named Boolean post-state; the initial state is observed too. Acceptance means equivalence to the target for **every** admitted binding, not merely to the compiler's default binding. Under complete observations, that positive result also implies switching closure; the declared source semantics and counterexample replay still use one fixed binding. The closed-state checker recomputes each obligation from typed data. It imports neither the parser nor the compiler.
+A reference binding is chosen once and held fixed for the whole execution. A target transition exposes its decision and complete named Boolean post-state; the initial state is observed too. Acceptance means equivalence for every admitted binding, not just the compiler's default. Full-state uniformity also implies switching closure, while counterexample replay identifies one fixed binding. Both checker interfaces recompute obligations from typed data and import neither parser nor compiler. The state list carries no additional semantics when it is exact reachability: ordinary BFS can discover that region from the supplied table.
+
+## List-free interface and same-information comparison
+
+`checker.verify_reachable(policy, machine)` combines FIFO target BFS, local quantification, and shortest fixed-binding replay. It stores one predecessor per discovered state and returns a compact report; `details=True` opts into cell records. A completed comparison returns `accepted`/`equivalent`, with a minimum-length witness if negative. Invalid input and budget exhaustion raise `Rejected` with `kind="invalid"` or `"inconclusive"`.
+
+The compatible `verify(policy, machine, certificate)` still checks an arbitrary supplied closed region, preserves report ordering/counters, and rejects malformed certificates. Its `budget` counts binding evaluations only. The new interface retains that cap and adds `work_budget` (default 2,000,000), charging preparation, graph edges, support scans, binding contexts, conservative semantic-node visits, path reconstruction, replay, and optional cell reporting before the work. Unselected effects are conservatively charged. JSON decoding and schema validation remain outside this counter; no CPU, memory, or lifetime-budget guarantee follows. Exhaustion during replay withholds the witness.
+
+The certificate argument is optional on the CLI:
+
+```sh
+python src/checker.py results/examples/case-00000/policy.json results/examples/case-00000/automaton.json
+python -W error -m unittest discover -s tests -p test_reachable_checker.py -v
+python src/baseline_checks.py --output ../same-information-new.json --repeats 7
+```
+
+The portable comparison in `results/same_information.json` confirms identical verdicts, shortest lengths, and 54,398 local binding evaluations per method on 9,985 main-workflow cases. Complete-binding products execute on 9,977; eight wide products remain omitted. All 49 retained examples agree (34 equivalent, 15 different). The ordinary BFS shares the region checker's support and reference semantics, so it isolates the state list rather than adding independent semantic evidence. The comparison also checks 139,088 compiler/reference one-step tuples for the 9,936 generated policies. Their 9,772 distinct ASTs yield only **2,215 distinct initialized one-step tables**, with maximum semantic multiplicity 791. The signature includes state names/initializer, named requests, alias names/sorts/candidates, and the complete decision/post-state table, including unreachable states; this is not trace minimization or a count for all 10,000 records.
+
+Seven rotated-order 49-example wall-time samples on Windows CPython 3.12.14 have medians 59.32/61.14/60.63/63.44 ms for region production plus checking, ordinary BFS, compact list-free checking, and detailed list-free checking. They do not establish a speed advantage. Region timing checks a verdict, ordinary BFS also returns shortest length, and list-free timing includes witness replay; these are interface costs, not equal-output end-to-end throughput. The new aggregate 2,027,890 charged work units sum separate invocations and are distinct from the historical operation ledger and each invocation's cap. Removing required list transport, retaining compact output, and charging more work close implementation/interface defects; they do not establish a research contribution beyond functional refinement and BFS.
 
 This is a finite mathematical interface, not unrestricted prose, a deployed policy engine, or a guarantee that the underlying authorization requirements are desirable. The proofs describe the algorithms; there is no proof-assistant extraction of the executable source. The product oracle shares the checker's reference interpreter, while the symbolic backend supplies separate semantic construction and shares structural validation. This is not three independent implementations of the entire system.
 
@@ -41,7 +59,7 @@ python verify_release.py
 python verify_release.py --campaign
 ```
 
-The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. It discovers and runs the unit-test methods in ordinary and optimized modes.
+The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. It discovers and runs the current 71 unit-test methods in ordinary and optimized modes; the 56-method count above describes the retained earlier Linux runs, not current discovery.
 
 The campaign command copies the artifact into an isolated temporary directory and runs four fresh, non-resumed reproductions: the Cartesian product of Python hash seeds 1729 and 2718 with `UTC` and `America/Los_Angeles`. Each invocation receives both a new `--output` directory and the copied frozen `results` directory through `--compare`. The verifier accepts a configuration only after the new output contains exactly forty JSONL chunks, forty metric files, 10,000 ordered primary records, and both `summary.json` and `reproduction.json` explicitly report scientific-field agreement with the baseline. A zero process return code without those files is a failure.
 
@@ -55,7 +73,15 @@ python reproduce.py --output ../reproduced --compare results
 
 That command repeats the current unit suite, the offline 58-reference inventory check, the 52-case pilot, the 3,330 original auxiliary cases, the 592 extension cross-checks, the 1,024 adversarial cases, the 23,040-pair complete tiny-domain audit, and all 10,000 primary cases in forty chunks of 250. Up to ten sequential chunks share one worker process; each worker still has a 120-second timeout. It regenerates the summary and compares every primary, pilot, auxiliary, extension, adversarial, exhaustive-audit, and reference-integrity record against the delivered evidence after removing only timing and Linux RSS fields. The same invocation reruns the seven documented inspection/example commands in temporary destinations and records their exit status. Every child command also retains complete stdout, stderr, timeout and exit information in the output's `raw-logs/`, including on failure. `fresh_reproduction` describes a new non-resumed output; the entry point does not extract an archive and records `fresh_archive_extraction` as false.
 
-The supplied Linux workflow runs the quick checks and one complete fresh reproduction for each of the four documented hash-seed/time-zone configurations, sequentially. It bounds the quick check at 180 seconds and each full reproduction at 300 seconds, while keeping the 120-second child-command limits. It checks the materialized output contract and uploads complete or partial raw data and logs with `if: always()`. Workflow configuration is not an executed scientific result; completion must be established by its uploaded output and successful checks.
+The `scientific-campaign` job in `.github/workflows/repository-integrity.yml` uses Ubuntu 24.04 and CPython 3.13. Its four hash-seed/time-zone configurations run sequentially, with matrix fail-fast disabled. Each configuration runs the quick check, one complete fresh reproduction, and the current same-information CLI:
+
+```sh
+python verify_release.py --json
+python reproduce.py --output "$EVIDENCE/campaign" --compare results
+python -W error src/baseline_checks.py --output "$EVIDENCE/same-information.json" --repeats 7
+```
+
+CI sets `EVIDENCE` to a fresh runner-temporary directory outside the checkout; both generated destinations must be new, and saved `results` are read rather than overwritten. The quick check and same-information command each have a 180-second timeout; full reproduction has 300 seconds, with a further 10-second forced-termination allowance and the existing 120-second child-command limits. Each matrix job is capped at 15 minutes. Bash pipeline failures propagate through log capture. The job checks both materialized output contracts and uploads complete or partial raw data and logs with `if: always()`. The same-information comparison retains the fifteen negative-evidence branches and explicitly omits eight wide complete-binding products, as documented above; these are not newly passing product checks. A failed check fails its job, and downstream scientific steps are not reported as executed. Workflow configuration is not an executed scientific result; completion must be established by its uploaded output and successful checks. The 25.26--43.78-second observations above describe historical campaigns, not a guaranteed CI duration or timings for the repaired implementation.
 
 A deliberately interrupted campaign can be continued with the same output path and `--resume`. Incomplete chunk pairs are not silently replaced. A resumed invocation's elapsed and child-CPU measurements describe that invocation, not earlier processes. `results/clean_reproduction.json` is retained as an earlier code-frozen reconstruction record; it is not used as a substitute for the materialized-output checks performed by the current release entry point. The primary measurement tables come from `results/summary.json` and its raw chunks.
 

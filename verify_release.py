@@ -53,6 +53,8 @@ REQUIRED_FILES = (
     "tests/test_core.py",
     "tests/test_release_cli.py",
     "tests/test_prepared_checker.py",
+    "tests/test_reachable_checker.py",
+    "src/baseline_checks.py",
     "src/adversarial_checks.py",
     "src/cases.py",
     "src/checker.py",
@@ -78,6 +80,7 @@ REQUIRED_FILES = (
     "results/adversarial.json",
     "results/exhaustive.json",
     "results/reference_verification.json",
+    "results/same_information.json",
     "results/pilot/pilot.json",
     "results/reproducibility_entry_check.json",
 )
