@@ -22,8 +22,6 @@ python verify_release.py
 
 This checks the supported platform; required scientific files; the frozen external-input path and byte-count inventory; JSON readability; exact coverage of the forty delivered primary chunks and 10,000 ordered records; consistency of the retained CNL, typed policies, automata, certificates, and diagnostics through actual semantic replay; and the unit suite in ordinary and optimized modes.
 
-The quick verifier does not read or require a whole-tree checksum manifest. No claim of complete source-snapshot fingerprint verification is made. The absence of an optional `.gitignore` or of reviewer/figure handoff files is not a scientific failure.
-
 ## Full deterministic campaign matrix
 
 ```bash

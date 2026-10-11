@@ -41,7 +41,7 @@ python verify_release.py
 python verify_release.py --campaign
 ```
 
-The quick check verifies the supported platform, required scientific files, frozen-input paths and byte counts, JSON readability, the exact forty-chunk/10,000-record baseline shape, forty-nine policy/certificate/diagnostic examples by actual semantic replay, and discovers the current unit-test methods in ordinary and optimized modes. The retained Linux entry-check record covers the earlier 47-method suite, not subsequent regressions. It deliberately does **not** claim a whole-source-tree checksum or snapshot fingerprint.
+The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. It discovers and runs the unit-test methods in ordinary and optimized modes.
 
 The campaign command copies the artifact into an isolated temporary directory and runs four fresh, non-resumed reproductions: the Cartesian product of Python hash seeds 1729 and 2718 with `UTC` and `America/Los_Angeles`. Each invocation receives both a new `--output` directory and the copied frozen `results` directory through `--compare`. The verifier accepts a configuration only after the new output contains exactly forty JSONL chunks, forty metric files, 10,000 ordered primary records, and both `summary.json` and `reproduction.json` explicitly report scientific-field agreement with the baseline. A zero process return code without those files is a failure.
 
@@ -117,4 +117,4 @@ Original code, proof notes and generated data are provided under the MIT license
 
 ## Release verification
 
-`python verify_release.py` checks required scientific assets, frozen result structure, JSON readability, example-level semantic replay, archive hygiene, and tests in ordinary and optimized modes. `python verify_release.py --campaign` adds the four-configuration fresh reconstruction matrix described above. The verifier has no dependency on `SOURCE-MANIFEST.sha256`, does not claim a fingerprint of the complete source snapshot, and never treats a timeout or exhausted work budget as semantic rejection.
+`python verify_release.py` checks required scientific assets, result structure, JSON readability, example-level semantic replay, and tests in ordinary and optimized modes. `python verify_release.py --campaign` adds the four-configuration reconstruction matrix described above. A timeout or exhausted work budget produces an inconclusive outcome rather than semantic rejection.

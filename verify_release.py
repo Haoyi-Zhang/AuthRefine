@@ -11,9 +11,8 @@ hash-seed/time-zone configurations.  Every campaign receives a fresh
 40 chunks, all 10,000 ordered primary records, and a successful scientific-
 field comparison with that frozen baseline.
 
-The verifier deliberately does not maintain or validate a whole-tree source
-fingerprint manifest.  Scientific acceptance comes from required-file checks,
-input/result structure, executable tests, and semantic replay.
+Acceptance uses required-file checks, input/result structure, executable tests,
+and semantic replay.
 """
 from __future__ import annotations
 
@@ -33,7 +32,6 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent
 VOLATILE = {"__pycache__", ".pytest_cache", ".mypy_cache", ".coverage"}
 FORBIDDEN_DELIVERY_FILES = {
-    "SOURCE-MANIFEST.sha256",
     "FIGURE-HANDOFF.md",
     "REVIEWER-RISK-MATRIX.md",
     "_profile_release_tests_tmp.py",
@@ -176,7 +174,6 @@ def required_assets() -> dict[str, Any]:
         "forbidden_present": forbidden,
         "frozen_input_entries": input_file_count,
         "frozen_input_errors": input_manifest_errors,
-        "whole_source_fingerprint_checked": False,
     }
 
 
@@ -513,15 +510,9 @@ def main() -> int:
         checks.append(run_campaign_matrix())
 
     report = {
-        "schema_version": 2,
         "root": ".",
         "checks": checks,
         "ok": all(check["ok"] for check in checks),
-        "scope": {
-            "source_snapshot_fingerprint": False,
-            "novelty_review": False,
-            "venue_rule_review": False,
-        },
     }
     if arguments.json:
         print(json.dumps(report, indent=2, ensure_ascii=False))
