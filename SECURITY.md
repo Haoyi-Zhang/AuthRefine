@@ -8,6 +8,12 @@ The parser and compiler-independent checker validate schemas, finite domains, in
 
 JSON decoding, filesystem access, and process limits remain part of the host-language trusted computing base. Run the artifact in a resource-limited process when evaluating untrusted files. The code does not require network access for any scientific result. The optional reference-resolution audit is documentary metadata validation and is not used by the checker.
 
+Opt-in repeated-observation reuse stores only cells universally checked within
+one invocation. Every target edge is still compared, complete post-state equality
+and replay guards are retained, and no result crosses calls. Inputs must remain
+fixed during a check. Lookup/storage are charged, but the added cache is not an
+independent process-memory bound. Default and legacy region behavior are unchanged.
+
 ## Non-claims
 
 A passing certificate does not prove that a deployed enforcement point cannot be bypassed, that a state decoder is faithful to live memory, that requests are serialized atomically, that external role data is current, or that unrestricted prose was translated as its author intended. Those are separate integration obligations.

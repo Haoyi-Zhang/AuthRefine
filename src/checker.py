@@ -249,7 +249,8 @@ def _reachable_support(p, old, request_fields, membership):
             dependencies.update(atom['alias'] for atom in rule['guard'] if 'alias' in atom)
     return sorted(dependencies)
 
-def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=False):
+def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=False,
+                     reuse_observations=False):
     """Verify and diagnose by FIFO BFS, without a producer-supplied state list.
 
     Same full-state/Cartesian criterion as verify with the exact reachable region.
@@ -258,9 +259,13 @@ def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=Fals
     return accepted/equivalent plus a shortest fixed-binding witness if negative.
     The legacy budget remains a binding-evaluation cap. work_budget additionally
     bounds declared preparation, traversal, support, evaluation and replay work.
+    Optional reuse stores only universally checked source-cell outputs within
+    this invocation. Every target edge is still compared and traversed. The
+    binding cap counts the same logical obligations; physical calls are separate.
     """
     ensure(integer(budget) and budget >= 0, 'checker obligation budget', 'inconclusive')
     ensure(type(details) is bool, 'reachable details flag')
+    ensure(type(reuse_observations) is bool, 'reachable reuse flag')
     work = _ReachableWork(work_budget)
     aliases = inspect_policy(p)
     inspect_machine(p, m, compare_initial=False)
@@ -269,6 +274,8 @@ def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=Fals
     count = maximum_width = cells_checked = 0
     parents = {first: None}
     cells = [] if details else None
+    proved_cells = {} if reuse_observations else None
+    physical_evaluations = reuse_hits = 0
 
     def result(accepted, **witness):
         report = {'accepted': accepted, 'equivalent': accepted,
@@ -279,6 +286,9 @@ def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=Fals
                   'work_breakdown': dict(sorted(work.parts.items())), **witness}
         if details:
             report['cells'] = cells
+        if reuse_observations:
+            report.update(physical_binding_evaluations=physical_evaluations,
+                          reused_cells=reuse_hits, reuse_entries=len(proved_cells))
         return report
 
     if m['observations'][first] != start:
@@ -297,9 +307,17 @@ def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=Fals
         work.charge(1 + len(p['state']), 'state_preparation')
         old = {name: bool((state >> i) & 1) for i, (name, _) in enumerate(p['state'])}
         for index, request in enumerate(m['alphabet']):
-            work.charge(4 + 2 * support_nodes, 'cell_support')
-            request_fields = dict(zip(('principal', 'resource', 'action'), request))
-            deps = _reachable_support(p, old, request_fields, membership)
+            cached = None
+            if reuse_observations:
+                work.charge(1, 'reuse_lookup')
+                cached = proved_cells.get((state, index))
+            if cached is None:
+                work.charge(4 + 2 * support_nodes, 'cell_support')
+                request_fields = dict(zip(('principal', 'resource', 'action'), request))
+                deps = _reachable_support(p, old, request_fields, membership)
+            else:
+                deps = cached[1]
+                reuse_hits += 1
             maximum_width = max(maximum_width, len(deps))
             cases = 1
             for name in deps:
@@ -308,13 +326,27 @@ def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=Fals
             decision, successor = m['transitions'][q][index]
             expected = (decision, m['observations'][successor])
             cells_checked += 1
-            for values in product(*(aliases[name]['candidates'] for name in deps)):
-                work.charge(1 + len(aliases) + len(deps) + semantic_nodes + len(p['state']),
-                            'binding_semantics')
+            # A stored output was checked for every admitted binding at this
+            # complete observation/request, not just a producer-selected binding.
+            # A different target output still fails at this exact BFS cell.
+            values_to_check = (() if cached is not None and cached[0] == expected else
+                               product(*(aliases[name]['candidates'] for name in deps)))
+            if cached is not None and cached[0] == expected:
+                count += cases
+            for values in values_to_check:
+                if cached is None:
+                    work.charge(1 + len(aliases) + len(deps) + semantic_nodes + len(p['state']),
+                                'binding_semantics')
+                else:
+                    work.charge(1 + len(aliases) + len(deps), 'reuse_witness_binding')
                 binding = dict(filler)
                 binding.update(zip(deps, values))
                 count += 1
-                actual = _reference_step_prepared(p, state, request, binding, old, membership, request_fields)
+                if cached is None:
+                    physical_evaluations += 1
+                    actual = _reference_step_prepared(p, state, request, binding, old, membership, request_fields)
+                else:
+                    actual = cached[0]
                 if actual != expected:
                     prefix = []
                     cursor = q
@@ -335,6 +367,9 @@ def verify_reachable(p, m, budget=2_000_000, work_budget=2_000_000, details=Fals
                     ensure(all(row['source'] == row['target'] for row in trace[:-1])
                            and trace[-1]['source'] != trace[-1]['target'], 'reachable replay invariant')
                     return result(False, length=len(indices), indices=indices, binding=binding, trace=trace)
+            if reuse_observations and cached is None:
+                work.charge(1 + len(deps), 'reuse_storage')
+                proved_cells[(state, index)] = (expected, deps)
             if details:
                 work.charge(1 + len(deps), 'cell_reporting')
                 cells.append({'state': q, 'request': index, 'support': deps, 'bindings': cases})
@@ -366,11 +401,15 @@ if __name__ == '__main__':
     parser.add_argument('policy'); parser.add_argument('machine'); parser.add_argument('certificate', nargs='?')
     parser.add_argument('--work-budget', type=int, default=2_000_000,
                         help='declared work cap for list-free mode (legacy certificate mode counts only binding evaluations)')
+    parser.add_argument('--reuse-observations', action='store_true',
+                        help='list-free only: reuse universally checked cells within this invocation')
     args = parser.parse_args()
     try:
         if args.certificate is None:
-            result = verify_reachable(load(args.policy), load(args.machine), work_budget=args.work_budget)
+            result = verify_reachable(load(args.policy), load(args.machine), work_budget=args.work_budget,
+                                      reuse_observations=args.reuse_observations)
         else:
+            ensure(not args.reuse_observations, 'reuse requires list-free mode')
             result = verify(load(args.policy), load(args.machine), load(args.certificate))
             result.pop('cells')
         print(json.dumps(result, indent=2))

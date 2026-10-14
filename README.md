@@ -26,6 +26,38 @@ Seven rotated-order 49-example wall-time samples on Windows CPython 3.12.14 have
 
 This is a finite mathematical interface, not unrestricted prose, a deployed policy engine, or a guarantee that the underlying authorization requirements are desirable. The proofs describe the algorithms; there is no proof-assistant extraction of the executable source. The product oracle shares the checker's reference interpreter, while the symbolic backend supplies separate semantic construction and shares structural validation. This is not three independent implementations of the entire system.
 
+## Optional repeated-observation reuse
+
+`checker.verify_reachable(policy, machine, reuse_observations=True)` reuses a
+universally checked source cell only within that invocation, while comparing
+and traversing every target edge. The default remains non-reusing. The complete
+semantic report, shortest fixed-binding replay and optional ordered cell records
+are unchanged; opt-in accounting additionally separates physical reference calls
+from the original logical binding-cap obligations. Cache lookup/storage and replay
+remain subject to the declared work cap. Inputs must be fixed during a check.
+
+`proofs/observation-reuse.md` gives the argument and full cost boundary. The fresh
+same-information recheck reproduces all 49 example comparisons, 9,985 workflow
+cases and 2,215 generated semantic variants. The dated reuse collection retains
+literal input/output bytes, seven alternating cold-process trials per method,
+CPU, serialization and Windows peak working sets under equal import work.
+The 49 retained examples have no cache hits; checking medians are 28.651/30.103 ms
+and Python allocation peaks increase. Constructed phase-3/phase-9 targets reduce
+physical reference calls 534/1,602 to 178 without reducing target edges. These
+are owned finite representations, not native Casbin or privacy evidence.
+
+After reviewing the frozen baseline module and local import closure, use fresh
+owned output paths and disable bytecode:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python -B src/checker.py results/examples/case-00000/policy.json results/examples/case-00000/automaton.json --reuse-observations
+PYTHONDONTWRITEBYTECODE=1 python -B -W error -m unittest discover -s tests -p test_observation_reuse.py -v
+PYTHONDONTWRITEBYTECODE=1 python -B src/reuse_benchmark.py --baseline-checker results/observation-reuse-20261014/checker-before.py --output /fresh/owned/reuse-costs --repeats 7
+```
+
+The new collection supplements, and does not overwrite, historical campaigns.
+Casbin is not present in the bundled Python environment and was not installed.
+
 ## Mathematical extensions and implementation boundary
 
 The proof notes also give the canonical observed-state quotient, an exact earliest-failure profile for each binding, the sharper coherent-quotient witness bound, dependency-closed state projection, and restriction to a specified nonempty binding family. They also show that accepted full-state uniformity tolerates stepwise binding changes, and classify whether a candidate implements all, a proper nonempty family, or none of the admitted interpretations. `src/extensions.py` supplies bounded reference constructions for these consequences without changing the main Cartesian checker or the declared fixed-binding language. The ordinary diagnostic returns one shortest uniform counterexample, including the empty word when initial observations differ. The companion profile routine enumerates the complete finite family only when both its streaming family cap and shared work budget permit. In the binding-profile, family-check, quotient, and switching analyses, family ingestion, graph traversal, certificate closure, binding-family support projections, semantic steps, and witness replay consume that work budget; exhaustion is inconclusive rather than a semantic rejection. The state-dependence projection helpers scan the bounded typed policy and target separately and are not charged to that counter. `proofs/semantics.md` states each result with its premises. `reference_audit.csv` maps all 58 cited works to their primary access paths, reading depth, manuscript locations and supported claims. `literature_comparison.csv`, `literature_reference_counts.csv` and `proofs/literature.md` record the separate journal-calibration sample and the direct scholarly comparisons.
@@ -59,7 +91,7 @@ python verify_release.py
 python verify_release.py --campaign
 ```
 
-The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. It discovers and runs the current 71 unit-test methods in ordinary and optimized modes; the 56-method count above describes the retained earlier Linux runs, not current discovery.
+The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. Current source discovery contains 78 unit-test methods; the quick check runs them in ordinary and optimized modes on its supported Linux environment. The 56-method count above describes the retained earlier Linux runs, not current discovery. The dated reuse experiment ran 22 selected portable methods, not the complete Linux suite.
 
 The campaign command copies the artifact into an isolated temporary directory and runs four fresh, non-resumed reproductions: the Cartesian product of Python hash seeds 1729 and 2718 with `UTC` and `America/Los_Angeles`. Each invocation receives both a new `--output` directory and the copied frozen `results` directory through `--compare`. The verifier accepts a configuration only after the new output contains exactly forty JSONL chunks, forty metric files, 10,000 ordered primary records, and both `summary.json` and `reproduction.json` explicitly report scientific-field agreement with the baseline. A zero process return code without those files is a failure.
 

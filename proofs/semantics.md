@@ -232,3 +232,17 @@ This result is complete only for the declared tiny family and selected rule temp
 The implementation retains one predecessor per discovered target state rather than copying entire prefixes. It prepares named old state per visited state and immutable membership per invocation; it keeps no verdict cache between calls. Compact output is the default. A separate work cap precharges invocation/state preparation, support scans, graph edges, binding contexts and conservative semantic nodes, path reconstruction, replay, and optional cell reporting. Semantic charges include unselected effects; they are declared units, not exact processor operations. JSON and schema validation are outside this cap. Inconclusive replay is not exposed as a completed counterexample. The legacy region API and its binding-only budget remain compatible.
 
 `baseline_checks.py` supplies ordinary BFS using the same observations, support and reference step but no state list. It agrees with both interfaces on 49 retained examples and 9,985 main-workflow cases; each performs 54,398 local binding evaluations. Executed complete-binding products cover 9,977 cases, with eight wide cases still omitted. The separate diversity audit checks every initialized full one-step table of the 9,936 generated policies, including unreachable states and the named binding interface: 2,215 distinct tables versus 9,772 distinct ASTs, with maximum table multiplicity 791 and 139,088 compiler/reference step comparisons. Neither that count nor the close local timing samples establish novelty, native-engine compatibility, representative coverage, or a hidden-state result.
+
+## 21. Invocation-local complete-observation cell reuse
+
+The optional `reuse_observations=True` mode memoizes only a universally passing
+source cell identified by its complete observation and request. Every later
+target edge is compared with that stored output, even when its source observation
+repeats. FIFO traversal and predecessor order are retained. A different target
+output is a bad cell for the same first canonical binding; replay still starts
+at the initial source state. No entry crosses an invocation, and inputs are fixed
+during checking. `proofs/observation-reuse.md` supplies the acceptance/shortest-
+witness argument, logical versus physical counters, storage bound and exact
+cost boundary. This implements memoization of the existing equation, not a new
+state-hiding relation. The default non-reusing interface and historical results
+remain unchanged.
