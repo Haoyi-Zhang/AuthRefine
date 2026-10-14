@@ -1,0 +1,19 @@
+name: Owned checker regressions
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check observation reuse
+        run: python -B -m unittest discover -s tests -p test_observation_reuse.py -v
+      - name: Check optimized execution
+        run: python -B -O -m unittest discover -s tests -p test_observation_reuse.py -v
