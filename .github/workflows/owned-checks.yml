@@ -17,3 +17,7 @@ jobs:
         run: python -B -m unittest discover -s tests -p test_observation_reuse.py -v
       - name: Check optimized execution
         run: python -B -O -m unittest discover -s tests -p test_observation_reuse.py -v
+      - name: Check policy admission and reachable replay
+        run: python -B -m unittest discover -s tests -p test_reachable_checker.py -v
+      - name: Check optimized policy admission and reachable replay
+        run: python -B -O -m unittest discover -s tests -p test_reachable_checker.py -v
