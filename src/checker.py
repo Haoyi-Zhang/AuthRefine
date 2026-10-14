@@ -55,7 +55,7 @@ def inspect_policy(p):
     aliases = {}
     for a in p['aliases']:
         ensure(isinstance(a, dict) and set(a) == {'name', 'kind', 'candidates'}, 'alias fields')
-        ensure(named(a['name'])
+        ensure(named(a['name']) and isinstance(a['kind'], str)
                and a['kind'] in sorts and a['name'] not in aliases, 'alias identity')
         cs = a['candidates']
         ensure(isinstance(cs, list) and cs and all(isinstance(c, str) and c in p[sorts[a['kind']]] for c in cs), 'alias candidates')

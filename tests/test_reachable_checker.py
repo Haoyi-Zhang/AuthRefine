@@ -18,6 +18,43 @@ from oracle import product_oracle
 from test_prepared_checker import fixtures, literal_step, bindings
 
 class ReachableCheckerTests(unittest.TestCase):
+    def test_alias_kind_containers_and_nonstrings_have_typed_errors(self):
+        machine = compiler.compile_policy(blank())
+        for kind in ([], {}, True, False, None):
+            with self.subTest(kind=kind):
+                p = blank()
+                p['aliases'] = [{'name': 'z', 'kind': kind, 'candidates': ['u']}]
+                with self.assertRaises(language.PolicyError) as source_error:
+                    language.validate(p)
+                self.assertEqual(source_error.exception.category, 'TYPE')
+                with self.assertRaises(checker.Rejected) as checker_error:
+                    checker.verify_reachable(p, machine)
+                self.assertEqual(checker_error.exception.kind, 'invalid')
+
+    def test_valid_reference_kinds_boolean_state_and_integer_indices(self):
+        for kind, domain, value in (
+            ('principal', 'principals', 'u'),
+            ('resource', 'resources', 'o'),
+            ('action', 'actions', 'a'),
+            ('role', 'roles', 'r'),
+        ):
+            with self.subTest(kind=kind):
+                p = blank()
+                if kind == 'role':
+                    p[domain] = [value]
+                p['aliases'] = [{'name': 'z', 'kind': kind, 'candidates': [value]}]
+                p['state'] = [['b', False]]
+                p['rules'] = [{'decision': 'allow',
+                               'guard': [{'field': 'state', 'name': 'b', 'value': False}],
+                               'updates': [{'name': 'b', 'value': True}]}]
+                language.validate(p)
+                checker.inspect_policy(p)
+                machine = compiler.compile_policy(p)
+                self.assertIs(type(machine['initial']), int)
+                self.assertTrue(all(type(edge[1]) is int
+                                    for row in machine['transitions'] for edge in row))
+                self.assertTrue(checker.verify_reachable(p, machine)['equivalent'])
+
     def test_reports_verdicts_counts_lengths_and_independent_replay(self):
         for p in [p for _, p in fixtures()] + [generated(i) for i in range(128)]:
             m = compiler.compile_policy(p)

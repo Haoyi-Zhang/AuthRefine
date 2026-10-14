@@ -57,7 +57,8 @@ def validate(p: Any, limits: bool = True) -> None:
     require(isinstance(p['aliases'], list), 'TYPE', 'alias list')
     for a in p['aliases']:
         require(isinstance(a, dict) and set(a) == {'name', 'kind', 'candidates'}, 'TYPE', 'alias fields')
-        require(named(a['name']) and a['kind'] in DOMAINS, 'TYPE', 'alias name and sort')
+        require(named(a['name']) and isinstance(a['kind'], str)
+                and a['kind'] in DOMAINS, 'TYPE', 'alias name and sort')
         cs = a['candidates']
         require(isinstance(cs, list) and len(cs) > 0 and unique(cs), 'NAME', 'alias candidates')
         require(all(c in p[DOMAINS[a['kind']]] for c in cs), 'NAME', 'undeclared candidate')
