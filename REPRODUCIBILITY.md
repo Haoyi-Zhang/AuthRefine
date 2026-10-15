@@ -18,7 +18,10 @@ On Linux, `peak_rss_kib` is `resource.getrusage(...).ru_maxrss` in KiB. CPU-time
 
 ## Quick verification
 
+Disable bytecode for the verifier and its child test processes before running:
+
 ```bash
+export PYTHONDONTWRITEBYTECODE=1
 python verify_release.py
 ```
 
