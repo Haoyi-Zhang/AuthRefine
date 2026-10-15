@@ -192,3 +192,8 @@ performance. To regenerate them with Python 3.9+ and Matplotlib:
 ```sh
 python -B figures/draw_schematics.py --output figures
 ```
+
+The Linux checker workflow also runs the full quick-release validator: runtime
+admission, retained scientific assets, frozen-result structure, example replay,
+and the complete unit suite in ordinary and optimized modes. The separate
+four-configuration campaign still requires its explicit campaign invocation.

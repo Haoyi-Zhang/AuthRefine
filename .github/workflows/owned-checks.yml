@@ -8,6 +8,9 @@ jobs:
   checker:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,3 +24,5 @@ jobs:
         run: python -B -m unittest discover -s tests -p test_reachable_checker.py -v
       - name: Check optimized policy admission and reachable replay
         run: python -B -O -m unittest discover -s tests -p test_reachable_checker.py -v
+      - name: Full quick-release validation on the supported Linux runtime
+        run: python -B verify_release.py --json
