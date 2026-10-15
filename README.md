@@ -182,3 +182,13 @@ Original code, proof notes and generated data are provided under the MIT license
 ## Release verification
 
 `python verify_release.py` checks required scientific assets, result structure, JSON readability, example-level semantic replay, and tests in ordinary and optimized modes. `python verify_release.py --campaign` adds the four-configuration reconstruction matrix described above. A timeout or exhausted work budget produces an inconclusive outcome rather than semantic rejection.
+
+## Manuscript diagrams
+
+The model and protocol schematics are drawn directly in Python as vector PDFs
+with embedded STIX fonts. They encode the stated relationships, not measured
+performance. To regenerate them with Python 3.9+ and Matplotlib:
+
+```sh
+python -B figures/draw_schematics.py --output figures
+```
