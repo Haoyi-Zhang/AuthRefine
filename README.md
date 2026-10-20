@@ -2,6 +2,11 @@
 
 This artifact implements a finite controlled authorization language, a compiler, semantic reification, full-state trace checking with an optional closed-region list, shortest-trace diagnosis, algorithmic cross-checks, and the derived finite constructions. It includes frozen public inputs, deterministic generators, measured records, and proof notes. No network access is needed to reproduce the evidence.
 
+For the accompanying manuscript, use the `preferred-citation` entry in
+`CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
+Haoyi Zhang and Huaijin Ran contributed equally to this work. The top-level
+software authors are separate from this manuscript citation.
+
 Set `PYTHONDONTWRITEBYTECODE=1` before the commands below (`export
 PYTHONDONTWRITEBYTECODE=1` in a POSIX shell, or
 `$env:PYTHONDONTWRITEBYTECODE='1'` in PowerShell). This also applies to child
