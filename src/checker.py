@@ -74,7 +74,8 @@ def inspect_policy(p):
             if sort == 'state':
                 ensure(set(test) == {'field', 'name', 'value'} and test['name'] in names and type(test['value']) is bool, 'state guard')
             else:
-                ensure(sort in sorts and type(test.get('negated')) is bool, 'reference sort')
+                ensure(isinstance(sort, str) and sort in sorts
+                       and type(test.get('negated')) is bool, 'reference sort')
                 if 'alias' in test:
                     ensure(set(test) == {'field', 'alias', 'negated'} and test['alias'] in aliases and aliases[test['alias']]['kind'] == sort, 'typed alias')
                 else:
