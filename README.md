@@ -4,7 +4,7 @@ This artifact implements a finite controlled authorization language, a compiler,
 
 For the accompanying manuscript, use the `preferred-citation` entry in
 `CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
-Haoyi Zhang and Huaijin Ran contributed equally to this work. The top-level
+The top-level
 software authors are separate from this manuscript citation.
 
 Set `PYTHONDONTWRITEBYTECODE=1` before the commands below (`export
