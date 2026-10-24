@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
+NEW_REFERENCE_KEYS = frozenset({"xu2026parametric", "hardt2012oauth", "lodderstedt2013revocation"})
 DOI_RE = re.compile(r"^10\.\d{4,9}/[-._;()/:A-Z0-9]+$", re.IGNORECASE)
 CITE_RE = re.compile(
     r"\\cite[A-Za-z*]*\s*(?:\[[^\]]*\]\s*){0,2}\{([^{}]+)\}", re.MULTILINE
@@ -189,12 +190,13 @@ def validate(
         for field in ("title", "authors", "year", "publication_identifier"):
             if _norm(row[field]) != _norm(audit_row[field]):
                 raise ValueError(f"inventory/audit mismatch for {key}: {field}")
-        if audit_row["access_date"] != "2026-09-16":
+        expected_date = "2026-10-24" if key in NEW_REFERENCE_KEYS else "2026-09-16"
+        if audit_row["access_date"] != expected_date:
             raise ValueError(f"stale access date for {key}")
         if not audit_row["manuscript_locations"].strip() or not audit_row["citation_context"].strip():
             raise ValueError(f"missing manuscript citation evidence for {key}")
 
-    expected = {"doi": 55, "arxiv": 2, "technical_report": 1}
+    expected = {"doi": 57, "arxiv": 3, "technical_report": 1}
     if types != expected:
         raise ValueError(f"unexpected identifier distribution: {types}")
 
@@ -248,13 +250,13 @@ def validate(
         "unique_publication_identifiers": len(identifiers),
         "all_references_cited": True,
         "citation_occurrences": citation_occurrences,
-        "audit_access_date": "2026-09-16",
+        "audit_access_dates": ["2026-09-16", "2026-10-24"],
         "current_manuscript_parsed": live_checked,
         "scope": (
             "Offline integrity check over the frozen bibliography inventory, audit, and, when supplied, "
-            "the current BibTeX and TeX sources. Formal metadata was manually rechecked against DOI, "
-            "publisher, or author records on 2026-09-16; this command performs no live resolution and "
-            "does not claim a new full-paper reread of every source."
+            "the current BibTeX and TeX sources. The 58 inherited records retain their 2026-09-16 "
+            "review dates; three added records were checked against primary sources on 2026-10-24. "
+            "This command performs no live resolution and claims no fresh reread of inherited sources."
         ),
     }
 

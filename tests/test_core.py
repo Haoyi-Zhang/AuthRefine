@@ -611,10 +611,10 @@ class CoreTests(unittest.TestCase):
             inventory_path=root / "reference_inventory.csv",
             audit_path=root / "reference_audit.csv",
         )
-        self.assertEqual(report["references"], 58)
+        self.assertEqual(report["references"], 61)
         self.assertEqual(report["identifier_distribution"],
-                         {"doi": 55, "arxiv": 2, "technical_report": 1})
-        self.assertEqual(report["unique_publication_identifiers"], 58)
+                         {"doi": 57, "arxiv": 3, "technical_report": 1})
+        self.assertEqual(report["unique_publication_identifiers"], 61)
         self.assertTrue(report["all_references_cited"])
         parsed = reference_check.parse_bibtex(
             "@article{x, title={{Nested} Title}, author={A and B}, year={2026}, doi={10.1000/example}}\n"

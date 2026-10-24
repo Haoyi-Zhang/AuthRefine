@@ -1,15 +1,18 @@
 {
   "status": "pass",
-  "references": 58,
+  "references": 61,
   "identifier_distribution": {
-    "doi": 55,
-    "arxiv": 2,
+    "doi": 57,
+    "arxiv": 3,
     "technical_report": 1
   },
-  "unique_publication_identifiers": 58,
+  "unique_publication_identifiers": 61,
   "all_references_cited": true,
-  "citation_occurrences": 73,
-  "audit_access_date": "2026-09-16",
+  "citation_occurrences": 76,
+  "audit_access_dates": [
+    "2026-09-16",
+    "2026-10-24"
+  ],
   "current_manuscript_parsed": true,
-  "scope": "Offline integrity check over the frozen bibliography inventory, audit, and, when supplied, the current BibTeX and TeX sources. Formal metadata was manually rechecked against DOI, publisher, or author records on 2026-09-16; this command performs no live resolution and does not claim a new full-paper reread of every source."
+  "scope": "Offline integrity check over the frozen bibliography inventory, audit, and, when supplied, the current BibTeX and TeX sources. The 58 inherited records retain their 2026-09-16 review dates; three added records were checked against primary sources on 2026-10-24. This command performs no live resolution and claims no fresh reread of inherited sources."
 }

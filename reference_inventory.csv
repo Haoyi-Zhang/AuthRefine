@@ -57,3 +57,6 @@ park2004ucon,The {UCON$_{ABC}$} Usage Control Model,Jaehong Park and Ravi Sandhu
 moeller2024katch,{KATch}: A Fast Symbolic Verifier for {NetKAT},Mark Moeller and Jules Jacobs and Olivier Savary B{\'e}langer and David Darais and Cole Schlesinger and Steffen Smolka and Nate Foster and Alexandra Silva,2024,https://doi.org/10.1145/3656454,doi,1
 harrison1976protection,Protection in Operating Systems,Michael A. Harrison and Walter L. Ruzzo and Jeffrey D. Ullman,1976,https://doi.org/10.1145/360303.360333,doi,1
 xu2026relational,Network Change Validation with Relational {NetKAT},Han Xu and Zachary Kincaid and Ratul Mahajan and David Walker,2026,https://doi.org/10.1145/3776656,doi,2
+xu2026parametric,Network Analysis with Parametric {NetKAT},Han Xu and Zachary Kincaid and David Walker,2026,https://arxiv.org/abs/2607.09637,arxiv,1
+hardt2012oauth,The {OAuth} 2.0 Authorization Framework,Dick Hardt,2012,https://doi.org/10.17487/RFC6749,doi,1
+lodderstedt2013revocation,{OAuth} 2.0 Token Revocation,Torsten Lodderstedt and Stefanie Dronia and Marius Scurtescu,2013,https://doi.org/10.17487/RFC7009,doi,1

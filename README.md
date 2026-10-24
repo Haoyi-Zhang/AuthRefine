@@ -37,7 +37,31 @@ holds one complete binding unchanged. This authored example is not evidence of
 a real organization encountering reference ambiguity; the six public models and
 their explicitly constructed state extensions retain their separate roles.
 
-## Meaning of a certificate
+## Normative stateful reviews and equal-output family baselines
+
+`src/stateful_review.py` adds two finite models of actual stateful requirements
+from RFC 6749 and RFC 7009. The RFCs supply requirements, not the candidate
+ambiguities or implementation incidents. `external_inputs/stateful-requirements.md`
+records primary attribution, who must supply the state decoder, explicit mapping
+hypotheses, excluded protocol semantics, and the Parametric NetKAT comparison.
+
+```
+python -B src/stateful_review.py --output /fresh/stateful-review.json --tex /fresh/stateful-review-rows.tex
+python -B -m unittest discover -s tests -p test_symbolic_profile.py -v
+```
+
+The report includes complete policies, canonical CNL, target tables, state-loss
+mutants, repairs, and every fixed-binding replay. Three methods return the same
+complete implemented family and shortest length for every excluded binding:
+target-distance profiling, a product BFS completed separately for every binding,
+and the new finite-domain-diagram family comparator. The latter retains
+disjoint first-bad-cell predicates and an exact matching-family complement.
+It shares the existing symbolic cell construction, not local-support enumeration.
+No performance advantage or first-in-literature family enumeration is claimed.
+Shipped results are `results/stateful-review.json`; the TeX rows have a real
+manuscript consumer. The 10,000-case campaign counts remain historical and unchanged.
+
+## Certificate contract
 
 A reference binding is chosen once and held fixed for the whole execution. A target transition exposes its decision and complete named Boolean post-state; the initial state is observed too. Acceptance means equivalence for every admitted binding, not just the compiler's default. Full-state uniformity also implies switching closure, while counterexample replay identifies one fixed binding. Both checker interfaces recompute obligations from typed data and import neither parser nor compiler. The state list carries no additional semantics when it is exact reachability: ordinary BFS can discover that region from the supplied table.
 
