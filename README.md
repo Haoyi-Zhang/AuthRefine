@@ -37,6 +37,30 @@ holds one complete binding unchanged. This authored example is not evidence of
 a real organization encountering reference ambiguity; the six public models and
 their explicitly constructed state extensions retain their separate roles.
 
+## Source-bound policy-store maintenance
+
+`src/maintenance_case.py` consumes two literal-array tests and the initial policy
+from node-casbin commit `d8a7cbabb4de50f04261c04eb7551c1f25e13fc7` (v5.46.0,
+PR #535). It exports an owned tuple-store model with a complete six-bit decoder;
+it does not execute the upstream engine. Source bytes, parent implementation,
+license, exact admission and release/package metadata distinction are in
+`external_inputs/node-casbin/NOTICE.md`.
+
+```sh
+python -B src/maintenance_case.py --output /fresh/maintenance-case.json
+python -B -W error -m unittest discover -s tests -p test_maintenance_case.py -v
+```
+
+The six upstream return/membership assertions are consumed as data. All 1,024
+one-step tuples (64 states x 8 commands x 2 API modes) agree with the CNL
+reference and compiler. Four equal-information full-family comparisons retain
+all three backend results; each family is a singleton because no alias ambiguity
+is present. Legacy-versus-Ex differences have shortest length one and represent
+an intentional API addition, not a defect. The downstream consumer queries
+`hasPolicy` after a mixed existing/new batch. Boolean API returns are encoded as
+allow/deny symbols, not presented as `Enforce` decisions. Results are retained in
+`results/maintenance-case.json` and discussed in the manuscript.
+
 ## Normative stateful reviews and equal-output family baselines
 
 `src/stateful_review.py` adds two finite models of actual stateful requirements

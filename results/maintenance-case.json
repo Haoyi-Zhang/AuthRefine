@@ -1,0 +1,6070 @@
+{
+  "source_commit": "d8a7cbabb4de50f04261c04eb7551c1f25e13fc7",
+  "release": "v5.46.0",
+  "scope": "source-bound owned tuple-store execution; no upstream engine execution",
+  "row_universe": [
+    [
+      "alice",
+      "data1",
+      "read"
+    ],
+    [
+      "bob",
+      "data2",
+      "write"
+    ],
+    [
+      "data2_admin",
+      "data2",
+      "read"
+    ],
+    [
+      "data2_admin",
+      "data2",
+      "write"
+    ],
+    [
+      "jack",
+      "data4",
+      "read"
+    ],
+    [
+      "katy",
+      "data4",
+      "write"
+    ]
+  ],
+  "initial_store": [
+    [
+      "alice",
+      "data1",
+      "read"
+    ],
+    [
+      "bob",
+      "data2",
+      "write"
+    ],
+    [
+      "data2_admin",
+      "data2",
+      "read"
+    ],
+    [
+      "data2_admin",
+      "data2",
+      "write"
+    ]
+  ],
+  "source_test_data": [
+    {
+      "title": "addPoliciesEx",
+      "batch": [
+        [
+          "alice",
+          "data1",
+          "read"
+        ],
+        [
+          "bob",
+          "data2",
+          "write"
+        ],
+        [
+          "jack",
+          "data4",
+          "read"
+        ],
+        [
+          "katy",
+          "data4",
+          "write"
+        ]
+      ],
+      "returned": true,
+      "checks": [
+        [
+          [
+            "jack",
+            "data4",
+            "read"
+          ],
+          true
+        ],
+        [
+          [
+            "katy",
+            "data4",
+            "write"
+          ],
+          true
+        ],
+        [
+          [
+            "alice",
+            "data1",
+            "read"
+          ],
+          true
+        ],
+        [
+          [
+            "bob",
+            "data2",
+            "write"
+          ],
+          true
+        ]
+      ]
+    },
+    {
+      "title": "addPoliciesEx - all existing rules",
+      "batch": [
+        [
+          "alice",
+          "data1",
+          "read"
+        ],
+        [
+          "bob",
+          "data2",
+          "write"
+        ]
+      ],
+      "returned": false,
+      "checks": []
+    }
+  ],
+  "source_assertions": [
+    {
+      "title": "addPoliciesEx",
+      "assertions": 5,
+      "returned": true,
+      "post": [
+        [
+          "alice",
+          "data1",
+          "read"
+        ],
+        [
+          "bob",
+          "data2",
+          "write"
+        ],
+        [
+          "data2_admin",
+          "data2",
+          "read"
+        ],
+        [
+          "data2_admin",
+          "data2",
+          "write"
+        ],
+        [
+          "jack",
+          "data4",
+          "read"
+        ],
+        [
+          "katy",
+          "data4",
+          "write"
+        ]
+      ]
+    },
+    {
+      "title": "addPoliciesEx - all existing rules",
+      "assertions": 1,
+      "returned": false,
+      "post": [
+        [
+          "alice",
+          "data1",
+          "read"
+        ],
+        [
+          "bob",
+          "data2",
+          "write"
+        ],
+        [
+          "data2_admin",
+          "data2",
+          "read"
+        ],
+        [
+          "data2_admin",
+          "data2",
+          "write"
+        ]
+      ]
+    }
+  ],
+  "decoder_states": 64,
+  "modes": {
+    "legacy": {
+      "one_step_tuples": 512,
+      "states": 64,
+      "reachable_states": 1,
+      "actions": 8
+    },
+    "ex": {
+      "one_step_tuples": 512,
+      "states": 64,
+      "reachable_states": 2,
+      "actions": 8
+    }
+  },
+  "policies": {
+    "legacy": {
+      "principals": [
+        "caller"
+      ],
+      "resources": [
+        "policy-store"
+      ],
+      "actions": [
+        "add-existing",
+        "add-mixed",
+        "has-row-0",
+        "has-row-1",
+        "has-row-2",
+        "has-row-3",
+        "has-row-4",
+        "has-row-5"
+      ],
+      "roles": [],
+      "members": [],
+      "state": [
+        [
+          "row-0",
+          true
+        ],
+        [
+          "row-1",
+          true
+        ],
+        [
+          "row-2",
+          true
+        ],
+        [
+          "row-3",
+          true
+        ],
+        [
+          "row-4",
+          false
+        ],
+        [
+          "row-5",
+          false
+        ]
+      ],
+      "aliases": [],
+      "rules": [
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-mixed",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-0",
+              "value": false
+            },
+            {
+              "field": "state",
+              "name": "row-1",
+              "value": false
+            },
+            {
+              "field": "state",
+              "name": "row-4",
+              "value": false
+            },
+            {
+              "field": "state",
+              "name": "row-5",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            },
+            {
+              "name": "row-4",
+              "value": true
+            },
+            {
+              "name": "row-5",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-existing",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-0",
+              "value": false
+            },
+            {
+              "field": "state",
+              "name": "row-1",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-0",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-0",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-1",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-1",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-2",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-2",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-3",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-3",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-4",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-4",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-5",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-5",
+              "value": true
+            }
+          ],
+          "updates": []
+        }
+      ]
+    },
+    "ex": {
+      "principals": [
+        "caller"
+      ],
+      "resources": [
+        "policy-store"
+      ],
+      "actions": [
+        "add-existing",
+        "add-mixed",
+        "has-row-0",
+        "has-row-1",
+        "has-row-2",
+        "has-row-3",
+        "has-row-4",
+        "has-row-5"
+      ],
+      "roles": [],
+      "members": [],
+      "state": [
+        [
+          "row-0",
+          true
+        ],
+        [
+          "row-1",
+          true
+        ],
+        [
+          "row-2",
+          true
+        ],
+        [
+          "row-3",
+          true
+        ],
+        [
+          "row-4",
+          false
+        ],
+        [
+          "row-5",
+          false
+        ]
+      ],
+      "aliases": [],
+      "rules": [
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-mixed",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-0",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            },
+            {
+              "name": "row-4",
+              "value": true
+            },
+            {
+              "name": "row-5",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-mixed",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-1",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            },
+            {
+              "name": "row-4",
+              "value": true
+            },
+            {
+              "name": "row-5",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-mixed",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-4",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            },
+            {
+              "name": "row-4",
+              "value": true
+            },
+            {
+              "name": "row-5",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-mixed",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-5",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            },
+            {
+              "name": "row-4",
+              "value": true
+            },
+            {
+              "name": "row-5",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-existing",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-0",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "add-existing",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-1",
+              "value": false
+            }
+          ],
+          "updates": [
+            {
+              "name": "row-0",
+              "value": true
+            },
+            {
+              "name": "row-1",
+              "value": true
+            }
+          ]
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-0",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-0",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-1",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-1",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-2",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-2",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-3",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-3",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-4",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-4",
+              "value": true
+            }
+          ],
+          "updates": []
+        },
+        {
+          "decision": "allow",
+          "guard": [
+            {
+              "field": "action",
+              "name": "has-row-5",
+              "negated": false
+            },
+            {
+              "field": "state",
+              "name": "row-5",
+              "value": true
+            }
+          ],
+          "updates": []
+        }
+      ]
+    }
+  },
+  "machines": {
+    "legacy": {
+      "state_names": [
+        "row-0",
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5"
+      ],
+      "alphabet": [
+        [
+          "caller",
+          "policy-store",
+          "add-existing"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "add-mixed"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-0"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-1"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-2"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-3"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-4"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-5"
+        ]
+      ],
+      "initial": 48,
+      "observations": [
+        63,
+        62,
+        61,
+        60,
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        52,
+        51,
+        50,
+        49,
+        48,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        41,
+        40,
+        39,
+        38,
+        37,
+        36,
+        35,
+        34,
+        33,
+        32,
+        31,
+        30,
+        29,
+        28,
+        27,
+        26,
+        25,
+        24,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "transitions": [
+        [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        [
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ],
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        [
+          [
+            "deny",
+            2
+          ],
+          [
+            "deny",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "deny",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "allow",
+            2
+          ]
+        ],
+        [
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            3
+          ],
+          [
+            "deny",
+            3
+          ],
+          [
+            "deny",
+            3
+          ],
+          [
+            "allow",
+            3
+          ],
+          [
+            "allow",
+            3
+          ],
+          [
+            "allow",
+            3
+          ],
+          [
+            "allow",
+            3
+          ]
+        ],
+        [
+          [
+            "deny",
+            4
+          ],
+          [
+            "deny",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ]
+        ],
+        [
+          [
+            "deny",
+            5
+          ],
+          [
+            "deny",
+            5
+          ],
+          [
+            "deny",
+            5
+          ],
+          [
+            "allow",
+            5
+          ],
+          [
+            "deny",
+            5
+          ],
+          [
+            "allow",
+            5
+          ],
+          [
+            "allow",
+            5
+          ],
+          [
+            "allow",
+            5
+          ]
+        ],
+        [
+          [
+            "deny",
+            6
+          ],
+          [
+            "deny",
+            6
+          ],
+          [
+            "allow",
+            6
+          ],
+          [
+            "deny",
+            6
+          ],
+          [
+            "deny",
+            6
+          ],
+          [
+            "allow",
+            6
+          ],
+          [
+            "allow",
+            6
+          ],
+          [
+            "allow",
+            6
+          ]
+        ],
+        [
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "allow",
+            7
+          ],
+          [
+            "allow",
+            7
+          ],
+          [
+            "allow",
+            7
+          ]
+        ],
+        [
+          [
+            "deny",
+            8
+          ],
+          [
+            "deny",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ]
+        ],
+        [
+          [
+            "deny",
+            9
+          ],
+          [
+            "deny",
+            9
+          ],
+          [
+            "deny",
+            9
+          ],
+          [
+            "allow",
+            9
+          ],
+          [
+            "allow",
+            9
+          ],
+          [
+            "deny",
+            9
+          ],
+          [
+            "allow",
+            9
+          ],
+          [
+            "allow",
+            9
+          ]
+        ],
+        [
+          [
+            "deny",
+            10
+          ],
+          [
+            "deny",
+            10
+          ],
+          [
+            "allow",
+            10
+          ],
+          [
+            "deny",
+            10
+          ],
+          [
+            "allow",
+            10
+          ],
+          [
+            "deny",
+            10
+          ],
+          [
+            "allow",
+            10
+          ],
+          [
+            "allow",
+            10
+          ]
+        ],
+        [
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "allow",
+            11
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "allow",
+            11
+          ],
+          [
+            "allow",
+            11
+          ]
+        ],
+        [
+          [
+            "deny",
+            12
+          ],
+          [
+            "deny",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            12
+          ],
+          [
+            "deny",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ]
+        ],
+        [
+          [
+            "deny",
+            13
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "allow",
+            13
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "allow",
+            13
+          ],
+          [
+            "allow",
+            13
+          ]
+        ],
+        [
+          [
+            "deny",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "allow",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "allow",
+            14
+          ],
+          [
+            "allow",
+            14
+          ]
+        ],
+        [
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "allow",
+            15
+          ],
+          [
+            "allow",
+            15
+          ]
+        ],
+        [
+          [
+            "deny",
+            16
+          ],
+          [
+            "deny",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "deny",
+            16
+          ],
+          [
+            "allow",
+            16
+          ]
+        ],
+        [
+          [
+            "deny",
+            17
+          ],
+          [
+            "deny",
+            17
+          ],
+          [
+            "deny",
+            17
+          ],
+          [
+            "allow",
+            17
+          ],
+          [
+            "allow",
+            17
+          ],
+          [
+            "allow",
+            17
+          ],
+          [
+            "deny",
+            17
+          ],
+          [
+            "allow",
+            17
+          ]
+        ],
+        [
+          [
+            "deny",
+            18
+          ],
+          [
+            "deny",
+            18
+          ],
+          [
+            "allow",
+            18
+          ],
+          [
+            "deny",
+            18
+          ],
+          [
+            "allow",
+            18
+          ],
+          [
+            "allow",
+            18
+          ],
+          [
+            "deny",
+            18
+          ],
+          [
+            "allow",
+            18
+          ]
+        ],
+        [
+          [
+            "allow",
+            16
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "allow",
+            19
+          ],
+          [
+            "allow",
+            19
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "allow",
+            19
+          ]
+        ],
+        [
+          [
+            "deny",
+            20
+          ],
+          [
+            "deny",
+            20
+          ],
+          [
+            "allow",
+            20
+          ],
+          [
+            "allow",
+            20
+          ],
+          [
+            "deny",
+            20
+          ],
+          [
+            "allow",
+            20
+          ],
+          [
+            "deny",
+            20
+          ],
+          [
+            "allow",
+            20
+          ]
+        ],
+        [
+          [
+            "deny",
+            21
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "allow",
+            21
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "allow",
+            21
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "allow",
+            21
+          ]
+        ],
+        [
+          [
+            "deny",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "allow",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "allow",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "allow",
+            22
+          ]
+        ],
+        [
+          [
+            "allow",
+            20
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "allow",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "allow",
+            23
+          ]
+        ],
+        [
+          [
+            "deny",
+            24
+          ],
+          [
+            "deny",
+            24
+          ],
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            24
+          ],
+          [
+            "deny",
+            24
+          ],
+          [
+            "deny",
+            24
+          ],
+          [
+            "allow",
+            24
+          ]
+        ],
+        [
+          [
+            "deny",
+            25
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "allow",
+            25
+          ],
+          [
+            "allow",
+            25
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "allow",
+            25
+          ]
+        ],
+        [
+          [
+            "deny",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "allow",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "allow",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "allow",
+            26
+          ]
+        ],
+        [
+          [
+            "allow",
+            24
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "allow",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "allow",
+            27
+          ]
+        ],
+        [
+          [
+            "deny",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "allow",
+            28
+          ],
+          [
+            "allow",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "allow",
+            28
+          ]
+        ],
+        [
+          [
+            "deny",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "allow",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "allow",
+            29
+          ]
+        ],
+        [
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "allow",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "allow",
+            30
+          ]
+        ],
+        [
+          [
+            "allow",
+            28
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "allow",
+            31
+          ]
+        ],
+        [
+          [
+            "deny",
+            32
+          ],
+          [
+            "deny",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "deny",
+            32
+          ]
+        ],
+        [
+          [
+            "deny",
+            33
+          ],
+          [
+            "deny",
+            33
+          ],
+          [
+            "deny",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "deny",
+            33
+          ]
+        ],
+        [
+          [
+            "deny",
+            34
+          ],
+          [
+            "deny",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "deny",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "deny",
+            34
+          ]
+        ],
+        [
+          [
+            "allow",
+            32
+          ],
+          [
+            "deny",
+            35
+          ],
+          [
+            "deny",
+            35
+          ],
+          [
+            "deny",
+            35
+          ],
+          [
+            "allow",
+            35
+          ],
+          [
+            "allow",
+            35
+          ],
+          [
+            "allow",
+            35
+          ],
+          [
+            "deny",
+            35
+          ]
+        ],
+        [
+          [
+            "deny",
+            36
+          ],
+          [
+            "deny",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "deny",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "deny",
+            36
+          ]
+        ],
+        [
+          [
+            "deny",
+            37
+          ],
+          [
+            "deny",
+            37
+          ],
+          [
+            "deny",
+            37
+          ],
+          [
+            "allow",
+            37
+          ],
+          [
+            "deny",
+            37
+          ],
+          [
+            "allow",
+            37
+          ],
+          [
+            "allow",
+            37
+          ],
+          [
+            "deny",
+            37
+          ]
+        ],
+        [
+          [
+            "deny",
+            38
+          ],
+          [
+            "deny",
+            38
+          ],
+          [
+            "allow",
+            38
+          ],
+          [
+            "deny",
+            38
+          ],
+          [
+            "deny",
+            38
+          ],
+          [
+            "allow",
+            38
+          ],
+          [
+            "allow",
+            38
+          ],
+          [
+            "deny",
+            38
+          ]
+        ],
+        [
+          [
+            "allow",
+            36
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "allow",
+            39
+          ],
+          [
+            "allow",
+            39
+          ],
+          [
+            "deny",
+            39
+          ]
+        ],
+        [
+          [
+            "deny",
+            40
+          ],
+          [
+            "deny",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "deny",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "deny",
+            40
+          ]
+        ],
+        [
+          [
+            "deny",
+            41
+          ],
+          [
+            "deny",
+            41
+          ],
+          [
+            "deny",
+            41
+          ],
+          [
+            "allow",
+            41
+          ],
+          [
+            "allow",
+            41
+          ],
+          [
+            "deny",
+            41
+          ],
+          [
+            "allow",
+            41
+          ],
+          [
+            "deny",
+            41
+          ]
+        ],
+        [
+          [
+            "deny",
+            42
+          ],
+          [
+            "deny",
+            42
+          ],
+          [
+            "allow",
+            42
+          ],
+          [
+            "deny",
+            42
+          ],
+          [
+            "allow",
+            42
+          ],
+          [
+            "deny",
+            42
+          ],
+          [
+            "allow",
+            42
+          ],
+          [
+            "deny",
+            42
+          ]
+        ],
+        [
+          [
+            "allow",
+            40
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "allow",
+            43
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "allow",
+            43
+          ],
+          [
+            "deny",
+            43
+          ]
+        ],
+        [
+          [
+            "deny",
+            44
+          ],
+          [
+            "deny",
+            44
+          ],
+          [
+            "allow",
+            44
+          ],
+          [
+            "allow",
+            44
+          ],
+          [
+            "deny",
+            44
+          ],
+          [
+            "deny",
+            44
+          ],
+          [
+            "allow",
+            44
+          ],
+          [
+            "deny",
+            44
+          ]
+        ],
+        [
+          [
+            "deny",
+            45
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "allow",
+            45
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "allow",
+            45
+          ],
+          [
+            "deny",
+            45
+          ]
+        ],
+        [
+          [
+            "deny",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "allow",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "allow",
+            46
+          ],
+          [
+            "deny",
+            46
+          ]
+        ],
+        [
+          [
+            "allow",
+            44
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "allow",
+            47
+          ],
+          [
+            "deny",
+            47
+          ]
+        ],
+        [
+          [
+            "deny",
+            48
+          ],
+          [
+            "deny",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "deny",
+            48
+          ],
+          [
+            "deny",
+            48
+          ]
+        ],
+        [
+          [
+            "deny",
+            49
+          ],
+          [
+            "deny",
+            49
+          ],
+          [
+            "deny",
+            49
+          ],
+          [
+            "allow",
+            49
+          ],
+          [
+            "allow",
+            49
+          ],
+          [
+            "allow",
+            49
+          ],
+          [
+            "deny",
+            49
+          ],
+          [
+            "deny",
+            49
+          ]
+        ],
+        [
+          [
+            "deny",
+            50
+          ],
+          [
+            "deny",
+            50
+          ],
+          [
+            "allow",
+            50
+          ],
+          [
+            "deny",
+            50
+          ],
+          [
+            "allow",
+            50
+          ],
+          [
+            "allow",
+            50
+          ],
+          [
+            "deny",
+            50
+          ],
+          [
+            "deny",
+            50
+          ]
+        ],
+        [
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            51
+          ],
+          [
+            "deny",
+            51
+          ],
+          [
+            "allow",
+            51
+          ],
+          [
+            "allow",
+            51
+          ],
+          [
+            "deny",
+            51
+          ],
+          [
+            "deny",
+            51
+          ]
+        ],
+        [
+          [
+            "deny",
+            52
+          ],
+          [
+            "deny",
+            52
+          ],
+          [
+            "allow",
+            52
+          ],
+          [
+            "allow",
+            52
+          ],
+          [
+            "deny",
+            52
+          ],
+          [
+            "allow",
+            52
+          ],
+          [
+            "deny",
+            52
+          ],
+          [
+            "deny",
+            52
+          ]
+        ],
+        [
+          [
+            "deny",
+            53
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "allow",
+            53
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "allow",
+            53
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "deny",
+            53
+          ]
+        ],
+        [
+          [
+            "deny",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "allow",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "allow",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "deny",
+            54
+          ]
+        ],
+        [
+          [
+            "allow",
+            52
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "allow",
+            55
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "deny",
+            55
+          ]
+        ],
+        [
+          [
+            "deny",
+            56
+          ],
+          [
+            "deny",
+            56
+          ],
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            56
+          ],
+          [
+            "deny",
+            56
+          ],
+          [
+            "deny",
+            56
+          ],
+          [
+            "deny",
+            56
+          ]
+        ],
+        [
+          [
+            "deny",
+            57
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "allow",
+            57
+          ],
+          [
+            "allow",
+            57
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "deny",
+            57
+          ]
+        ],
+        [
+          [
+            "deny",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "allow",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "allow",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "deny",
+            58
+          ]
+        ],
+        [
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "allow",
+            59
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "deny",
+            59
+          ]
+        ],
+        [
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "allow",
+            60
+          ],
+          [
+            "allow",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ]
+        ],
+        [
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "allow",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ]
+        ],
+        [
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "allow",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ]
+        ],
+        [
+          [
+            "allow",
+            60
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ]
+        ]
+      ]
+    },
+    "ex": {
+      "state_names": [
+        "row-0",
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5"
+      ],
+      "alphabet": [
+        [
+          "caller",
+          "policy-store",
+          "add-existing"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "add-mixed"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-0"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-1"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-2"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-3"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-4"
+        ],
+        [
+          "caller",
+          "policy-store",
+          "has-row-5"
+        ]
+      ],
+      "initial": 48,
+      "observations": [
+        63,
+        62,
+        61,
+        60,
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        52,
+        51,
+        50,
+        49,
+        48,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        41,
+        40,
+        39,
+        38,
+        37,
+        36,
+        35,
+        34,
+        33,
+        32,
+        31,
+        30,
+        29,
+        28,
+        27,
+        26,
+        25,
+        24,
+        23,
+        22,
+        21,
+        20,
+        19,
+        18,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "transitions": [
+        [
+          [
+            "deny",
+            0
+          ],
+          [
+            "deny",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ]
+        ],
+        [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ],
+          [
+            "allow",
+            1
+          ]
+        ],
+        [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "deny",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "allow",
+            2
+          ],
+          [
+            "allow",
+            2
+          ]
+        ],
+        [
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            3
+          ],
+          [
+            "deny",
+            3
+          ],
+          [
+            "allow",
+            3
+          ],
+          [
+            "allow",
+            3
+          ],
+          [
+            "allow",
+            3
+          ],
+          [
+            "allow",
+            3
+          ]
+        ],
+        [
+          [
+            "deny",
+            4
+          ],
+          [
+            "deny",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ]
+        ],
+        [
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            5
+          ],
+          [
+            "allow",
+            5
+          ],
+          [
+            "deny",
+            5
+          ],
+          [
+            "allow",
+            5
+          ],
+          [
+            "allow",
+            5
+          ],
+          [
+            "allow",
+            5
+          ]
+        ],
+        [
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            6
+          ],
+          [
+            "deny",
+            6
+          ],
+          [
+            "deny",
+            6
+          ],
+          [
+            "allow",
+            6
+          ],
+          [
+            "allow",
+            6
+          ],
+          [
+            "allow",
+            6
+          ]
+        ],
+        [
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "deny",
+            7
+          ],
+          [
+            "allow",
+            7
+          ],
+          [
+            "allow",
+            7
+          ],
+          [
+            "allow",
+            7
+          ]
+        ],
+        [
+          [
+            "deny",
+            8
+          ],
+          [
+            "deny",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ]
+        ],
+        [
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            9
+          ],
+          [
+            "allow",
+            9
+          ],
+          [
+            "allow",
+            9
+          ],
+          [
+            "deny",
+            9
+          ],
+          [
+            "allow",
+            9
+          ],
+          [
+            "allow",
+            9
+          ]
+        ],
+        [
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            10
+          ],
+          [
+            "deny",
+            10
+          ],
+          [
+            "allow",
+            10
+          ],
+          [
+            "deny",
+            10
+          ],
+          [
+            "allow",
+            10
+          ],
+          [
+            "allow",
+            10
+          ]
+        ],
+        [
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "allow",
+            11
+          ],
+          [
+            "deny",
+            11
+          ],
+          [
+            "allow",
+            11
+          ],
+          [
+            "allow",
+            11
+          ]
+        ],
+        [
+          [
+            "deny",
+            12
+          ],
+          [
+            "deny",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            12
+          ],
+          [
+            "deny",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ]
+        ],
+        [
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "allow",
+            13
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "deny",
+            13
+          ],
+          [
+            "allow",
+            13
+          ],
+          [
+            "allow",
+            13
+          ]
+        ],
+        [
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "deny",
+            14
+          ],
+          [
+            "allow",
+            14
+          ],
+          [
+            "allow",
+            14
+          ]
+        ],
+        [
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "deny",
+            15
+          ],
+          [
+            "allow",
+            15
+          ],
+          [
+            "allow",
+            15
+          ]
+        ],
+        [
+          [
+            "deny",
+            16
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            16
+          ],
+          [
+            "deny",
+            16
+          ],
+          [
+            "allow",
+            16
+          ]
+        ],
+        [
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            17
+          ],
+          [
+            "allow",
+            17
+          ],
+          [
+            "allow",
+            17
+          ],
+          [
+            "allow",
+            17
+          ],
+          [
+            "deny",
+            17
+          ],
+          [
+            "allow",
+            17
+          ]
+        ],
+        [
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            18
+          ],
+          [
+            "deny",
+            18
+          ],
+          [
+            "allow",
+            18
+          ],
+          [
+            "allow",
+            18
+          ],
+          [
+            "deny",
+            18
+          ],
+          [
+            "allow",
+            18
+          ]
+        ],
+        [
+          [
+            "allow",
+            16
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "allow",
+            19
+          ],
+          [
+            "allow",
+            19
+          ],
+          [
+            "deny",
+            19
+          ],
+          [
+            "allow",
+            19
+          ]
+        ],
+        [
+          [
+            "deny",
+            20
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            20
+          ],
+          [
+            "allow",
+            20
+          ],
+          [
+            "deny",
+            20
+          ],
+          [
+            "allow",
+            20
+          ],
+          [
+            "deny",
+            20
+          ],
+          [
+            "allow",
+            20
+          ]
+        ],
+        [
+          [
+            "allow",
+            20
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "allow",
+            21
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "allow",
+            21
+          ],
+          [
+            "deny",
+            21
+          ],
+          [
+            "allow",
+            21
+          ]
+        ],
+        [
+          [
+            "allow",
+            20
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "allow",
+            22
+          ],
+          [
+            "deny",
+            22
+          ],
+          [
+            "allow",
+            22
+          ]
+        ],
+        [
+          [
+            "allow",
+            20
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "allow",
+            23
+          ],
+          [
+            "deny",
+            23
+          ],
+          [
+            "allow",
+            23
+          ]
+        ],
+        [
+          [
+            "deny",
+            24
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            24
+          ],
+          [
+            "deny",
+            24
+          ],
+          [
+            "deny",
+            24
+          ],
+          [
+            "allow",
+            24
+          ]
+        ],
+        [
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "allow",
+            25
+          ],
+          [
+            "allow",
+            25
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "deny",
+            25
+          ],
+          [
+            "allow",
+            25
+          ]
+        ],
+        [
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "allow",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "deny",
+            26
+          ],
+          [
+            "allow",
+            26
+          ]
+        ],
+        [
+          [
+            "allow",
+            24
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "allow",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "deny",
+            27
+          ],
+          [
+            "allow",
+            27
+          ]
+        ],
+        [
+          [
+            "deny",
+            28
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            28
+          ],
+          [
+            "allow",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "deny",
+            28
+          ],
+          [
+            "allow",
+            28
+          ]
+        ],
+        [
+          [
+            "allow",
+            28
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "allow",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "deny",
+            29
+          ],
+          [
+            "allow",
+            29
+          ]
+        ],
+        [
+          [
+            "allow",
+            28
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "deny",
+            30
+          ],
+          [
+            "allow",
+            30
+          ]
+        ],
+        [
+          [
+            "allow",
+            28
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "deny",
+            31
+          ],
+          [
+            "allow",
+            31
+          ]
+        ],
+        [
+          [
+            "deny",
+            32
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            32
+          ],
+          [
+            "deny",
+            32
+          ]
+        ],
+        [
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "allow",
+            33
+          ],
+          [
+            "deny",
+            33
+          ]
+        ],
+        [
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "deny",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "allow",
+            34
+          ],
+          [
+            "deny",
+            34
+          ]
+        ],
+        [
+          [
+            "allow",
+            32
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            35
+          ],
+          [
+            "deny",
+            35
+          ],
+          [
+            "allow",
+            35
+          ],
+          [
+            "allow",
+            35
+          ],
+          [
+            "allow",
+            35
+          ],
+          [
+            "deny",
+            35
+          ]
+        ],
+        [
+          [
+            "deny",
+            36
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "deny",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            36
+          ],
+          [
+            "deny",
+            36
+          ]
+        ],
+        [
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            37
+          ],
+          [
+            "allow",
+            37
+          ],
+          [
+            "deny",
+            37
+          ],
+          [
+            "allow",
+            37
+          ],
+          [
+            "allow",
+            37
+          ],
+          [
+            "deny",
+            37
+          ]
+        ],
+        [
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            38
+          ],
+          [
+            "deny",
+            38
+          ],
+          [
+            "deny",
+            38
+          ],
+          [
+            "allow",
+            38
+          ],
+          [
+            "allow",
+            38
+          ],
+          [
+            "deny",
+            38
+          ]
+        ],
+        [
+          [
+            "allow",
+            36
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "deny",
+            39
+          ],
+          [
+            "allow",
+            39
+          ],
+          [
+            "allow",
+            39
+          ],
+          [
+            "deny",
+            39
+          ]
+        ],
+        [
+          [
+            "deny",
+            40
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "deny",
+            40
+          ],
+          [
+            "allow",
+            40
+          ],
+          [
+            "deny",
+            40
+          ]
+        ],
+        [
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            41
+          ],
+          [
+            "allow",
+            41
+          ],
+          [
+            "allow",
+            41
+          ],
+          [
+            "deny",
+            41
+          ],
+          [
+            "allow",
+            41
+          ],
+          [
+            "deny",
+            41
+          ]
+        ],
+        [
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            42
+          ],
+          [
+            "deny",
+            42
+          ],
+          [
+            "allow",
+            42
+          ],
+          [
+            "deny",
+            42
+          ],
+          [
+            "allow",
+            42
+          ],
+          [
+            "deny",
+            42
+          ]
+        ],
+        [
+          [
+            "allow",
+            40
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "allow",
+            43
+          ],
+          [
+            "deny",
+            43
+          ],
+          [
+            "allow",
+            43
+          ],
+          [
+            "deny",
+            43
+          ]
+        ],
+        [
+          [
+            "deny",
+            44
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            44
+          ],
+          [
+            "allow",
+            44
+          ],
+          [
+            "deny",
+            44
+          ],
+          [
+            "deny",
+            44
+          ],
+          [
+            "allow",
+            44
+          ],
+          [
+            "deny",
+            44
+          ]
+        ],
+        [
+          [
+            "allow",
+            44
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "allow",
+            45
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "deny",
+            45
+          ],
+          [
+            "allow",
+            45
+          ],
+          [
+            "deny",
+            45
+          ]
+        ],
+        [
+          [
+            "allow",
+            44
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "deny",
+            46
+          ],
+          [
+            "allow",
+            46
+          ],
+          [
+            "deny",
+            46
+          ]
+        ],
+        [
+          [
+            "allow",
+            44
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "deny",
+            47
+          ],
+          [
+            "allow",
+            47
+          ],
+          [
+            "deny",
+            47
+          ]
+        ],
+        [
+          [
+            "deny",
+            48
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            48
+          ],
+          [
+            "deny",
+            48
+          ],
+          [
+            "deny",
+            48
+          ]
+        ],
+        [
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            49
+          ],
+          [
+            "allow",
+            49
+          ],
+          [
+            "allow",
+            49
+          ],
+          [
+            "allow",
+            49
+          ],
+          [
+            "deny",
+            49
+          ],
+          [
+            "deny",
+            49
+          ]
+        ],
+        [
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "allow",
+            50
+          ],
+          [
+            "deny",
+            50
+          ],
+          [
+            "allow",
+            50
+          ],
+          [
+            "allow",
+            50
+          ],
+          [
+            "deny",
+            50
+          ],
+          [
+            "deny",
+            50
+          ]
+        ],
+        [
+          [
+            "allow",
+            48
+          ],
+          [
+            "allow",
+            0
+          ],
+          [
+            "deny",
+            51
+          ],
+          [
+            "deny",
+            51
+          ],
+          [
+            "allow",
+            51
+          ],
+          [
+            "allow",
+            51
+          ],
+          [
+            "deny",
+            51
+          ],
+          [
+            "deny",
+            51
+          ]
+        ],
+        [
+          [
+            "deny",
+            52
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            52
+          ],
+          [
+            "allow",
+            52
+          ],
+          [
+            "deny",
+            52
+          ],
+          [
+            "allow",
+            52
+          ],
+          [
+            "deny",
+            52
+          ],
+          [
+            "deny",
+            52
+          ]
+        ],
+        [
+          [
+            "allow",
+            52
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "allow",
+            53
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "allow",
+            53
+          ],
+          [
+            "deny",
+            53
+          ],
+          [
+            "deny",
+            53
+          ]
+        ],
+        [
+          [
+            "allow",
+            52
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "allow",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "allow",
+            54
+          ],
+          [
+            "deny",
+            54
+          ],
+          [
+            "deny",
+            54
+          ]
+        ],
+        [
+          [
+            "allow",
+            52
+          ],
+          [
+            "allow",
+            4
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "allow",
+            55
+          ],
+          [
+            "deny",
+            55
+          ],
+          [
+            "deny",
+            55
+          ]
+        ],
+        [
+          [
+            "deny",
+            56
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            56
+          ],
+          [
+            "deny",
+            56
+          ],
+          [
+            "deny",
+            56
+          ],
+          [
+            "deny",
+            56
+          ]
+        ],
+        [
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "allow",
+            57
+          ],
+          [
+            "allow",
+            57
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "deny",
+            57
+          ],
+          [
+            "deny",
+            57
+          ]
+        ],
+        [
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "allow",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "allow",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "deny",
+            58
+          ],
+          [
+            "deny",
+            58
+          ]
+        ],
+        [
+          [
+            "allow",
+            56
+          ],
+          [
+            "allow",
+            8
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "allow",
+            59
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "deny",
+            59
+          ],
+          [
+            "deny",
+            59
+          ]
+        ],
+        [
+          [
+            "deny",
+            60
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            60
+          ],
+          [
+            "allow",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ],
+          [
+            "deny",
+            60
+          ]
+        ],
+        [
+          [
+            "allow",
+            60
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "allow",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ],
+          [
+            "deny",
+            61
+          ]
+        ],
+        [
+          [
+            "allow",
+            60
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "allow",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ],
+          [
+            "deny",
+            62
+          ]
+        ],
+        [
+          [
+            "allow",
+            60
+          ],
+          [
+            "allow",
+            12
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ],
+          [
+            "deny",
+            63
+          ]
+        ]
+      ]
+    }
+  },
+  "comparisons": [
+    {
+      "specification": "legacy",
+      "candidate": "legacy",
+      "outputs": {
+        "target_distance_profile": {
+          "classification": "all",
+          "bindings": 1,
+          "matching_bindings": 1,
+          "failing_bindings": 0,
+          "shortest_failure": null,
+          "strata": {
+            "infinity": 1
+          },
+          "target_reachable_states": 1,
+          "transition_evaluations": 8,
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": true,
+              "length": null,
+              "indices": null,
+              "trace": null
+            }
+          ],
+          "work_operations": 17,
+          "work_budget": 2000000,
+          "work_breakdown": {
+            "family_members": 1,
+            "graph_edges": 8,
+            "semantic_steps": 8
+          }
+        },
+        "parametric_product_bfs": {
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": true,
+              "length": null,
+              "indices": null,
+              "trace": null
+            }
+          ],
+          "transition_evaluations": 8
+        },
+        "symbolic_profile": {
+          "classification": "all",
+          "bindings": 1,
+          "matching_bindings": 1,
+          "strata": {
+            "infinity": 1
+          },
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": true,
+              "length": null,
+              "indices": null,
+              "trace": null
+            }
+          ],
+          "symbolic": {
+            "nodes": [
+              [
+                null,
+                false
+              ],
+              [
+                null,
+                true
+              ],
+              [
+                null,
+                [
+                  "deny",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  63
+                ]
+              ]
+            ],
+            "good_root": 1,
+            "first_bad_cell_regions": [],
+            "cells": 8,
+            "conditional_operations": 153,
+            "alias_order": []
+          }
+        }
+      },
+      "list_free": {
+        "accepted": true,
+        "equivalent": true,
+        "status": "equivalent",
+        "states_discovered": 1,
+        "local_cells": 8,
+        "binding_evaluations": 8,
+        "maximum_width": 0,
+        "work_operations": 824,
+        "work_budget": 2000000,
+        "work_breakdown": {
+          "binding_semantics": 328,
+          "cell_support": 480,
+          "graph_edges": 8,
+          "invocation_preparation": 1,
+          "state_preparation": 7
+        },
+        "length": null
+      }
+    },
+    {
+      "specification": "ex",
+      "candidate": "ex",
+      "outputs": {
+        "target_distance_profile": {
+          "classification": "all",
+          "bindings": 1,
+          "matching_bindings": 1,
+          "failing_bindings": 0,
+          "shortest_failure": null,
+          "strata": {
+            "infinity": 1
+          },
+          "target_reachable_states": 2,
+          "transition_evaluations": 16,
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": true,
+              "length": null,
+              "indices": null,
+              "trace": null
+            }
+          ],
+          "work_operations": 33,
+          "work_budget": 2000000,
+          "work_breakdown": {
+            "family_members": 1,
+            "graph_edges": 16,
+            "semantic_steps": 16
+          }
+        },
+        "parametric_product_bfs": {
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": true,
+              "length": null,
+              "indices": null,
+              "trace": null
+            }
+          ],
+          "transition_evaluations": 16
+        },
+        "symbolic_profile": {
+          "classification": "all",
+          "bindings": 1,
+          "matching_bindings": 1,
+          "strata": {
+            "infinity": 1
+          },
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": true,
+              "length": null,
+              "indices": null,
+              "trace": null
+            }
+          ],
+          "symbolic": {
+            "nodes": [
+              [
+                null,
+                false
+              ],
+              [
+                null,
+                true
+              ],
+              [
+                null,
+                [
+                  "deny",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  63
+                ]
+              ],
+              [
+                null,
+                [
+                  "deny",
+                  63
+                ]
+              ]
+            ],
+            "good_root": 1,
+            "first_bad_cell_regions": [],
+            "cells": 16,
+            "conditional_operations": 441,
+            "alias_order": []
+          }
+        }
+      },
+      "list_free": {
+        "accepted": true,
+        "equivalent": true,
+        "status": "equivalent",
+        "states_discovered": 2,
+        "local_cells": 16,
+        "binding_evaluations": 16,
+        "maximum_width": 0,
+        "work_operations": 2255,
+        "work_budget": 2000000,
+        "work_breakdown": {
+          "binding_semantics": 1008,
+          "cell_support": 1216,
+          "graph_edges": 16,
+          "invocation_preparation": 1,
+          "state_preparation": 14
+        },
+        "length": null
+      }
+    },
+    {
+      "specification": "legacy",
+      "candidate": "ex",
+      "outputs": {
+        "target_distance_profile": {
+          "classification": "none",
+          "bindings": 1,
+          "matching_bindings": 0,
+          "failing_bindings": 1,
+          "shortest_failure": 1,
+          "strata": {
+            "1": 1
+          },
+          "target_reachable_states": 2,
+          "transition_evaluations": 2,
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": false,
+              "length": 1,
+              "indices": [
+                1
+              ],
+              "trace": [
+                {
+                  "request": [
+                    "caller",
+                    "policy-store",
+                    "add-mixed"
+                  ],
+                  "binding": {},
+                  "source": [
+                    "deny",
+                    15
+                  ],
+                  "target": [
+                    "allow",
+                    63
+                  ],
+                  "decision_equal": false,
+                  "state_equal": false,
+                  "compared_equal": false
+                }
+              ],
+              "target_state": 48,
+              "request": 1
+            }
+          ],
+          "work_operations": 20,
+          "work_budget": 2000000,
+          "work_breakdown": {
+            "family_members": 1,
+            "graph_edges": 16,
+            "replay_steps": 1,
+            "semantic_steps": 2
+          }
+        },
+        "parametric_product_bfs": {
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": false,
+              "length": 1,
+              "indices": [
+                1
+              ],
+              "trace": [
+                {
+                  "request": [
+                    "caller",
+                    "policy-store",
+                    "add-mixed"
+                  ],
+                  "binding": {},
+                  "source": [
+                    "deny",
+                    15
+                  ],
+                  "target": [
+                    "allow",
+                    63
+                  ],
+                  "decision_equal": false,
+                  "state_equal": false,
+                  "compared_equal": false
+                }
+              ]
+            }
+          ],
+          "transition_evaluations": 2
+        },
+        "symbolic_profile": {
+          "classification": "none",
+          "bindings": 1,
+          "matching_bindings": 0,
+          "strata": {
+            "1": 1
+          },
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": false,
+              "length": 1,
+              "indices": [
+                1
+              ],
+              "trace": [
+                {
+                  "request": [
+                    "caller",
+                    "policy-store",
+                    "add-mixed"
+                  ],
+                  "binding": {},
+                  "source": [
+                    "deny",
+                    15
+                  ],
+                  "target": [
+                    "allow",
+                    63
+                  ],
+                  "decision_equal": false,
+                  "state_equal": false,
+                  "compared_equal": false
+                }
+              ]
+            }
+          ],
+          "symbolic": {
+            "nodes": [
+              [
+                null,
+                false
+              ],
+              [
+                null,
+                true
+              ],
+              [
+                null,
+                [
+                  "deny",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  63
+                ]
+              ],
+              [
+                null,
+                [
+                  "deny",
+                  63
+                ]
+              ]
+            ],
+            "good_root": 0,
+            "first_bad_cell_regions": [
+              {
+                "root": 1,
+                "indices": [
+                  1
+                ],
+                "length": 1
+              }
+            ],
+            "cells": 16,
+            "conditional_operations": 305,
+            "alias_order": []
+          }
+        }
+      },
+      "list_free": {
+        "accepted": false,
+        "equivalent": false,
+        "status": "mismatch",
+        "states_discovered": 1,
+        "local_cells": 2,
+        "binding_evaluations": 2,
+        "maximum_width": 0,
+        "work_operations": 258,
+        "work_budget": 2000000,
+        "work_breakdown": {
+          "binding_semantics": 82,
+          "cell_support": 120,
+          "graph_edges": 1,
+          "invocation_preparation": 1,
+          "state_preparation": 7,
+          "witness_replay": 47
+        },
+        "length": 1,
+        "indices": [
+          1
+        ],
+        "binding": {},
+        "trace": [
+          {
+            "request": [
+              "caller",
+              "policy-store",
+              "add-mixed"
+            ],
+            "source": [
+              "deny",
+              15
+            ],
+            "target": [
+              "allow",
+              63
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "specification": "ex",
+      "candidate": "legacy",
+      "outputs": {
+        "target_distance_profile": {
+          "classification": "none",
+          "bindings": 1,
+          "matching_bindings": 0,
+          "failing_bindings": 1,
+          "shortest_failure": 1,
+          "strata": {
+            "1": 1
+          },
+          "target_reachable_states": 1,
+          "transition_evaluations": 2,
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": false,
+              "length": 1,
+              "indices": [
+                1
+              ],
+              "trace": [
+                {
+                  "request": [
+                    "caller",
+                    "policy-store",
+                    "add-mixed"
+                  ],
+                  "binding": {},
+                  "source": [
+                    "allow",
+                    63
+                  ],
+                  "target": [
+                    "deny",
+                    15
+                  ],
+                  "decision_equal": false,
+                  "state_equal": false,
+                  "compared_equal": false
+                }
+              ],
+              "target_state": 48,
+              "request": 1
+            }
+          ],
+          "work_operations": 12,
+          "work_budget": 2000000,
+          "work_breakdown": {
+            "family_members": 1,
+            "graph_edges": 8,
+            "replay_steps": 1,
+            "semantic_steps": 2
+          }
+        },
+        "parametric_product_bfs": {
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": false,
+              "length": 1,
+              "indices": [
+                1
+              ],
+              "trace": [
+                {
+                  "request": [
+                    "caller",
+                    "policy-store",
+                    "add-mixed"
+                  ],
+                  "binding": {},
+                  "source": [
+                    "allow",
+                    63
+                  ],
+                  "target": [
+                    "deny",
+                    15
+                  ],
+                  "decision_equal": false,
+                  "state_equal": false,
+                  "compared_equal": false
+                }
+              ]
+            }
+          ],
+          "transition_evaluations": 2
+        },
+        "symbolic_profile": {
+          "classification": "none",
+          "bindings": 1,
+          "matching_bindings": 0,
+          "strata": {
+            "1": 1
+          },
+          "profiles": [
+            {
+              "binding": {},
+              "equivalent": false,
+              "length": 1,
+              "indices": [
+                1
+              ],
+              "trace": [
+                {
+                  "request": [
+                    "caller",
+                    "policy-store",
+                    "add-mixed"
+                  ],
+                  "binding": {},
+                  "source": [
+                    "allow",
+                    63
+                  ],
+                  "target": [
+                    "deny",
+                    15
+                  ],
+                  "decision_equal": false,
+                  "state_equal": false,
+                  "compared_equal": false
+                }
+              ]
+            }
+          ],
+          "symbolic": {
+            "nodes": [
+              [
+                null,
+                false
+              ],
+              [
+                null,
+                true
+              ],
+              [
+                null,
+                [
+                  "deny",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  15
+                ]
+              ],
+              [
+                null,
+                [
+                  "allow",
+                  63
+                ]
+              ]
+            ],
+            "good_root": 0,
+            "first_bad_cell_regions": [
+              {
+                "root": 1,
+                "indices": [
+                  1
+                ],
+                "length": 1
+              }
+            ],
+            "cells": 8,
+            "conditional_operations": 221,
+            "alias_order": []
+          }
+        }
+      },
+      "list_free": {
+        "accepted": false,
+        "equivalent": false,
+        "status": "mismatch",
+        "states_discovered": 1,
+        "local_cells": 2,
+        "binding_evaluations": 2,
+        "maximum_width": 0,
+        "work_operations": 356,
+        "work_budget": 2000000,
+        "work_breakdown": {
+          "binding_semantics": 126,
+          "cell_support": 152,
+          "graph_edges": 1,
+          "invocation_preparation": 1,
+          "state_preparation": 7,
+          "witness_replay": 69
+        },
+        "length": 1,
+        "indices": [
+          1
+        ],
+        "binding": {},
+        "trace": [
+          {
+            "request": [
+              "caller",
+              "policy-store",
+              "add-mixed"
+            ],
+            "source": [
+              "allow",
+              63
+            ],
+            "target": [
+              "deny",
+              15
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "consumer": {
+    "word": [
+      "add-mixed",
+      "has-row-4"
+    ],
+    "legacy_membership": false,
+    "ex_membership": true,
+    "meaning": "hasPolicy membership, not an Enforce call"
+  }
+}
