@@ -65,7 +65,7 @@ def summarize(directory, baseline=None):
             "unique_publication_identifiers": references["unique_publication_identifiers"],
             "all_references_cited": references["all_references_cited"],
             "citation_occurrences": references["citation_occurrences"],
-            "audit_access_date": references["audit_access_date"],
+            "audit_access_dates": references["audit_access_dates"],
         },
         "pilot_cases": pilot["case_count"],
         "generated_distinct_canonical_asts": len(structural),
