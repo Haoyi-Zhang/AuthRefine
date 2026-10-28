@@ -1,0 +1,2 @@
+# Source-study evidence is byte-bound; preserve it across Windows/Linux checkouts.
+source_study/** -text
