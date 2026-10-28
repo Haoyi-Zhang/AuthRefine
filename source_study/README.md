@@ -37,6 +37,14 @@ are checked. Original application services, serializer content and write
 actions do not execute. The selected Healthchecks source and its BSD license
 are included under `source/healthchecks`; they retain their own license.
 
+On Ubuntu 24.04, an administrator may need to install `apparmor-profiles` and
+load the distro-supplied `/usr/share/apparmor/extra-profiles/bwrap-userns-restrict`
+profile with `apparmor_parser -r`. The CI does this on its disposable runner.
+This permits namespace setup for the packaged Bubblewrap executable while
+retaining broader AppArmor restrictions; it does not disable the host policy
+or remove the replay's no-network, no-home, no-capability checks. A failed
+namespace preflight stops the replay and retains its actual error.
+
 Algorithm timing and the common native pipeline are separate in the cost data.
 The recorded environment is not a required throughput target on another machine.
 Data files use lossless `.json.gz` storage; the verifier reads and parses every
