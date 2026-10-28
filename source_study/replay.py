@@ -125,7 +125,9 @@ def replay(directory):
         "assert 'AUTHREFINE_SENTINEL' not in os.environ; print('isolated')")
     safe=dict(PATH='/usr/bin:/bin',LC_ALL='C.UTF-8',HOME='/tmp',TZ='UTC')
     done=subprocess.run(namespace()+['--clearenv','/usr/bin/python3','-I','-c',probe],env={**safe,'AUTHREFINE_SENTINEL':'owned-control'},capture_output=True,text=True,timeout=15)
-    if done.returncode or done.stdout!='isolated\n' or done.stderr:raise ValueError('actual namespace controls not observed')
+    if done.returncode or done.stdout!='isolated\n' or done.stderr:
+        raise ValueError('actual namespace controls not observed: '+json.dumps(dict(
+            returncode=done.returncode,stdout=done.stdout,stderr=done.stderr)))
     command=namespace()+['--ro-bind',str(framework),'/framework','--ro-bind',str(ROOT/'data/credential-input.json.gz'),'/inputs.json.gz',
         '--ro-bind',str(Path(__file__).resolve()),'/owned/replay.py']
     for name in ('credential_flow_ir.py','credential_flow_contexts.py','credential_flow_native.py'):
