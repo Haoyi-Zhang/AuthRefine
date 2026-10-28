@@ -1,0 +1,3 @@
+# Optional YAML source-data interface and its own regression tests.
+# Add to any ONE isolated native-engine profile; it installs no Casbin engine.
+PyYAML==6.0.2

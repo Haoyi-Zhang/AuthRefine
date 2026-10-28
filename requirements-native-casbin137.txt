@@ -1,0 +1,9 @@
+# Source-declared MCP policy interface; install separately from other profiles.
+casbin==1.37.0
+PyYAML==6.0.2
+simpleeval==1.0.8
+# Shared owned request-interface regressions; not the gateway application's runtime.
+starlette==1.10.0
+anyio==4.15.1
+typing_extensions==4.16.0
+idna==3.20

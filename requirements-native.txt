@@ -1,0 +1,6 @@
+casbin==1.43.0
+simpleeval==1.0.8
+starlette==1.10.0
+anyio==4.15.1
+typing_extensions==4.16.0
+idna==3.20

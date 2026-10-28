@@ -1,6 +1,6 @@
 # Dependency Envelope
 
-The scientific implementation uses only the Python standard library, but its supported runtime is deliberately narrower than “all standard-library platforms.” The campaign and several measurement modules import the POSIX `resource` module unconditionally for CPU and high-water RSS accounting. The supported environment is therefore:
+The finite checker and core campaign use only the Python standard library, but their supported runtime is deliberately narrower than “all standard-library platforms.” The campaign and several measurement modules import the POSIX `resource` module unconditionally for CPU and high-water RSS accounting. The supported environment is therefore:
 
 - CPython on Linux;
 - a working POSIX `resource` module;
@@ -13,8 +13,31 @@ On the supported Linux environment, `peak_rss_kib` records `ru_maxrss` in KiB. C
 
 A runtime preflight is:
 
+The complete expanded unit suite additionally exercises the selected native
+engine, request objects, YAML decoding, SQL expressions and wire records.
+Install `requirements-test.txt` in an isolated environment before running
+`verify_release.py`; it is not a standard-library-only test suite. The finite
+compiler/checker and generated core campaign remain standard-library programs.
+Do not install `casbin` and `pycasbin` in the same environment: both provide
+the same import name. The requirements select the default recorded Casbin
+profile; other explicit profiles need separate environments.
+
+```sh
+python -m venv /tmp/authrefine-checks
+/tmp/authrefine-checks/bin/python -m pip install -r requirements-test.txt
+/tmp/authrefine-checks/bin/python -B verify_release.py --json
+```
+
 ```bash
 python -c "import resource, sys; assert sys.platform.startswith('linux')"
 ```
 
 LaTeX, BibTeX, `pdfinfo`, and rasterization tools are build or visual-inspection dependencies for the manuscript, not runtime dependencies of the checker. Static import discovery can list local module names such as `cases`, `checker`, `compiler`, `experiments`, or `symbolic`; those names are part of this repository and must not be interpreted automatically as PyPI dependencies.
+# Source-bound credential replay
+
+The portable `source_study` table verifier uses the Python standard library and
+the existing owned finite checker. Native credential replay requires non-root
+Linux, Python 3.12+, bubblewrap and prlimit. It uses the source-pinned Django
+6.1.2 profile with asgiref 3.9.1 and sqlparse 0.5.3. The explicit preparation
+command downloads and checks pure wheels without executing installation hooks.
+This is not the full target application's requirements or deployment lock.

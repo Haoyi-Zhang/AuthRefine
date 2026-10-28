@@ -1,0 +1,4 @@
+# Query-expression checks; isolated from application startup and databases.
+SQLAlchemy==2.0.55
+greenlet==3.5.6
+typing_extensions==4.16.0

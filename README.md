@@ -2,6 +2,16 @@
 
 This artifact implements a finite controlled authorization language, a compiler, semantic reification, full-state trace checking with an optional closed-region list, shortest-trace diagnosis, algorithmic cross-checks, and the derived finite constructions. It includes frozen public inputs, deterministic generators, measured records, and proof notes. No network access is needed to reproduce the evidence.
 
+The source-bound study is in `source_study/`. Its offline verifier consumes the
+eight case records and complete credential interpretation families. A portable
+isolated replay checks the ten-function credential/project/object chain on
+1,260 owned normal contexts. Preparing that replay's frozen framework wheels
+is a separate, opt-in primary-host download; replay itself is network isolated.
+See `source_study/README.md` for commands and the exact source/primitive boundary.
+The 48-source static transfer is not cohort-wide semantic accuracy, and one of
+the eight deeper source cases remains unknown. Independent source-intent review
+is pending; normal contexts and repeated mappings are not additional apps.
+
 For the accompanying manuscript, use the `preferred-citation` entry in
 `CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
 The top-level
