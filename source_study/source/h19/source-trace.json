@@ -1,0 +1,104 @@
+{
+  "completed_utc": "2026-10-26T13:07:31.652874+00:00",
+  "case": "H19",
+  "primary_advisory": "https://github.com/advisories/GHSA-2gh4-jmwq-rr8w",
+  "dependency_repository": "piccolo-orm/piccolo_api",
+  "dependency_fix": "520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4",
+  "dependency_parent": "f2db7d9bfabe4baacd1e338cc973f63477d4eb23",
+  "dependency_release": "1.10.0",
+  "release_contains_source_fix": true,
+  "release_ancestry_url": "https://api.github.com/repos/piccolo-orm/piccolo_api/compare/520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4...1.10.0",
+  "sources": [
+    {
+      "label": "before",
+      "repository": "piccolo-orm/piccolo_api",
+      "snapshot": "f2db7d9bfabe4baacd1e338cc973f63477d4eb23",
+      "path": "piccolo_api/session_auth/tables.py",
+      "source_url": "https://raw.githubusercontent.com/piccolo-orm/piccolo_api/f2db7d9bfabe4baacd1e338cc973f63477d4eb23/piccolo_api/session_auth/tables.py",
+      "git_blob": "fd861f646bea00abfcac20046eb0298793cf09aa",
+      "bytes": 3892,
+      "local_path": "historical_sources/GHSA-2gh4-jmwq-rr8w/dependency-source/before/piccolo_api/session_auth/tables.py",
+      "source_executed": false
+    },
+    {
+      "label": "before",
+      "repository": "piccolo-orm/piccolo_api",
+      "snapshot": "f2db7d9bfabe4baacd1e338cc973f63477d4eb23",
+      "path": "piccolo_api/crud/endpoints.py",
+      "source_url": "https://raw.githubusercontent.com/piccolo-orm/piccolo_api/f2db7d9bfabe4baacd1e338cc973f63477d4eb23/piccolo_api/crud/endpoints.py",
+      "git_blob": "1daa682f339e70d2b0abf54435b8d5ca04955516",
+      "bytes": 44276,
+      "local_path": "historical_sources/GHSA-2gh4-jmwq-rr8w/dependency-source/before/piccolo_api/crud/endpoints.py",
+      "source_executed": false
+    },
+    {
+      "label": "after",
+      "repository": "piccolo-orm/piccolo_api",
+      "snapshot": "520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4",
+      "path": "piccolo_api/session_auth/tables.py",
+      "source_url": "https://raw.githubusercontent.com/piccolo-orm/piccolo_api/520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4/piccolo_api/session_auth/tables.py",
+      "git_blob": "236fce34ddd0d71625fceaae140dcc613d10ad1c",
+      "bytes": 3837,
+      "local_path": "historical_sources/GHSA-2gh4-jmwq-rr8w/dependency-source/after/piccolo_api/session_auth/tables.py",
+      "source_executed": false
+    },
+    {
+      "label": "after",
+      "repository": "piccolo-orm/piccolo_api",
+      "snapshot": "520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4",
+      "path": "piccolo_api/crud/endpoints.py",
+      "source_url": "https://raw.githubusercontent.com/piccolo-orm/piccolo_api/520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4/piccolo_api/crud/endpoints.py",
+      "git_blob": "5174a1f7995a2c9832e3c0b6f1ebdfbf5de4d9ec",
+      "bytes": 44413,
+      "local_path": "historical_sources/GHSA-2gh4-jmwq-rr8w/dependency-source/after/piccolo_api/crud/endpoints.py",
+      "source_executed": false
+    }
+  ],
+  "dependency_source_trace_complete": true,
+  "application_manifest_minimum": {
+    "before": [
+      "1.5.2"
+    ],
+    "after": [
+      "1.10.0"
+    ]
+  },
+  "manifest_is_not_an_installed_package_lock": true,
+  "application_consumer_source_unchanged": true,
+  "token_source_declarations": {
+    "before": {
+      "line": 21,
+      "secret_keyword": "not_specified",
+      "column_constructor": "Varchar"
+    },
+    "after": {
+      "line": 21,
+      "secret_keyword": true,
+      "column_constructor": "Varchar"
+    }
+  },
+  "selected_reading_scope": {
+    "application_endpoints": [
+      "superuser_validators complete body at419",
+      "table-specific validators and PiccoloCRUD construction at574-612"
+    ],
+    "dependency_endpoints": [
+      "get_visible_fields_options at124-162",
+      "PiccoloCRUD constructor default and assignment",
+      "pydantic_model_filters complete property at344-404",
+      "get_all select invocation at867-871"
+    ],
+    "session_table": "SessionsBase column declarations; no session creation/login execution"
+  },
+  "source_backed_mechanism": "SessionsBase.token explicitly becomes secret=True; CRUD default excludes secrets, query selects pass that flag, and filter-model exclusions add secret columns. Application write-method guard is unchanged and not reinterpreted as a GET denial.",
+  "runtime_obligations_not_proved_by_source_trace": [
+    "installed package resolution/version",
+    "actual ORM column metadata/serialization",
+    "configured tables and inherited session schema",
+    "live session/HTTP/database behavior"
+  ],
+  "application_installed_dependency_or_lockfile_resolved": false,
+  "semantic_orm_http_or_authentication_comparison_completed": false,
+  "source_tests_database_or_advisory_examples_executed": false,
+  "full_historical_case_verified": false
+}

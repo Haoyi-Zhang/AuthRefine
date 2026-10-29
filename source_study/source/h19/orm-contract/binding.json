@@ -1,0 +1,48 @@
+{
+  "metadata_url": "https://pypi.org/pypi/piccolo/1.16.0/json",
+  "package": "piccolo-1.16.0-py3-none-any.whl",
+  "version": "1.16.0",
+  "api_source_requirements_url": "https://api.github.com/repos/piccolo-orm/piccolo_api/contents/requirements/requirements.txt?ref=520ec2567ae1d2cc417c8c0d1ad0ddc05549a8a4",
+  "api_source_requirements_blob": "af69a18612fa747e7512ece8064c20d2baf9f80f",
+  "package_sha256": "c0f42547ecd11173ab1925e434b25d32fad571fef8559c2371f972d927989334",
+  "members": [
+    {
+      "member": "piccolo/columns/base.py",
+      "bytes": 32487,
+      "sha256": "fdb83dc8c5a333013be99ed10ea8bd8984a6b51b85c796e4c7db9826c1472a34"
+    },
+    {
+      "member": "piccolo/columns/column_types.py",
+      "bytes": 83485,
+      "sha256": "5ff66c0340b8581355a275763ac8b345db75a2c32c860b50dce6fa24df9a99f8"
+    },
+    {
+      "member": "piccolo/table.py",
+      "bytes": 49766,
+      "sha256": "9d2df3ba118d3d9e07f6cfc4de27856eb13fbb54ebe937a7055c3f9ebaed9914"
+    },
+    {
+      "member": "piccolo/query/methods/select.py",
+      "bytes": 21406,
+      "sha256": "507fb2da0dd46fb6c4a307cb39baeb870d16f877a94d75829ae30f864d77ae81"
+    },
+    {
+      "member": "piccolo/query/mixins.py",
+      "bytes": 21951,
+      "sha256": "1051056fd22de32d6647afc95cb9f5dfd87933d2a078fef9d124d8cb933830bb"
+    },
+    {
+      "member": "piccolo/utils/pydantic.py",
+      "bytes": 12327,
+      "sha256": "461a1067b75d98599ea5572c9475ccaa6ca76d255c87b5cb2944a02642ee412d"
+    },
+    {
+      "member": "piccolo-1.16.0.dist-info/LICENSE",
+      "bytes": 1059,
+      "sha256": "cc52298bed7ab88278db450c206ef9354d096c307292fadd9d7723e54fc46012"
+    }
+  ],
+  "selection": "declared minimum piccolo[postgres]>=1.16.0 in the fixed dependency source; not an installed deployment lock",
+  "package_installed_or_imported": false,
+  "database_or_http_accessed": false
+}

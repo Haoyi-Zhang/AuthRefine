@@ -5,7 +5,8 @@ producers, stores and consumers. Unknown calls remain unknown. The eight case
 records cover four centralized and four cross-component source contracts;
 seven have conditional normal-context comparisons, and Pretix remains unknown.
 The original 12 development, 48 exposed transfer and two auxiliary reservations
-retain their roles. Source annotations are not an independently accepted gold set.
+retain their roles. Source annotations identify structural clauses and source
+locations; they are not an allow/deny outcome gold set.
 
 From the artifact root:
 
@@ -52,6 +53,31 @@ compressed dataset and checks the original case-byte identities after decoding.
 There is one current copy, not parallel compressed/uncompressed deliveries.
 Counts of contexts, table batches or mapping hypotheses are not independent
 applications, vulnerabilities or evidence of deployment correctness.
+
+Two further fixed profiles have a complete source/observation consumer:
+
+```sh
+python -B source_study/complete_profiles.py
+```
+
+For Pretix, three complete original function bodies check 288 owned token/event
+contexts with 288 actual SQLite queries and exact event/organizer/grant handoffs.
+The entry contract supplies an already validated active team token, resolved
+scalar event.items view slots and the complete team grant set. Authentication,
+plugin/legacy grant expansion and alternative session/device/OAuth profiles are
+not inferred. Unhandled profiles stop as unknown; the earlier broader negative
+admission is retained, not changed into a whole-application success.
+
+For H19, the pinned minimum Piccolo source profile is replayed for 18 contexts.
+The selected field contract has 26 nonagreeing before-properties and 18 after-
+properties out of 180 each. Complete-product/diagnostic consumers retain the
+shortest field witnesses. This is a reproducible negative source result, not
+an inferred historical package installation or a certified complete repair.
+
+Original Pretix files are passive data under their included AGPL/additional
+terms in source/pretix/LICENSE. The selected Piccolo API/ORM source keeps its
+original licenses in source/h19. Neither application's modules, services,
+upstream tests nor published exploit examples execute.
 
 Conditional model laws are supplied in `proofs/`, with their retained check
 results in `data/formal-results.json.gz`. Each is standalone with Lean 4.8.0:

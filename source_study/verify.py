@@ -9,6 +9,7 @@ ROOT=Path(__file__).resolve().parent
 sys.path[:0]=[str(ROOT.parent/'src'),str(ROOT/'code')]
 from source_family import diagnose_source_family
 from replay import source_check,data_bytes
+from complete_profiles import verify as verify_fixed_profiles
 
 
 def read(p):return json.loads(data_bytes(p))
@@ -39,10 +40,11 @@ def verify():
     if bindings!=112 or matching!=8 or unknown!=1 or len(idx['cases'])!=8:raise ValueError('fixed study denominator differs')
     historical=read(ROOT/'data/historical-scope.json')
     if historical['fixed_cases']!=20 or historical['unclassified_cases']:raise ValueError('historical dispositions incomplete')
+    fixed=verify_fixed_profiles()
     return dict(source_functions=10,credential_contexts=1260,credential_bindings=bindings,matching_bindings=matching,
         deep_cases=8,conditional_semantic_cases=7,explicit_unknown_cases=unknown,finite_reset_context_properties=properties,
         historical_dispositions=20,independent_gold_accepted=False,full_applications_certified=False,
-        all_supplied_family_algorithms_agree=True)
+        all_supplied_family_algorithms_agree=True,current_fixed_source_profiles=fixed)
 
 
 if __name__=='__main__':print(json.dumps(verify(),indent=2))
