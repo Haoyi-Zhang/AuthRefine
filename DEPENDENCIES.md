@@ -11,8 +11,6 @@ The retained earlier release-entry record was produced with CPython 3.13 on Linu
 
 On the supported Linux environment, `peak_rss_kib` records `ru_maxrss` in KiB. CPU time and wall time are reported in seconds. These values are removed from scientific-record comparisons; they are not used to decide policy equivalence.
 
-A runtime preflight is:
-
 The complete expanded unit suite additionally exercises the selected native
 engine, request objects, YAML decoding, SQL expressions and wire records.
 Install `requirements-test.txt` in an isolated environment before running
@@ -27,6 +25,8 @@ python -m venv /tmp/authrefine-checks
 /tmp/authrefine-checks/bin/python -m pip install -r requirements-test.txt
 /tmp/authrefine-checks/bin/python -B verify_release.py --json
 ```
+
+Before starting, check the required platform:
 
 ```bash
 python -c "import resource, sys; assert sys.platform.startswith('linux')"

@@ -19,6 +19,21 @@ For the accompanying manuscript, use the `preferred-citation` entry in
 `CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
 The software citation and manuscript use this same approved author order.
 
+## Start here
+
+Use Linux CPython for the complete release checks. Create an isolated environment
+and install `requirements-test.txt` before running `python -B verify_release.py`;
+the current expanded suite includes native primitive dependencies. See
+`DEPENDENCIES.md` for installation and `REPRODUCIBILITY.md` for the full
+four-configuration campaign. The core finite checker uses the standard library;
+that narrower property does not describe every optional test.
+
+For source integration, start with `source_study/verify.py`. The selected native
+replay has its own explicit dependency preparation and isolation requirements.
+For the paper's claims, use `claim_evidence_ledger.csv`; bibliography identity
+and claim-specific source support are recorded in `reference_inventory.csv`
+and `reference_audit.csv`. These are the current bibliography records.
+
 Set `PYTHONDONTWRITEBYTECODE=1` before the commands below (`export
 PYTHONDONTWRITEBYTECODE=1` in a POSIX shell, or
 `$env:PYTHONDONTWRITEBYTECODE='1'` in PowerShell). This also applies to child
@@ -200,7 +215,7 @@ python reproduce.py --output ../reproduced --compare results
 
 That command repeats the current unit suite, the offline 61-reference inventory check, the 52-case pilot, the 3,330 original auxiliary cases, the 592 extension cross-checks, the 1,024 adversarial cases, the 23,040-pair complete tiny-domain audit, and all 10,000 primary cases in forty chunks of 250. Up to ten sequential chunks share one worker process; each worker still has a 120-second timeout. It regenerates the summary and compares every primary, pilot, auxiliary, extension, adversarial, exhaustive-audit, and reference-integrity record against the delivered evidence after removing only timing and Linux RSS fields. The same invocation reruns the seven documented inspection/example commands in temporary destinations and records their exit status. Every child command also retains complete stdout, stderr, timeout and exit information in the output's `raw-logs/`, including on failure. `fresh_reproduction` describes a new non-resumed output; the entry point does not extract an archive and records `fresh_archive_extraction` as false.
 
-The `scientific-campaign` job in `.github/workflows/repository-integrity.yml` uses Ubuntu 24.04 and CPython 3.13. Its four hash-seed/time-zone configurations run sequentially, with matrix fail-fast disabled. Each configuration runs the quick check, one complete fresh reproduction, and the current same-information CLI:
+The `scientific-campaign` job in `.github/workflows/repository-integrity.yml` uses Ubuntu 24.04 and CPython 3.13. Its four hash-seed/time-zone jobs permit up to four parallel matrix workers, with fail-fast disabled. Inside each job, the quick check, one complete fresh reproduction, and the current same-information CLI run sequentially:
 
 ```sh
 python verify_release.py --json

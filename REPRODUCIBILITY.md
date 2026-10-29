@@ -18,10 +18,14 @@ On Linux, `peak_rss_kib` is `resource.getrusage(...).ru_maxrss` in KiB. CPU-time
 
 ## Quick verification
 
-Disable bytecode for the verifier and its child test processes before running:
+Install the selected dependencies into an isolated Linux environment, then
+disable bytecode for the verifier and its child test processes:
 
 ```bash
 export PYTHONDONTWRITEBYTECODE=1
+python -m venv /tmp/authrefine-checks
+/tmp/authrefine-checks/bin/python -m pip install -r requirements-test.txt
+source /tmp/authrefine-checks/bin/activate
 python verify_release.py
 ```
 
@@ -52,7 +56,18 @@ Acceptance is based on the generated evidence, not merely the subprocess return 
 
 Freshness is recorded as `fresh_reproduction`; this directory-based entry point does not extract an archive and records `fresh_archive_extraction` as false. Existing historical records are preserved with their original metadata. Each child invocation retains full stdout, stderr, exit status and timeout information under the new output's `raw-logs/`, even if reproduction stops before a summary is produced. Timeouts and failed configurations remain failures in the matrix report.
 
-The Linux workflow executes all four configurations with one matrix worker at a time. Each runs the quick verifier (180-second enclosing limit) and the whole deterministic campaign (300-second enclosing limit, 120 seconds per child). An always-run upload preserves complete or partial output and logs. Workflow configuration alone is not evidence of a successful run. The earlier retained Linux entry record covers 47 methods; `results/current` separately retains four 56-method runs, including the nine later regressions, plus seven documented commands and 10,000 primary records per configuration. Each retained reconstruction reports scientific-field agreement and a fresh output directory, not archive extraction; none binds the subsequently added preparation regression to a new full-campaign or timing result.
+The Linux workflow permits up to four parallel matrix workers. Inside each
+worker, the quick verifier (180-second enclosing limit), whole deterministic
+campaign (300-second enclosing limit, 120 seconds per child), and same-information
+comparison run sequentially. An always-run upload preserves complete or partial
+output and logs. A local `--campaign` invocation instead runs its four
+configurations sequentially. Configuration alone is not execution evidence:
+current CI results and the retained historical measurements have separate roles.
+The earlier retained Linux entry record covers 47 methods; `results/current`
+retains four 56-method runs, seven documented commands and 10,000 primary records
+per configuration. Each reports scientific-field agreement and fresh output.
+Current verification discovers the expanded suite; it does not rewrite those
+historical method counts or timings.
 
 For a single configuration, run `reproduce.py` directly with a new output directory and the delivered `results` baseline. `results/clean_reproduction.json` is an earlier retained reconstruction record and is not accepted as evidence that a current invocation succeeded.
 
