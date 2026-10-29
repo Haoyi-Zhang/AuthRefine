@@ -218,7 +218,7 @@ def check_contract(guards,contract):
         selector=case['select']
         matching=[(i,g) for i,g in enumerate(guards) if g['status']=='compiled_guard' and g['source_binding']['factory_name']==selector['factory']
             and ('member' not in selector or g['source_binding']['factory_member']==selector['member'])
-            and g.get('capture_values')==selector['captures']]
+            and canonical(g.get('capture_values'))==canonical(selector['captures'])]
         if not matching:
             outputs.append(dict(id=case['id'],status='source_not_admitted',reason='no compiled source closure matches the contract selector',observations=[]))
             continue

@@ -38,6 +38,7 @@ class PackagedWorkflow(unittest.TestCase):
     def test_saved_workflow_matches_fresh_semantic_results(self):
         saved=json.loads(gzip.decompress((ROOT/'source_study/data/workflow-results.json.gz').read_bytes()))
         self.assertEqual(saved['summary']['current_workflow_sha256'],hashlib.sha256((ROOT/'source_study/workflow.py').read_bytes()).hexdigest())
+        self.assertEqual(saved['summary']['current_interpreter_sha256'],hashlib.sha256((ROOT/'source_study/code/closure_guard_ir.py').read_bytes()).hexdigest())
         self.assertEqual(saved['summary']['original_population'],48)
         self.assertEqual(saved['summary']['status_counts'],{'unsupported_source_form':30,'structural_only':14,'unsupported_guard_form':2,'contract_checked':2})
         def scientific(value):

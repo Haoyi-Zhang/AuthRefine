@@ -50,6 +50,14 @@ the measured result. Contracts in `contracts/` separately specify complete
 normal inputs and expected observations. Repeated selectors and overlapping
 source selections are rejected rather than multiplying the context count.
 
+JSON selectors compare the JSON representation of captured literals: a source
+tuple of strings is selected with an array, while its tuple semantics are
+preserved during interpretation. Function-local assignments and parameters
+shadow outer captures according to Python scope; unresolved local reads remain
+unknown. Constant substitution requires an unshadowed source origin. Return
+values outside the finite JSON observation interface produce an inconclusive
+result, not a successful comparison or a serialization traceback.
+
 The two bundled projections retain 30 and six original source call bindings,
 with 1,710 and 144 context executions. There are four distinct selector/context
 sets in each contract; applying a set at multiple actual call sites is counted

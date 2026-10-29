@@ -151,4 +151,101 @@ class SourceWorkflow(unittest.TestCase):
                 main(['source',str(archive),'--contract',str(path),'--output',str(out)])
             self.assertEqual(out.read_bytes(),previous)
 
+    def test_tuple_literal_is_selected_by_its_json_array(self):
+        source=SOURCE.replace('require_role("reader")','require_role(("reader",))').replace('required not in user.roles','not any(role in required for role in user.roles)')
+        value=contract();value['cases'][0]['select']['captures']['required']=['reader']
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['semantics']['cases'][0]['status'],'semantic_agreement')
+        self.assertEqual(result['guards'][0]['program']['captures']['required'],('reader',))
+
+    def test_json_selector_does_not_change_tuple_equality_semantics(self):
+        source=SOURCE.replace('require_role("reader")','require_role(("reader",))').replace('required not in user.roles','required != user.roles')
+        value=contract();value['cases'][0]['select']['captures']['required']=['reader']
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        case=result['semantics']['cases'][0]
+        self.assertEqual(case['status'],'contract_mismatch')
+        self.assertEqual(case['observations'][0]['observed']['decision'],'deny')
+
+    def test_uninitialized_local_capture_never_inherits_outer_value(self):
+        source=SOURCE.replace('if required not in user.roles:',"if user.active:\n            required = 'writer'\n        if required not in user.roles:")
+        value=contract();value['cases'][0]['contexts']=[dict(id='normal',arguments={'user':{'active':False,'roles':['reader']}},expected={'decision':'allow','returned_value':{'active':False,'roles':['reader']}})]
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        case=result['semantics']['cases'][0]
+        self.assertEqual(result['status'],'contract_incomplete')
+        self.assertEqual(case['observations'][0]['observed']['decision'],'unknown')
+        self.assertIn('unbound',case['observations'][0]['observed']['reason'])
+        self.assertIsNone(case['diagnosis'])
+
+    def test_initialized_shadow_uses_actual_local_value(self):
+        source=SOURCE.replace('if required not in user.roles:',"if user.active:\n            required = 'writer'\n        if required not in user.roles:")
+        user={'active':True,'roles':['writer']};value=contract()
+        value['cases'][0]['contexts']=[dict(id='normal',arguments={'user':user},expected={'decision':'allow','returned_value':user})]
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['semantics']['cases'][0]['status'],'semantic_agreement')
+
+    def test_zero_iteration_local_loop_target_remains_unbound(self):
+        source=SOURCE.replace('if required not in user.roles:',"for required in user.choices:\n            seen = required\n        if required not in user.roles:")
+        user={'choices':[],'roles':['reader']};value=contract()
+        value['cases'][0]['contexts']=[dict(id='normal',arguments={'user':user},expected={'decision':'allow','returned_value':user})]
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['semantics']['cases'][0]['status'],'inconclusive')
+
+    def test_conditional_unpack_target_is_also_function_local(self):
+        source=SOURCE.replace('if required not in user.roles:',"if user.active:\n            required, other = user.pair\n        if required not in user.roles:")
+        user={'active':False,'pair':['writer','other'],'roles':['reader']};value=contract()
+        value['cases'][0]['contexts']=[dict(id='normal',arguments={'user':user},expected={'decision':'allow','returned_value':user})]
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['semantics']['cases'][0]['status'],'inconclusive')
+
+    def test_formal_parameter_shadows_factory_parameter(self):
+        source=SOURCE.replace('def guard(user=', 'def guard(required, user=')
+        user={'roles':['writer']};value=contract()
+        value['cases'][0]['contexts']=[dict(id='normal',arguments={'required':'writer','user':user},expected={'decision':'allow','returned_value':user})]
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['semantics']['cases'][0]['status'],'semantic_agreement')
+
+    def test_comprehension_binding_does_not_shadow_enclosing_capture(self):
+        source=SOURCE.replace('if required not in user.roles:',"seen = any(required in user.roles for required in user.choices)\n        if required not in user.roles:")
+        user={'choices':['writer'],'roles':['reader']};value=contract()
+        value['cases'][0]['contexts']=[dict(id='normal',arguments={'user':user},expected={'decision':'allow','returned_value':user})]
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['semantics']['cases'][0]['status'],'semantic_agreement')
+
+    def test_shadowed_status_alias_cannot_be_folded_to_403(self):
+        source=SOURCE.replace('HTTPException\n','HTTPException, status\n').replace('if required not in user.roles:','status = user.status\n        if required not in user.roles:').replace('status_code=403','status_code=status.HTTP_403_FORBIDDEN')
+        value=contract()
+        with tempfile.TemporaryDirectory() as d:result=analyze(self.archive(d,source),value)
+        self.assertEqual(result['compiled_closure_bindings'],0)
+        self.assertIn('shadowed',result['guards'][0]['reason'])
+        self.assertEqual(result['status'],'contract_incomplete')
+
+    def test_parameter_and_comprehension_cannot_shadow_source_constant(self):
+        base=SOURCE.replace('HTTPException\n','HTTPException, status\n').replace('status_code=403','status_code=status.HTTP_403_FORBIDDEN')
+        sources=[base.replace('def guard(user=', 'def guard(status, user='),
+            base.replace('if required not in user.roles:','seen = any(status.HTTP_403_FORBIDDEN for status in user.choices)\n        if required not in user.roles:')]
+        for source in sources:
+            with self.subTest(source=source),tempfile.TemporaryDirectory() as d:
+                result=analyze(self.archive(d,source),contract())
+                self.assertEqual(result['compiled_closure_bindings'],0)
+                self.assertIn('shadowed',result['guards'][0]['reason'])
+
+    def test_non_json_returns_are_unknown_and_json_serializable(self):
+        for returned in ('{required}','[user, {required}]','(role for role in user.roles)'):
+            source=SOURCE.replace('return user\n','return '+returned+'\n')
+            with self.subTest(returned=returned),tempfile.TemporaryDirectory() as d:
+                result=analyze(self.archive(d,source),contract())
+                case=result['semantics']['cases'][0]
+                self.assertEqual(case['status'],'inconclusive')
+                self.assertEqual(case['observations'][0]['observed']['decision'],'unknown')
+                self.assertIn('JSON observation',case['observations'][0]['observed']['reason'])
+                self.assertIsNone(case['diagnosis']);json.dumps(result,allow_nan=False)
+
+    def test_cli_materializes_inconclusive_non_json_return(self):
+        source=SOURCE.replace('return user\n','return {required}\n')
+        with tempfile.TemporaryDirectory() as d:
+            archive=self.archive(d,source);path=Path(d)/'contract.json';out=Path(d)/'result.json'
+            path.write_text(json.dumps(contract()))
+            main(['source',str(archive),'--contract',str(path),'--output',str(out)])
+            self.assertEqual(json.loads(out.read_text())['status'],'contract_incomplete')
+
 if __name__=='__main__':unittest.main()

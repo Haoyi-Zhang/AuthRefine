@@ -82,6 +82,16 @@ def compile_guard(node,captures,constants=None):
     if a.vararg or a.kwarg or a.kwonlyargs or a.posonlyargs:raise Unsupported('selected supplied argument interface unmodeled')
     constants=constants or {}
     if constants:
+        # A module alias is not a constant inside a scope which binds that
+        # name. Comprehension targets also have their own lexical scope;
+        # conservatively require an unshadowed origin for every substitution.
+        bound={p.arg for p in a.args}|set(captures)
+        bound.update(n.id for n in ast.walk(node) if isinstance(n,ast.Name) and isinstance(n.ctx,(ast.Store,ast.Del)))
+        for key in constants:
+            root=ast.parse(key,mode='eval').body
+            while isinstance(root,ast.Attribute):root=root.value
+            if not isinstance(root,ast.Name) or root.id in bound:
+                raise Unsupported('source constant is shadowed by a closure binding')
         class Constants(ast.NodeTransformer):
             def visit_Attribute(self,n):
                 key=ast.unparse(n)
@@ -184,14 +194,39 @@ class Machine:
         return None
 
 
+def local_bindings(code):
+    """Python function locals, excluding separately scoped comprehensions."""
+    names=set()
+    for instruction in code:
+        if instruction[0]=='assign':
+            target=instruction[1]
+            names.update([target] if type(target) is str else target)
+        elif instruction[0]=='for':
+            names.add(instruction[1]);names.update(local_bindings(instruction[3]))
+        elif instruction[0]=='if':
+            names.update(local_bindings(instruction[2]));names.update(local_bindings(instruction[3]))
+    return names
+
+
 def evaluate(program,arguments,native=None):
     m=Machine(native)
     try:
-        if set(arguments)!=set(program['arguments']) or set(arguments)&set(program['captures']):raise Unresolved('argument/capture identity differs')
+        if set(arguments)!=set(program['arguments']):raise Unresolved('argument identity differs')
         # JSON round-trip forbids objects with overloaded getters/operators.
-        supplied=json.loads(json.dumps(arguments,allow_nan=False));env={**program['captures'],**supplied}
+        supplied=json.loads(json.dumps(arguments,allow_nan=False))
+        # Assignment anywhere in a function makes a name local, including
+        # before a conditional/zero-iteration write. Do not fill an unbound
+        # local from a same-named outer factory parameter. Formal parameters
+        # instead start initialized from the explicitly supplied arguments.
+        locals_=local_bindings(program['statements'])|set(program['arguments'])
+        env={k:v for k,v in program['captures'].items() if k not in locals_}
+        env.update(supplied)
         result=m.run(program['statements'],env)
         if result is None:raise Unresolved('fallthrough not a declared permission decision')
+        if result['decision']=='allow':
+            try:json.dumps(result['returned_value'],allow_nan=False)
+            except (TypeError,ValueError,OverflowError,RecursionError) as error:
+                raise Unresolved('returned value is outside the finite JSON observation interface') from error
         result.update(work=m.work,native_calls=m.native_calls,total_warning_effects=len(m.warnings));return result
     except (Unresolved,TypeError,KeyError,ValueError,OverflowError) as e:
         return dict(decision='unknown',reason=str(e),work=m.work,native_calls=m.native_calls)
