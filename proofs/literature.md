@@ -1,6 +1,8 @@
 # Literature comparison and reference counts
 
-The comparison is purposive and organized around the actual obligations: bidirectional representation, authorization, refinement, certificate translation, dependence, and proof/implementation boundaries. It is not a census or a ranking of the journal. The 22 distinct full-paper comparisons are recorded in `literature_comparison.csv`: twelve same-journal methodological comparators, five separately selected high-visibility journal articles, and five adjacent-venue papers. Bibliographic metadata and the exact readable-copy locations are recorded in `external_resources.csv` and `literature_reference_counts.csv`.
+The comparison is purposive and organized around the actual obligations: bidirectional representation, authorization, refinement, certificate translation, dependence, and proof/implementation boundaries. It is not a census or a ranking of the journal. The 22 distinct full-paper comparisons are recorded in `literature_comparison.csv`: twelve TOPLAS methodological comparators in the historical sample, five separately selected high-visibility journal articles, and five adjacent-venue papers. Bibliographic metadata and the exact readable-copy locations are recorded in `external_resources.csv` and `literature_reference_counts.csv`.
+
+This historical comparison sample predates the current TOSEM submission direction. It is retained as scholarly background, not presented as TOSEM venue calibration or an acceptance-quality score.
 
 ## Selection and reading scope
 
@@ -14,7 +16,7 @@ The selection establishes visibility through a conference program, not distingui
 
 ## Reference count
 
-The twelve same-journal copies have bibliography-entry counts 57, 38, 93, 34, 33, 34, 32, 39, 51, 21, 13, and 89. Sorted, these are 13, 21, 32, 33, 34, 34, 38, 39, 51, 57, 89, and 93. The selected-copy median is therefore (34+38)/2 = 36. The manuscript cites 58 distinct scholarly works. Every entry appears in the text; publication identifiers are distinct, and an extended preprint is not counted as another reference when the publication is cited. The current 58-row citation-to-passage map is in `reference_audit.csv`. This comparison does not estimate the median of all TOPLAS articles, demonstrate novelty, or substitute reference quantity for a relevant argument. Entries, including non-article items present in a comparator's bibliography, are counted once each; inline citation occurrences are not counted. Page images and parsed bibliography tails were compared. All 22 copy counts and their page ranges are disclosed separately.
+The twelve TOPLAS copies have bibliography-entry counts 57, 38, 93, 34, 33, 34, 32, 39, 51, 21, 13, and 89. Sorted, these are 13, 21, 32, 33, 34, 34, 38, 39, 51, 57, 89, and 93. The selected-copy median is therefore (34+38)/2 = 36. The manuscript cites 61 distinct scholarly works. Every entry appears in the text; publication identifiers are distinct, and an extended preprint is not counted as another reference when the publication is cited. The current 61-row citation-to-passage map is in `reference_audit.csv`. This comparison does not estimate the median of all TOPLAS articles, demonstrate novelty, or substitute reference quantity for a relevant argument. Entries, including non-article items present in a comparator's bibliography, are counted once each; inline citation occurrences are not counted. Page images and parsed bibliography tails were compared. All 22 copy counts and their page ranges are disclosed separately.
 
 ## Direct competitors and the retained distinction
 

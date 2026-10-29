@@ -1,8 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this research artifact, cite the manuscript in preferred-citation."
-title: "Uniform Trace Checking for Controlled-Language Authorization Policies"
+title: "AuthRefine: Source-Bound Checking and Diagnosis of Authorization Contracts"
 type: software
-version: 1.0.0
 authors:
   - family-names: "Zhang"
     given-names: "Haoyi"
@@ -21,7 +20,7 @@ license: MIT
 repository-code: "https://github.com/Haoyi-Zhang/AuthRefine"
 preferred-citation:
   type: unpublished
-  title: "Uniform Trace Checking for Controlled-Language Authorization Policies"
+  title: "AuthRefine: Source-Bound Checking and Diagnosis of Authorization Contracts"
   authors:
     - family-names: "Zhang"
       given-names: "Haoyi"

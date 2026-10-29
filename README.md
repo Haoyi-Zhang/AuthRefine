@@ -1,4 +1,6 @@
-# Uniform trace checking
+# AuthRefine
+
+Source-Bound Checking and Diagnosis of Authorization Contracts
 
 This artifact implements a finite controlled authorization language, a compiler, semantic reification, full-state trace checking with an optional closed-region list, shortest-trace diagnosis, algorithmic cross-checks, and the derived finite constructions. It includes frozen public inputs, deterministic generators, measured records, and proof notes. No network access is needed to reproduce the evidence.
 
@@ -8,14 +10,14 @@ isolated replay checks the ten-function credential/project/object chain on
 1,260 owned normal contexts. Preparing that replay's frozen framework wheels
 is a separate, opt-in primary-host download; replay itself is network isolated.
 See `source_study/README.md` for commands and the exact source/primitive boundary.
-The 48-source static transfer is not cohort-wide semantic accuracy, and one of
-the eight deeper source cases remains unknown. Independent source-intent review
-is pending; normal contexts and repeated mappings are not additional apps.
+The 48-source static transfer is not cohort-wide semantic accuracy, and the deeper cases retain their exact admission boundaries. Pretix's selected
+team-token/event profile is checked under its stated entry contracts; broader
+authentication and plugin profiles remain unknown. Structural source annotations
+are not independent policy-intent gold; repeated contexts are not additional apps.
 
 For the accompanying manuscript, use the `preferred-citation` entry in
 `CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
-The top-level
-software authors are separate from this manuscript citation.
+The software citation and manuscript use this same approved author order.
 
 Set `PYTHONDONTWRITEBYTECODE=1` before the commands below (`export
 PYTHONDONTWRITEBYTECODE=1` in a POSIX shell, or
@@ -153,7 +155,7 @@ Casbin is not present in the bundled Python environment and was not installed.
 
 ## Mathematical extensions and implementation boundary
 
-The proof notes also give the canonical observed-state quotient, an exact earliest-failure profile for each binding, the sharper coherent-quotient witness bound, dependency-closed state projection, and restriction to a specified nonempty binding family. They also show that accepted full-state uniformity tolerates stepwise binding changes, and classify whether a candidate implements all, a proper nonempty family, or none of the admitted interpretations. `src/extensions.py` supplies bounded reference constructions for these consequences without changing the main Cartesian checker or the declared fixed-binding language. The ordinary diagnostic returns one shortest uniform counterexample, including the empty word when initial observations differ. The companion profile routine enumerates the complete finite family only when both its streaming family cap and shared work budget permit. In the binding-profile, family-check, quotient, and switching analyses, family ingestion, graph traversal, certificate closure, binding-family support projections, semantic steps, and witness replay consume that work budget; exhaustion is inconclusive rather than a semantic rejection. The state-dependence projection helpers scan the bounded typed policy and target separately and are not charged to that counter. `proofs/semantics.md` states each result with its premises. `reference_audit.csv` maps all 58 cited works to their primary access paths, reading depth, manuscript locations and supported claims. `literature_comparison.csv`, `literature_reference_counts.csv` and `proofs/literature.md` record the separate journal-calibration sample and the direct scholarly comparisons.
+The proof notes also give the canonical observed-state quotient, an exact earliest-failure profile for each binding, the sharper coherent-quotient witness bound, dependency-closed state projection, and restriction to a specified nonempty binding family. They also show that accepted full-state uniformity tolerates stepwise binding changes, and classify whether a candidate implements all, a proper nonempty family, or none of the admitted interpretations. `src/extensions.py` supplies bounded reference constructions for these consequences without changing the main Cartesian checker or the declared fixed-binding language. The ordinary diagnostic returns one shortest uniform counterexample, including the empty word when initial observations differ. The companion profile routine enumerates the complete finite family only when both its streaming family cap and shared work budget permit. In the binding-profile, family-check, quotient, and switching analyses, family ingestion, graph traversal, certificate closure, binding-family support projections, semantic steps, and witness replay consume that work budget; exhaustion is inconclusive rather than a semantic rejection. The state-dependence projection helpers scan the bounded typed policy and target separately and are not charged to that counter. `proofs/semantics.md` states each result with its premises. `reference_audit.csv` maps all 61 cited works to their primary access paths, reading depth, manuscript locations and supported claims. `literature_comparison.csv`, `literature_reference_counts.csv` and `proofs/literature.md` record the historical TOPLAS comparison sample (not a TOSEM length or acceptance criterion) and the direct scholarly comparisons.
 
 `results/extensions.json` records 592 deterministic finite cross-checks: 128 binding-profile instances covering 296 complete bindings, 128 two-state quotient cases, 192 policy/projection pairs covering 10,224 full one-step tuples, all 15 nonempty subfamilies of a four-binding correlated example, and 128 full-state switching cases plus one decision-only separator. These checks connect the written consequences to the reference code; they are not proof-assistant mechanization, performance benchmarks, or evidence about larger policy distributions. The main full-state algorithms and the extension campaign are included in the complete reproduction. The resource exception described below applies to repeated executions as well as the original measurement.
 
@@ -184,7 +186,7 @@ python verify_release.py
 python verify_release.py --campaign
 ```
 
-The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. Current source discovery contains 90 unit-test methods; the quick check runs them in ordinary and optimized modes on its supported Linux environment. The 56-method count above describes the retained earlier Linux runs, not current discovery. The dated reuse experiment ran 22 selected portable methods, not the complete Linux suite.
+The quick check verifies the supported platform, required scientific files, input paths and byte counts, JSON readability, the forty-chunk/10,000-record baseline shape, and forty-nine policy/certificate/diagnostic examples through semantic replay. Current source discovery determines the complete unit-test count; the quick check runs that suite in ordinary and optimized modes on its supported Linux environment. The 56-method count above describes the retained earlier Linux runs, not current discovery. The dated reuse experiment ran 22 selected portable methods, not the complete Linux suite.
 
 The campaign command copies the artifact into an isolated temporary directory and runs four fresh, non-resumed reproductions: the Cartesian product of Python hash seeds 1729 and 2718 with `UTC` and `America/Los_Angeles`. Each invocation receives both a new `--output` directory and the copied frozen `results` directory through `--compare`. The verifier accepts a configuration only after the new output contains exactly forty JSONL chunks, forty metric files, 10,000 ordered primary records, and both `summary.json` and `reproduction.json` explicitly report scientific-field agreement with the baseline. A zero process return code without those files is a failure.
 
@@ -196,7 +198,7 @@ For one direct reconstruction instead of the four-configuration matrix, choose a
 python reproduce.py --output ../reproduced --compare results
 ```
 
-That command repeats the current unit suite, the offline 58-reference inventory check, the 52-case pilot, the 3,330 original auxiliary cases, the 592 extension cross-checks, the 1,024 adversarial cases, the 23,040-pair complete tiny-domain audit, and all 10,000 primary cases in forty chunks of 250. Up to ten sequential chunks share one worker process; each worker still has a 120-second timeout. It regenerates the summary and compares every primary, pilot, auxiliary, extension, adversarial, exhaustive-audit, and reference-integrity record against the delivered evidence after removing only timing and Linux RSS fields. The same invocation reruns the seven documented inspection/example commands in temporary destinations and records their exit status. Every child command also retains complete stdout, stderr, timeout and exit information in the output's `raw-logs/`, including on failure. `fresh_reproduction` describes a new non-resumed output; the entry point does not extract an archive and records `fresh_archive_extraction` as false.
+That command repeats the current unit suite, the offline 61-reference inventory check, the 52-case pilot, the 3,330 original auxiliary cases, the 592 extension cross-checks, the 1,024 adversarial cases, the 23,040-pair complete tiny-domain audit, and all 10,000 primary cases in forty chunks of 250. Up to ten sequential chunks share one worker process; each worker still has a 120-second timeout. It regenerates the summary and compares every primary, pilot, auxiliary, extension, adversarial, exhaustive-audit, and reference-integrity record against the delivered evidence after removing only timing and Linux RSS fields. The same invocation reruns the seven documented inspection/example commands in temporary destinations and records their exit status. Every child command also retains complete stdout, stderr, timeout and exit information in the output's `raw-logs/`, including on failure. `fresh_reproduction` describes a new non-resumed output; the entry point does not extract an archive and records `fresh_archive_extraction` as false.
 
 The `scientific-campaign` job in `.github/workflows/repository-integrity.yml` uses Ubuntu 24.04 and CPython 3.13. Its four hash-seed/time-zone configurations run sequentially, with matrix fail-fast disabled. Each configuration runs the quick check, one complete fresh reproduction, and the current same-information CLI:
 

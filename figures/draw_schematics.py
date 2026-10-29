@@ -100,6 +100,17 @@ def draw(out):
     d.arrow((5.8,-2.15),(5.8,-.28));d.text(6.05,-1.2,r'$\nu$',ha='left')
     d.save(out,'semantic-square')
 
+    d=Drawing((0,0,13.7,6.6))
+    d.box('source',3.1,5.35,5.5,1.55,'Pinned source and configuration\nSelect the authorization boundary')
+    d.box('admit',10.6,5.35,5.5,1.55,'Discover links; admit supported clauses\nRetain unresolved dependencies')
+    d.box('observe',10.6,1.6,5.5,1.55,'Normal-context observations\nExplicit reference interpretations')
+    d.box('diagnose',3.1,1.6,5.5,1.55,'Check, diagnose and replay\nValidate the owned repair consumer')
+    d.edge('source','admit',sa='e',sb='w')
+    d.edge('admit','observe',sa='s',sb='n')
+    d.edge('observe','diagnose',sa='w',sb='e')
+    d.text(6.85,.25,'Entry premises and source admission remain part of the analysis contract',size=8.5)
+    d.save(out,'workflow')
+
 if __name__ == "__main__":
     parser=argparse.ArgumentParser()
     parser.add_argument("--output",type=Path,default=Path(__file__).resolve().parent)
