@@ -1,0 +1,157 @@
+# CoNET (Colony Network) — Python package configuration
+# Modern PEP 621 packaging. Build with:  python -m build
+# Install for local dev with:  pip install -e ".[dev]"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "colonynet"
+version = "0.2.8"
+description = "An open-source orchestration and governance layer for private, distributed AI-agent networks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Prince Mawuko Dzorkpe", email = "princegh100@outlook.com" },
+]
+keywords = [
+    "ai-agents", "agentic-ai", "orchestration", "governance",
+    "multi-agent", "rag", "mcp", "grpc", "agent-network",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: System :: Distributed Computing",
+]
+
+# --- Core runtime dependencies (always installed) ---------------------------
+# Version caps guard against breaking major releases of fast-moving packages.
+dependencies = [
+    # Control / admin API + settings
+    "fastapi>=0.110,<1.0",
+    "uvicorn[standard]>=0.29,<1.0",
+    "pydantic>=2.6,<3.0",
+    "pydantic-settings>=2.2,<3.0",
+    "python-multipart>=0.0.9",          # form parsing for the dashboard
+    "jsonschema>=4.20,<5.0",            # SkillDef.validate_input / validate_output
+
+    # Internal data plane (Skill execution)
+    # grpcio-tools' protoc embeds a fixed protobuf gencode target per
+    # release; it must stay <= the installed protobuf runtime AND within
+    # whatever ceiling the eval extra's mlflow -> databricks-sdk imposes
+    # (<7.0, excluding several 5.x/6.x point releases). The whole grpcio
+    # family has to move together too -- see ADR-016 in docs/adr-log.md.
+    "grpcio>=1.71,<1.72",
+    "grpcio-tools>=1.71,<1.72",
+    "grpcio-health-checking>=1.71,<1.72",
+    "grpcio-status>=1.71,<1.72",
+    "protobuf>=5.29.6,<6.0",
+
+    # Event plane
+    "nats-py>=2.7,<3.0",
+
+    # Persistence — SQLite via aiosqlite, so the control plane needs no
+    # external database service (see docs/adr-log.md). Swap for a
+    # horizontally-scalable backend when Stage C needs multi-node.
+    "aiosqlite>=0.20,<1.0",
+
+    # Agent policy (deny-by-default RBAC)
+    "casbin>=1.36,<2.0",
+
+    # Human auth & teams (self-hosted; no third-party auth SaaS)
+    "fastapi-users[sqlalchemy]>=13.0,<14.0",
+    "passlib[bcrypt]>=1.7.4,<2.0",
+    "python-jose[cryptography]>=3.3,<4.0",
+
+    # Operator dashboard (server-rendered HTML + HTMX; HTMX itself is a CDN include)
+    "jinja2>=3.1,<4.0",
+
+    # Observability (live) — the dashboard's data source
+    "opentelemetry-sdk>=1.24,<2.0",
+    "opentelemetry-exporter-otlp>=1.24,<2.0",
+    "opentelemetry-instrumentation-fastapi>=0.45b0",
+    "opentelemetry-instrumentation-grpc>=0.45b0",
+]
+
+# --- Optional dependency groups (opt in with  pip install colonynet[group] ) -----
+[project.optional-dependencies]
+
+# External tool boundary — needed only when running the MCP gateway (Stage D).
+# The MCP Python SDK's API moved substantially between 1.x and 2.x (FastMCP
+# -> mcp.server.MCPServer, camelCase -> snake_case schema fields — see
+# docs/adr-log.md); conet.gateway.mcp is written against 2.x and verified
+# working there. Don't widen the floor below 2.0 without re-verifying.
+mcp = [
+    "mcp>=2.0,<3.0",
+]
+
+# Offline agent/model evaluation — separate tool, not on the live path.
+# MLflow's plain filesystem tracking backend is in maintenance mode as of
+# 3.x (see docs/adr-log.md); conet.observability.evaluation defaults to the
+# sqlite backend it now recommends. Verified against 3.15.
+eval = [
+    "mlflow>=3.0,<4.0",
+]
+
+# Onboarding a third-party/vendor agent that only exposes a plain REST
+# webhook, not MCP (conet.gateway.webhook) — see README "Governing
+# third-party and vendor agents".
+webhook = [
+    "httpx>=0.27,<1.0",
+]
+
+# Everything a contributor needs to develop and test
+dev = [
+    "pytest>=8.0,<9.0",
+    "pytest-asyncio>=0.23,<1.0",
+    "ruff>=0.4,<1.0",
+    "mypy>=1.10,<2.0",
+    "build>=1.2",
+    "mkdocs-material>=9.5,<10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/PM-Devs/conet"
+Documentation = "https://github.com/PM-Devs/conet/tree/main/docs"
+Repository = "https://github.com/PM-Devs/conet"
+Issues = "https://github.com/PM-Devs/conet/issues"
+
+# The CLI entry point (conet status / conet agents / conet cancel ...)
+[project.scripts]
+conet = "conet.cli:main"
+
+# --- Package discovery ------------------------------------------------------
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+conet = ["control/*.conf", "control/*.csv", "dashboard/templates/*"]
+
+# --- Tooling config kept in one place ---------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["*_pb2.py", "*_pb2_grpc.py", "*_pb2.pyi"]  # grpc_tools.protoc output; not hand-maintained
+
+[tool.ruff.lint]
+ignore = ["B008"]  # Depends(...) in argument defaults is FastAPI's intended DI pattern, not a bug
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_ignores = true
+ignore_missing_imports = true
+exclude = ["_pb2\\.pyi$", "_pb2\\.py$", "_pb2_grpc\\.py$"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]

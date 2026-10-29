@@ -89,6 +89,34 @@ both remain detectable. No original source or retained negative row is changed.
 This is a checked source-profile adapter repair, not an inferred historical
 installation or a claim that the upstream application has been fully repaired.
 
+Three existing exposed development cases also have executable owned repair
+candidates, not just explanatory controls. With `requirements-test.txt` installed:
+
+```sh
+python -B source_study/repair_profiles.py
+```
+
+The Conclave candidate consumes the established synchronous native Boolean
+without `await`: the same 1,176 identity/provider contexts change from 168
+protocol disagreements to zero. The Conet candidate inserts explicit persistence
+after a successful mutation. Its actual source descriptor, not a control flag,
+drives native FileAdapter/save/reload observations across all 768 table cells.
+The IoT candidate passes indexed dictionary values rather than keys to the real
+protobuf encoder. The same 120 normal records change from 104 value-preservation
+disagreements to zero, preserving order, duplicates and scalar fields.
+
+The source modules are passive data. Candidate source strings are marked as
+modified and retain their source license: Conclave AGPL-3.0, Conet Apache-2.0,
+and the IoT Apache-2.0/MIT notices included in `source/repair-profiles`. Their
+original licenses and notices are not replaced by this repository's own license.
+No original application, RPC, upstream test, service or exploit executes. These
+are selected sequential/protocol/value contracts, not deployment fixes or new
+independent application samples. Original discrepancies remain in the dataset;
+the separately executable candidates must satisfy the unchanged contracts.
+
+The case-table verifier also recomputes membership, shortest witnesses, ordinary
+BFS and property denominators, rather than accepting the classification alone.
+
 Original Pretix files are passive data under their included AGPL/additional
 terms in source/pretix/LICENSE. The selected Piccolo API/ORM source keeps its
 original licenses in source/h19. Neither application's modules, services,

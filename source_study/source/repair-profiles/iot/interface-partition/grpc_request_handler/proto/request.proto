@@ -1,0 +1,23 @@
+syntax = "proto3";
+package request;
+
+message SubmitRequest {
+  string issuer_id = 1;
+  repeated string issuer_characteristics = 2;
+  string timestamp = 3;
+  repeated string description = 4;
+  string impact = 5;
+  string parameters = 6;
+  string modification = 7;
+  int32 priority = 8;
+  string request_id = 9;
+}
+
+message SubmitResponse {
+  string ack = 1;
+  string server_timestamp = 2;
+}
+
+service RequestService {
+  rpc Submit(SubmitRequest) returns (SubmitResponse);
+}

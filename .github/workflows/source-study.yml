@@ -20,6 +20,11 @@ jobs:
         run: python -B -m unittest discover -s tests -p test_source_study.py -v
       - name: Replay fixed token/event and minimum-source field profiles
         run: python -B source_study/complete_profiles.py
+      - name: Install the isolated existing native replay dependencies
+        run: |
+          python -m pip install --only-binary=:all: -r requirements-test.txt
+      - name: Replay explicit source-bound protocol persistence and wire repairs
+        run: timeout 120s python -B source_study/repair_profiles.py
       - name: Install the namespace utility and load its distro AppArmor profile
         run: |
           sudo apt-get update

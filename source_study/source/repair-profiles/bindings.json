@@ -1,0 +1,54 @@
+{
+  "conclave": {
+    "repository_id": 1298707494,
+    "snapshot": "dbca85abf3b5ea87ec654e0b629e2b5e88182824",
+    "files": {
+      "backend/app/rbac/deps.py": "0146d3322f51cc966bf5ea1272d2551b298e832b6aabecd311a1bf1e72c4ce45",
+      "backend/app/rbac/enforcer.py": "2fc063d145b113c784737461ee5dbaf621e5348550bc3dab43ccb9eca838cc38",
+      "backend/app/rbac/model.conf": "c5bf28b5f98dbcd03519c6ef181ee93e3b4f9eda7f4305d72f9b07891e1e4cc5",
+      "backend/requirements.txt": "9ab8889ebf18c7d3e0165f08eae45c0bc9412676e30cbf2da195cf8ee4ed3704",
+      "LICENSE": "32c042b4a63095f5123b433ea23cd54a33b4f8f80384a9487d9f080042743fa5"
+    },
+    "licenses": [
+      "LICENSE"
+    ],
+    "source_modules_or_tests_executed": false
+  },
+  "conet": {
+    "repository_id": 1330300141,
+    "snapshot": "c042a9570d044098f32b6c02c0dda5d67d20f72c",
+    "files": {
+      "src/conet/control/policy.py": "1084e3eed7adbc32ffddd27585741fec1275fc571d4242dd0ca1296ad9dbff36",
+      "src/conet/control/policy_model.conf": "10f281d006f6e3b3210e56fa0ffc1771993156fdc5e131f8bdc975b03ef0ef26",
+      "pyproject.toml": "1bcc16c49b8d33104ea42e07b30a08de2d65d0e0c8f9bf56a8429136d2bffa0c",
+      "LICENSE": "53b3ad6baaef8dbbec3024b1661587615ea0075a27297dfeea570a4cf4b3b911",
+      "NOTICE": "5f5e07ce94836290e11ce3168b5618487d75faa328475e029ef2225cd4d41401"
+    },
+    "licenses": [
+      "LICENSE",
+      "NOTICE"
+    ],
+    "source_modules_or_tests_executed": false
+  },
+  "iot": {
+    "repository_id": 997476673,
+    "snapshot": "453f98df141cd7cc4f9431eda88e1a1fc51a9be5",
+    "files": {
+      "interface-partition/interface_setup/server_methods.py": "f0c6396b956eff7a2a0af5fd534e22fa3344716b3c7df6cd06b7186b00bccf67",
+      "interface-partition/grpc_request_handler/grpc_request_handler.py": "216e310446ab4120b4678ac83aa0285cc94e236dd9ebc62517437782a42ed514",
+      "intermediate-vor-partition/request_message_handler/request_message_handler.py": "72c9187f26a0a78a0d8e94e6271bf60dd23c390f567ab70901131895bc75120f",
+      "intermediate-vor-partition/request_pb2.py": "f6dd056c46319e127786bd025c2e50ace0b5deaf83bb430ec096d62d8205c74d",
+      "interface-partition/grpc_request_handler/proto/request.proto": "a4a968b3a0cbbadd2889c90558aebbceec124425f655e08e0392b8a028b28f33",
+      "intermediate-vor-partition/grpc_request_handler/proto/request.proto": "0516fd6ea3dd1266cd2bc309936182bfc3eecc3925b4841cd02ebd35b9ac30a6",
+      "interface-partition/requirements.txt": "5d61e947acba0a982bdff9b539f8af1d9f87a2276fb81cea68331dbd9650da29",
+      "intermediate-vor-partition/requirements.txt": "13673cb987a1137b0ceab032b4f39adb615a79cbabb334b4b80e874b325416c1",
+      "LICENSE": "fcef2f83188bc5da2edffaec0a97f2110bd12194129e1372a911978523c0259d",
+      "LICENSES/MIT-License-yuanchen-zhao.txt": "988ff70c2caf07fa424a4a458453212952fdb0306db57b2e7d1526cdb41e8f42"
+    },
+    "licenses": [
+      "LICENSE",
+      "LICENSES/MIT-License-yuanchen-zhao.txt"
+    ],
+    "source_modules_or_tests_executed": false
+  }
+}
