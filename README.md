@@ -274,13 +274,11 @@ Original code, proof notes and generated data are provided under the MIT license
 
 ## Manuscript diagrams
 
-The model and protocol schematics are drawn directly in Python as vector PDFs
-with embedded STIX fonts. They encode the stated relationships, not measured
-performance. To regenerate them with Python 3.9+ and Matplotlib:
-
-```sh
-python -B figures/draw_schematics.py --output figures
-```
+The workflow, credential handoff and semantic-square diagrams are editable TikZ
+sources in `figures/`. The manuscript inputs these files directly, so labels
+inherit its Libertine text and mathematical fonts. Build with pdfLaTeX and
+PGF/TikZ; no separate schematic PDF cache is required. Statistical plots use
+Python and retained data, with executed and derived points labeled separately.
 
 The Linux checker workflow also runs the full quick-release validator: runtime
 admission, retained scientific assets, frozen-result structure, example replay,

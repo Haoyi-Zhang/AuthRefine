@@ -1,0 +1,13 @@
+% Editable scientific schematic. Fonts and dimensions inherit from the article.
+\begin{tikzpicture}[
+  stage/.style={draw,rounded corners=1.5pt,align=center,text width=4.25cm,
+    minimum height=12mm,inner sep=3mm,font=\small},
+  flow/.style={-{Stealth[length=2mm]},semithick},node distance=12mm and 14mm]
+  \node[stage] (input) {Source and configuration\\Authorization boundary};
+  \node[stage,right=of input] (admit) {Discover interfaces\\Admit supported source clauses};
+  \node[stage,below=of admit] (observe) {Construct observations\\Define reference interpretations};
+  \node[stage,left=of observe] (diagnose) {Classify and replay failures\\Validate the boundary repair};
+  \draw[flow] (input.east) -- (admit.west);
+  \draw[flow] (admit.south) -- (observe.north);
+  \draw[flow] (observe.west) -- (diagnose.east);
+\end{tikzpicture}

@@ -1,0 +1,11 @@
+% The observed state map and compared transitions, in the manuscript's fonts.
+\begin{tikzpicture}[>=Stealth,semithick,node distance=15mm and 48mm]
+  \node (s) {$s=\nu(q)$};
+  \node[right=of s] (nexts) {$s'=\nu(q')$};
+  \node[below=of s] (q) {$q$};
+  \node[below=of nexts] (nextq) {$q'$};
+  \draw[->] (s) -- node[above,font=\small] {$x/d\quad(P,\beta)$} (nexts);
+  \draw[->] (q) -- node[below,font=\small] {$x/d\quad M$} (nextq);
+  \draw[->] (q) -- node[left,font=\small] {$\nu$} (s);
+  \draw[->] (nextq) -- node[right,font=\small] {$\nu$} (nexts);
+\end{tikzpicture}
