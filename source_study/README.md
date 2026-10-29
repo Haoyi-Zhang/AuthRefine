@@ -1,9 +1,10 @@
 # Source-bound authorization study
 
 The source front end and selected closed-body interpreters connect declared
-producers, stores and consumers. Unknown calls remain unknown. The eight case
-records cover four centralized and four cross-component source contracts;
-seven have conditional normal-context comparisons, and Pretix remains unknown.
+producers, stores and consumers. Unknown calls remain unknown. The eight
+original case records cover four centralized and four cross-component source
+contracts. The original broader Pretix non-admission is retained; the fixed
+team-token/event extension below adds a separate checked source profile.
 The original 12 development, 48 exposed transfer and two auxiliary reservations
 retain their roles. Source annotations identify structural clauses and source
 locations; they are not an allow/deny outcome gold set.
