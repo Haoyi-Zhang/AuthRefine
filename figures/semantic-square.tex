@@ -1,11 +1,15 @@
-% The observed state map and compared transitions, in the manuscript's fonts.
-\begin{tikzpicture}[>=Stealth,semithick,node distance=15mm and 48mm]
-  \node (s) {$s=\nu(q)$};
-  \node[right=of s] (nexts) {$s'=\nu(q')$};
-  \node[below=of s] (q) {$q$};
-  \node[below=of nexts] (nextq) {$q'$};
-  \draw[->] (s) -- node[above,font=\small] {$x/d\quad(P,\beta)$} (nexts);
-  \draw[->] (q) -- node[below,font=\small] {$x/d\quad M$} (nextq);
-  \draw[->] (q) -- node[left,font=\small] {$\nu$} (s);
-  \draw[->] (nextq) -- node[right,font=\small] {$\nu$} (nexts);
+% Commuting source and target transitions under the complete observation map.
+\begin{tikzpicture}[
+  state/.style={draw=black!45,rounded corners=1.2pt,align=center,
+    text width=29mm,minimum height=15mm,inner sep=2mm,font=\small},
+  flow/.style={-{Stealth[length=1.8mm,width=1.3mm]},draw=black!65,line width=.55pt},
+  node distance=12mm and 28mm]
+  \node[state,fill=blue!3] (s) {\textbf{Source state}\\[2pt]$s=\nu(q)$};
+  \node[state,fill=blue!3,right=of s] (nexts) {\textbf{Source successor}\\[2pt]$s'=\nu(q')$};
+  \node[state,fill=black!2,below=of s] (q) {\textbf{Target state}\\[2pt]$q$};
+  \node[state,fill=black!2,below=of nexts] (nextq) {\textbf{Target successor}\\[2pt]$q'$};
+  \draw[flow] (s.east) -- node[above=2pt,font=\small] {$P_\beta:\;x/d$} (nexts.west);
+  \draw[flow] (q.east) -- node[below=2pt,font=\small] {$M:\;x/d$} (nextq.west);
+  \draw[flow] (q.north) -- node[left=3pt,font=\small] {$\nu$} (s.south);
+  \draw[flow] (nextq.north) -- node[right=3pt,font=\small] {$\nu$} (nexts.south);
 \end{tikzpicture}

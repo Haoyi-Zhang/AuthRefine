@@ -1,13 +1,14 @@
-% Editable scientific schematic. Fonts and dimensions inherit from the article.
+% Editable method overview; all fonts inherit from the manuscript.
 \begin{tikzpicture}[
-  stage/.style={draw,rounded corners=1.5pt,align=center,text width=4.25cm,
-    minimum height=12mm,inner sep=3mm,font=\small},
-  flow/.style={-{Stealth[length=2mm]},semithick},node distance=12mm and 14mm]
-  \node[stage] (input) {Source and configuration\\Authorization boundary};
-  \node[stage,right=of input] (admit) {Discover interfaces\\Admit supported source clauses};
-  \node[stage,below=of admit] (observe) {Construct observations\\Define reference interpretations};
-  \node[stage,left=of observe] (diagnose) {Classify and replay failures\\Validate the boundary repair};
-  \draw[flow] (input.east) -- (admit.west);
-  \draw[flow] (admit.south) -- (observe.north);
-  \draw[flow] (observe.west) -- (diagnose.east);
+  stage/.style={draw=black!45,fill=blue!3,rounded corners=1.2pt,
+    align=center,text width=26mm,minimum height=23mm,inner sep=2mm,font=\small},
+  flow/.style={-{Stealth[length=1.8mm,width=1.3mm]},draw=black!65,line width=.55pt},
+  node distance=4.5mm]
+  \node[stage] (admit) {\textbf{Source}\\\textbf{admission}\\[3pt]Selected clauses\\Entry conditions};
+  \node[stage,right=of admit] (observe) {\textbf{State}\\\textbf{observations}\\[3pt]Decision results\\Returned state};
+  \node[stage,right=of observe] (diagnose) {\textbf{Contract}\\\textbf{diagnosis}\\[3pt]Matching bindings\\Shortest failures};
+  \node[stage,right=of diagnose] (repair) {\textbf{Repair}\\\textbf{validation}\\[3pt]Witness replay\\Repair comparison};
+  \draw[flow] (admit.east) -- (observe.west);
+  \draw[flow] (observe.east) -- (diagnose.west);
+  \draw[flow] (diagnose.east) -- (repair.west);
 \end{tikzpicture}
