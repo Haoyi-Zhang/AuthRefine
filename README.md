@@ -30,6 +30,14 @@ that narrower property does not describe every optional test.
 
 For source integration, start with `source_study/verify.py`. The selected native
 replay has its own explicit dependency preparation and isolation requirements.
+For the integrated source/contract workflow, use
+`python -B source_study/workflow.py replay`. It rebuilds the selected original
+guard modules, automatically discovers their closures and captures, executes
+the separate review contexts, constructs finite comparison tables and returns
+complete diagnoses. The bundled inputs reproduce 36 source call bindings and
+1,854 normal contexts. `source` accepts another archive and an explicit JSON
+contract; `batch` retains every member of the original 48-source population.
+These modes do not import application modules or infer policy intent from a link.
 For the paper's claims, use `claim_evidence_ledger.csv`; bibliography identity
 and claim-specific source support are recorded in `reference_inventory.csv`
 and `reference_audit.csv`. These are the current bibliography records.

@@ -1,0 +1,14 @@
+p, ux_analyst, ux:analyze, execute, tenant1
+p, ux_analyst, ux:refine, execute, tenant1
+p, ux_analyst, ux:ab_test, execute, tenant1
+p, admin, *, *, tenant1
+p, admin, *, *, tenant2
+p, ui_refiner, mcp:tool:refine_ui, execute, tenant1
+p, ui_refiner, mcp:tool:refine_ui, execute, tenant2
+p, viewer, ux:analyze, read, tenant1
+p, viewer, mcp:tools, read, tenant1
+p, viewer, mcp:resources, read, tenant1
+g, alice, ux_analyst, tenant1
+g, bob, admin, tenant2
+g, charlie, viewer, tenant1
+g, dave, ui_refiner, tenant2

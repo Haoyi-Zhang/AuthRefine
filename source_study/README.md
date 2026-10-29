@@ -31,6 +31,53 @@ python -B source_study/verify.py
 python -B source_study/replay.py check
 ```
 
+## Integrated source and contract workflow
+
+After installing `requirements-test.txt`, the packaged selected source modules
+and original licenses are sufficient for the complete returned-guard workflow:
+
+```sh
+python -B source_study/workflow.py replay --output /fresh/guard-workflow.json
+python -B -W error -m unittest discover -s tests -p test_source_workflow.py -v
+python -B -W error -m unittest discover -s tests -p test_workflow_replay.py -v
+```
+
+The workflow discovers factories, call sites and captured source literals,
+compiles the admitted closure bodies again, observes their decisions and exact
+returned values, constructs finite reset-context models and invokes all three
+complete diagnostic comparisons. It never uses a saved permission verdict as
+the measured result. Contracts in `contracts/` separately specify complete
+normal inputs and expected observations. Repeated selectors and overlapping
+source selections are rejected rather than multiplying the context count.
+
+The two bundled projections retain 30 and six original source call bindings,
+with 1,710 and 144 context executions. There are four distinct selector/context
+sets in each contract; applying a set at multiple actual call sites is counted
+as repeated call-boundary evidence, not new independent inputs or applications.
+Selected modules are byte-bound to the original sources, not presented as full
+archive reproductions. The tenant-policy primitive uses the current isolated
+Casbin 1.43.0 runtime; the original PyCasbin measurements remain separate.
+
+For a different snapshot, provide a contract with `profile`, `entry_contract`
+and `cases`, following either shipped example:
+
+```sh
+python -B source_study/workflow.py source /inputs/source.zip --contract /inputs/contract.json --output /fresh/result.json
+python -B source_study/workflow.py batch --archives /inputs/original-archives --contracts source_study/contracts --output /fresh/population.json
+python -B source_study/workflow.py check --output /fresh/existing-case-check.json
+```
+
+`source` and `batch` require archives with one enclosing snapshot directory.
+The latter checks the identities and retains all 48 original exposed sources.
+Its current status groups are 30 unsupported source forms, 14 structural-only
+sources, two unsupported closure forms and two contract-checked sources. This
+is workflow coverage, not a claim of 48 semantic successes. Missing contexts,
+dependencies and unsupported operations remain incomplete, never an implicit
+denial or pass. A differing contract produces a replayable mismatch without
+silently changing that contract. `check` recomputes the existing families and
+case-table consumers and executes the source-bound repair consumers; adding
+`--framework` also requests the isolated native credential replay described below.
+
 The portable verifier recomputes complete interpretation families and finite
 reset-context tables. It does not rerun all original applications or promote
 the source transfer counts to semantic accuracy. The data retain the original

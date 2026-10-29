@@ -1,0 +1,43 @@
+{
+  "projects": [
+    {
+      "directory": "1257410493",
+      "repository": "jianghuaqi85-sys/ERP-MES-WMS-system",
+      "snapshot": "19e2e2eba95bc71cb02e9b1b8737bdf709622154",
+      "original_archive_sha256": "25a81aaf3a9fd9fa8523b1f521c7ee2b2fe5e0fcd8a7f1113612a5397358bec7",
+      "files": {
+        "LICENSE": "8204c5bb453efb620ec7b6d5900fa708339cdb8f144686d0daaffb32d148ef80",
+        "backend/app/apps/auth/dependencies.py": "fab078102c815ea53c76ef3296afa5544f93d48d9c8d35b3e283efc715417236",
+        "backend/app/apps/erp/router.py": "902852727522e153b3fdeeb739e7d261a5f0fa07f6c51703c054a70c88a432e4",
+        "backend/app/apps/mes/router.py": "59c7fbb8677256f67a82c8ac5e6808d13584d9d4da0432c9adfa1a2f3c1b4561",
+        "backend/app/apps/system/router.py": "1d008b450a382cc0fdb038fc9db6680e262a30b229868a2d351181aab7ba3d48",
+        "backend/app/apps/wms/router.py": "779edbcabcbb4dff3d81c824542dfd096953b063c129fc8695051cedff9c75ed"
+      },
+      "licenses": [
+        "LICENSE"
+      ],
+      "contract": "contracts/1257410493.json",
+      "contract_sha256": "98be4879d2b152d7a68a790690f6b30fa18bc531bf0a54c3eb8314ec7052af02",
+      "scope": "selected source modules and literal policy files; not the original complete archive"
+    },
+    {
+      "directory": "1200882145",
+      "repository": "navyapdh11/agentic-ux-factory",
+      "snapshot": "9f91aa55eaf1a6b937897fd839e3c55be85d5966",
+      "original_archive_sha256": "cde92cc65c1ec5039a89e37f3ff6418e1b66e5c2d9e8a79a94ed94d7d7b27434",
+      "files": {
+        "LICENSE": "8f29369aceff70b7e1074895c225e8e5d25772479b0894245ca2865dcdd9e321",
+        "backend/app/core/mcp_server.py": "6d11db8d683b1a7cb2e4cd39108bd4c0a043957ca29d335d78fb4c735221143a",
+        "backend/app/security/rbac.py": "42b7cb87b943a2f080369f0e6ef95aaa0eab62f2b08afa4f688a4860cc2aba34",
+        "backend/app/security/rbac_model.conf": "dd60b99132911c6ad2bcbca38b3519b0fb0a39180f7f2ca976269ba903942313",
+        "backend/app/security/rbac_policy.csv": "a17560dc04ae0c4592b2e7c7d81f66f6a48fd99383dce83f1ca3ef0d64b42cc0"
+      },
+      "licenses": [
+        "LICENSE"
+      ],
+      "contract": "contracts/1200882145.json",
+      "contract_sha256": "05ce71fde88588f4140ecf2166ffff49e38444c943c27e8ef10947995231de8e",
+      "scope": "selected source modules and literal policy files; not the original complete archive"
+    }
+  ]
+}

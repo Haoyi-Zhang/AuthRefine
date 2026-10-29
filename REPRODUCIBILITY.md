@@ -1,5 +1,13 @@
 # Reproducibility Contract
 
+The integrated source workflow is documented in `source_study/README.md`.
+Run `python -B source_study/workflow.py replay` for fresh discovery, source-body
+interpretation and complete diagnosis on the two packaged source projections;
+run its `check` command for the existing case and executed repair consumers.
+The original 48-source workflow assessment keeps unsupported and structural-only
+inputs in its denominator. Full original archives are external inputs to `batch`;
+the small packaged source projections reproduce its admitted semantic boundaries.
+
 The list-free verifier distinguishes verified equivalent, verified non-equivalent with a replayable witness, invalid input, and inconclusive because a declared work limit was exhausted. The legacy region verifier can also reject evidence at an unreachable cell; use actual-reachability diagnosis before interpreting that as non-equivalence. Inconclusive is never converted to semantic rejection.
 
 The portable list-free tests and `src/baseline_checks.py` run on native Windows without `resource`. The new report `results/same_information.json` is a separate Windows semantic/interface comparison, not a Linux full reproduction or a replacement for historical timing/RSS. It preserves all original campaign files and the omission of eight wide complete-binding products. The 2,215-table diversity count applies to the generated 9,936-case cohort with the exact signature documented in that script. The ordinary BFS shares checker semantics and is not an independent evaluator. Full Linux reproduction below remains a separate obligation.
