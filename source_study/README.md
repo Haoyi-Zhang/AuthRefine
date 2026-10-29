@@ -72,8 +72,22 @@ admission is retained, not changed into a whole-application success.
 For H19, the pinned minimum Piccolo source profile is replayed for 18 contexts.
 The selected field contract has 26 nonagreeing before-properties and 18 after-
 properties out of 180 each. Complete-product/diagnostic consumers retain the
-shortest field witnesses. This is a reproducible negative source result, not
-an inferred historical package installation or a certified complete repair.
+shortest field witnesses. The 18 after-differences repeat one cause: a registry
+of `Secret` subclasses omits the producer's `Varchar(secret=True)` descriptor.
+The query consumer reads the flag, but the filter-model consumer only receives
+that registry. These are not 18 independent defects.
+
+The separately shipped `code/secret_field_boundary.py` repairs the owned model
+boundary by completing exclusions from literal secrecy metadata and exact
+column identities. It preserves earlier exclusions, ordinary fields and the
+query's explicit inclusion setting; invalid or foreign-table descriptors stop
+admission. `complete_profiles.py` replays the original source pair and the
+actual repaired consumer: 18 contexts/180 properties, zero repaired differences.
+It also exhausts all 1,024 secrecy/exclusion masks over five fields. Regression
+controls disable the adapter and change the query exclusion flag separately;
+both remain detectable. No original source or retained negative row is changed.
+This is a checked source-profile adapter repair, not an inferred historical
+installation or a claim that the upstream application has been fully repaired.
 
 Original Pretix files are passive data under their included AGPL/additional
 terms in source/pretix/LICENSE. The selected Piccolo API/ORM source keeps its

@@ -15,6 +15,12 @@ class FixedSourceProfiles(unittest.TestCase):
         result=verify()
         self.assertEqual(result['H19_nonagreeing_properties'],{'before':26,'after':18})
         self.assertTrue(result['historical_installed_version_not_inferred'])
+    def test_owned_boundary_repair_is_distinct_and_has_no_remaining_mismatch(self):
+        result=verify()['H19_owned_boundary_repair']
+        self.assertEqual(result['contexts'],18)
+        self.assertEqual(result['nonagreeing_properties'],0)
+        self.assertEqual(result['exhaustive_metadata_exclusion_masks'],1024)
+        self.assertTrue(result['original_pair_unchanged'])
 
 
 if __name__=='__main__':unittest.main()

@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from effect_slice import Capability, DataRecord, EffectInterpreter, RecordType, extract_effect_program
 from native_casbin import AdmissionError
 from source_bindings import require_import_bindings, require_static_class_members, require_static_definitions
+from secret_field_boundary import complete_secret_exclusions
 
 CASE = ROOT
 ORM = CASE / "orm-contract"
@@ -107,9 +108,10 @@ def minimum_registry_program():
     return extract_effect_program(ast.unparse(ast.fix_missing_locations(module)).encode(), None, (), ("registry_member",))
 
 
-def observe(crud, table_source, requested, configured, *, corrected_registry=False):
+def observe(crud, table_source, requested, configured, *, corrected_registry=False, filter_boundary_repair=False):
     if (configured is not None and type(configured) is not bool
             or type(corrected_registry) is not bool
+            or type(filter_boundary_repair) is not bool
             or requested is not None and (type(requested) is not tuple or not requested
                 or len(requested) > len(FIELDS) or any(type(name) is not str or name not in FIELDS for name in requested)
                 or len(set(requested)) != len(requested))):
@@ -146,6 +148,8 @@ def observe(crud, table_source, requested, configured, *, corrected_registry=Fal
             raise AdmissionError("filter field observer received an undeclared model configuration")
         # The no-joins, same-table ordinary field-identity subset of
         # create_pydantic_model is observed, not its validators or HTTP parsing.
+        if filter_boundary_repair:
+            exclude_columns = complete_secret_exclusions(given_table, exclude_columns)
         return [column.fields["_meta"].fields["name"] for column in columns if not any(column is other for other in exclude_columns)]
 
     table.fields["select"] = Capability("selected_query_fields", select)
