@@ -9,6 +9,21 @@ The original 12 development, 48 exposed transfer and two auxiliary reservations
 retain their roles. Source annotations identify structural clauses and source
 locations; they are not an allow/deny outcome gold set.
 
+For a supplied ZIP with one enclosing snapshot directory, the static front end
+discovers routes and declared dependencies without hand-supplied function paths:
+
+```sh
+python -B source_study/inspect_source.py /path/to/source.zip
+```
+
+The JSON includes both complete method reports, their common route denominator,
+per-method linked/unresolved counts, parsing gaps and omissions. A source with
+no admitted routes is explicitly unsupported; an absent dependency does not
+establish a public endpoint. No source modules execute and no permission verdict
+is inferred from a link. Invalid or ambiguous archive layouts stop with exit 2.
+The retained 48-source comparison used CPython 3.14.10; use that parser to compare
+those exact reports. Older parsers retain syntax gaps instead of rewriting inputs.
+
 From the artifact root:
 
 ```sh
