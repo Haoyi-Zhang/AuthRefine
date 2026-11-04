@@ -20,6 +20,14 @@ jobs:
         run: python -B -m unittest discover -s tests -p test_source_study.py -v
       - name: Replay fixed token/event and minimum-source field profiles
         run: python -B source_study/complete_profiles.py
+      - name: Replay frozen project transfer and separate source adaptation
+        run: |
+          python -B prospective_study/study.py --check
+          python -B prospective_study/study.py --secondary --check
+          python -B -W error -m unittest discover -s tests -p test_prospective_transfer.py -v
+          python -B prospective_study/study.py --secondary --control wrong_owner
+          python -B prospective_study/study.py --secondary --control drop_super
+          python -B prospective_study/study.py --secondary --control wrong_principal
       - name: Install the isolated existing native replay dependencies
         run: |
           python -m pip install --only-binary=:all: -r requirements-test.txt

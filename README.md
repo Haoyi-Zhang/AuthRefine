@@ -15,6 +15,14 @@ team-token/event profile is checked under its stated entry contracts; broader
 authentication and plugin profiles remain unknown. Structural source annotations
 are not independent policy-intent gold; repeated contexts are not additional apps.
 
+`prospective_study/` adds a separate project-disjoint transfer: twelve projects
+selected before outcomes, ten acquired snapshots, and nine source-bound reference
+boundaries in three projects. The frozen method completes five boundaries; a
+separately reported source adaptation completes nine over 78 normal contexts.
+Sixty other candidate interfaces lack complete reference contracts. This is not
+whole-application validation or a claim of newly discovered application flaws.
+See its README for offline commands, licenses and exact adaptation boundaries.
+
 For the accompanying manuscript, use the `preferred-citation` entry in
 `CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
 The software citation and manuscript use this same approved author order.
