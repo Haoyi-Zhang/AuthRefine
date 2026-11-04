@@ -45,7 +45,49 @@
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "supplied_principal",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "get_current_user"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "before_business_write",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "create_product"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "current_role_relations",
+          "handling": "automatic supported source analysis",
+          "evidence_functions": [
+            "require_permissions.permission_checker"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "closure_capture",
+          "handling": "automatic supported source analysis",
+          "evidence_functions": [
+            "require_permissions"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "immutable_role_context",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "get_current_user"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "Agentic UX",
@@ -85,7 +127,49 @@
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "supplied_tenant",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "get_current_tenant_and_roles"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "policy_decision_only",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "require_permission.dep"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "tenant_to_policy",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "require_permission.dep"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "closure_capture",
+          "handling": "automatic supported source analysis",
+          "evidence_functions": [
+            "require_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "issuer_and_singleton_lifetime",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "get_current_tenant_and_roles"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "Wger",
@@ -132,7 +216,49 @@
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "supplied_principal",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "RoutinePermission.has_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "before_business_write",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "RoutineViewSet.perform_create"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "owner_and_public_template",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "RoutinePermission.has_object_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "resolved_view_profile",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "RoutinePermission.has_object_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "queryset_and_dispatch",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "RoutineViewSet.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "Doccano",
@@ -186,7 +312,49 @@
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "supplied_principal",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "RolePermission.has_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "selected_query",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "BaseListAPI.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "project_role_and_label_mode",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "CanEditLabel.has_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "dynamic_constructor",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "BaseDetailAPI.get_permissions"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "selected_framework_projection",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "BaseListAPI.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "Linkding",
@@ -233,7 +401,49 @@
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "supplied_principal",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "LinkdingTokenAuthentication.authenticate"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "selected_query",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "TagViewSet.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "owner_to_query_scope",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "BookmarkBundleViewSet.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "custom_query_manager",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "BookmarkViewSet.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "opaque_manager_alternatives",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "BookmarkViewSet.get_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "Healthchecks",
@@ -267,13 +477,55 @@
       "entry_premises": [
         "owned credential store and source-pinned primitives"
       ],
-      "checked_boundary": "credential producer/store/wrapper/object and selected resume write/readback",
-      "required_adaptation": "schema-bound flip/save/response primitives and sequential isolated records",
+      "checked_boundary": "credential/store/wrapper/object plus sequential selected resume writes, readback and finite state closure",
+      "required_adaptation": "source-bound primitives and validated complete-store invariant for the sequential three-object projection",
       "not_admitted": "not outer middleware,other writes,concurrent transactions or notification delivery",
       "identity_resolution": "source_lookup_with_native_primitive",
       "effect_boundary": "selected_business_write_and_native_readback",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "source_key_lookup",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "ProjectManager.for_api_key"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "selected_persistent_write",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "resume"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "exact_project_to_object",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "authorize.wrapper"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "fixed_plain_and_stored_keys",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "ProjectManager.for_api_key"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "sequential_owned_store",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "resume"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "EteSync",
@@ -313,7 +565,49 @@
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "supplied_principal",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "__get_authenticated_user"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "selected_query",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "get_item_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "membership_collection_item",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "get_collection_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "configured_query_dependency",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "get_collection_queryset"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "expiry_and_concurrent_sync",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "__get_authenticated_user"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     },
     {
       "case": "Pretix",
@@ -355,13 +649,55 @@
       "entry_premises": [
         "resolved view permission and complete team grant set"
       ],
-      "checked_boundary": "selected token lookup/activity check followed by event permission comparison",
+      "checked_boundary": "native header parsing, selected token lookup/activity body, then event permission comparison",
       "required_adaptation": "token-to-team representation map and native query profile",
-      "not_admitted": "not DRF header parsing,session/device/OAuth,plugin expansion or concurrent revocation",
+      "not_admitted": "not session/device/OAuth fallback,plugin expansion,concurrent revocation or an HTTP server",
       "identity_resolution": "source_lookup_with_native_primitive",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
-      "effort_minutes": null
+      "effort_minutes": null,
+      "axis_classification": {
+        "identity origin": {
+          "label": "source_token_and_native_header",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "TeamTokenAuthentication.authenticate_credentials"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "post-authorization effects": {
+          "label": "permission_before_business_write",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "EventPermission.has_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "identity/state handoff": {
+          "label": "token_team_event",
+          "handling": "source-bound primitive adapter",
+          "evidence_functions": [
+            "TeamAPIToken.get_event_permission_set"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "runtime resolution": {
+          "label": "resolved_view_and_grants",
+          "handling": "explicit configuration/input",
+          "evidence_functions": [
+            "EventPermission.has_permission"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        },
+        "environment and time": {
+          "label": "alternate_entry_and_revocation",
+          "handling": "non-admission",
+          "evidence_functions": [
+            "TeamTokenAuthentication.authenticate_credentials"
+          ],
+          "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
+        }
+      }
     }
   ],
   "total_cases": 8,
@@ -388,5 +724,49 @@
     "source_lookup_with_native_primitive": 2,
     "guard_or_query_before_business_write": 7,
     "selected_business_write_and_native_readback": 1
+  },
+  "axis_counts": {
+    "identity origin": {
+      "source_key_lookup": 1,
+      "source_token_and_native_header": 1,
+      "supplied_principal": 5,
+      "supplied_tenant": 1
+    },
+    "post-authorization effects": {
+      "before_business_write": 2,
+      "permission_before_business_write": 1,
+      "policy_decision_only": 1,
+      "selected_persistent_write": 1,
+      "selected_query": 3
+    },
+    "identity/state handoff": {
+      "current_role_relations": 1,
+      "exact_project_to_object": 1,
+      "membership_collection_item": 1,
+      "owner_and_public_template": 1,
+      "owner_to_query_scope": 1,
+      "project_role_and_label_mode": 1,
+      "tenant_to_policy": 1,
+      "token_team_event": 1
+    },
+    "runtime resolution": {
+      "closure_capture": 2,
+      "configured_query_dependency": 1,
+      "custom_query_manager": 1,
+      "dynamic_constructor": 1,
+      "fixed_plain_and_stored_keys": 1,
+      "resolved_view_and_grants": 1,
+      "resolved_view_profile": 1
+    },
+    "environment and time": {
+      "alternate_entry_and_revocation": 1,
+      "expiry_and_concurrent_sync": 1,
+      "immutable_role_context": 1,
+      "issuer_and_singleton_lifetime": 1,
+      "opaque_manager_alternatives": 1,
+      "queryset_and_dispatch": 1,
+      "selected_framework_projection": 1,
+      "sequential_owned_store": 1
+    }
   }
 }

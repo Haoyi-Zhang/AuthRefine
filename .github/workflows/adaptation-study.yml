@@ -16,6 +16,7 @@ jobs:
         with:
           python-version: '3.14'
       - run: python -B adaptation_study/study.py --check
+      - run: python -B adaptation_study/study.py --check-casebook
   source-bound-adaptations:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -38,3 +39,14 @@ jobs:
           python -B adaptation_study/profiles.py --control drop_save
           python -B adaptation_study/profiles.py --control skip_active
           python -B -W error -m unittest discover -s tests -p test_adaptation_study.py -v
+          python -B adaptation_study/chained_profiles.py health --check
+          python -B adaptation_study/chained_profiles.py health --control lost_save
+          python -B adaptation_study/chained_profiles.py health --control repeat_write
+      - name: Prepare source-declared native header primitives separately
+        run: python -B adaptation_study/chained_profiles.py prepare --framework "${{ runner.temp }}/authrefine-header-framework"
+      - name: Recompute connected native header and source permission results
+        run: |
+          python -B adaptation_study/chained_profiles.py header --framework "${{ runner.temp }}/authrefine-header-framework" --check
+          python -B adaptation_study/chained_profiles.py header --framework "${{ runner.temp }}/authrefine-header-framework" --control header_bypass
+          python -B adaptation_study/chained_profiles.py header --framework "${{ runner.temp }}/authrefine-header-framework" --control skip_active
+          python -B -W error -m unittest discover -s tests -p test_chained_profiles.py -v

@@ -77,8 +77,36 @@ def run():
         unresolved_scope_counts={k:sum(r['features'][k]=='unassessed_parse_gap' for r in rows) for k in TAXONOMY},
         negative_scope='non-observation is not proof of absence in the application',
         manual_effort_minutes=None,independent_gold_claimed=False,rows=rows)
+
+def audit_casebook():
+    book=json.loads((ROOT/'casebook.json').read_text())
+    sources=json.loads(gzip.decompress((ROOT/'sources.json.gz').read_bytes()))
+    lookup={r['repository_id']:r for r in sources['rows']}
+    if len(book['cases'])!=8 or len({r['repository_id'] for r in book['cases']})!=8:raise ValueError('case denominator differs')
+    counts={axis:Counter() for axis in book['adaptation_axes']}
+    anchors=0
+    for case in book['cases']:
+        if set(case['axis_classification'])!=set(book['adaptation_axes']):raise ValueError('case axis missing')
+        modules={m['path']:m['text'] for m in lookup[case['repository_id']]['modules']}
+        for a in case['source_anchors']:
+            text=(ROOT/a['public_source_path']).read_text() if 'public_source_path' in a else modules[a['path']]
+            sliced='\n'.join(text.splitlines()[a['line']-1:a['end_line']])
+            if hashlib.sha256(sliced.encode()).hexdigest()!=a['slice_sha256']:raise ValueError('case anchor differs')
+            anchors+=1
+        functions={a['function'] for a in case['source_anchors']}
+        for axis,record in case['axis_classification'].items():
+            if (record['handling'] not in book['resolution_modes'] or not record['label']
+                    or not record['evidence_functions'] or set(record['evidence_functions'])-functions):
+                raise ValueError('case classification has no admitted source witness')
+            counts[axis][record['label']]+=1
+    counts={axis:dict(sorted(v.items())) for axis,v in counts.items()}
+    if counts!=book['axis_counts'] or any(sum(v.values())!=8 for v in counts.values()):raise ValueError('case axis count differs')
+    return dict(cases=8,axis_assignments=40,source_anchors=anchors,axis_counts=counts,
+        scope='descriptive checked-interface classification, not semantic gold or application prevalence')
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path);p.add_argument('--check',action='store_true');a=p.parse_args();r=run()
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path);p.add_argument('--check',action='store_true');p.add_argument('--check-casebook',action='store_true');a=p.parse_args()
+    if a.check_casebook:print(json.dumps(audit_casebook(),indent=2));raise SystemExit(0)
+    r=run()
     if a.check:
         if json.loads(gzip.decompress((ROOT/'survey.json.gz').read_bytes()))!=r:raise ValueError('survey differs; use the declared Python3.14 parser, do not hide parse gaps')
     if a.output:

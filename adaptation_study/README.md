@@ -47,6 +47,15 @@ adapter, or non-admission. These axes overlap. Historical manual effort was
 not timed and is not assigned zero or invented retrospectively. The records
 are not an independent semantic gold set.
 
+Every case now has one source-witnessed assignment on each of the five axes,
+with a concrete handling mode and exact function anchors. This is a descriptive
+classification of the checked interface, not automatically inferred policy
+intent. Recompute the 40 assignments and their eight-case denominators with:
+
+```
+python -B adaptation_study/study.py --check-casebook
+```
+
 In this selected eight-case population, six profiles start from supplied
 identity facts and two now resolve identity through a selected source body and
 native primitives. Seven stop at a guard or query before business writes;
@@ -93,3 +102,63 @@ entry/permission properties. These are observed projection properties, not
 2,640 independent applications or a proof of arbitrary persistent histories.
 `profiles.json.gz` retains raw contexts, database observations and consumers;
 all fields are recomputed by `--check` before comparison.
+
+## Connected requests and persistent state
+
+The reset-context observations above remain separate. `chained_profiles.py`
+adds two connected consumers using the same original applications.
+
+For Healthchecks, an actual reachable request prefix is replayed before the
+next request, without resetting the database between those requests. Each
+credential-store form reaches eight states over 28 request symbols. All 448
+edges across the two forms check the response, persisted records, event
+multiplicity, field clearing and preservation of other objects. A repeated
+successful resume becomes a conflict without another event.
+
+Three resumed bits represent the store only after checking the complete
+owned-store invariant: fixed owners, exactly one event and cleared fields for
+each resumed object, and unchanged remaining records. This conditional
+projection is closed under the selected sequential operation. The measured
+graph feeds the existing target-distance, product and symbolic diagnosis:
+one of 27 explicitly supplied owner mappings matches, and the other 26 have
+one-request explanations. All 52 excluded-mapping witnesses across the two
+store forms replay against actual stores. These explain reference mappings,
+not 52 application defects. Original ORM internals, other operations,
+concurrency, event ordering across objects and notification delivery are
+outside this projection.
+
+```
+# Use the original frozen Healthchecks framework on PYTHONPATH.
+python -B adaptation_study/chained_profiles.py health --check
+python -B adaptation_study/chained_profiles.py health --control lost_save
+python -B adaptation_study/chained_profiles.py health --control repeat_write
+```
+
+For Pretix, native Django request-header normalization and DRF token header
+parsing precede the original selected authenticator body and existing event
+permission consumer. The separate frozen native runtime satisfies the selected
+source's Django range and DRF minimum; it is not a full Pretix installation.
+Fourteen header profiles, four token-store states and 288 existing event
+contexts produce 16,128 connected observations: 3,456 are not attempted by the
+Token authenticator, 10,944 reject, and 1,728 continue to permission checking.
+An absent or other-scheme header is not silently treated as authenticated or
+as a token rejection. Source import, inheritance and model bindings are checked
+before the selected body is admitted. Missing activity checks and header
+delegation are detected by owned deliberate controls.
+
+```
+python -B adaptation_study/chained_profiles.py prepare --framework /owned/header-framework
+python -B adaptation_study/chained_profiles.py header --framework /owned/header-framework --check
+python -B adaptation_study/chained_profiles.py header --framework /owned/header-framework --control header_bypass
+python -B adaptation_study/chained_profiles.py header --framework /owned/header-framework --control skip_active
+```
+
+`native-header-runtime.json.gz` fixes pure primary-host wheels and every
+unpacked file. Preparation does not execute package build hooks. The original
+dependency declaration is retained in `pretix-pyproject.toml` under Pretix's
+included license. Use separate processes for the two native framework
+environments. Current connected observations are in `chained-health.json.gz`
+and `chained-header.json.gz`; they do not replace or inflate the earlier
+reset-profile results. Resolved view slots and complete grants remain explicit
+inputs; session/device/OAuth fallback, plugins, live servers and deployment
+are not certified by header parsing.
