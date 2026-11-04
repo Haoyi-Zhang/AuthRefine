@@ -87,7 +87,8 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     },
     {
       "case": "Agentic UX",
@@ -169,7 +170,8 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     },
     {
       "case": "Wger",
@@ -210,11 +212,11 @@
       "entry_premises": [
         "authenticated user and selected object/view fields"
       ],
-      "checked_boundary": "owner/template guard and framework composition",
-      "required_adaptation": "explicit queryset and view-entry facts",
-      "not_admitted": "original request dispatcher and queryset execution not established",
+      "checked_boundary": "owner/template guard and selected guard-to-create owner insertion/readback",
+      "required_adaptation": "same source request/view binding and owned serializer insert contract",
+      "not_admitted": "original serializer validation,request dispatcher and custom queryset execution not established",
       "identity_resolution": "supplied_identity_context",
-      "effect_boundary": "guard_or_query_before_business_write",
+      "effect_boundary": "selected_business_write_and_native_readback",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
       "effort_minutes": null,
       "axis_classification": {
@@ -227,8 +229,8 @@
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
         "post-authorization effects": {
-          "label": "before_business_write",
-          "handling": "non-admission",
+          "label": "selected_owner_insert",
+          "handling": "source-bound primitive adapter",
           "evidence_functions": [
             "RoutineViewSet.perform_create"
           ],
@@ -258,7 +260,8 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     },
     {
       "case": "Doccano",
@@ -354,7 +357,8 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     },
     {
       "case": "Linkding",
@@ -443,7 +447,8 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     },
     {
       "case": "Healthchecks",
@@ -525,7 +530,8 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     },
     {
       "case": "EteSync",
@@ -534,6 +540,20 @@
       "snapshot": "6ac54121048e104437eec861f142e7dc1bebf7eb",
       "stratum": "cross_component",
       "source_anchors": [
+        {
+          "path": "etebase_server/django/token_auth/models.py",
+          "function": "get_default_expiry",
+          "line": 14,
+          "end_line": 15,
+          "slice_sha256": "e68339b96817b8a02a4431f51a285afe758c9e444fa93a643420d98ec0147e8a"
+        },
+        {
+          "path": "etebase_server/fastapi/dependencies.py",
+          "function": "__renew_token",
+          "line": 28,
+          "end_line": 35,
+          "slice_sha256": "b13b61444313e58b5e7704370a22fe26bdc170c275017c7be2d55396ec200fb0"
+        },
         {
           "path": "etebase_server/fastapi/dependencies.py",
           "function": "__get_authenticated_user",
@@ -550,6 +570,13 @@
         },
         {
           "path": "etebase_server/fastapi/dependencies.py",
+          "function": "get_collection",
+          "line": 77,
+          "end_line": 78,
+          "slice_sha256": "79aa80c1864e0fb3bbc036f55c2ff0511985253ae5cd408cac84a42b80fa7bee"
+        },
+        {
+          "path": "etebase_server/fastapi/dependencies.py",
           "function": "get_item_queryset",
           "line": 82,
           "end_line": 87,
@@ -557,19 +584,19 @@
         }
       ],
       "entry_premises": [
-        "given authenticated principal and complete membership/revision relations"
+        "fixed UTC request clock,source default renewal configuration and complete selected membership/revision rows"
       ],
-      "checked_boundary": "membership/collection/item filtering and exact record transfer",
-      "required_adaptation": "authentication,expiry and query-manager entry conditions",
-      "not_admitted": "not credential expiry,duplicate-row generalization or concurrent synchronization",
-      "identity_resolution": "supplied_identity_context",
+      "checked_boundary": "source token lookup,active/expiry checks,credential deletion/renewal and authenticated identity to source-lowered queries",
+      "required_adaptation": "bounded UTC-time interpretation,expiry-only save/delete primitives and exact returned-principal query mapping",
+      "not_admitted": "not original ORM managers,outer APIKeyHeader/DI dispatch,duplicate memberships,arbitrary clock schedules or concurrent synchronization",
+      "identity_resolution": "source_lookup_with_native_primitive",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
       "effort_minutes": null,
       "axis_classification": {
         "identity origin": {
-          "label": "supplied_principal",
-          "handling": "explicit configuration/input",
+          "label": "source_token_expiry_lookup",
+          "handling": "source-bound primitive adapter",
           "evidence_functions": [
             "__get_authenticated_user"
           ],
@@ -592,22 +619,23 @@
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
         "runtime resolution": {
-          "label": "configured_query_dependency",
-          "handling": "explicit configuration/input",
+          "label": "source_identity_to_query",
+          "handling": "source-bound primitive adapter",
           "evidence_functions": [
             "get_collection_queryset"
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
         "environment and time": {
-          "label": "expiry_and_concurrent_sync",
-          "handling": "non-admission",
+          "label": "fixed_clock_expiry_and_refresh",
+          "handling": "source-bound primitive adapter",
           "evidence_functions": [
-            "__get_authenticated_user"
+            "__renew_token"
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "credential_lifecycle_profile": "source_expiry_delete_refresh_executed"
     },
     {
       "case": "Pretix",
@@ -632,6 +660,13 @@
         },
         {
           "path": "src/pretix/base/models/organizer.py",
+          "function": "Team.event_permission_set",
+          "line": 438,
+          "end_line": 456,
+          "slice_sha256": "2c3e2c8b81bdc25cd0b01c051e0f1067ef708f8e54242f2971be94e29f6176f4"
+        },
+        {
+          "path": "src/pretix/base/models/organizer.py",
           "function": "TeamAPIToken.get_event_permission_set",
           "line": 563,
           "end_line": 574,
@@ -644,13 +679,21 @@
           "line": 32,
           "end_line": 42,
           "slice_sha256": "e72f4e5fff8105661f8bcf6f82dfe226273c080005b3f896c2bb9c9f171c8cc8"
+        },
+        {
+          "path": "src/pretix/base/permissions.py",
+          "public_source_path": "pretix-core-registry.txt",
+          "function": "register_default_event_permissions",
+          "line": 184,
+          "end_line": 257,
+          "slice_sha256": "292068226f85f5a2377821440d0116389fca9830a832fb8d408b23b8b9f674f1"
         }
       ],
       "entry_premises": [
-        "complete team grant set and no instance/action permission overrides"
+        "raw team configuration under the source default-core registry; no instance/action overrides"
       ],
-      "checked_boundary": "native header parsing, selected token lookup/activity body, source-checked view defaults/native inheritance, then event permission comparison",
-      "required_adaptation": "static class declaration gate and frozen native-base origin/MRO; fixed complete grants and token-to-team representation map",
+      "checked_boundary": "native header parsing,selected token lookup/activity,source view defaults and raw-team/default-core grant construction to event permissions",
+      "required_adaptation": "static view/native-base gate; original core registry and compatibility metadata; source grant builder and token-to-team representation map",
       "not_admitted": "not runtime instance/action overrides,module initialization,session/device/OAuth fallback,plugin expansion,concurrent revocation or an HTTP server",
       "identity_resolution": "source_lookup_with_native_primitive",
       "effect_boundary": "guard_or_query_before_business_write",
@@ -682,10 +725,10 @@
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
         "runtime resolution": {
-          "label": "source_checked_defaults_and_supplied_grants",
+          "label": "source_defaults_and_core_grants",
           "handling": "source-bound primitive adapter",
           "evidence_functions": [
-            "EventPermission.has_permission"
+            "Team.event_permission_set"
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
@@ -697,7 +740,9 @@
           ],
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         }
-      }
+      },
+      "historical_given_grant_profile": "earlier 288/1152/16128 observations retain their given complete-grant premise; separate2304 default-core chain derives grants from raw configuration",
+      "credential_lifecycle_profile": "no_complete_expiry_refresh_profile_claimed"
     }
   ],
   "total_cases": 8,
@@ -720,22 +765,24 @@
   "overlapping_labels": true,
   "distribution_population": "eight purposively selected existing cases; not application-wide prevalence",
   "case_scope_counts": {
-    "supplied_identity_context": 6,
-    "source_lookup_with_native_primitive": 2,
-    "guard_or_query_before_business_write": 7,
-    "selected_business_write_and_native_readback": 1
+    "supplied_identity_context": 5,
+    "source_lookup_with_native_primitive": 3,
+    "guard_or_query_before_business_write": 6,
+    "selected_business_write_and_native_readback": 2
   },
   "axis_counts": {
     "identity origin": {
       "source_key_lookup": 1,
       "source_token_and_native_header": 1,
-      "supplied_principal": 5,
+      "source_token_expiry_lookup": 1,
+      "supplied_principal": 4,
       "supplied_tenant": 1
     },
     "post-authorization effects": {
-      "before_business_write": 2,
+      "before_business_write": 1,
       "permission_before_business_write": 1,
       "policy_decision_only": 1,
+      "selected_owner_insert": 1,
       "selected_persistent_write": 1,
       "selected_query": 3
     },
@@ -751,16 +798,16 @@
     },
     "runtime resolution": {
       "closure_capture": 2,
-      "configured_query_dependency": 1,
       "custom_query_manager": 1,
       "dynamic_constructor": 1,
       "fixed_plain_and_stored_keys": 1,
       "resolved_view_profile": 1,
-      "source_checked_defaults_and_supplied_grants": 1
+      "source_defaults_and_core_grants": 1,
+      "source_identity_to_query": 1
     },
     "environment and time": {
       "alternate_entry_and_revocation": 1,
-      "expiry_and_concurrent_sync": 1,
+      "fixed_clock_expiry_and_refresh": 1,
       "immutable_role_context": 1,
       "issuer_and_singleton_lifetime": 1,
       "opaque_manager_alternatives": 1,
@@ -768,5 +815,53 @@
       "selected_framework_projection": 1,
       "sequential_owned_store": 1
     }
+  },
+  "axis_handling_counts": {
+    "identity origin": {
+      "explicit configuration/input": 5,
+      "source-bound primitive adapter": 3
+    },
+    "post-authorization effects": {
+      "non-admission": 3,
+      "source-bound primitive adapter": 5
+    },
+    "identity/state handoff": {
+      "automatic supported source analysis": 1,
+      "source-bound primitive adapter": 7
+    },
+    "runtime resolution": {
+      "automatic supported source analysis": 2,
+      "explicit configuration/input": 1,
+      "non-admission": 1,
+      "source-bound primitive adapter": 4
+    },
+    "environment and time": {
+      "explicit configuration/input": 2,
+      "non-admission": 4,
+      "source-bound primitive adapter": 2
+    }
+  },
+  "handling_counts": {
+    "automatic supported source analysis": 3,
+    "explicit configuration/input": 8,
+    "non-admission": 8,
+    "source-bound primitive adapter": 21
+  },
+  "case_scope_percentages": {
+    "supplied_identity_context": 62.5,
+    "source_lookup_with_native_primitive": 37.5,
+    "guard_or_query_before_business_write": 75.0,
+    "selected_business_write_and_native_readback": 25.0
+  },
+  "handling_percentage_denominator": 40,
+  "handling_percentages": {
+    "automatic supported source analysis": 7.5,
+    "explicit configuration/input": 20.0,
+    "non-admission": 20.0,
+    "source-bound primitive adapter": 52.5
+  },
+  "credential_lifecycle_scope_counts": {
+    "no_complete_expiry_refresh_profile_claimed": 7,
+    "source_expiry_delete_refresh_executed": 1
   }
 }

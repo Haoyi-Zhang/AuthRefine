@@ -58,3 +58,15 @@ jobs:
           python -B adaptation_study/grant_binding.py --framework "${{ runner.temp }}/authrefine-header-framework" --control raw_keys
           python -B adaptation_study/grant_binding.py --framework "${{ runner.temp }}/authrefine-header-framework" --control drop_legacy
           python -B -W error -m unittest discover -s tests -p test_grant_binding.py -v
+      - name: Check source lifecycle, creation and current classification denominators
+        run: |
+          python -B adaptation_study/token_lifecycle.py --check
+          python -B adaptation_study/owner_insert.py --check
+          for control in omit_save omit_delete wrong_user disable_refresh eager_refresh; do
+            python -B adaptation_study/token_lifecycle.py --control "$control"
+          done
+          for control in omit_insert client_owner wrong_request; do
+            python -B adaptation_study/owner_insert.py --control "$control"
+          done
+          python -B adaptation_study/study.py --check-casebook
+          python -B -W error -m unittest discover -s tests -p test_token_lifecycle.py -v

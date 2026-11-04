@@ -56,10 +56,11 @@ intent. Recompute the 40 assignments and their eight-case denominators with:
 python -B adaptation_study/study.py --check-casebook
 ```
 
-In this selected eight-case population, six profiles start from supplied
-identity facts and two now resolve identity through a selected source body and
-native primitives. Seven stop at a guard or query before business writes;
-Healthchecks also checks the selected write and readback. These describe our
+In this selected eight-case population, five profiles (62.5%) start from supplied
+identity facts and three (37.5%) now resolve identity through selected source
+bodies and explicit primitives. Six stop before business writes; Healthchecks
+and Wger check selected write/readback boundaries. EteSync's credential deletion
+and renewal are separate state effects, not business writes. These describe our
 checked boundaries, not how often the applications themselves omit writes or
 authentication. The casebook gives the exact source functions for each row.
 
@@ -228,3 +229,60 @@ consumer. `pretix-core-registry.txt` and `pretix-legacy-permissions.txt` are
 byte-exact original Pretix sources under the included AGPL/additional terms,
 not relicensed by this artifact's MIT license. The original full team source
 and Pretix license remain under `../source_study/source/pretix/`.
+
+## Lifecycle and creation boundaries
+
+`token_lifecycle.py` connects the complete original EteSync token lookup,
+activity, expiry and renewal bodies to its source-lowered collection/item
+queries. Standard UTC datetime arithmetic and owned SQLite token, membership
+and revision rows implement the explicit primitive contracts. Source defaults
+enable renewal, use a strict sixty-second throttle and set a thirty-day
+expiry. The 72 entry observations distinguish 24 authenticated, 30 rejected
+and 18 malformed-source-error outcomes. Successful identities feed 288 query
+observations. Eight expiry saves and four expired-token deletions are read
+back, with unrelated tokens preserved. Fourteen sequential steps check renewal
+followed by throttling, deletion followed by absence, and tokens without expiry.
+
+At expiry equal to the current instant, the selected source accepts and renews;
+it deletes only when expiry is strictly earlier. An inactive user is rejected
+before expiry deletion. A missing second header field produces the source's
+IndexError, not an invented ordinary denial. The selected body also does not
+validate the first header field; this is recorded as a body boundary, not an
+end-to-end HTTP or vulnerability claim. Full APIKeyHeader/DI dispatch, original
+ORM managers, arbitrary clock schedules and concurrency remain unassessed.
+
+`owner_insert.py` interprets Wger's selected permission guard and complete
+creation body. Sixteen normal contexts vary given authentication facts and
+client owner inputs: eight insert the exact request principal through an owned
+serializer primitive and SQLite readback; eight stop before insertion. An
+unrelated routine stays unchanged. This closes the selected creation boundary,
+not full serializer validation, all permission classes or request dispatch.
+
+```
+python -B adaptation_study/token_lifecycle.py --check
+python -B adaptation_study/owner_insert.py --check
+python -B adaptation_study/study.py --check-casebook
+```
+
+Saved rows are in `token-lifecycle.json.gz` and `owner-insert.json.gz`. The
+original source texts and licenses remain in `sources.json.gz`, not rewritten
+as application implementations. Five lifecycle controls exercise omitted save,
+omitted deletion, wrong user transfer, disabled renewal and an eager throttle;
+three creation controls exercise omitted insertion, client-owner substitution
+and a mismatched request. Only actual observation differences count as detection.
+
+The current casebook has 35 exact source-function anchors. It recomputes both
+scope counts and handling modes, rather than trusting a manually entered total:
+
+| Handling mode | Axis assignments | Share of 40 assignments |
+| --- | ---: | ---: |
+| Supported source analysis | 3 | 7.5% |
+| Explicit input/configuration | 8 | 20% |
+| Source-bound primitive adapter | 21 | 52.5% |
+| Non-admission | 8 | 20% |
+
+These are forty case/axis annotations on eight purposive cases, not forty
+independent applications or a semantic-accuracy statistic. Identity and business
+write proportions use eight cases; the source-construct survey uses 48 selected
+snapshots. Only one case now has the complete selected expiry/refresh profile;
+the other seven are not labelled as lacking such application behavior.
