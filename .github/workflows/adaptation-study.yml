@@ -70,3 +70,10 @@ jobs:
           done
           python -B adaptation_study/study.py --check-casebook
           python -B -W error -m unittest discover -s tests -p test_token_lifecycle.py -v
+      - name: Recompute selected user-trainer-public scope and observe query fault controls
+        run: |
+          python -B adaptation_study/queryset_scope.py --check
+          for control in omit_trainer omit_public wrong_owner ignore_fake_view; do
+            python -B adaptation_study/queryset_scope.py --control "$control"
+          done
+          python -B -W error -m unittest discover -s tests -p test_queryset_scope.py -v

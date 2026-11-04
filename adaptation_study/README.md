@@ -271,15 +271,45 @@ omitted deletion, wrong user transfer, disabled renewal and an eager throttle;
 three creation controls exercise omitted insertion, client-owner substitution
 and a mismatched request. Only actual observation differences count as detection.
 
-The current casebook has 35 exact source-function anchors. It recomputes both
+## Selected user, trainer and public query scope
+
+`queryset_scope.py` additionally interprets Wger's complete selected
+`get_queryset` and its original `request_user_or_trainer_q` helper. A typed Q
+predicate contract becomes parameterized selection on an owned SQLite routine
+table. Thirty-six contexts vary two supplied users, six session-identity states
+and absent/false/true schema-view flags. Twelve schema views return no rows
+without invoking the helper or filter. The other 24 preserve the union of own,
+truthy trainer-selected and public rows, with no store changes. Missing, null
+and zero session entries do not add a trainer owner; a foreign trainer ID with
+no row adds no result. Session identity and trainer authority are inputs, not
+authenticated or inferred by this selected query.
+
+Four owned fault controls omit trainer scope, omit public rows, substitute the
+owner or ignore the schema-view short circuit. Only observed row/call-order
+differences count as detection; setup and admission errors propagate.
+
+```
+python -B adaptation_study/queryset_scope.py --check
+python -B adaptation_study/queryset_scope.py --control omit_trainer
+python -B adaptation_study/queryset_scope.py --control omit_public
+python -B adaptation_study/queryset_scope.py --control wrong_owner
+python -B adaptation_study/queryset_scope.py --control ignore_fake_view
+```
+
+`queryset-scope.json.gz` retains the original function identities, all contexts
+and exact expected/observed rows. No original ORM, session producer, permission
+dispatcher or deployed service executes. This closes the selected helper/query
+boundary, not every custom queryset or a trainer-session security guarantee.
+
+The current casebook has 36 exact source-function anchors. It recomputes both
 scope counts and handling modes, rather than trusting a manually entered total:
 
 | Handling mode | Axis assignments | Share of 40 assignments |
 | --- | ---: | ---: |
 | Supported source analysis | 3 | 7.5% |
 | Explicit input/configuration | 8 | 20% |
-| Source-bound primitive adapter | 21 | 52.5% |
-| Non-admission | 8 | 20% |
+| Source-bound primitive adapter | 22 | 55% |
+| Non-admission | 7 | 17.5% |
 
 These are forty case/axis annotations on eight purposive cases, not forty
 independent applications or a semantic-accuracy statistic. Identity and business

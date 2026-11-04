@@ -196,6 +196,13 @@
         },
         {
           "path": "wger/manager/api/views.py",
+          "function": "request_user_or_trainer_q",
+          "line": 81,
+          "end_line": 88,
+          "slice_sha256": "ff73a7e90c7fffb5f683629fad19297a116d629bfd69ddae63a831dec5a71148"
+        },
+        {
+          "path": "wger/manager/api/views.py",
           "function": "RoutineViewSet.get_queryset",
           "line": 109,
           "end_line": 119,
@@ -212,9 +219,9 @@
       "entry_premises": [
         "authenticated user and selected object/view fields"
       ],
-      "checked_boundary": "owner/template guard and selected guard-to-create owner insertion/readback",
-      "required_adaptation": "same source request/view binding and owned serializer insert contract",
-      "not_admitted": "original serializer validation,request dispatcher and custom queryset execution not established",
+      "checked_boundary": "owner/template guard,selected owner insertion/readback and source user/trainer/public query scope",
+      "required_adaptation": "same request/view binding,owned serializer insert and typed Q/SQL query contracts",
+      "not_admitted": "original serializer,session identity producer,trainer authority,original ORM and complete request dispatcher not certified",
       "identity_resolution": "supplied_identity_context",
       "effect_boundary": "selected_business_write_and_native_readback",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
@@ -253,8 +260,8 @@
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
         "environment and time": {
-          "label": "queryset_and_dispatch",
-          "handling": "non-admission",
+          "label": "selected_user_trainer_public_query",
+          "handling": "source-bound primitive adapter",
           "evidence_functions": [
             "RoutineViewSet.get_queryset"
           ],
@@ -811,8 +818,8 @@
       "immutable_role_context": 1,
       "issuer_and_singleton_lifetime": 1,
       "opaque_manager_alternatives": 1,
-      "queryset_and_dispatch": 1,
       "selected_framework_projection": 1,
+      "selected_user_trainer_public_query": 1,
       "sequential_owned_store": 1
     }
   },
@@ -837,15 +844,15 @@
     },
     "environment and time": {
       "explicit configuration/input": 2,
-      "non-admission": 4,
-      "source-bound primitive adapter": 2
+      "non-admission": 3,
+      "source-bound primitive adapter": 3
     }
   },
   "handling_counts": {
     "automatic supported source analysis": 3,
     "explicit configuration/input": 8,
-    "non-admission": 8,
-    "source-bound primitive adapter": 21
+    "non-admission": 7,
+    "source-bound primitive adapter": 22
   },
   "case_scope_percentages": {
     "supplied_identity_context": 62.5,
@@ -857,8 +864,8 @@
   "handling_percentages": {
     "automatic supported source analysis": 7.5,
     "explicit configuration/input": 20.0,
-    "non-admission": 20.0,
-    "source-bound primitive adapter": 52.5
+    "non-admission": 17.5,
+    "source-bound primitive adapter": 55.0
   },
   "credential_lifecycle_scope_counts": {
     "no_complete_expiry_refresh_profile_claimed": 7,
