@@ -50,7 +50,7 @@ class ProspectiveTransferTests(unittest.TestCase):
         for ref in self.data['reference_input']['references']:
             with self.subTest(function=ref['id']):
                 program,key=s.prepare(self.data,ref,True)
-                actual=s.sha(ast.dump(ast.Module(body=program[key].body,type_ignores=[])).encode())
+                actual=s.sha(s.body_dump(program[key]).encode())
                 self.assertEqual(actual,ref['body_ast_sha256'])
 
     def test_owned_fault_controls_have_real_normal_observation_differences(self):
@@ -65,5 +65,18 @@ class ProspectiveTransferTests(unittest.TestCase):
         self.assertEqual(value['unknown_contexts'],78)
         self.assertEqual(value['mismatching_boundaries'],0)
         self.assertTrue(all(o['agrees'] is None for r in value['rows'] for o in r['observations']))
+
+    def test_empty_ast_fields_retain_the_original_complete_representation(self):
+        node=ast.parse('def f():\n return g()').body[0]
+        self.assertEqual(s.body_dump(node),"Module(body=[Return(value=Call(func=Name(id='g', ctx=Load()), args=[], keywords=[]))], type_ignores=[])")
+
+    def test_real_body_changes_are_still_rejected(self):
+        data=s.deepcopy(self.data)
+        ref=next(r for r in data['reference_input']['references'] if r['id'].endswith('AllowAny.check_permissions'))
+        owner,node=s.declaration(s.module(data,ref['repository'],ref['path']),ref['function'])
+        node.body=[ast.Return(value=ast.Constant(False))]
+        with patch.object(s,'declaration',return_value=(owner,node)):
+            with self.assertRaisesRegex(ValueError,'complete reference function body differs'):
+                s.prepare(data,ref,False)
 
 if __name__=='__main__':unittest.main()

@@ -24,6 +24,12 @@ from source_bindings import require_import_bindings,require_static_class_members
 from finite_observation_diagnosis import diagnose_observations
 
 def sha(raw):return hashlib.sha256(raw).hexdigest()
+
+def body_dump(node):
+    tree=ast.Module(body=node.body,type_ignores=[])
+    # Keep the original complete 3.12 representation,including empty list
+    # fields. Newer runtimes omit them by default; the source is unchanged.
+    return ast.dump(tree,show_empty=True) if sys.version_info>=(3,13) else ast.dump(tree)
 def load():
     data=json.loads(gzip.decompress((ROOT/'inputs.json.gz').read_bytes()))
     required={'src/effect_slice.py','src/policy_slice.py','src/source_bindings.py','src/native_casbin.py',
@@ -50,7 +56,7 @@ def declaration(text,qualified):
 def prepare(data,ref,adapted=False):
     text=module(data,ref['repository'],ref['path'])
     owner,node=declaration(text,ref['function'])
-    if sha(ast.dump(ast.Module(body=node.body,type_ignores=[])).encode())!=ref['body_ast_sha256']:
+    if sha(body_dump(node).encode())!=ref['body_ast_sha256']:
         raise ValueError('complete reference function body differs')
     nodes=[]
     def append(owner,node):
