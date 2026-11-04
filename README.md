@@ -30,6 +30,11 @@ that narrower property does not describe every optional test.
 
 For source integration, start with `source_study/verify.py`. The selected native
 replay has its own explicit dependency preparation and isolation requirements.
+The accompanying `adaptation_study/` adds a source-anchored survey of the fixed
+48 selected scopes, an eight-case adaptation casebook, a selected Healthchecks
+write/readback extension and a Pretix token-entry extension. Its source-construct
+frequencies are not application-wide prevalence or semantic success rates.
+See `adaptation_study/README.md` for input obligations and executable controls.
 For the integrated source/contract workflow, use
 `python -B source_study/workflow.py replay`. It rebuilds the selected original
 guard modules, automatically discovers their closures and captures, executes
