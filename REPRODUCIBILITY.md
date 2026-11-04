@@ -65,7 +65,7 @@ Acceptance is based on the generated evidence, not merely the subprocess return 
 Freshness is recorded as `fresh_reproduction`; this directory-based entry point does not extract an archive and records `fresh_archive_extraction` as false. Existing historical records are preserved with their original metadata. Each child invocation retains full stdout, stderr, exit status and timeout information under the new output's `raw-logs/`, even if reproduction stops before a summary is produced. Timeouts and failed configurations remain failures in the matrix report.
 
 The Linux workflow permits up to four parallel matrix workers. Inside each
-worker, the quick verifier (180-second enclosing limit), whole deterministic
+worker, the complete release verifier (300-second enclosing limit), whole deterministic
 campaign (300-second enclosing limit, 120 seconds per child), and same-information
 comparison run sequentially. An always-run upload preserves complete or partial
 output and logs. A local `--campaign` invocation instead runs its four
