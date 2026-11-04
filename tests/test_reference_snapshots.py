@@ -17,6 +17,17 @@ class ReferenceSnapshotTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         self.assertTrue(all(row['manuscript_locations'] and row['citation_context']
                             and row['supported_claim'] for row in rows))
+        # The public ledger must consume these current locations, rather than
+        # silently retaining chapter/line pointers from an earlier manuscript.
+        support = {row['citation_key']: row for row in rows}
+        with (root / 'claim_evidence_ledger.csv').open(encoding='utf-8', newline='') as stream:
+            claims = list(csv.DictReader(stream))
+        self.assertEqual(len(claims), len({row['claim'] for row in claims}))
+        for claim in claims:
+            self.assertRegex(claim['manuscript_location'], r'(?:^| )sections/[\w-]+\.tex:[1-9]\d*')
+            if claim['claim'].startswith('literature-'):
+                key = claim['claim'].removeprefix('literature-')
+                self.assertEqual(claim['manuscript_location'], support[key]['manuscript_locations'])
 
 
 if __name__ == '__main__':
