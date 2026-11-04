@@ -51,3 +51,10 @@ jobs:
           python -B adaptation_study/chained_profiles.py header --framework "${{ runner.temp }}/authrefine-header-framework" --control skip_active
           python -B -W error -m unittest discover -s tests -p test_chained_profiles.py -v
           python -B -W error -m unittest discover -s tests -p test_view_binding.py -v
+      - name: Recompute source-derived default-core grants and detect boundary faults
+        run: |
+          python -B adaptation_study/grant_binding.py --framework "${{ runner.temp }}/authrefine-header-framework" --check
+          python -B adaptation_study/grant_binding.py --framework "${{ runner.temp }}/authrefine-header-framework" --control drop_all
+          python -B adaptation_study/grant_binding.py --framework "${{ runner.temp }}/authrefine-header-framework" --control raw_keys
+          python -B adaptation_study/grant_binding.py --framework "${{ runner.temp }}/authrefine-header-framework" --control drop_legacy
+          python -B -W error -m unittest discover -s tests -p test_grant_binding.py -v

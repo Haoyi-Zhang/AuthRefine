@@ -19,7 +19,7 @@
     "code/drf_guard_ir.py": "a5482f02d679c410b376dbd6e42611a63995c91e3e48c21349aadadabfee8e32",
     "code/finite_observation_diagnosis.py": "8722260c4d68c3f3349501834792ccbf49e0a1e7440410d130b8009d185b1a46",
     "code/h19_boundary_repair.py": "ed7f51e290e5ccd30af059c2247091367035643065202ee39a0987d7bf62ec00",
-    "code/pretix_event_profile.py": "f18d2658ccb508cb204caa84e56a2d0a36b77070e9b421a3ccc676e38609ee9b",
+    "code/pretix_event_profile.py": "f690d71884f9e284317b2982aac0c5be5a2b77497f131df2a7ab6d079b649c17",
     "code/query_guard_ir.py": "12187c7e335d48401257cd56db4868abd57371353be8cad74d98b526d6f6eb67",
     "code/secret_field_boundary.py": "ac65269405a9183cdd0e11cab066681fbeb85e5e3a65b24e8e7fd971a10c19de",
     "code/secret_metadata_profile.py": "9772fad9cb7ff0a2ab9f6670752b743d7c6536868a0aed4f68ec4d1a52c79c5c",

@@ -139,7 +139,7 @@ def reference(c):
         event=pk,organizer=1 if access else None,permissions=sorted(c['permissions']) if access else None)
 
 
-def observe(c,compiled,*,omit_owner_contract=False):
+def observe(c,compiled,*,omit_owner_contract=False,grant_builder=None):
     if (c.get('authenticated') is not False or c.get('token_kind')!='TeamAPIToken'
             or c.get('validated_active_token') is not True or c.get('resolved_view_contract')!='event.items'
             or c.get('method') not in ('GET','POST','HEAD') or c.get('query') not in ('own-a','own-b','other','missing')
@@ -152,7 +152,8 @@ def observe(c,compiled,*,omit_owner_contract=False):
     events={i:DataRecord('Event',dict(pk=i,slug=('a' if i in (1,3) else 'b'),organizer=organizers[1 if i in (1,2) else 2])) for i in (1,2,3)}
     team=DataRecord('Team',dict(organizer=organizers[1],all_events=c['all_events'],
         limit_events=DataRecord('GivenEventRelation',dict(all=Capability('owned related rows',lambda:[events[i] for i in c['limited_events']]))),
-        event_permission_set=Capability('given complete team permission-set contract',lambda:set(c['permissions']))))
+        event_permission_set=Capability('source-derived grant projection' if grant_builder is not None else
+            'given complete team permission-set contract',grant_builder if grant_builder is not None else lambda:set(c['permissions']))))
     token=DataRecord('TeamAPIToken',dict(team=team))
     bindings={n:RecordType(n,()) for n in ('Device','TeamAPIToken','User','OAuthAccessToken')}
     request=DataRecord('Request',dict(user=DataRecord('AnonymousUser',dict(is_authenticated=False)),auth=token,method=c['method']),
