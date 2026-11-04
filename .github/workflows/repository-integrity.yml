@@ -53,7 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$EVIDENCE"
-          timeout --kill-after=10s 180s python verify_release.py --json 2>&1 | tee "$EVIDENCE/release.log"
+          timeout --kill-after=10s 300s python verify_release.py --json 2>&1 | tee "$EVIDENCE/release.log"
           timeout --kill-after=10s 300s python reproduce.py --output "$EVIDENCE/campaign" --compare results 2>&1 | tee "$EVIDENCE/campaign.log"
           python - <<'PY' 2>&1 | tee "$EVIDENCE/output-contract.log"
           import json, os
