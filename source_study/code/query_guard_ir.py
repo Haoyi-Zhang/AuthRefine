@@ -21,6 +21,17 @@ def compile_function(node, models, lookups=()):
     env={a.arg:['input',a.arg] for a in node.args.args}
     if node.args.vararg or node.args.kwarg or node.args.kwonlyargs or node.args.posonlyargs:
         raise Unsupported('unbound signature')
+    if len(env)!=len(node.args.args):
+        raise Unsupported('duplicate query parameter')
+    # Python determines local names for the whole function, including writes
+    # after an earlier use. A spelling that is also a local cannot identify
+    # the caller-bound global model or lookup primitive.
+    roots={name.split('.',1)[0] for name in (*models,*lookups)}
+    local_names=set(env)
+    local_names.update(n.id for statement in node.body for n in ast.walk(statement)
+                       if isinstance(n,ast.Name) and isinstance(n.ctx,(ast.Store,ast.Del)))
+    if roots & local_names:
+        raise Unsupported('query model or lookup origin is shadowed by a function-local binding')
     def value(n):
         if isinstance(n,ast.Name) and n.id in env:return env[n.id]
         if isinstance(n,ast.Constant) and type(n.value) in (str,int,bool):return ['constant',n.value]
@@ -55,6 +66,8 @@ def compile_function(node, models, lookups=()):
     def keywords(n):
         if any(k.arg is None or not all(p.isidentifier() for p in k.arg.split('__')) for k in n.keywords):
             raise Unsupported('unbound query keyword')
+        if len({k.arg for k in n.keywords})!=len(n.keywords):
+            raise Unsupported('duplicate query keyword')
         return [[k.arg,value(k.value)] for k in n.keywords]
     for arg in node.args.args:
         if arg.arg=='queryset':env[arg.arg]=['input_query',arg.arg]
