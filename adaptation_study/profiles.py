@@ -17,6 +17,8 @@ import pretix_event_profile as event
 from finite_observation_diagnosis import diagnose_observations
 
 class AuthFailure(Exception):pass
+class ProfileMismatch(ValueError):
+    """An observed contract disagreement, not a setup/admission failure."""
 @dataclass
 class Response:
     status_code:int
@@ -160,7 +162,7 @@ def healthchecks(control=None):
                      None if expected_code==200 and i==target else 'alert'] for i in (1,2,3)]
             wanted_flips=[[target,'new',1]] if expected_code==200 else []
             agrees=code==expected_code and after==wanted and flips==wanted_flips and (native.effects==['flip','save','serialize'] if code==200 else not native.effects)
-            if not agrees:raise ValueError('write profile differs from independent contract')
+            if not agrees:raise ProfileMismatch('write profile differs from independent contract')
             rows.append(dict(profile=profile,keychoice=keychoice,target=target,initial_status=status,status=code,
                 database_after=after,flips=flips,effects=native.effects,agrees=agrees,
                 expected=dict(status=expected_code,database_after=wanted,flips=wanted_flips)))
@@ -213,16 +215,16 @@ def pretix(control=None):
             try:user,token_record=Body(node,native,globals).run([Record('Authenticator',{}),'owned-normal-token'])
             except AuthFailure as e:error=str(e)
             wanted_error=None if condition=='active' else 'Token inactive or deleted.' if condition=='inactive' else 'Invalid token.'
-            if error!=wanted_error:raise ValueError('token source/reference mismatch')
+            if error!=wanted_error:raise ProfileMismatch('token source/reference mismatch')
             permission=None
             if error is None:
-                if token_record is not records[1] or user.fields['is_authenticated'] is not False:raise ValueError('token identity not preserved')
+                if token_record is not records[1] or user.fields['is_authenticated'] is not False:raise ProfileMismatch('token identity not preserved')
                 returned_team=token_record.fields['team']
-                if returned_team is not team or returned_team.fields['organizer']!=1:raise ValueError('authenticated team changed')
+                if returned_team is not team or returned_team.fields['organizer']!=1:raise ProfileMismatch('authenticated team changed')
                 connected=dict(c,all_events=returned_team.fields['all_events'],
                     limited_events=returned_team.fields['limited_events'],permissions=list(returned_team.fields['permissions']))
                 permission,_=event.observe(connected,compiled)
-                if permission!=event.reference(c):raise ValueError('chained event comparison differs')
+                if permission!=event.reference(c):raise ProfileMismatch('chained event comparison differs')
             rows.append(dict(token_condition=condition,event_context=c['id'],authentication_error=error,
                 permission_observation=permission,permission_reached=error is None,token_lookups=native.lookups,
                 expected=dict(authentication_error=wanted_error,permission_observation=event.reference(c) if condition=='active' else None)))
@@ -236,15 +238,18 @@ def pretix(control=None):
         identity_connection='returned token/team facts mapped into the existing permission-profile representation; not physical object identity across two interpreters; complete grant-set and resolved-view inputs remain supplied',
         remaining=['HTTP header extraction by DRF TokenAuthentication','session/device/OAuth flows','plugin grant expansion','concurrent token revocation'])
 
+def check_control(operation,control):
+    try:
+        operation(control)
+    except ProfileMismatch as error:
+        return dict(control=control,deliberate_fault_detected=True,reason=str(error))
+    raise ValueError('deliberate fault was not detected')
+
 def main():
     import argparse
     parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');parser.add_argument('--control',choices=['drop_save','skip_active']);args=parser.parse_args()
     if args.control:
-        try:
-            (healthchecks if args.control=='drop_save' else pretix)(args.control)
-        except ValueError:
-            print(json.dumps(dict(control=args.control,deliberate_fault_detected=True)));return
-        raise ValueError('deliberate fault was not detected')
+        print(json.dumps(check_control(healthchecks if args.control=='drop_save' else pretix,args.control)));return
     report=dict(Healthchecks=healthchecks(),Pretix=pretix(),original_application_modules_executed=False,
         trusted_framework_and_owned_SQLite_only=True,new_independent_applications=0)
     path=ROOT/'profiles.json.gz'

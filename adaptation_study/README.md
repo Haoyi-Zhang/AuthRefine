@@ -146,6 +146,19 @@ as a token rejection. Source import, inheritance and model bindings are checked
 before the selected body is admitted. Missing activity checks and header
 delegation are detected by owned deliberate controls.
 
+The connected consumer also resolves the original item-view permission defaults
+from source instead of merely accepting hand-entered view slots. It checks the
+passive source mixin and the actual frozen native base's eleven-class MRO and
+five defining module files before matching the existing finite consumer. Nine
+original view declarations share these defaults; this does not multiply the
+288 event contexts or the application denominator. Direct scalar declarations
+are accepted; rebinding, dynamic permission hooks, reflective slot mutation and
+instance/action overrides are not silently treated as absent. Original module
+initialization, router dispatch and runtime monkey-patching are not executed.
+The original source mixin in `pretix-view-base.txt` retains Pretix's included
+AGPL/additional terms. The exact declaration lines and native source bindings
+are included in `chained-header.json.gz`.
+
 ```
 python -B adaptation_study/chained_profiles.py prepare --framework /owned/header-framework
 python -B adaptation_study/chained_profiles.py header --framework /owned/header-framework --check
@@ -159,6 +172,11 @@ dependency declaration is retained in `pretix-pyproject.toml` under Pretix's
 included license. Use separate processes for the two native framework
 environments. Current connected observations are in `chained-health.json.gz`
 and `chained-header.json.gz`; they do not replace or inflate the earlier
-reset-profile results. Resolved view slots and complete grants remain explicit
-inputs; session/device/OAuth fallback, plugins, live servers and deployment
-are not certified by header parsing.
+reset-profile results. Class defaults are now source-checked under an explicit
+no-instance-override contract; complete grants remain supplied. Session/device/
+OAuth fallback, plugins, live servers and deployment are not certified by header
+parsing or declaration resolution.
+
+Only a typed observed contract mismatch counts as a detected deliberate fault.
+Missing dependencies, ordinary setup errors and unsupported source admission
+propagate as errors, not successful negative controls.

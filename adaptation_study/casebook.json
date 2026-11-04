@@ -647,11 +647,11 @@
         }
       ],
       "entry_premises": [
-        "resolved view permission and complete team grant set"
+        "complete team grant set and no instance/action permission overrides"
       ],
-      "checked_boundary": "native header parsing, selected token lookup/activity body, then event permission comparison",
-      "required_adaptation": "token-to-team representation map and native query profile",
-      "not_admitted": "not session/device/OAuth fallback,plugin expansion,concurrent revocation or an HTTP server",
+      "checked_boundary": "native header parsing, selected token lookup/activity body, source-checked view defaults/native inheritance, then event permission comparison",
+      "required_adaptation": "static class declaration gate and frozen native-base origin/MRO; fixed complete grants and token-to-team representation map",
+      "not_admitted": "not runtime instance/action overrides,module initialization,session/device/OAuth fallback,plugin expansion,concurrent revocation or an HTTP server",
       "identity_resolution": "source_lookup_with_native_primitive",
       "effect_boundary": "guard_or_query_before_business_write",
       "interpretation": "case-specific supported boundary, not proof that the application always satisfies its premises",
@@ -682,8 +682,8 @@
           "interpretation": "source-anchored case-scope classification, not inferred application-wide intent"
         },
         "runtime resolution": {
-          "label": "resolved_view_and_grants",
-          "handling": "explicit configuration/input",
+          "label": "source_checked_defaults_and_supplied_grants",
+          "handling": "source-bound primitive adapter",
           "evidence_functions": [
             "EventPermission.has_permission"
           ],
@@ -755,8 +755,8 @@
       "custom_query_manager": 1,
       "dynamic_constructor": 1,
       "fixed_plain_and_stored_keys": 1,
-      "resolved_view_and_grants": 1,
-      "resolved_view_profile": 1
+      "resolved_view_profile": 1,
+      "source_checked_defaults_and_supplied_grants": 1
     },
     "environment and time": {
       "alternate_entry_and_revocation": 1,

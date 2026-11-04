@@ -187,9 +187,12 @@ def header_chain(directory,control=None):
     import django;django.setup()
     from django.http import HttpRequest
     from rest_framework.authentication import TokenAuthentication
+    from rest_framework.viewsets import ModelViewSet
     from rest_framework.exceptions import AuthenticationFailed
     import rest_framework
     if django.get_version()!='5.2.17' or rest_framework.VERSION!='3.18.3':raise ValueError('native primitive version differs')
+    from view_binding import source_view_gate
+    view_binding=source_view_gate(ModelViewSet,directory)
     raw=(ROOT/'pretix-token-source.txt').read_text()
     from source_bindings import require_import_bindings,require_static_class_members
     require_import_bindings(raw.encode(),{'TokenAuthentication':('rest_framework.authentication',0,'TokenAuthentication'),
@@ -246,9 +249,10 @@ def header_chain(directory,control=None):
         framework=dict(Django=django.get_version(),DRF=rest_framework.VERSION,
             source_declared_minimums_satisfied=True,authentication_module_sha256=sha(Path(sys.modules['rest_framework.authentication'].__file__).read_bytes()),
             native_methods=['get_authorization_header','TokenAuthentication.authenticate']),
+        source_view_binding=view_binding,
         original_application_modules_executed=False,
         mapping='exact source-authenticator token/team followed by explicit representation map into existing event profile',
-        scope='selected Token scheme and source token-authentication method; resolved view/grants supplied; no fallback session, OAuth, HTTP server or deployment claim')
+        scope='selected Token scheme and source token-authentication method; view class defaults source-checked without instance overrides; grants supplied; no fallback session, OAuth, HTTP server or deployment claim')
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('component',choices=['prepare','health','header']);p.add_argument('--framework',type=Path)
