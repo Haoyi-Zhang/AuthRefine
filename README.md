@@ -2,7 +2,7 @@
 
 Source-Bound Checking and Diagnosis of Authorization Contracts
 
-This artifact implements a finite controlled authorization language, a compiler, semantic reification, full-state trace checking with an optional closed-region list, shortest-trace diagnosis, algorithmic cross-checks, and the derived finite constructions. It includes frozen public inputs, deterministic generators, measured records, and proof notes. No network access is needed to reproduce the evidence.
+This artifact implements a finite controlled authorization language, a compiler, semantic reification, full-state trace checking with an optional closed-region list, shortest-trace diagnosis, algorithmic cross-checks, and the derived finite constructions. It includes frozen public inputs, deterministic generators, measured records, and proof notes. Bundled evidence is replayed offline; the separately licensed enterprise source described below must be supplied locally for its optional replay.
 
 The source-bound study is in `source_study/`. Its offline verifier consumes the
 eight case records and complete credential interpretation families. A portable
@@ -19,7 +19,13 @@ are not independent policy-intent gold; repeated contexts are not additional app
 selected before outcomes, ten acquired snapshots, and nine source-bound reference
 boundaries in three projects. The frozen method completes five boundaries; a
 separately reported source adaptation completes nine over 78 normal contexts.
-Sixty other candidate interfaces lack complete reference contracts. This is not
+At that evaluation point, sixty other candidate interfaces lacked complete
+reference contracts. `reference_completion/` now supplies their post-exposure
+source-functional contracts: 58 concrete entries and two abstract declarations.
+The distributed offline packet reconstructs 57 concrete entries; one enterprise
+entry was checked locally and requires separately supplied licensed source for
+receiver replay. Two official source-address corrections recover the missing
+projects' snapshots without changing the first acquisition record. This is not
 whole-application validation or a claim of newly discovered application flaws.
 See its README for offline commands, licenses and exact adaptation boundaries.
 

@@ -28,6 +28,10 @@ jobs:
           python -B prospective_study/study.py --secondary --control wrong_owner
           python -B prospective_study/study.py --secondary --control drop_super
           python -B prospective_study/study.py --secondary --control wrong_principal
+      - name: Reconstruct post-exposure contracts within the distributed license scope
+        run: |
+          python -B reference_completion/replay.py --check
+          python -B -W error -m unittest discover -s tests -p test_reference_completion.py -v
       - name: Install the isolated existing native replay dependencies
         run: |
           python -m pip install --only-binary=:all: -r requirements-test.txt
