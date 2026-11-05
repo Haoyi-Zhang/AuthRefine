@@ -90,8 +90,10 @@ class World:
         if fault is None:return ret(self.normalize(value))
         return err(fault.name,getattr(fault,'status',None),getattr(fault,'code',None))
     def snapshot(self):
-        return dict(share_count=self.db.execute('select value from share_counter where id=1').fetchone()[0],
+        result=dict(share_count=self.db.execute('select value from share_counter where id=1').fetchone()[0],
             cache=dict(self.cache),request_state={k:self.normalize(v) for k,v in self.request.fields['state'].fields.items() if k in ('user','auth_type','claims')},**self.state)
+        if hasattr(self,'user_context_keys'):result['user_context']={k:self.normalize(self.user.fields[k]) for k in sorted(self.user_context_keys) if k in self.user.fields}
+        return result
     def close(self):
         if not self.closed:self.db.close();self.closed=True
 
@@ -399,8 +401,11 @@ def setup(w,contract):
     w.contract=contract
     w.source_constants=contract.get('source_constants',{})
     repo=contract['repository'];q=contract['function']
-    if repo=='TandoorRecipes/recipes':return recipe_setup(w,q)
-    if repo=='taigaio/taiga-back':return taiga_setup(w,q,contract['path'])
-    if repo=='baserow/baserow':return baserow_setup(w,q)
-    if repo=='open-webui/open-webui':return webui_setup(w,q)
-    return auth_setup(w,repo,q)
+    if repo=='TandoorRecipes/recipes':out=recipe_setup(w,q)
+    elif repo=='taigaio/taiga-back':out=taiga_setup(w,q,contract['path'])
+    elif repo=='baserow/baserow':out=baserow_setup(w,q)
+    elif repo=='open-webui/open-webui':out=webui_setup(w,q)
+    else:out=auth_setup(w,repo,q)
+    if __package__:from .expansions import install
+    else:from expansions import install
+    return install(w,contract,*out)

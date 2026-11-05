@@ -23,6 +23,7 @@ def execute(source,contract,context,control=None):
         extra=contract.get('helper_sources',{})
         for helper,row in extra.items():
             if digest(row['text'].encode())!=row['sha256']:raise ValueError('external helper source differs')
+            if contract.get('batch_expansion') and (row['repository']!=contract['repository'] or row['snapshot']!=contract['snapshot']):raise ValueError('dependency is not the selected repository snapshot')
             if helper=='UserInfo.is_authenticated':
                 tree=ast.parse(row['text']);cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='UserInfo')
                 if [ast.unparse(n) for n in cls.bases]!=['BaseUser','dict'] or any(isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name in ('__init__','__new__','__getattribute__') for n in cls.body):raise ValueError('UserInfo projection construction binding differs')

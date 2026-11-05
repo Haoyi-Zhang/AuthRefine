@@ -22,6 +22,7 @@ current source-functional contracts and consumed data,not obsolete copies.
 python -B reference_completion/replay.py --check
 python -B -W error -m unittest discover -s tests -p test_reference_completion.py -v
 python -B -W error -m unittest discover -s tests -p test_contract_handoffs.py -v
+python -B -W error -m unittest discover -s tests -p test_batch_dependencies.py -v
 ```
 
 The distributed offline packet reconstructs 57 concrete contracts and both
@@ -75,6 +76,19 @@ that descriptor. Role/environment properties,unconsumed dynamic attributes
 and full framework dispatch are not inferred from this entry observation.
 
 Same-module permission helpers and fixed superclass bodies are retained.
+Taiga membership,role/public/anonymous permissions,admin and leave-project
+conditions now interpret complete source bodies over raw membership rows.
+Authorization header extraction and JWT splitting use their original helpers.
+Baserow checks the source password-change timestamp relation and request-context
+mutations,including invalid-header partial effects,IP precedence and impersonation.
+Preview cookie naming uses the source constant and explicit configured prefix.
+Open WebUI interprets group/default permission fallback,session stamps,token types,
+MFA and revocation branches over supplied rows,and reads raw usage-pool keys.
+Its source behavior on revocation-store errors is retained,not silently hardened.
+These replace supplied service decisions,not the underlying database or signing
+providers. Configuration templates are explicit inputs,not inferred deployments.
+The original 1,512 inputs and all sixty entry identities remain unchanged;
+additional branch regressions are owned fixtures,not new project samples.
 The original preview route-ID parser and employee-company resolver are now
 interpreted,not supplied as resolved values. The resolver's exact import binds
 an explicit owned query interface without invoking a host module loader. Its

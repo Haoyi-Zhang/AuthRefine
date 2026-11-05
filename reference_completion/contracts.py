@@ -182,9 +182,97 @@ def reference(contract,inputs):
     repo=contract['repository'];q=contract['function']
     result=recipe_reference(q,inputs) if repo=='TandoorRecipes/recipes' else taiga_reference(q,inputs) if repo=='taigaio/taiga-back' else other_reference(repo,q,inputs)
     outcome,state,counts,order=result
+    if contract.get('batch_expansion'):outcome,state,counts,order=batch_reference(contract,inputs,(outcome,state,counts,order))
     baseline=dict(share_count=inputs.get('share_count',1),selected_company=None,scheduled_active=[],active_updates=[],deleted_cookies=[],request_state={})
     baseline['cache:recipe_share_10_share-normal']=True if inputs.get('share_cached') else None
     return outcome,{**baseline,**state},counts,order
+
+def project_permissions(c,i):
+    p=i.get('project_policy',{});auth=i.get('authenticated',True);tables=c['batch_constants']['taiga_permission_tables']
+    role=p.get('role_permissions',[s for s,k in (('view','permission'),('comment','comment_allowed'),('update','update_allowed')) if i.get(k,False)])
+    if i.get('superuser'):return set(sum(tables.values(),[]))
+    member=auth and p.get('is_member',True);admin=member and p.get('is_admin',i.get('admin',False))
+    return set((tables['ADMINS_PERMISSIONS']+tables['MEMBERS_PERMISSIONS'] if admin else [])+(list(role) if member else [])+(list(p.get('public_permissions',[])) if auth else [])+list(p.get('anon_permissions',[])))
+def webui_permission(i):
+    def value(d):
+        for key in ('features','api_keys'):
+            if type(d)is not dict or key not in d:return False
+            d=d[key]
+        return bool(d)
+    if any(value(g or {}) for g in i.get('group_permissions',[])):return True
+    d=i.get('default_permissions',{'features':{'api_keys':i.get('api_permission',True)}}) or {};t=i.get('permission_template',{'features':{'api_keys':False}})
+    feature=d.get('features',t.get('features',{}));leaf=feature.get('api_keys',t.get('features',{}).get('api_keys',False));return bool(leaf)
+def webui_token_current(i,claims):
+    if claims.get('session_stamp')!=i.get('account_stamp',None if i.get('token_current',True) else 'changed'):return False
+    kind=claims.get('typ','session')
+    if kind not in ('session','automation','subagent'):return False
+    method=claims.get('auth_method','');needed=i.get('mfa_enabled',False) and not(method=='oauth' and i.get('mfa_oauth_bypass')) and not(method=='trusted_header' and i.get('mfa_header_bypass'))
+    if kind=='session' and needed and (claims.get('mfa_verified') is not True or not i.get('mfa_secret') or i.get('mfa_reset')):return False
+    if not i.get('redis_enabled') or i.get('redis_error'):return True
+    if claims.get('jti') and i.get('token_revoked'):return False
+    if claims.get('id') and i.get('revoked_at'):
+        try:
+            cutoff=int(i['revoked_at']);stamp=claims.get('iat')
+            if stamp is None or stamp<=cutoff:return False
+        except (ValueError,TypeError):pass
+    return True
+def baserow_context(i):
+    import re,uuid
+    headers=i.get('headers',{});state={'web_socket_id':headers.get('WebSocketId')}
+    sid=headers.get('ClientSessionId')
+    if sid is not None:
+        if type(sid)is not str or not re.match(r'^[0-9a-zA-Z-]+$',sid) or len(sid)>i.get('session_id_limit',256):return state,error('InvalidClientSessionIdAPIException')
+        state['untrusted_client_session_id']=sid
+    group=headers.get('ClientUndoRedoActionGroupId')
+    if group is not None:
+        try:uuid.UUID(str(group),version=4)
+        except ValueError:return state,error('InvalidUndoRedoActionGroupIdAPIException')
+    state['untrusted_client_action_group']=group;meta=i.get('meta',{})
+    state['remote_addr_ip']=meta['HTTP_X_FORWARDED_FOR'].split(',')[0].strip() if meta.get('HTTP_X_FORWARDED_FOR') else meta['HTTP_X_REAL_IP'].strip() if meta.get('HTTP_X_REAL_IP') else meta.get('REMOTE_ADDR')
+    token=i.get('token_claims',{'iat':i.get('token_iat',2),'impersonated_by':i.get('impersonated_by')});state['impersonated_by_user_id']=token.get('impersonated_by')
+    return state,None
+def batch_reference(c,i,previous):
+    out,state,counts,order=previous;q=c['function'];repo=c['repository'];state=dict(state);counts=dict(counts)
+    if c['batch_category']=='taiga_policy':
+        p=i.get('project_policy',{});permissions=project_permissions(c,i);obj=not i.get('absent_object')
+        if q=='HasProjectPerm.check_permissions':out=ret(obj and p.get('permission_name','view') in permissions)
+        elif q in ('IsProjectAdmin.check_permissions','IsWebhookProjectAdmin.check_permissions'):out=ret(bool(i.get('superuser') or obj and i.get('authenticated',True) and p.get('is_member',True) and p.get('is_admin',i.get('admin',False))))
+        elif q=='CommentAndOrUpdatePerm.check_permissions':
+            keys=set(i.get('data',{}))-{'version'};comment=keys=={'comment'} and 'comment' in permissions
+            out=ret(bool(obj and(comment or 'update' in permissions)));counts['permission']=0 if not obj else 1 if keys!={'comment'} or comment else 2
+        elif q=='CanLeaveProject.check_permissions':
+            reached=obj and i.get('authenticated',True);admin=p.get('leave_admin',not i.get('can_leave',True));owner=p.get('is_owner',not i.get('can_leave',True));allowed=not admin or not owner and p.get('other_active_admin',True)
+            out=ret(False) if not reached or i.get('membership_missing') else ret(True) if allowed else error('PermissionDenied');counts['can_leave']=int(reached)
+    elif repo=='taigaio/taiga-back' and q=='JWTAuthentication.authenticate':
+        header=None if i.get('no_header') else i.get('header','Other owned-normal-token' if i.get('no_raw') else 'Bearer owned-normal-token')
+        parts=[] if header is None else header.split();reaches=bool(parts and parts[0]=='Bearer' and len(parts)==2)
+        counts['validate_token']=int(reaches)
+        out=error('AuthenticationFailed',code='bad_authorization_header') if parts and parts[0]=='Bearer' and len(parts)!=2 else error('InvalidToken') if reaches and i.get('invalid_token') else PAIR if reaches else ret(None)
+    elif repo=='baserow/baserow' and q=='JSONWebTokenAuthentication.authenticate':
+        state['user_context']={};token=i.get('token_claims',{'iat':i.get('token_iat',2)});when=i.get('password_changed_at',1 if i.get('profile_valid',True) else 3)
+        if i.get('invalid_token'):out=error('AuthenticationFailed',code='ERROR_INVALID_ACCESS_TOKEN')
+        elif i.get('no_credentials'):out=ret(None)
+        elif 'iat' not in token:out=error('KeyError')
+        elif when is not None and when>token['iat']:out=error('AuthenticationFailed',code='ERROR_INVALID_ACCESS_TOKEN')
+        elif not i.get('active',True):out=error('DeactivatedUserException')
+        else:
+            context,fault=baserow_context(i);state['user_context']=context;out=fault or PAIR
+        success=out==PAIR
+        counts={n:int(success) for n in ('session_setup','impersonation_setup','sentry_setup')};order=['session_setup','impersonation_setup','span_context','span.enter','sentry_setup','span.exit'] if success else []
+        if state['user_context'] and not success:counts['session_setup']=1
+    elif repo=='open-webui/open-webui' and q=='get_current_usage':
+        if out.get('kind')=='return':out=ret({'model_ids':list(i.get('usage_pool',{'owned-model':[]})),'user_count':4})
+    elif repo=='open-webui/open-webui':
+        api=q=='get_current_user_by_api_key';token=i.get('bearer_token','bearer-normal') if i.get('bearer',True) else i.get('cookies',{}).get('token')
+        if token is None and i.get('middleware_token'):token='middleware-normal'
+        api=api or token is not None and token.startswith('sk-')
+        if api:
+            j=dict(i,api_permission=webui_permission(i));out,state,counts,order=other_reference(repo,q,j)
+        elif token is not None:
+            uid='u2' if token=='cookie-normal' else 'u1';claims=i.get('claims',{'id':uid});valid=webui_token_current(i,claims)
+            j=dict(i,token_current=valid);out,state,counts,order=other_reference(repo,q,j)
+            if out['kind']=='return':state['request_state']['claims']=claims
+    return out,state,counts,order
 
 def cases(contract):
     repo=contract['repository'];q=contract['function'];out=[{}]

@@ -49,8 +49,10 @@ def program_template(text,qualified,helpers):
         # All lookup/call execution is through the typed interpreter below.
         # Imports may occur in a dead configured branch; a reached import always
         # returns unknown. No bytecode,eval,exec or arbitrary host attributes exist.
-        forbidden=(ast.While,ast.Delete,ast.Global,ast.Nonlocal,ast.ClassDef,ast.Lambda,ast.Yield,ast.YieldFrom)
+        forbidden=(ast.While,ast.Delete,ast.Global,ast.Nonlocal,ast.ClassDef,ast.Yield,ast.YieldFrom)
         if any(isinstance(n,forbidden) for n in walked):raise AdmissionError('body requires an unadmitted semantic construct')
+        for n in walked:
+            if isinstance(n,ast.Lambda) and not (len(n.args.args)==1 and not(n.args.posonlyargs or n.args.kwonlyargs or n.args.vararg or n.args.kwarg or n.args.defaults) and isinstance(n.body,ast.Subscript) and isinstance(n.body.value,ast.Name) and n.body.value.id==n.args.args[0].arg and isinstance(n.body.slice,ast.Constant) and type(n.body.slice.value)is int and n.body.slice.value==0):raise AdmissionError('only literal table first-field lambda is admitted')
         program[node.name]=node
     return program,qualified.replace('.','__')
 
@@ -66,9 +68,15 @@ class Interpreter(EffectInterpreter):
         self.frames=[];self.control=control
         self.bindings.update({n:ErrorType(n) for n in ('Exception','TypeError','ValueError','KeyError','UnicodeDecodeError','NotImplementedError','AttributeError')})
         self.bindings.update(len=Capability('bounded length',self.length),
+            type=Capability('bounded scalar type tag',self.type_tag),
+            dict=RecordType('PlainDict',()),map=Capability('bounded map',self.map_values),
             next=Capability('single-consumption bounded next',self.first),
             any=Capability('bounded existential',lambda x:any(self.truth(v) for v in self.sequence(x))),
             hasattr=Capability('declared field presence',lambda x,k:isinstance(x,DataRecord) and k in x.fields))
+    def map_values(self,fn,values):return [self.invoke(fn,[v],{}) for v in self.sequence(values)]
+    def type_tag(self,value):
+        if value is None or type(value)in(str,bytes,int,bool,list,tuple,dict):return 'source-type:'+type(value).__name__
+        raise AdmissionError('type tag outside plain declared data')
     def first(self,x,default):
         if not isinstance(x,Generator) or x.consumed:raise AdmissionError('next requires one fresh bounded generator')
         x.consumed=True
@@ -99,6 +107,10 @@ class Interpreter(EffectInterpreter):
             pending.owned_call=(fn.name,tuple(args),dict(kwargs))
             return pending
         if not isinstance(fn,Closure):return super().invoke(fn,args,kwargs)
+        transform=self.bindings.get('_prepare_source_call')
+        if transform is not None:
+            if not isinstance(transform,Capability):raise AdmissionError('source-call control is not declared')
+            args,kwargs=self.invoke(transform,[fn.function.name,args,kwargs],{})
         self.charge();p=fn.function.args
         names=[a.arg for a in [*p.posonlyargs,*p.args]];kw_names=[a.arg for a in p.kwonlyargs]
         if len(args)>32 or len(kwargs)>32 or len(set(names+kw_names))!=len(names+kw_names):raise AdmissionError('source call outside argument envelope')
@@ -121,9 +133,13 @@ class Interpreter(EffectInterpreter):
         local={**fn.environment,**bound}
         def execute():
             if self.depth>=16:raise AdmissionError('source depth exhausted','inconclusive')
-            self.depth+=1;self.frames.append((fn.function._owner,bound.get('self')))
+            self.depth+=1;self.frames.append((getattr(fn.function,'_owner',''),bound.get('self')))
             self.function_calls[fn.function.name]=self.function_calls.get(fn.function.name,0)+1
             try:
+                observer=self.bindings.get('_observe_source_call')
+                if observer is not None:
+                    if not isinstance(observer,Capability):raise AdmissionError('source observation interface is not declared')
+                    self.invoke(observer,[fn.function.name,args,kwargs],{})
                 result=self.statements(fn.function.body,local)
                 return result.value if isinstance(result,Return) else None
             finally:self.depth-=1;self.frames.pop()
@@ -149,6 +165,7 @@ class Interpreter(EffectInterpreter):
         raise AdmissionError('equality outside declared data domain')
     def value(self,n,env):
         self.charge()
+        if isinstance(n,ast.Lambda):return Capability('literal first-field projection',lambda value:value[0] if type(value)in(tuple,list) and value else self.bad_projection())
         if isinstance(n,ast.JoinedStr):
             parts=[]
             for item in n.values:
@@ -174,7 +191,7 @@ class Interpreter(EffectInterpreter):
                 raise AdmissionError('unbound source record field '+n.attr)
             if type(x) in (str,bytes) and n.attr in ('strip','lower','upper','split','startswith','partition','decode','encode'):
                 return Capability('bounded text '+n.attr,lambda *a,**k:self.text(x,n.attr,a,k))
-            if type(x) is dict and n.attr in ('get','keys','pop'):
+            if type(x) is dict and n.attr in ('get','keys','items','pop'):
                 return Capability('bounded mapping '+n.attr,lambda *a,**k:self.mapping(x,n.attr,a,k))
             if type(x) in (str,bytes,int,bool) or x is None:raise SliceFault('AttributeError','plain source value has no '+n.attr)
             raise AdmissionError('attribute outside declared data '+n.attr)
@@ -210,6 +227,8 @@ class Interpreter(EffectInterpreter):
                     if isinstance(op,ast.NotIn):ok=not ok
                 elif type(left)==type(right) and type(left) in (int,str,bytes):
                     ok={ast.Lt:lambda:left<right,ast.LtE:lambda:left<=right,ast.Gt:lambda:left>right,ast.GtE:lambda:left>=right}[type(op)]()
+                elif isinstance(left,DataRecord) and isinstance(right,DataRecord) and left.kind==right.kind=='TimePoint':
+                    a=(left.fields['seconds'],left.fields['microsecond']);b=(right.fields['seconds'],right.fields['microsecond']);ok={ast.Lt:lambda:a<b,ast.LtE:lambda:a<=b,ast.Gt:lambda:a>b,ast.GtE:lambda:a>=b}[type(op)]()
                 else:raise AdmissionError('ordered comparison domain unresolved')
                 if not ok:return False
                 left=right
@@ -224,9 +243,11 @@ class Interpreter(EffectInterpreter):
             from policy_slice import Call
             return self.call(fn,args,kwargs,env) if isinstance(fn,Call) else self.invoke(fn,args,kwargs)
         return super().value(n,env)
+    def bad_projection(self):raise AdmissionError('table projection outside nonempty bounded row')
     def mapping(self,x,name,args,kwargs):
         if len(x)>128:raise AdmissionError('mapping envelope','inconclusive')
         if name=='keys' and not args and not kwargs:return list(x)
+        if name=='items' and not args and not kwargs:return list(x.items())
         if name in ('get','pop') and 1<=len(args)<=2:
             if kwargs and not(name=='get' and len(args)==1 and set(kwargs)=={'default'}):raise AdmissionError('mapping keyword unresolved')
             default=args[1] if len(args)==2 else kwargs.get('default')
@@ -317,6 +338,11 @@ class Interpreter(EffectInterpreter):
 
     def call(self,fn,args,kwargs,env):
         from policy_slice import Call
+        if isinstance(fn,Call) and fn.kind=='effect-builtin' and not kwargs:
+            if fn.value=='list' and len(args)==1:return self.sequence(args[0])
+            if fn.value=='isinstance' and len(args)==2:
+                if isinstance(args[1],RecordType) and args[1].kind=='PlainDict':return type(args[0])is dict
+                if isinstance(args[1],DataRecord) and args[1].kind=='ModelType':return isinstance(args[0],DataRecord) and args[0].kind==args[1].fields['instance_kind']
         if isinstance(fn,Call) and fn.kind=='effect-builtin' and fn.value=='int' and len(args)==1 and not kwargs:
             value=args[0]
             if value is None or type(value) not in (str,int,bool):raise SliceFault('TypeError')
@@ -326,3 +352,8 @@ class Interpreter(EffectInterpreter):
             if converted.bit_length()>64:raise AdmissionError('integer conversion result envelope','inconclusive')
             return converted
         return super().call(fn,args,kwargs,env)
+    def bind(self,target,value,env):
+        if self.control=='drop_user_context' and isinstance(target,ast.Attribute):
+            record=self.value(target.value,env)
+            if isinstance(record,DataRecord) and record.kind=='User' and target.attr in record.writable:return
+        return super().bind(target,value,env)

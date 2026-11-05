@@ -41,15 +41,21 @@ def obligations(c,i):
     elif repo=='taigaio/taiga-back':
         if q in ('Not.check_permissions','Or.check_permissions','And.check_permissions'):
             for n in range(len(i.get('components',[]))):put('component'+str(n),[ref('request'),rec('View',kwargs={'pk':1} if i.get('has_pk',True) else {}),None if i.get('absent_object') else ref('object')])
-        obj=None if i.get('absent_object') else ref('object');project=rec('Project',pk=i.get('data',{}).get('project') or 1)
+        pid=i.get('data',{}).get('project') or 1
+        obj=None if i.get('absent_object') else ref('object');project=ref('project-'+str(pid)) if c.get('batch_category')=='taiga_policy' else rec('Project',pk=pid)
         if q=='CommentAndOrUpdatePerm.check_permissions':
             # Permission labels depend on the source-selected comment/update branch.
             d=i.get('data',{});labels=['comment'] if set(d)-{'version'}=={'comment'} and i.get('comment_allowed') else ['comment','update'] if set(d)-{'version'}=={'comment'} else ['update']
             r['permission']=[{'args':[ref('user'),p,project],'kwargs':{}} for p in labels]
             put('project_model',['projects','Project']);put('project.get',k={'pk':i.get('data',{}).get('project')})
-        else:put('permission',[ref('user'),'view',obj])
-        put('admin',[ref('user'),rec('Project',pk=1) if q.startswith('IsWebhook') else obj]);put('can_leave',[ref('user'),obj])
+        else:put('permission',[ref('user'),i.get('project_policy',{}).get('permission_name','view'),obj])
+        put('admin',[ref('user'),(ref('project-1') if c.get('batch_category')=='taiga_policy' else rec('Project',pk=1)) if q.startswith('IsWebhook') else obj]);put('can_leave',[ref('user'),obj])
+        if c.get('batch_category')=='taiga_policy':
+            put('membership_lookup',[ref('project-'+str(pid))]);put('project_membership_lookup',[ref('user')]);put('members.get',k={'user':ref('user')});put('members.filter',k={'is_admin':True,'user__is_active':True});put('members.exclude',k={'user':ref('user')});put('members.count')
         put('header',[ref('request')]);put('raw_token',['owned-header']);put('validate_token',['owned-normal-token']);put('user_lookup',[ref('token')]);put('csrf',[ref('request')])
+        if c.get('batch_category')=='taiga_header' and q=='JWTAuthentication.authenticate':
+            header=i.get('header','Other owned-normal-token' if i.get('no_raw') else 'Bearer owned-normal-token')
+            put('raw_token',[{'bytes':header.encode().hex()}]);parts=header.split();put('validate_token',[{'bytes':parts[1].encode().hex()}] if len(parts)==2 else [])
         header=i.get('header','').split();parts=('', '')
         if len(header)==2 and header[0].lower()=='basic':
             try:
@@ -79,8 +85,10 @@ def obligations(c,i):
         token=i.get('bearer_token','bearer-normal') if i.get('bearer',True) else i.get('cookies',{}).get('token')
         if token is None and i.get('middleware_token'):token='middleware-normal'
         uid='u2' if token=='cookie-normal' else 'u1'
-        put('decode',[token]);put('api_user',['sk-owned-normal' if q=='get_current_user_by_api_key' else token]);put('jwt_user',[uid]);put('token_current',[{'id':uid},None]);put('active_update',[uid])
-        put('api_permission',['u1','features.api_keys',{'configured':True}]);put('config_read',['auth.enable_api_keys','user.permissions','auth.api_key.endpoint_restrictions','auth.api_key.allowed_endpoints']);put('active_count');put('model_usage')
+        claims=i.get('claims',{'id':uid})
+        put('decode',[token]);put('api_user',['sk-owned-normal' if q=='get_current_user_by_api_key' else token]);put('jwt_user',[claims.get('id',uid)]);put('token_current',[claims,ref('redis') if i.get('redis_enabled') else None]);put('active_update',[claims.get('id',uid)])
+        permissions=i.get('default_permissions',{'features':{'api_keys':i.get('api_permission',True)}}) if c.get('batch_expansion') else {'configured':True}
+        put('api_permission',['u1','features.api_keys',permissions]);put('group_rows',['u1'],{'db':None,'include_inherited':True});put('config_read',['auth.enable_api_keys','user.permissions','auth.api_key.endpoint_restrictions','auth.api_key.allowed_endpoints']);put('active_count');put('model_usage');put('auth_row',[claims.get('id','')]);put('mfa_config')
     return r
 def check_handoffs(c,inputs,events):
     specs=obligations(c,inputs);seen={};violations=[]
