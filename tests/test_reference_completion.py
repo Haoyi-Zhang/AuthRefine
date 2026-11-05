@@ -31,7 +31,6 @@ class ContractCompletionTests(unittest.TestCase):
         for c in self.data['references']['contracts']:
             for v in c['contexts']:
                 actual=reference(c,v['inputs']);expected=(v['expected'],v['state'],v['call_counts'],v['call_order'])
-                if c['id']=='boundary-35' and v['id']=='normal-040':actual=({'kind':'error','name':'AttributeError'},*actual[1:])
                 self.assertEqual(actual,expected)
     def test_public_packet_does_not_redistribute_enterprise_source(self):
         self.assertEqual(len(self.data['sources']),19)

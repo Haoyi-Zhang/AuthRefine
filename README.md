@@ -22,6 +22,8 @@ separately reported source adaptation completes nine over 78 normal contexts.
 At that evaluation point, sixty other candidate interfaces lacked complete
 reference contracts. `reference_completion/` now supplies their post-exposure
 source-functional contracts: 58 concrete entries and two abstract declarations.
+It interprets the available route/company helpers and checks typed observations
+and actual dependency arguments,not just returns or invocation counts.
 The distributed offline packet reconstructs 57 concrete entries; one enterprise
 entry was checked locally and requires separately supplied licensed source for
 receiver replay. Two official source-address corrections recover the missing

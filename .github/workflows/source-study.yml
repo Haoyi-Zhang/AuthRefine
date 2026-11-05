@@ -32,6 +32,7 @@ jobs:
         run: |
           python -B reference_completion/replay.py --check
           python -B -W error -m unittest discover -s tests -p test_reference_completion.py -v
+          python -B -W error -m unittest discover -s tests -p test_contract_handoffs.py -v
       - name: Install the isolated existing native replay dependencies
         run: |
           python -m pip install --only-binary=:all: -r requirements-test.txt

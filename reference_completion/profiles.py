@@ -52,8 +52,9 @@ class World:
     def named(self,name,x):self.identities[id(x)]=name;self.kept.append(x);return x
     def normalize(self,x):
         if id(x) in self.identities:return ref(self.identities[id(x)])
-        if isinstance(x,DataRecord):return dict(record=x.kind,fields={k:self.normalize(v) for k,v in x.fields.items() if not isinstance(v,(Capability,DataRecord))})
-        if type(x) in (list,tuple):return [self.normalize(v) for v in x]
+        if isinstance(x,DataRecord):return dict(record=x.kind,fields={k:self.normalize(v) for k,v in x.fields.items() if not isinstance(v,Capability)})
+        if type(x) is tuple:return {'tuple':[self.normalize(v) for v in x]}
+        if type(x) is list:return [self.normalize(v) for v in x]
         if type(x) in (set,frozenset):return sorted(self.normalize(v) for v in x)
         if type(x) is dict:return {str(k):self.normalize(v) for k,v in x.items()}
         if isinstance(x,SliceFault):return dict(error=x.name)
@@ -64,6 +65,12 @@ class World:
         return x
     def cap(self,name,fn,asynchronous=False):
         def action(*a,**k):
+            # Owned wrong-handoff controls modify only the adapter boundary.
+            if self.control=='wrong_object' and name=='permission':a=(*a[:2],self.other)
+            if self.control=='wrong_token' and name=='profile_token_valid':a=(self.other,)
+            if self.control=='wrong_scope' and name=='api_permission':a=(a[0],'features.other',a[2])
+            if self.control=='wrong_query' and name=='household.filter':k={**k,'space':self.other}
+            if self.control=='wrong_cache_target' and name.startswith('cache.'):a=('GROUP_CACHE_999_1',*a[1:])
             self.events.append(dict(call=name,args=[self.normalize(v) for v in a],kwargs={key:self.normalize(v) for key,v in k.items()}))
             return fn(*a,**k)
         return Capability(name,action,asynchronous)
@@ -207,7 +214,14 @@ def auth_setup(w,repo,qualified):
         b['JWTAuthentication']=Capability('fixed JWT provider',lambda:record('JWTProvider',authenticate=w.cap('jwt',jwt)))
         if qualified=='TenantScopedJWTAuthentication.authenticate':
             b['super']=Capability('fixed JWT base',lambda:record('Base',authenticate=w.cap('jwt',jwt)))
-            b['resolve_company_id']=w.cap('resolve_company',lambda user:i.get('company'))
+            helpers=['resolve_company_id']
+            def tenant_rows(**filters):
+                if i.get('unknown_tenant_dependency'):raise AdmissionError('tenant query dependency has no admitted binding')
+                if i.get('tenant_query_error'):raise SliceFault('DatabaseError')
+                return record('TenantQuery',values_list=w.cap('tenant.values_list',lambda *a,**k:record('Values',first=w.cap('tenant.first',lambda:i.get('company')))))
+            model=record('EmployeeWorkInformation',objects=record('Manager',filter=w.cap('tenant.filter',tenant_rows)))
+            b['_declared_imports']={('employee.models',0,(('EmployeeWorkInformation',None),)):{'EmployeeWorkInformation':model}}
+            b['logger'].fields['exception']=w.cap('tenant.log_exception',lambda *a:None)
             def choose(company):
                 if w.control!='drop_tenant':w.state['selected_company']=company
             b['set_selected_company']=w.cap('set_company',choose)
@@ -218,7 +232,7 @@ def auth_setup(w,repo,qualified):
                 candidates.append(user)
             b['Candidate']=record('CandidateModel',objects=record('Manager',filter=w.cap('candidate.filter',lambda **k:candidates)))
             return [],b,[receiver,w.request,i.get('username',' One@Example.invalid '),i.get('password','owned-password')]
-        return [],b,[receiver,w.request]
+        return helpers,b,[receiver,w.request]
     if repo=='argilla-io/argilla':
         receiver.fields['scheme']=w.cap('scheme',lambda req:None if i.get('no_credentials') else record('Credentials',credentials='owned-normal-token'),True)
         def decode(t):
@@ -256,7 +270,8 @@ def baserow_setup(w,qualified):
             setup_user_in_baggage_and_spans=w.cap('span_context',lambda *a:SerialContext(lambda:w.events.append(dict(call='span.enter')),lambda:w.events.append(dict(call='span.exit')),False)),
             setup_user_in_sentry=w.cap('sentry_setup',lambda *a:None))
     elif qualified=='UserSourceJSONWebTokenAuthentication.authenticate':
-        fields={'user_source':10,'user_id':1}
+        claim=w.source_constants['USER_SOURCE_CLAIM'];operation=w.source_constants['AuthenticateUserSourceOperationType.type']
+        fields={claim:'00000000000040008000000000000010','user_id':1}
         if i.get('missing_claim'):fields.pop('user_id')
         w.token=w.named('token',fields)
         def parse(raw):
@@ -278,7 +293,7 @@ def baserow_setup(w,qualified):
             if i.get('permission_error'):raise SliceFault(i['permission_error'])
         receiver.fields.update(get_header=w.cap('header',lambda request:None if i.get('no_header') else 'owned-header'),
             get_raw_token=w.cap('raw_token',lambda header:None if i.get('no_raw') else 'owned-normal-token'))
-        b.update(UserSourceAccessToken=w.cap('source_token',parse),USER_SOURCE_CLAIM='user_source',jwt_settings=record('JWTSettings',USER_ID_CLAIM='user_id'),
+        b.update(UserSourceAccessToken=w.cap('source_token',parse),USER_SOURCE_CLAIM=claim,jwt_settings=record('JWTSettings',USER_ID_CLAIM='user_id'),
             TokenError=ErrorType('TokenError'),UserSourceDoesNotExist=ErrorType('UserSourceDoesNotExist'),
             PermissionDenied=ErrorType('PermissionDenied'),UserNotInWorkspace=ErrorType('UserNotInWorkspace'),UserNotFound=ErrorType('UserNotFound'),
             Application=record('ApplicationModel',DoesNotExist=ErrorType('ApplicationDoesNotExist')),
@@ -286,13 +301,14 @@ def baserow_setup(w,qualified):
             UserSourceService=Capability('fixed service receiver',lambda:record('Service',get_user_source_by_uid=w.cap('service_lookup',lookup))),
             UserSourceHandler=Capability('fixed handler receiver',lambda:record('Handler',get_user_source_by_uid=w.cap('handler_lookup',lookup))),
             CoreHandler=Capability('fixed core permission receiver',lambda:record('Core',check_permissions=w.cap('source_permission',check))),
-            AuthenticateUserSourceOperationType=record('OperationType',type='authenticate_user_source'))
+            AuthenticateUserSourceOperationType=record('OperationType',type=operation))
     elif qualified=='BuilderPreviewAuthentication.authenticate':
         actor=w.named('actor',record('Actor',pk=1,builder_id=i.get('actor_builder',10)))
         def lookup(token):
             if i.get('invalid_actor'):raise SliceFault('BuilderPreviewGrantInvalid')
             return actor
-        receiver.fields['get_builder_id']=w.cap('builder_id',lambda req:10)
+        w.request.fields['parser_context']=deepcopy(i.get('parser_context',{'kwargs':{'builder_id':'10'}}))
+        w.attach(receiver,'get_builder_id','BuilderPreviewAuthentication.get_builder_id')
         def mapped(mapping):
             def translate(fault):
                 matches=[v for k,v in mapping.items() if k.name==fault.name]
@@ -316,7 +332,7 @@ def baserow_setup(w,qualified):
             get_user_model=Capability('fixed selected model',lambda:model),time=record('Time',time=w.cap('clock',lambda:1000)),
             UserHandler=Capability('selected revocation receiver',lambda:record('Handler',refresh_token_hash_is_blacklisted=w.cap('revocation_lookup',lambda token:bool(i.get('revoked',False))))))
     else:raise AdmissionError('unknown Baserow contract')
-    return [],b,[receiver,w.request]
+    return (['BuilderPreviewAuthentication.get_builder_id'] if qualified=='BuilderPreviewAuthentication.authenticate' else []),b,[receiver,w.request]
 
 def webui_setup(w,qualified):
     i=w.i
@@ -366,6 +382,7 @@ def webui_setup(w,qualified):
     raise AdmissionError('unknown web user profile')
 
 def setup(w,contract):
+    w.source_constants=contract.get('source_constants',{})
     repo=contract['repository'];q=contract['function']
     if repo=='TandoorRecipes/recipes':return recipe_setup(w,q)
     if repo=='taigaio/taiga-back':return taiga_setup(w,q,contract['path'])

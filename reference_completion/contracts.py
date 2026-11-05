@@ -13,7 +13,8 @@ def error(n,status=None,code=None):
     if status is not None:d['status']=status
     if code is not None:d['code']=code
     return d
-PAIR=ret([ref('user'),ref('token')]);SESSION=ret([ref('user'),None])
+def pair(a,b):return ret({'tuple':[a,b]})
+PAIR=pair(ref('user'),ref('token'));SESSION=pair(ref('user'),None)
 ABSTRACT={'PermissionComponent.check_permissions','BaseAuthentication.authenticate'}
 
 def recipe_reference(q,i):
@@ -109,12 +110,15 @@ def other_reference(repo,q,i):
             for n in range(len(values)):c['check_password'+str(n)]=int(reaches and (j is None or n<=j))
             c['candidate.filter']=int(reaches)
         elif q=='TenantScopedJWTAuthentication.authenticate':
+            company=None if not i.get('authenticated',True) or i.get('superuser') or i.get('tenant_query_error') else i.get('company')
             out=error('InvalidToken') if i.get('jwt_error') else ret(None) if i.get('jwt_none') else error('PermissionDenied') if i.get('company') is None and not i.get('superuser') else PAIR
-            state['selected_company']=None if i.get('jwt_none') or i.get('jwt_error') else i.get('company')
-            c['set_company']=int(not(i.get('jwt_none') or i.get('jwt_error')) and i.get('company') is not None)
+            if not (i.get('jwt_error') or i.get('jwt_none')):out=error('PermissionDenied') if company is None and not i.get('superuser') else PAIR
+            state['selected_company']=None if i.get('jwt_none') or i.get('jwt_error') else company
+            c['set_company']=int(not(i.get('jwt_none') or i.get('jwt_error')) and company is not None)
+            c['tenant.filter']=int(not(i.get('jwt_none') or i.get('jwt_error')) and i.get('authenticated',True) and not i.get('superuser'))
         else:raise ValueError(q)
     elif repo=='argilla-io/argilla':
-        out=ret(None) if i.get('no_credentials') else error('JWTDecodeError') if i.get('invalid_token') else ret([{'record':'AuthCredentials','fields':{'scopes':['read','write'] if i.get('with_scope',True) else []}},{'id':'u1'}])
+        out=ret(None) if i.get('no_credentials') else error('JWTDecodeError') if i.get('invalid_token') else pair({'record':'AuthCredentials','fields':{'scopes':['read','write'] if i.get('with_scope',True) else []}},{'id':'u1'})
         c['decode']=int(not i.get('no_credentials'))
     elif repo=='langgenius/dify':
         valid=i.get('token_type','known')=='known';c['rate_limit']=int(valid);c['resolve']=int(valid and not i.get('rate_limited'))
@@ -136,10 +140,12 @@ def other_reference(repo,q,i):
             c['service_lookup']=int(not early and bool(i.get('service_header')));c['handler_lookup']=int(not early and not i.get('service_header'))
             c['source_permission']=int(not early and not i.get('lookup_error') and not i.get('missing_user') and not i.get('service_header'))
         elif q=='BuilderPreviewAuthentication.authenticate':
-            out=ret([ref('actor'),None]) if i.get('preview_cookie') and not i.get('invalid_actor') and i.get('actor_builder',10)==10 else error('APIException',401,'ERROR_BUILDER_PREVIEW_SESSION_INVALID')
-            c['preview_actor']=int(bool(i.get('preview_cookie')))
+            try:builder=int(i.get('parser_context',{'kwargs':{'builder_id':'10'}})['kwargs']['builder_id']);valid_builder=True
+            except (KeyError,TypeError,ValueError):builder=None;valid_builder=False
+            out=pair(ref('actor'),None) if valid_builder and i.get('preview_cookie') and not i.get('invalid_actor') and i.get('actor_builder',10)==builder else error('APIException',401,'ERROR_BUILDER_PREVIEW_SESSION_INVALID')
+            c['preview_actor']=int(valid_builder and bool(i.get('preview_cookie')))
         elif q=='AuthenticateFromUserSessionAuthentication.authenticate':
-            out=error('AuthenticationFailed') if i.get('no_session') or i.get('missing_user') or not i.get('active',True) or i.get('revoked') or bool(i.get('expires_at',2000)) and i.get('expires_at',2000)<1000 else ret([ref('user'),ref('request')])
+            out=error('AuthenticationFailed') if i.get('no_session') or i.get('missing_user') or not i.get('active',True) or i.get('revoked') or bool(i.get('expires_at',2000)) and i.get('expires_at',2000)<1000 else pair(ref('user'),ref('request'))
             c['revocation_lookup']=int(not i.get('no_session') and not i.get('missing_user') and i.get('active',True))
         else:raise ValueError(q)
     elif repo=='open-webui/open-webui':
@@ -171,7 +177,11 @@ def other_reference(repo,q,i):
 
 def reference(contract,inputs):
     repo=contract['repository'];q=contract['function']
-    return recipe_reference(q,inputs) if repo=='TandoorRecipes/recipes' else taiga_reference(q,inputs) if repo=='taigaio/taiga-back' else other_reference(repo,q,inputs)
+    result=recipe_reference(q,inputs) if repo=='TandoorRecipes/recipes' else taiga_reference(q,inputs) if repo=='taigaio/taiga-back' else other_reference(repo,q,inputs)
+    outcome,state,counts,order=result
+    baseline=dict(share_count=inputs.get('share_count',1),selected_company=None,scheduled_active=[],active_updates=[],deleted_cookies=[],request_state={})
+    baseline['cache:recipe_share_10_share-normal']=True if inputs.get('share_cached') else None
+    return outcome,{**baseline,**state},counts,order
 
 def cases(contract):
     repo=contract['repository'];q=contract['function'];out=[{}]
@@ -200,13 +210,13 @@ def cases(contract):
     elif repo=='baserow/baserow':
         if q=='JSONWebTokenAuthentication.authenticate':out=[{},dict(no_credentials=True),dict(invalid_token=True),dict(profile_valid=False),dict(active=False)]
         elif q=='UserSourceJSONWebTokenAuthentication.authenticate':out=[{},dict(service_header=True),dict(no_header=True),dict(no_raw=True),dict(invalid_token=True),dict(missing_claim=True),dict(missing_user=True)]+[dict(lookup_error=e,service_header=h) for e,h in product(('UserSourceDoesNotExist','PermissionDenied','UserNotInWorkspace','ApplicationDoesNotExist'),(False,True))]+[dict(permission_error=e) for e in ('PermissionDenied','UserNotInWorkspace','ApplicationDoesNotExist')]
-        elif q=='BuilderPreviewAuthentication.authenticate':out=[{},dict(preview_cookie='owned-preview'),dict(preview_cookie='owned-preview',invalid_actor=True),dict(preview_cookie='owned-preview',actor_builder=11)]
+        elif q=='BuilderPreviewAuthentication.authenticate':out=[{},dict(preview_cookie='owned-preview'),dict(preview_cookie='owned-preview',invalid_actor=True),dict(preview_cookie='owned-preview',actor_builder=11)]+[dict(preview_cookie='owned-preview',parser_context=p,**k) for p,k in ((None,{}),({},{}),({'kwargs':{}},{}),({'kwargs':{'builder_id':'not-a-number'}},{}),({'kwargs':{'builder_id':'42'}},{'actor_builder':42}),({'kwargs':{'builder_id':' 10 '}},{}))]
         else:out=[{},dict(no_session=True),dict(missing_user=True),dict(active=False),dict(revoked=True),dict(expires_at=999),dict(expires_at=1000),dict(expires_at=0),dict(session_hash=False)]
     elif repo=='horilla/horilla-hr':
         if q=='SwaggerAuthentication.authenticate':out=[dict(header=h,**k) for h,k in product(('', 'Bearer owned-normal'),({}, {'jwt_none':True},{'jwt_error':True},{'jwt_error':True,'authenticated':False},{'authenticated':False}))]
         elif q=='RejectBasicAuthentication.authenticate':out=[dict(header=h) for h in ('','Basic normal','Bearer normal')]
         elif q=='CandidateAuthenticationBackend.authenticate':out=[dict(password_matches=list(v)) for v in ((),(False,),(True,),(False,True),(True,True))]+[dict(username=''),dict(password='')]
-        else:out=[dict(company=c,**k) for c,k in product((None,7),({}, {'superuser':True},{'jwt_none':True},{'jwt_error':True}))]
+        else:out=[dict(company=c,**k) for c,k in product((None,7),({}, {'superuser':True},{'jwt_none':True},{'jwt_error':True}))]+[dict(company=None,tenant_query_error=True),dict(company=7,tenant_query_error=True),dict(company=7,authenticated=False)]
     elif repo=='argilla-io/argilla':out=[{},dict(no_credentials=True),dict(invalid_token=True),dict(with_scope=False)]
     elif repo=='langgenius/dify':out=[{},dict(token_type=None),dict(token_type='unknown'),dict(rate_limited=True),dict(missing_row=True)]
     elif repo=='open-webui/open-webui':
@@ -222,8 +232,8 @@ def cases(contract):
 SCOPE={
  'TandoorRecipes/recipes':'Fixed safe methods GET/HEAD/OPTIONS; persisted positive object keys; explicit group rows, cache state, ownership and sharing tables. Selected same-module helpers and fixed superclass bodies are interpreted. OAuth scope backend remains an explicit dependency result. No view dispatch or framework ORM execution.',
  'taigaio/taiga-back':'Declared component list and permission/admin service results; exact principal/object handoff and source short circuit. Authentication primitives are explicit decoded-token, credential-lookup and CSRF inputs. No cryptographic validation, route discovery or Django dispatch.',
- 'baserow/baserow':'Declared JWT/session/source providers and exact user/token/source/context forwarding. Preview exception registry has no overrides and builder ID is supplied as 10. Telemetry callbacks are owned serial protocols. Enterprise body is checked locally only; no restricted enterprise source is redistributed.',
- 'horilla/horilla-hr':'Declared JWT result, resolved tenant and candidate password outcomes. Tenant selection has observable owned state. No real candidate credentials, tenant queries or signing implementation is executed.',
+ 'baserow/baserow':'Declared JWT/session/source providers and exact user/token/source/context forwarding. The complete preview builder-ID helper parses route data; exception registry has no overrides. Telemetry callbacks are owned serial protocols. Enterprise body is checked locally only; no restricted enterprise source is redistributed.',
+ 'horilla/horilla-hr':'Declared JWT result and candidate password outcomes. The complete source company resolver is interpreted over an explicitly bound employee-work-information query; no host import runs. Tenant selection has observable owned state. No real candidate credentials, production query or signing implementation is executed.',
  'open-webui/open-webui':'Telemetry disabled; explicit decoded claims, revocation lookup, user/config providers and trust-header configuration. Source writes request state; JWT activity is scheduled, API-key activity awaited. No network, Redis, production database or telemetry import is executed.',
  'argilla-io/argilla':'Supplied bearer extraction and decoded claim mapping. Observe scope removal and user-info handoff, not JWT cryptography.',
  'langgenius/dify':'Supplied token classification and resolver row; observe limiter-before-resolver order and exact context fields. Dummy owned token only; no real token, account access or rate-limit service.',

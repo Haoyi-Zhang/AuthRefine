@@ -1,6 +1,7 @@
 """Owned bounded source-data interpreter; never imports or executes application code."""
 import ast
 from copy import deepcopy
+from functools import lru_cache
 from pathlib import Path
 import sys
 
@@ -15,17 +16,29 @@ def body_dump(node):
     tree=ast.Module(body=node.body,type_ignores=[])
     return ast.dump(tree,show_empty=True) if sys.version_info>=(3,13) else ast.dump(tree)
 
-def declarations(text):
+@lru_cache(maxsize=32)
+def source_syntax(text):
     # New runtimes may inherit -OO in ast.parse. Source identity includes
     # original docstrings; explicitly request the unoptimized syntax tree.
-    tree=ast.parse(text,optimize=0) if sys.version_info>=(3,13) else ast.parse(text)
+    return ast.parse(text,optimize=0) if sys.version_info>=(3,13) else ast.parse(text)
+
+def declarations(text):
+    tree=source_syntax(text)
     for n in tree.body:
         if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)):yield n.name,n
         if isinstance(n,ast.ClassDef):
             for f in n.body:
                 if isinstance(f,(ast.FunctionDef,ast.AsyncFunctionDef)):yield n.name+'.'+f.name,f
 
-def program_for(text,qualified,helpers=()):
+@lru_cache(maxsize=64)
+def program_template(text,qualified,helpers):
+    from source_bindings import require_static_definitions,require_static_class_members
+    tree=source_syntax(text)
+    selected=(qualified,*helpers)
+    roots=set(name.split('.')[0] for name in selected)
+    require_static_definitions(tree,roots)
+    for cls in (n for n in tree.body if isinstance(n,ast.ClassDef) and n.name in roots):
+        require_static_class_members(cls,[n.split('.')[1] for n in selected if n.startswith(cls.name+'.')])
     nodes=dict(declarations(text));program={}
     for name in (qualified,*helpers):
         node=deepcopy(nodes[name]);node._owner=name.rpartition('.')[0]
@@ -41,11 +54,17 @@ def program_for(text,qualified,helpers=()):
         program[node.name]=node
     return program,qualified.replace('.','__')
 
+def program_for(text,qualified,helpers=()):
+    # Admission may be shared for identical source/selection,execution AST and
+    # all worlds remain fresh. This changes no semantic budget or observation.
+    program,key=program_template(text,qualified,tuple(helpers))
+    return deepcopy(program),key
+
 class Interpreter(EffectInterpreter):
     def __init__(self,program,bindings,control=None):
         super().__init__(program,DataRecord('Unused',{}),bindings)
         self.frames=[];self.control=control
-        self.bindings.update({n:ErrorType(n) for n in ('Exception','TypeError','KeyError','UnicodeDecodeError','NotImplementedError','AttributeError')})
+        self.bindings.update({n:ErrorType(n) for n in ('Exception','TypeError','ValueError','KeyError','UnicodeDecodeError','NotImplementedError','AttributeError')})
         self.bindings.update(len=Capability('bounded length',self.length),
             any=Capability('bounded existential',lambda x:any(self.truth(v) for v in self.sequence(x))),
             hasattr=Capability('declared field presence',lambda x,k:isinstance(x,DataRecord) and k in x.fields))
@@ -153,6 +172,8 @@ class Interpreter(EffectInterpreter):
                 if k not in x:raise SliceFault('KeyError',str(k))
                 return x[k]
             if type(x) in (list,tuple,str,bytes) and type(k) is int and -len(x)<=k<len(x):return x[k]
+            if x is None or type(x) in (int,bool):raise SliceFault('TypeError','plain value is not subscriptable')
+            if type(x) in (list,tuple,str,bytes) and type(k) is int:raise SliceFault('IndexError','index outside sequence')
             raise AdmissionError('subscript outside bounded data')
         if isinstance(n,ast.BinOp) and isinstance(n.op,(ast.Add,ast.Sub,ast.Mult)):
             a,b=self.value(n.left,env),self.value(n.right,env)
@@ -267,8 +288,28 @@ class Interpreter(EffectInterpreter):
                     try:result=super().statements([replacement],env)
                     finally:env.pop(local,None)
                     if isinstance(result,Return):return result
-            elif isinstance(n,(ast.Import,ast.ImportFrom)):raise AdmissionError('reached import is not an admitted operation')
+            elif isinstance(n,ast.ImportFrom):
+                # A declared interface binding,not a host-language import.
+                # No module loader,import hook or module initialization runs.
+                aliases=tuple((a.name,a.asname) for a in n.names)
+                imports=self.bindings.get('_declared_imports',{})
+                binding=imports.get((n.module,n.level,aliases))
+                if binding is None:raise AdmissionError('reached import has no exact declared dependency binding')
+                env.update(binding)
+            elif isinstance(n,ast.Import):raise AdmissionError('reached import is not an admitted operation')
             else:
                 result=super().statements([n],env)
                 if isinstance(result,Return):return result
         return None
+
+    def call(self,fn,args,kwargs,env):
+        from policy_slice import Call
+        if isinstance(fn,Call) and fn.kind=='effect-builtin' and fn.value=='int' and len(args)==1 and not kwargs:
+            value=args[0]
+            if value is None or type(value) not in (str,int,bool):raise SliceFault('TypeError')
+            if type(value) is str and len(value)>128:raise AdmissionError('integer conversion text envelope','inconclusive')
+            try:converted=int(value)
+            except ValueError:raise SliceFault('ValueError')
+            if converted.bit_length()>64:raise AdmissionError('integer conversion result envelope','inconclusive')
+            return converted
+        return super().call(fn,args,kwargs,env)
