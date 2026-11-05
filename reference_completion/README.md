@@ -67,6 +67,13 @@ from unknown prefixes without silently adding a resolver. Composite Taiga
 components must receive the exact request,view and object even when their
 supplied decisions happen to be identical.
 
+Argilla's returned user is a source-bound UserInfo projection,not a plain
+mapping. It retains the claims remaining after scope extraction and the actual
+source authentication property. Its dict-copy construction and property
+descriptor are checked against the original class;claim keys cannot shadow
+that descriptor. Role/environment properties,unconsumed dynamic attributes
+and full framework dispatch are not inferred from this entry observation.
+
 Same-module permission helpers and fixed superclass bodies are retained.
 The original preview route-ID parser and employee-company resolver are now
 interpreted,not supplied as resolved values. The resolver's exact import binds

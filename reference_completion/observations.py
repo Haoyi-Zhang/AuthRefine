@@ -68,7 +68,9 @@ def obligations(c,i):
         put('jwt',[ref('request')]);put('tenant.filter',k={'employee_id__employee_user_id':1});put('tenant.values_list',['company_id'],{'flat':True});put('tenant.first');put('set_company',[i.get('company')])
         put('candidate.filter',k={'email__iexact':(i.get('username',' One@Example.invalid ') or '').strip().lower()})
         for n in range(len(i.get('password_matches',[False,True]))):put('check_password'+str(n),[i.get('password','owned-password')])
-    elif repo=='argilla-io/argilla':put('scheme',[ref('request')]);put('decode',['owned-normal-token'])
+    elif repo=='argilla-io/argilla':
+        claims=dict(i['decoded_claims']) if 'decoded_claims' in i else dict(id='u1',**({'scope':['read','write']} if i.get('with_scope',True) else {}))
+        put('scheme',[ref('request')]);put('decode',['owned-normal-token']);put('userinfo_construct',[claims]);put('userinfo_pop',['scope',[]])
     elif repo=='langgenius/dify':
         raw=i.get('token',{'known':'dfoa_owned-normal',None:'owned-normal','unknown':'sk-owned-normal'}[i.get('token_type','known')])
         put('classify_token',[raw]);put('token_fingerprint',[raw]);put('digest_bytes',[{'bytes':raw.encode('utf-8').hex()}]);put('digest_hex')

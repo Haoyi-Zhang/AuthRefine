@@ -118,7 +118,8 @@ def other_reference(repo,q,i):
             c['tenant.filter']=int(not(i.get('jwt_none') or i.get('jwt_error')) and i.get('authenticated',True) and not i.get('superuser'))
         else:raise ValueError(q)
     elif repo=='argilla-io/argilla':
-        out=ret(None) if i.get('no_credentials') else error('JWTDecodeError') if i.get('invalid_token') else pair({'record':'AuthCredentials','fields':{'scopes':['read','write'] if i.get('with_scope',True) else []}},{'id':'u1'})
+        claims=dict(i['decoded_claims']) if 'decoded_claims' in i else dict(id='u1',**({'scope':['read','write']} if i.get('with_scope',True) else {}));scopes=claims.pop('scope',[])
+        out=ret(None) if i.get('no_credentials') else error('JWTDecodeError') if i.get('invalid_token') else pair({'record':'AuthCredentials','fields':{'scopes':scopes}},{'record':'UserInfo','fields':{'claims':claims,'is_authenticated':True}})
         c['decode']=int(not i.get('no_credentials'))
     elif repo=='langgenius/dify':
         token=i.get('token',{'known':'dfoa_owned-normal',None:'owned-normal','unknown':'sk-owned-normal'}[i.get('token_type','known')])

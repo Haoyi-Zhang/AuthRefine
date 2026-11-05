@@ -238,11 +238,18 @@ def auth_setup(w,repo,qualified):
         receiver.fields['scheme']=w.cap('scheme',lambda req:None if i.get('no_credentials') else record('Credentials',credentials='owned-normal-token'),True)
         def decode(t):
             if i.get('invalid_token'):raise SliceFault('JWTDecodeError')
-            return dict(id='u1',**({'scope':['read','write']} if i.get('with_scope',True) else {}))
+            return dict(i['decoded_claims']) if 'decoded_claims' in i else dict(id='u1',**({'scope':['read','write']} if i.get('with_scope',True) else {}))
         b['JWT']=record('JWT',decode=w.cap('decode',decode))
-        b['UserInfo']=Capability('plain user-info construction',lambda d:dict(d))
+        def user_info(d):
+            claims=dict(d)
+            if w.control=='erase_userinfo_type':return claims
+            user=record('UserInfo',claims=claims)
+            user.fields['is_authenticated']=w.source('UserInfo.is_authenticated',[user])
+            user.fields['pop']=w.cap('userinfo_pop',lambda key,default:claims.pop(key,default))
+            return user
+        b['UserInfo']=w.cap('userinfo_construct',user_info)
         b['AuthCredentials']=Capability('scope construction',lambda scopes:record('AuthCredentials',scopes=scopes))
-        return [],b,[receiver,w.request]
+        return ['UserInfo.is_authenticated'],b,[receiver,w.request]
     if repo=='langgenius/dify':
         members=w.contract['literal_enum_members'];values=[v['value'] for v in members]
         prefixes={v['value']:v['prefix'] for v in members}

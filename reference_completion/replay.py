@@ -23,6 +23,11 @@ def execute(source,contract,context,control=None):
         extra=contract.get('helper_sources',{})
         for helper,row in extra.items():
             if digest(row['text'].encode())!=row['sha256']:raise ValueError('external helper source differs')
+            if helper=='UserInfo.is_authenticated':
+                tree=ast.parse(row['text']);cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='UserInfo')
+                if [ast.unparse(n) for n in cls.bases]!=['BaseUser','dict'] or any(isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.name in ('__init__','__new__','__getattribute__') for n in cls.body):raise ValueError('UserInfo projection construction binding differs')
+                prop=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='is_authenticated')
+                if [ast.unparse(n) for n in prop.decorator_list]!=['property']:raise ValueError('UserInfo authentication descriptor differs')
             if helper=='TokenType.for_token':
                 tree=ast.parse(row['text']);cls=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='TokenType')
                 members=[{'value':n.value.elts[0].value,'prefix':n.value.elts[1].value} for n in cls.body if isinstance(n,ast.Assign) and isinstance(n.value,ast.Tuple) and len(n.value.elts)==3 and all(isinstance(x,ast.Constant) and type(x.value)is str for x in n.value.elts[:2])]
@@ -66,7 +71,7 @@ def run(packet,control=None):
         unknown=sum(r['status']=='unknown' for r in rows),mismatch=sum(r['status']=='mismatch' for r in rows),
         separate_source_required=sum(r['status']=='requires_separate_local_source' for r in rows),rows=rows)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=HERE/'inputs.json.gz');p.add_argument('--output',type=Path);p.add_argument('--control',choices=['wrong_identity','drop_save','drop_cache','drop_tenant','wrong_object','wrong_token','wrong_scope','wrong_query','wrong_cache_target','wrong_component']);p.add_argument('--external-source',type=Path);p.add_argument('--check',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=HERE/'inputs.json.gz');p.add_argument('--output',type=Path);p.add_argument('--control',choices=['wrong_identity','drop_save','drop_cache','drop_tenant','wrong_object','wrong_token','wrong_scope','wrong_query','wrong_cache_target','wrong_component','erase_userinfo_type']);p.add_argument('--external-source',type=Path);p.add_argument('--check',action='store_true');a=p.parse_args()
     packet=load(a.inputs)
     if a.external_source:
         row=next(c for c in packet['references']['contracts'] if c['source_distribution']=='separate_local_source')

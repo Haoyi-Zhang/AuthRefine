@@ -106,4 +106,17 @@ class ContractHandoffTests(unittest.TestCase):
         out,state,counts,order=reference(c,i);v={'inputs':i,'expected':out,'state':state,'call_counts':counts,'call_order':order}
         result=execute(self.packet['sources'][c['source_key']],c,v);self.assertEqual(result['status'],'agree')
         self.assertIn('digest_bytes',result['argument_operations_checked'])
+    def test_returned_user_keeps_source_nominal_kind_and_authentication(self):
+        v=self.selected('OAuth2AuthenticationBackend.authenticate',{});self.assertEqual(v['status'],'agree')
+        user=v['outcomes'][0]['value']['tuple'][1]
+        self.assertEqual(user,{'record':'UserInfo','fields':{'claims':{'id':'u1'},'is_authenticated':True}})
+        self.assertEqual(v['source_calls']['UserInfo__is_authenticated'],1)
+    def test_old_plain_mapping_projection_is_detected(self):
+        v=self.selected('OAuth2AuthenticationBackend.authenticate',{},'erase_userinfo_type');self.assertEqual(v['status'],'mismatch')
+    def test_claim_keys_cannot_shadow_source_user_descriptor(self):
+        c=next(c for c in self.packet['references']['contracts'] if c['function']=='OAuth2AuthenticationBackend.authenticate')
+        i={'decoded_claims':{'id':'u1','username':'owned-user','is_authenticated':False,'scope':['owned']}}
+        out,state,counts,order=reference(c,i);v=execute(self.packet['sources'][c['source_key']],c,{'inputs':i,'expected':out,'state':state,'call_counts':counts,'call_order':order})
+        self.assertEqual(v['status'],'agree');user=v['outcomes'][0]['value']['tuple'][1]['fields'];self.assertIs(user['is_authenticated'],True)
+        self.assertIs(user['claims']['is_authenticated'],False);self.assertNotIn('scope',user['claims'])
 if __name__=='__main__':unittest.main()
