@@ -17,7 +17,7 @@ def literal(rows,name):
     if len(values)!=1:raise AdmissionError('source literal binding is missing or ambiguous: '+name)
     return values[0]
 def timepoint(seconds,microsecond=0):
-    if type(seconds)is not int or abs(seconds)>10**12 or type(microsecond)is not int or not 0<=microsecond<1000000:raise AdmissionError('UTC timestamp outside declared finite value domain')
+    if type(seconds)is not int or not -62135596800<=seconds<=253402300799 or type(microsecond)is not int or not 0<=microsecond<1000000:raise AdmissionError('UTC timestamp outside representable integer-second value domain')
     t=rec('TimePoint',seconds=seconds,microsecond=microsecond)
     def replace(**k):
         if set(k)-{'tzinfo','microsecond'}:raise AdmissionError('timestamp replacement outside UTC projection')

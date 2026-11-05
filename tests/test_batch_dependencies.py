@@ -31,6 +31,12 @@ class BatchDependencyTests(unittest.TestCase):
     def test_password_change_timestamp_and_microsecond_normalization(self):
         for i in ({'password_changed_at':None},{'token_iat':2,'password_changed_at':2,'password_change_microsecond':999999},{'token_iat':2,'password_changed_at':3},{'token_claims':{}}):
             self.check('JSONWebTokenAuthentication.authenticate',i)
+    def test_unrepresentable_datetime_is_unknown_not_a_source_success(self):
+        c=next(c for c in self.packet['references']['contracts'] if c['function']=='JSONWebTokenAuthentication.authenticate')
+        for stamp in (-62135596801,253402300800,True):
+            i={'token_iat':stamp};out,state,counts,order=reference(c,i)
+            r=execute(self.packet['sources'][c['source_key']],c,dict(inputs=i,expected=out,state=state,call_counts=counts,call_order=order))
+            self.assertEqual(r['status'],'unknown')
     def test_request_context_fields_and_precedence(self):
         i={'headers':{'WebSocketId':'socket','ClientSessionId':'abc-123','ClientUndoRedoActionGroupId':'00000000-0000-4000-8000-000000000001'},'meta':{'HTTP_X_FORWARDED_FOR':' 192.0.2.1, 192.0.2.2','HTTP_X_REAL_IP':'192.0.2.3','REMOTE_ADDR':'192.0.2.4'},'impersonated_by':9}
         r=self.check('JSONWebTokenAuthentication.authenticate',i);s=r['checked_state']['user_context']
