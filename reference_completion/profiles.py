@@ -71,6 +71,7 @@ class World:
             if self.control=='wrong_scope' and name=='api_permission':a=(a[0],'features.other',a[2])
             if self.control=='wrong_query' and name=='household.filter':k={**k,'space':self.other}
             if self.control=='wrong_cache_target' and name.startswith('cache.'):a=('GROUP_CACHE_999_1',*a[1:])
+            if self.control=='wrong_component' and name.startswith('component'):a=(*a[:-1],self.other)
             self.events.append(dict(call=name,args=[self.normalize(v) for v in a],kwargs={key:self.normalize(v) for key,v in k.items()}))
             return fn(*a,**k)
         return Capability(name,action,asynchronous)
@@ -243,15 +244,21 @@ def auth_setup(w,repo,qualified):
         b['AuthCredentials']=Capability('scope construction',lambda scopes:record('AuthCredentials',scopes=scopes))
         return [],b,[receiver,w.request]
     if repo=='langgenius/dify':
-        def kind(token):return i.get('token_type','known')
+        members=w.contract['literal_enum_members'];values=[v['value'] for v in members]
+        prefixes={v['value']:v['prefix'] for v in members}
+        def kind(token):return w.source('TokenType.for_token',[values,token])
         row=record('TokenRow',subject_email='one@example.invalid',subject_issuer='owned-issuer',account_id='a1',client_id='c1',token_id='t1',expires_at=2000)
         def limit(value):
             if i.get('rate_limited'):raise SliceFault('RateLimitExceeded')
-        receiver.fields['_resolvers']={'known':record('Resolver',resolve=w.cap('resolve',lambda value:None if i.get('missing_row') else row))}
+        receiver.fields['_resolvers']={'oauth_account':record('Resolver',resolve=w.cap('resolve',lambda value:None if i.get('missing_row') else row))}
+        def hashed(raw):
+            if type(raw) is not bytes or len(raw)>16384:raise AdmissionError('digest input outside declared byte domain')
+            return record('Digest',hexdigest=w.cap('digest_hex',lambda:hashlib.sha256(raw).hexdigest()))
         b.update(TokenType=record('TokenType',for_token=w.cap('classify_token',kind)),InvalidBearerError=ErrorType('InvalidBearerError'),
-            sha256_hex=w.cap('token_fingerprint',lambda token:hashlib.sha256(token.encode()).hexdigest()),
+            _literal_enum_prefixes=prefixes,hashlib=record('Hashlib',sha256=w.cap('digest_bytes',hashed)),
             enforce_bearer_rate_limit=w.cap('rate_limit',limit),AuthContext=Capability('context construction',lambda **k:record('AuthContext',**k)))
-        return [],b,[receiver,'owned-normal-token']
+        token=i.get('token',{'known':'dfoa_owned-normal',None:'owned-normal','unknown':'sk-owned-normal'}[i.get('token_type','known')])
+        return ['sha256_hex','TokenType.for_token'],b,[receiver,token]
     raise AdmissionError('no declared authentication setup')
 
 def baserow_setup(w,qualified):
@@ -382,6 +389,7 @@ def webui_setup(w,qualified):
     raise AdmissionError('unknown web user profile')
 
 def setup(w,contract):
+    w.contract=contract
     w.source_constants=contract.get('source_constants',{})
     repo=contract['repository'];q=contract['function']
     if repo=='TandoorRecipes/recipes':return recipe_setup(w,q)

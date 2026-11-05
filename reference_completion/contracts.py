@@ -121,9 +121,11 @@ def other_reference(repo,q,i):
         out=ret(None) if i.get('no_credentials') else error('JWTDecodeError') if i.get('invalid_token') else pair({'record':'AuthCredentials','fields':{'scopes':['read','write'] if i.get('with_scope',True) else []}},{'id':'u1'})
         c['decode']=int(not i.get('no_credentials'))
     elif repo=='langgenius/dify':
-        valid=i.get('token_type','known')=='known';c['rate_limit']=int(valid);c['resolve']=int(valid and not i.get('rate_limited'))
-        out=error('InvalidBearerError') if not valid else error('RateLimitExceeded') if i.get('rate_limited') else error('InvalidBearerError') if i.get('missing_row') else ret({'record':'AuthContext','fields':dict(token_type='known',subject_email='one@example.invalid',subject_issuer='owned-issuer',account_id='a1',client_id='c1',token_id='t1',expires_at=2000)})
-        order=['classify_token','token_fingerprint','rate_limit','resolve'] if valid and not i.get('rate_limited') else []
+        token=i.get('token',{'known':'dfoa_owned-normal',None:'owned-normal','unknown':'sk-owned-normal'}[i.get('token_type','known')])
+        selected=next((name for prefix,name in (('sk-','resource_access'),('dfoa_','oauth_account'),('dfoe_','oauth_external_sso')) if token.startswith(prefix)),None)
+        valid=selected=='oauth_account';c['classify_token']=1;c['digest_bytes']=int(valid);c['digest_hex']=int(valid);c['rate_limit']=int(valid);c['resolve']=int(valid and not i.get('rate_limited'))
+        out=error('InvalidBearerError') if not valid else error('RateLimitExceeded') if i.get('rate_limited') else error('InvalidBearerError') if i.get('missing_row') else ret({'record':'AuthContext','fields':dict(token_type=selected,subject_email='one@example.invalid',subject_issuer='owned-issuer',account_id='a1',client_id='c1',token_id='t1',expires_at=2000)})
+        order=['classify_token']+(['digest_bytes','digest_hex','rate_limit']+([] if i.get('rate_limited') else ['resolve']) if valid else [])
     elif repo=='baserow/baserow':
         if q=='JSONWebTokenAuthentication.authenticate':
             out=error('AuthenticationFailed',code='ERROR_INVALID_ACCESS_TOKEN') if i.get('invalid_token') or not i.get('profile_valid',True) and not i.get('no_credentials') else ret(None) if i.get('no_credentials') else error('DeactivatedUserException') if not i.get('active',True) else PAIR
@@ -218,7 +220,7 @@ def cases(contract):
         elif q=='CandidateAuthenticationBackend.authenticate':out=[dict(password_matches=list(v)) for v in ((),(False,),(True,),(False,True),(True,True))]+[dict(username=''),dict(password='')]
         else:out=[dict(company=c,**k) for c,k in product((None,7),({}, {'superuser':True},{'jwt_none':True},{'jwt_error':True}))]+[dict(company=None,tenant_query_error=True),dict(company=7,tenant_query_error=True),dict(company=7,authenticated=False)]
     elif repo=='argilla-io/argilla':out=[{},dict(no_credentials=True),dict(invalid_token=True),dict(with_scope=False)]
-    elif repo=='langgenius/dify':out=[{},dict(token_type=None),dict(token_type='unknown'),dict(rate_limited=True),dict(missing_row=True)]
+    elif repo=='langgenius/dify':out=[{},dict(token_type=None),dict(token_type='unknown'),dict(rate_limited=True),dict(missing_row=True)]+[dict(token=t) for t in ('dfoe_owned-normal','dfoa_second-owned','DFOA_owned-normal','')]
     elif repo=='open-webui/open-webui':
         if q=='get_current_usage':out=[dict(public_usage=p,role=r,usage_error=e) for p,r,e in product((False,True),('user','admin'),(False,True))]
         else:
@@ -236,5 +238,5 @@ SCOPE={
  'horilla/horilla-hr':'Declared JWT result and candidate password outcomes. The complete source company resolver is interpreted over an explicitly bound employee-work-information query; no host import runs. Tenant selection has observable owned state. No real candidate credentials, production query or signing implementation is executed.',
  'open-webui/open-webui':'Telemetry disabled; explicit decoded claims, revocation lookup, user/config providers and trust-header configuration. Source writes request state; JWT activity is scheduled, API-key activity awaited. No network, Redis, production database or telemetry import is executed.',
  'argilla-io/argilla':'Supplied bearer extraction and decoded claim mapping. Observe scope removal and user-info handoff, not JWT cryptography.',
- 'langgenius/dify':'Supplied token classification and resolver row; observe limiter-before-resolver order and exact context fields. Dummy owned token only; no real token, account access or rate-limit service.',
+ 'langgenius/dify':'Complete source prefix classifier and UTF-8 digest wrapper interpreted. Literal source enum values/prefixes are explicit;account resolver row remains supplied. Observe byte/digest/limiter/resolver order and context fields. No upstream application or credential service executes.',
 }

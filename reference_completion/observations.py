@@ -39,6 +39,8 @@ def obligations(c,i):
         put('share.save');put('oauth_scope',[ref('request'),rec('View',kwargs={'pk':1} if i.get('has_pk',True) else {})])
         for n in ('get_owner','get_space','get_shared','shared_rows','space_owner','other_space_owner','related_spaces','query.first','query.exists'):put(n)
     elif repo=='taigaio/taiga-back':
+        if q in ('Not.check_permissions','Or.check_permissions','And.check_permissions'):
+            for n in range(len(i.get('components',[]))):put('component'+str(n),[ref('request'),rec('View',kwargs={'pk':1} if i.get('has_pk',True) else {}),None if i.get('absent_object') else ref('object')])
         obj=None if i.get('absent_object') else ref('object');project=rec('Project',pk=i.get('data',{}).get('project') or 1)
         if q=='CommentAndOrUpdatePerm.check_permissions':
             # Permission labels depend on the source-selected comment/update branch.
@@ -68,8 +70,9 @@ def obligations(c,i):
         for n in range(len(i.get('password_matches',[False,True]))):put('check_password'+str(n),[i.get('password','owned-password')])
     elif repo=='argilla-io/argilla':put('scheme',[ref('request')]);put('decode',['owned-normal-token'])
     elif repo=='langgenius/dify':
-        put('classify_token',['owned-normal-token']);put('token_fingerprint',['owned-normal-token'])
-        token=hashlib.sha256(b'owned-normal-token').hexdigest();put('rate_limit',[token]);put('resolve',[token])
+        raw=i.get('token',{'known':'dfoa_owned-normal',None:'owned-normal','unknown':'sk-owned-normal'}[i.get('token_type','known')])
+        put('classify_token',[raw]);put('token_fingerprint',[raw]);put('digest_bytes',[{'bytes':raw.encode('utf-8').hex()}]);put('digest_hex')
+        token=hashlib.sha256(raw.encode('utf-8')).hexdigest();put('rate_limit',[token]);put('resolve',[token])
     elif repo=='open-webui/open-webui':
         token=i.get('bearer_token','bearer-normal') if i.get('bearer',True) else i.get('cookies',{}).get('token')
         if token is None and i.get('middleware_token'):token='middleware-normal'

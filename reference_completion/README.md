@@ -8,7 +8,7 @@ protocol obligations. Repeated methods or contexts are not independent systems.
 
 The concrete contracts cover Baserow (4), Taiga (17), Recipes (28), Horilla (4),
 Open WebUI (3), Argilla (1) and Dify (1). Taiga additionally supplies the two
-abstract declarations. Across the sixty entries there are 1,508 finite normal
+abstract declarations. Across the sixty entries there are 1,512 finite normal
 contexts, including repeated cache reads. All 58 concrete entries agree in the
 local complete-source replay; the abstract declarations are reported separately.
 The references preserve the household helper's actual AttributeError on an
@@ -56,6 +56,16 @@ merely because it produces the same Boolean. Tuple/list and Boolean/integer
 observations are distinct. Empty reference domains and duplicate entries cannot
 be counted as completed contracts. Unsupported setup and exhausted budgets
 remain unknown; setup errors do not count as detected semantic controls.
+
+The Dify prefix classifier and UTF-8 digest wrapper now use complete pinned
+source bodies. The classifier reads the three original literal enum values and
+prefixes through a bounded string-enum interface; it does not execute enum class
+initialization or infer subject policy. Legacy input selectors choose owned
+token strings,not classifier output. A single configured account resolver and
+its lookup row remain explicit. Other recognized prefixes are distinguished
+from unknown prefixes without silently adding a resolver. Composite Taiga
+components must receive the exact request,view and object even when their
+supplied decisions happen to be identical.
 
 Same-module permission helpers and fixed superclass bodies are retained.
 The original preview route-ID parser and employee-company resolver are now

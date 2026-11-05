@@ -66,8 +66,19 @@ class Interpreter(EffectInterpreter):
         self.frames=[];self.control=control
         self.bindings.update({n:ErrorType(n) for n in ('Exception','TypeError','ValueError','KeyError','UnicodeDecodeError','NotImplementedError','AttributeError')})
         self.bindings.update(len=Capability('bounded length',self.length),
+            next=Capability('single-consumption bounded next',self.first),
             any=Capability('bounded existential',lambda x:any(self.truth(v) for v in self.sequence(x))),
             hasattr=Capability('declared field presence',lambda x,k:isinstance(x,DataRecord) and k in x.fields))
+    def first(self,x,default):
+        if not isinstance(x,Generator) or x.consumed:raise AdmissionError('next requires one fresh bounded generator')
+        x.consumed=True
+        if len(x.node.generators)!=1:raise AdmissionError('next generator shape unresolved')
+        gen=x.node.generators[0]
+        if gen.is_async or not isinstance(gen.target,ast.Name):raise AdmissionError('next binding unresolved')
+        for item in self.sequence(self.value(gen.iter,x.environment)):
+            self.charge();local={**x.environment,gen.target.id:item}
+            if all(self.truth(self.value(test,local)) for test in gen.ifs):return self.value(x.node.elt,local)
+        return default
     def length(self,x):
         if isinstance(x,DataRecord) and x.kind=='Query':return len(x.fields['rows'])
         if type(x) in (tuple,list,dict,set,frozenset,str,bytes) and len(x)<=16384:return len(x)
@@ -157,10 +168,11 @@ class Interpreter(EffectInterpreter):
             value=self.value(n.value,env);self.bind(n.target,value,env);return value
         if isinstance(n,ast.Attribute):
             x=self.value(n.value,env)
+            if type(x) is str and n.attr=='prefix' and x in self.bindings.get('_literal_enum_prefixes',{}):return self.bindings['_literal_enum_prefixes'][x]
             if isinstance(x,DataRecord):
                 if n.attr in x.fields:return x.fields[n.attr]
                 raise AdmissionError('unbound source record field '+n.attr)
-            if type(x) in (str,bytes) and n.attr in ('strip','lower','upper','split','startswith','partition','decode'):
+            if type(x) in (str,bytes) and n.attr in ('strip','lower','upper','split','startswith','partition','decode','encode'):
                 return Capability('bounded text '+n.attr,lambda *a,**k:self.text(x,n.attr,a,k))
             if type(x) is dict and n.attr in ('get','keys','pop'):
                 return Capability('bounded mapping '+n.attr,lambda *a,**k:self.mapping(x,n.attr,a,k))
@@ -228,6 +240,7 @@ class Interpreter(EffectInterpreter):
         if name=='decode' and type(x) is bytes and args in ((),('utf-8',)):
             try:return x.decode('utf-8')
             except UnicodeDecodeError:raise SliceFault('UnicodeDecodeError')
+        if name=='encode' and type(x) is str and args in ((),('utf-8',)):return x.encode('utf-8')
         raise AdmissionError('text method unresolved')
     def error_matches(self,node,fault,env):
         if node is None:return True # only SliceFault reaches here,never AdmissionError

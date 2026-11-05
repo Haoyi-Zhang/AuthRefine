@@ -79,4 +79,31 @@ class ContractHandoffTests(unittest.TestCase):
         text='def f():\n return True\n';p,key=program_for(text,'f');p[key].body=[ast.Return(value=ast.Constant(False))]
         from reference_completion.interpreter import Interpreter
         fresh,key=program_for(text,'f');self.assertIs(Interpreter(fresh,{}).run(key,[]),True)
+    def test_composite_forwards_exact_request_view_and_object(self):
+        for q in ('Not.check_permissions','Or.check_permissions','And.check_permissions'):
+            self.detected(q,{'components':[True]},'wrong_component','component0')
+    def test_dify_classification_uses_complete_original_helper(self):
+        for i in ({},{'token':'dfoa_second-owned'},{'token':'dfoe_owned-normal'},{'token':'DFOA_owned-normal'},{'token':''}):
+            v=self.selected('BearerAuthenticator.authenticate',i)
+            self.assertEqual(v['status'],'agree');self.assertEqual(v['source_calls']['TokenType__for_token'],1)
+            if i.get('token','dfoa_owned-normal').startswith('dfoa_'):self.assertEqual(v['source_calls']['sha256_hex'],1)
+            else:self.assertNotIn('sha256_hex',v['source_calls']);self.assertEqual(v['call_counts']['resolve'],0)
+    def test_dify_literal_prefix_tampering_is_rejected(self):
+        c=copy.deepcopy(next(c for c in self.packet['references']['contracts'] if c['function']=='BearerAuthenticator.authenticate'))
+        c['literal_enum_members'][0]['prefix']='other-'
+        with self.assertRaises(ValueError):execute(self.packet['sources'][c['source_key']],c,c['contexts'][0])
+    def test_dify_external_complete_body_identity_is_checked(self):
+        c=copy.deepcopy(next(c for c in self.packet['references']['contracts'] if c['function']=='BearerAuthenticator.authenticate'))
+        c['helper_sources']['TokenType.for_token']['text']+='\n'
+        with self.assertRaises(ValueError):execute(self.packet['sources'][c['source_key']],c,c['contexts'][0])
+    def test_next_stops_before_later_generator_effects(self):
+        from reference_completion.interpreter import Interpreter,Capability
+        calls=[];p,key=program_for('def f():\n return next((probe(x) for x in [1,2,3]),None)\n','f')
+        m=Interpreter(p,{'probe':Capability('owned probe',lambda x:(calls.append(x),x)[1])})
+        self.assertEqual(m.run(key,[]),1);self.assertEqual(calls,[1])
+    def test_source_digest_preserves_utf8_bytes(self):
+        c=next(c for c in self.packet['references']['contracts'] if c['function']=='BearerAuthenticator.authenticate');i={'token':'dfoa_\u00e9-owned'}
+        out,state,counts,order=reference(c,i);v={'inputs':i,'expected':out,'state':state,'call_counts':counts,'call_order':order}
+        result=execute(self.packet['sources'][c['source_key']],c,v);self.assertEqual(result['status'],'agree')
+        self.assertIn('digest_bytes',result['argument_operations_checked'])
 if __name__=='__main__':unittest.main()
