@@ -20,6 +20,12 @@ def execute(source,contract,context,control=None):
     if digest(body_dump(node).encode())!=contract['body_ast_sha256']:raise ValueError('consumed complete body mismatch')
     w=World(context['inputs'],control)
     try:
+        repeat=context['inputs'].get('repeat',1)
+        if type(repeat)is not int or not 1<=repeat<=32:raise AdmissionError('context requires between1 and32 actual entry executions')
+        if contract.get('oauth_dependency'):
+            owner=contract['function'].split('.')[0];base='TokenHasReadWriteScope' if owner=='CustomTokenHasReadWriteScope' else 'TokenHasScope'
+            cls=next(n for n in ast.parse(source['text']).body if isinstance(n,ast.ClassDef) and n.name==owner)
+            if [ast.unparse(n) for n in cls.bases]!=[base]:raise ValueError('requesting scope inheritance differs')
         extra=contract.get('helper_sources',{})
         for helper,row in extra.items():
             if digest(row['text'].encode())!=row['sha256']:raise ValueError('external helper source differs')
@@ -45,7 +51,7 @@ def execute(source,contract,context,control=None):
             if bound!=contract['helper_bindings']:raise ValueError('complete helper-body binding differs')
         w.machine=Interpreter(program,bindings,control)
         outcomes=[]
-        for _ in range(context['inputs'].get('repeat',1)):
+        for _ in range(repeat):
             try:outcomes.append(w.outcome(w.machine.run(key,args)))
             except SliceFault as fault:outcomes.append(w.outcome(fault=fault))
         state=w.snapshot();counts={name:sum(e['call']==name for e in w.events) for name in context['call_counts']}
@@ -62,6 +68,8 @@ def run(packet,control=None):
     source_constants(packet)
     if len({c['id'] for c in packet['references']['contracts']})!=len(packet['references']['contracts']):raise ValueError('duplicate reference entry IDs')
     for contract in packet['references']['contracts']:
+        ids=[v.get('id') for v in contract['contexts']]
+        if any(type(n)is not str or not n for n in ids) or len(set(ids))!=len(ids):raise ValueError('missing or duplicate context identities')
         source=packet['sources'].get(contract['source_key'])
         contexts=[dict(id=c['id'],**execute(source,contract,c,control)) for c in contract['contexts']] if source else []
         status='requires_separate_local_source' if source is None else 'unknown' if not contexts else 'agree' if all(c['status']=='agree' for c in contexts) else 'mismatch' if any(c['status']=='mismatch' for c in contexts) else 'unknown'

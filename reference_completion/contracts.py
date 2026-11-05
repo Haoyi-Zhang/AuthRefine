@@ -20,7 +20,7 @@ ABSTRACT={'PermissionComponent.check_permissions','BaseAuthentication.authentica
 def recipe_reference(q,i):
     auth=i.get('authenticated',True);safe=i.get('method','GET') in SAFE
     same=i.get('same_space',True);own=i.get('owner',True) or i.get('orphan',False)
-    group_values=i.get('cached_groups') or (i.get('groups',['user']) if i.get('active_spaces',1)==1 else [])
+    group_values=i['cached_groups'] if i.get('cached_groups') is not None else (i.get('groups',['user']) if i.get('active_spaces',1)==1 else [])
     def group(role):return auth and bool(set(group_values)&({'guest','user','admin'} if role=='guest' else {'user','admin'} if role=='user' else {'admin'}))
     owner=q.split('.')[0];obj=q.endswith('has_object_permission');share=i.get('share')
     state={};calls={};out=None
@@ -55,8 +55,16 @@ def recipe_reference(q,i):
     elif owner=='CustomAiProviderPermission':
         out=(group('user') and safe) or group('admin') or i.get('superuser',False)
         if obj:out=(i.get('global_provider',False) and i.get('superuser',False)) or (not i.get('global_provider',False) and same and (group('admin') or group('user') and safe))
-    elif owner=='CustomTokenHasScope':out=i.get('scope_ok',True) if i.get('oauth') else auth;calls['oauth_scope']=int(bool(i.get('oauth')))
-    elif owner=='CustomTokenHasReadWriteScope':out=i.get('scope_ok',True) if i.get('oauth') else True;calls['oauth_scope']=int(bool(i.get('oauth')))
+    elif owner in ('CustomTokenHasScope','CustomTokenHasReadWriteScope'):
+        calls['oauth_scope']=int(bool(i.get('oauth')))
+        if not i.get('oauth'):out=auth if owner=='CustomTokenHasScope' else True
+        else:
+            required=i.get('required_scopes',['owned']) if not i.get('required_scopes_missing') else []
+            if owner=='CustomTokenHasScope' and i.get('required_scopes_missing'):return error('ImproperlyConfigured'),state,calls,[]
+            if owner=='CustomTokenHasReadWriteScope':required=required+[i.get('read_scope','read') if i.get('method','GET').upper()in SAFE else i.get('write_scope','write')]
+            expires=i.get('oauth_expires',2000);expired=expires is None or i.get('oauth_now',1000)>=expires
+            allowed=set(required)<=set(i.get('oauth_scope','owned read write' if i.get('scope_ok',True) else '').split());out=not expired and allowed
+            if i.get('scope_error_details') and required and not expired and not allowed:state['permission_message']={'detail':'You do not have permission to perform this action.','required_scopes':required}
     elif owner=='IsReadOnlyDRF':out=safe
     elif owner=='IsCreateDRF':out=i.get('method','GET')=='POST'
     else:raise ValueError(q)
@@ -168,13 +176,14 @@ def other_reference(repo,q,i):
             if q=='get_current_user' and not code:state['request_state']={'user':ref('user'),'auth_type':'api_key'}
         elif token is None:out=error('HTTPException',401)
         else:
-            identity='other' if token=='cookie-normal' else 'user';uid='u2' if identity=='other' else 'u1'
+            raw_claims={} if i.get('no_claim') else i.get('claims',{'id':'u2' if token=='cookie-normal' else 'u1'});claims=raw_claims if type(raw_claims)is dict else {};uid=claims.get('id');identity={'u1':'user','u2':'other'}.get(uid)
             trusted=i.get('headers',{}).get(i.get('trusted_header',''),'').lower()
             email='two@example.invalid' if identity=='other' else 'one@example.invalid'
-            denied=i.get('invalid_token') or i.get('no_claim') or not i.get('token_current',True) or i.get('missing_user') or (bool(i.get('trusted_header')) and bool(trusted) and trusted!=email)
-            out=error('HTTPException',401) if denied else ret(ref(identity));state['active_updates']=[];state['scheduled_active']=[] if denied else [uid]
+            denied=i.get('invalid_token') or i.get('no_claim') or identity is None or not i.get('token_current',True) or i.get('missing_user') or (bool(i.get('trusted_header')) and bool(trusted) and trusted!=email)
+            code=503 if i.get('auth_lookup_error') in ('SQLAlchemyError','ValidationError') and not i.get('invalid_token') and 'id'in claims else 401
+            out=error('HTTPException',code) if denied else ret(ref(identity));state['active_updates']=[];state['scheduled_active']=[] if denied else [uid]
             if denied:state['deleted_cookies']=[k for k in ('token','oauth_id_token','oauth_session_id') if i.get('cookies',{}).get(k)]
-            else:state['request_state']={'user':ref(identity),'auth_type':'jwt','claims':{'id':uid}}
+            else:state['request_state']={'user':ref(identity),'auth_type':'jwt','claims':claims}
     else:raise ValueError(repo)
     return out,state,c,order
 
@@ -183,12 +192,14 @@ def reference(contract,inputs):
     result=recipe_reference(q,inputs) if repo=='TandoorRecipes/recipes' else taiga_reference(q,inputs) if repo=='taigaio/taiga-back' else other_reference(repo,q,inputs)
     outcome,state,counts,order=result
     if contract.get('batch_expansion'):outcome,state,counts,order=batch_reference(contract,inputs,(outcome,state,counts,order))
+    if contract.get('oauth_dependency'):state={'permission_message':None,**state}
     baseline=dict(share_count=inputs.get('share_count',1),selected_company=None,scheduled_active=[],active_updates=[],deleted_cookies=[],request_state={})
     baseline['cache:recipe_share_10_share-normal']=True if inputs.get('share_cached') else None
     return outcome,{**baseline,**state},counts,order
 
-def project_permissions(c,i):
-    p=i.get('project_policy',{});auth=i.get('authenticated',True);tables=c['batch_constants']['taiga_permission_tables']
+def project_policy(i,pid=1):return i['project_policies'].get(str(pid),{'is_member':False,'role_permissions':[]}) if 'project_policies'in i else i.get('project_policy',{})
+def project_permissions(c,i,pid=1):
+    p=project_policy(i,pid);auth=i.get('authenticated',True);tables=c['batch_constants']['taiga_permission_tables']
     role=p.get('role_permissions',[s for s,k in (('view','permission'),('comment','comment_allowed'),('update','update_allowed')) if i.get(k,False)])
     if i.get('superuser'):return set(sum(tables.values(),[]))
     member=auth and p.get('is_member',True);admin=member and p.get('is_admin',i.get('admin',False))
@@ -203,11 +214,12 @@ def webui_permission(i):
     d=i.get('default_permissions',{'features':{'api_keys':i.get('api_permission',True)}}) or {};t=i.get('permission_template',{'features':{'api_keys':False}})
     feature=d.get('features',t.get('features',{}));leaf=feature.get('api_keys',t.get('features',{}).get('api_keys',False));return bool(leaf)
 def webui_token_current(i,claims):
+    if i.get('auth_lookup_error') or not i.get('auth_exists',True) or not i.get('auth_active',True):return False
     if claims.get('session_stamp')!=i.get('account_stamp',None if i.get('token_current',True) else 'changed'):return False
     kind=claims.get('typ','session')
     if kind not in ('session','automation','subagent'):return False
     method=claims.get('auth_method','');needed=i.get('mfa_enabled',False) and not(method=='oauth' and i.get('mfa_oauth_bypass')) and not(method=='trusted_header' and i.get('mfa_header_bypass'))
-    if kind=='session' and needed and (claims.get('mfa_verified') is not True or not i.get('mfa_secret') or i.get('mfa_reset')):return False
+    if kind=='session' and needed and (claims.get('mfa_verified') is not True or not i.get('auth_mfa_present',True) or not i.get('mfa_secret') or i.get('mfa_reset')):return False
     if not i.get('redis_enabled') or i.get('redis_error'):return True
     if claims.get('jti') and i.get('token_revoked'):return False
     if claims.get('id') and i.get('revoked_at'):
@@ -234,7 +246,8 @@ def baserow_context(i):
 def batch_reference(c,i,previous):
     out,state,counts,order=previous;q=c['function'];repo=c['repository'];state=dict(state);counts=dict(counts)
     if c['batch_category']=='taiga_policy':
-        p=i.get('project_policy',{});permissions=project_permissions(c,i);obj=not i.get('absent_object')
+        pid=(i.get('data',{}).get('project') or 1) if q=='CommentAndOrUpdatePerm.check_permissions' else 1
+        p=project_policy(i,pid);permissions=project_permissions(c,i,pid);obj=not i.get('absent_object')
         if q=='HasProjectPerm.check_permissions':out=ret(obj and p.get('permission_name','view') in permissions)
         elif q in ('IsProjectAdmin.check_permissions','IsWebhookProjectAdmin.check_permissions'):out=ret(bool(i.get('superuser') or obj and i.get('authenticated',True) and p.get('is_member',True) and p.get('is_admin',i.get('admin',False))))
         elif q=='CommentAndOrUpdatePerm.check_permissions':
@@ -242,7 +255,7 @@ def batch_reference(c,i,previous):
             out=ret(bool(obj and(comment or 'update' in permissions)));counts['permission']=0 if not obj else 1 if keys!={'comment'} or comment else 2
         elif q=='CanLeaveProject.check_permissions':
             reached=obj and i.get('authenticated',True);admin=p.get('leave_admin',not i.get('can_leave',True));owner=p.get('is_owner',not i.get('can_leave',True));allowed=not admin or not owner and p.get('other_active_admin',True)
-            out=ret(False) if not reached or i.get('membership_missing') else ret(True) if allowed else error('PermissionDenied');counts['can_leave']=int(reached)
+            out=ret(False) if not reached or i.get('membership_missing') or not p.get('is_member',True) else ret(True) if allowed else error('PermissionDenied');counts['can_leave']=int(reached)
     elif repo=='taigaio/taiga-back' and q=='JWTAuthentication.authenticate':
         header=None if i.get('no_header') else i.get('header','Other owned-normal-token' if i.get('no_raw') else 'Bearer owned-normal-token')
         parts=[] if header is None else header.split();reaches=bool(parts and parts[0]=='Bearer' and len(parts)==2)
@@ -269,7 +282,7 @@ def batch_reference(c,i,previous):
         if api:
             j=dict(i,api_permission=webui_permission(i));out,state,counts,order=other_reference(repo,q,j)
         elif token is not None:
-            uid='u2' if token=='cookie-normal' else 'u1';claims=i.get('claims',{'id':uid});valid=webui_token_current(i,claims)
+            uid='u2' if token=='cookie-normal' else 'u1';raw_claims=i.get('claims',{'id':uid});claims=raw_claims if type(raw_claims)is dict else {};valid=webui_token_current(i,claims)
             j=dict(i,token_current=valid);out,state,counts,order=other_reference(repo,q,j)
             if out['kind']=='return':state['request_state']['claims']=claims
     return out,state,counts,order
@@ -321,11 +334,11 @@ def cases(contract):
     return list(unique.values())
 
 SCOPE={
- 'TandoorRecipes/recipes':'Fixed safe methods GET/HEAD/OPTIONS; persisted positive object keys; explicit group rows, cache state, ownership and sharing tables. Selected same-module helpers and fixed superclass bodies are interpreted. OAuth scope backend remains an explicit dependency result. No view dispatch or framework ORM execution.',
- 'taigaio/taiga-back':'Declared component list and permission/admin service results; exact principal/object handoff and source short circuit. Authentication primitives are explicit decoded-token, credential-lookup and CSRF inputs. No cryptographic validation, route discovery or Django dispatch.',
+ 'TandoorRecipes/recipes':'Fixed safe methods GET/HEAD/OPTIONS;persisted positive object keys;explicit group rows,including empty cached groups,ownership and sharing tables. Selected same-module and superclass bodies are interpreted. Selected OAuth scope/expiry bodies use the exact required dependency source;configuration,issuance and lookup rows remain explicit. No view dispatch or framework ORM execution.',
+ 'taigaio/taiga-back':'Declared component list;selected complete membership/permission/admin/leave and header bodies over explicit per-project rows;exact principal/object handoff and source short circuit. Credential/signature/CSRF providers remain explicit. No production ORM or Django dispatch.',
  'baserow/baserow':'Declared JWT/session/source providers and exact user/token/source/context forwarding. The complete preview builder-ID helper parses route data; exception registry has no overrides. Telemetry callbacks are owned serial protocols. Enterprise body is checked locally only; no restricted enterprise source is redistributed.',
  'horilla/horilla-hr':'Declared JWT result and candidate password outcomes. The complete source company resolver is interpreted over an explicitly bound employee-work-information query; no host import runs. Tenant selection has observable owned state. No real candidate credentials, production query or signing implementation is executed.',
- 'open-webui/open-webui':'Telemetry disabled; explicit decoded claims, revocation lookup, user/config providers and trust-header configuration. Source writes request state; JWT activity is scheduled, API-key activity awaited. No network, Redis, production database or telemetry import is executed.',
+ 'open-webui/open-webui':'Telemetry disabled;complete source group/default,MFA/revocation and authentication-row wrapper over explicit keyed user/auth/configuration rows. Source writes request state;JWT activity is scheduled,API-key activity awaited. No network,Redis,production database or telemetry import executes.',
  'argilla-io/argilla':'Supplied bearer extraction and decoded claim mapping. Observe scope removal and user-info handoff, not JWT cryptography.',
  'langgenius/dify':'Complete source prefix classifier and UTF-8 digest wrapper interpreted. Literal source enum values/prefixes are explicit;account resolver row remains supplied. Observe byte/digest/limiter/resolver order and context fields. No upstream application or credential service executes.',
 }

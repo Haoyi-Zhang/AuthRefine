@@ -97,8 +97,8 @@ class Interpreter(EffectInterpreter):
         return super().truth(x)
     def invoke(self,fn,args,kwargs):
         if isinstance(fn,ErrorType) and fn.name=='HTTPException':
-            if len(args)>1 or set(kwargs)-{'status_code','detail'}:raise AdmissionError('HTTP error signature outside profile')
-            fault=SliceFault(fn.name,str(kwargs.get('detail','')))
+            if len(args)>2 or set(kwargs)-{'status_code','detail'} or args and 'status_code'in kwargs or len(args)==2 and ('detail'in kwargs or type(args[1])is not str):raise AdmissionError('HTTP error signature outside profile')
+            fault=SliceFault(fn.name,str(args[1] if len(args)==2 else kwargs.get('detail','')))
             fault.status=kwargs.get('status_code',args[0] if args else None)
             return fault
         if isinstance(fn,Capability) and fn.asynchronous:
@@ -185,6 +185,12 @@ class Interpreter(EffectInterpreter):
             value=self.value(n.value,env);self.bind(n.target,value,env);return value
         if isinstance(n,ast.Attribute):
             x=self.value(n.value,env)
+            if type(x)is str and n.attr=='format' and x=='Required scopes to access resource: {0}':
+                def scope_message(values):
+                    if type(values)not in(list,tuple) or len(values)>32 or any(type(v)is not str or len(v)>256 for v in values):raise AdmissionError('scope log formatting outside literal bounded template')
+                    return 'Required scopes to access resource: '+str(values)
+                return Capability('literal scope log formatting',scope_message)
+            if type(x)in(set,frozenset) and n.attr=='issubset':return Capability('bounded scope subset',lambda other:set(self.sequence(x)).issubset(set(self.sequence(other))))
             if type(x) is str and n.attr=='prefix' and x in self.bindings.get('_literal_enum_prefixes',{}):return self.bindings['_literal_enum_prefixes'][x]
             if isinstance(x,DataRecord):
                 if n.attr in x.fields:return x.fields[n.attr]
@@ -339,6 +345,9 @@ class Interpreter(EffectInterpreter):
     def call(self,fn,args,kwargs,env):
         from policy_slice import Call
         if isinstance(fn,Call) and fn.kind=='effect-builtin' and not kwargs:
+            if fn.value=='getattr' and len(args)==2 and isinstance(args[0],DataRecord) and type(args[1])is str:
+                if args[1]not in args[0].fields:raise SliceFault('AttributeError','declared record has no '+args[1])
+                return args[0].fields[args[1]]
             if fn.value=='list' and len(args)==1:return self.sequence(args[0])
             if fn.value=='isinstance' and len(args)==2:
                 if isinstance(args[1],RecordType) and args[1].kind=='PlainDict':return type(args[0])is dict

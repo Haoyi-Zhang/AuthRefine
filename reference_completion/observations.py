@@ -37,6 +37,10 @@ def obligations(c,i):
         put('household.filter',k={'user':ref('user'),'space':rec('Space',pk=2) if not i.get('same_space',True) else rec('Space',pk=1,created_by=ref('user'),no_sharing_limit=i.get('unlimited',False)), 'household__in':[5]})
         put('share.filter',k={'recipe':ref('object'),'uuid':i.get('share'),'abuse_blocked':False})
         put('share.save');put('oauth_scope',[ref('request'),rec('View',kwargs={'pk':1} if i.get('has_pk',True) else {})])
+        if c.get('oauth_dependency'):
+            fields={'kwargs':{'pk':1} if i.get('has_pk',True) else {}}
+            if not i.get('required_scopes_missing'):fields['required_scopes']=i.get('required_scopes',['owned'])
+            put('oauth_scope',[ref('request'),rec('View',**fields)])
         for n in ('get_owner','get_space','get_shared','shared_rows','space_owner','other_space_owner','related_spaces','query.first','query.exists'):put(n)
     elif repo=='taigaio/taiga-back':
         if q in ('Not.check_permissions','Or.check_permissions','And.check_permissions'):
@@ -45,10 +49,10 @@ def obligations(c,i):
         obj=None if i.get('absent_object') else ref('object');project=ref('project-'+str(pid)) if c.get('batch_category')=='taiga_policy' else rec('Project',pk=pid)
         if q=='CommentAndOrUpdatePerm.check_permissions':
             # Permission labels depend on the source-selected comment/update branch.
-            d=i.get('data',{});labels=['comment'] if set(d)-{'version'}=={'comment'} and i.get('comment_allowed') else ['comment','update'] if set(d)-{'version'}=={'comment'} else ['update']
+            d=i.get('data',{});labels=['comment','update'] if set(d)-{'version'}=={'comment'} else ['update']
             r['permission']=[{'args':[ref('user'),p,project],'kwargs':{}} for p in labels]
             put('project_model',['projects','Project']);put('project.get',k={'pk':i.get('data',{}).get('project')})
-        else:put('permission',[ref('user'),i.get('project_policy',{}).get('permission_name','view'),obj])
+        else:put('permission',[ref('user'),(i.get('project_policies',{}).get('1',{}) if 'project_policies'in i else i.get('project_policy',{})).get('permission_name','view'),obj])
         put('admin',[ref('user'),(ref('project-1') if c.get('batch_category')=='taiga_policy' else rec('Project',pk=1)) if q.startswith('IsWebhook') else obj]);put('can_leave',[ref('user'),obj])
         if c.get('batch_category')=='taiga_policy':
             put('membership_lookup',[ref('project-'+str(pid))]);put('project_membership_lookup',[ref('user')]);put('members.get',k={'user':ref('user')});put('members.filter',k={'is_admin':True,'user__is_active':True});put('members.exclude',k={'user':ref('user')});put('members.count')
@@ -85,10 +89,11 @@ def obligations(c,i):
         token=i.get('bearer_token','bearer-normal') if i.get('bearer',True) else i.get('cookies',{}).get('token')
         if token is None and i.get('middleware_token'):token='middleware-normal'
         uid='u2' if token=='cookie-normal' else 'u1'
-        claims=i.get('claims',{'id':uid})
+        raw_claims=i.get('claims',{'id':uid});claims=raw_claims if type(raw_claims)is dict else {}
         put('decode',[token]);put('api_user',['sk-owned-normal' if q=='get_current_user_by_api_key' else token]);put('jwt_user',[claims.get('id',uid)]);put('token_current',[claims,ref('redis') if i.get('redis_enabled') else None]);put('active_update',[claims.get('id',uid)])
         permissions=i.get('default_permissions',{'features':{'api_keys':i.get('api_permission',True)}}) if c.get('batch_expansion') else {'configured':True}
         put('api_permission',['u1','features.api_keys',permissions]);put('group_rows',['u1'],{'db':None,'include_inherited':True});put('config_read',['auth.enable_api_keys','user.permissions','auth.api_key.endpoint_restrictions','auth.api_key.allowed_endpoints']);put('active_count');put('model_usage');put('auth_row',[claims.get('id','')]);put('mfa_config')
+        put('auth_query',[claims.get('id','')])
     return r
 def check_handoffs(c,inputs,events):
     specs=obligations(c,inputs);seen={};violations=[]
@@ -101,7 +106,7 @@ def check_handoffs(c,inputs,events):
             correct='GROUP_CACHE_1_1' if group else 'recipe_share_10_'+str(inputs.get('share'))
             if name=='cache.get':wanted={'args':[correct] if group else [correct,False],'kwargs':{'default':None} if group else {}}
             else:
-                groups=inputs.get('cached_groups') or (inputs.get('groups',['user']) if inputs.get('active_spaces',1)==1 else [])
+                groups=inputs['cached_groups'] if inputs.get('cached_groups') is not None else (inputs.get('groups',['user']) if inputs.get('active_spaces',1)==1 else [])
                 wanted={'args':[correct,groups if group else True],'kwargs':{'timeout':30 if group else 3}}
             actual={'args':e.get('args',[]),'kwargs':e.get('kwargs',{})}
             if not typed_equal(actual,wanted):violations.append({'call':name,'actual':actual,'expected':wanted})

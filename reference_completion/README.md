@@ -23,6 +23,7 @@ python -B reference_completion/replay.py --check
 python -B -W error -m unittest discover -s tests -p test_reference_completion.py -v
 python -B -W error -m unittest discover -s tests -p test_contract_handoffs.py -v
 python -B -W error -m unittest discover -s tests -p test_batch_dependencies.py -v
+python -B -W error -m unittest discover -s tests -p test_context_fidelity.py -v
 ```
 
 The distributed offline packet reconstructs 57 concrete contracts and both
@@ -89,6 +90,21 @@ These replace supplied service decisions,not the underlying database or signing
 providers. Configuration templates are explicit inputs,not inferred deployments.
 The original 1,512 inputs and all sixty entry identities remain unchanged;
 additional branch regressions are owned fixtures,not new project samples.
+Project membership rows are keyed by the actual target project,not shared
+across distinct project identities. Empty group-cache contents remain distinct
+from a miss. Decoded user IDs select explicit lookup rows;an unknown key never
+becomes the second known user. Contexts require actual bounded positive entry
+execution counts,and duplicate context identities cannot inflate evidence.
+
+The two Recipes OAuth wrappers interpret the scope/expiry bodies of the exact
+dependency required by their original requirements file. The requesting
+inheritance,dependency commit,complete methods and BSD license are included
+and checked. Required/granted scope sets,read/write configuration,expiry and
+optional scope-error details are observable;token issuance and clocks remain
+explicit inputs,not supplied final permission decisions. Open WebUI's original
+authentication-row wrapper now distinguishes missing/inactive rows and its
+named lookup-failure mapping before token/MFA checks. This still does not
+execute a live database or certify arbitrary framework dispatch.
 The original preview route-ID parser and employee-company resolver are now
 interpreted,not supplied as resolved values. The resolver's exact import binds
 an explicit owned query interface without invoking a host module loader. Its

@@ -93,6 +93,7 @@ class World:
         result=dict(share_count=self.db.execute('select value from share_counter where id=1').fetchone()[0],
             cache=dict(self.cache),request_state={k:self.normalize(v) for k,v in self.request.fields['state'].fields.items() if k in ('user','auth_type','claims')},**self.state)
         if hasattr(self,'user_context_keys'):result['user_context']={k:self.normalize(self.user.fields[k]) for k in sorted(self.user_context_keys) if k in self.user.fields}
+        if hasattr(self,'permission_receiver'):result['permission_message']=self.normalize(self.permission_receiver.fields.get('message'))
         return result
     def close(self):
         if not self.closed:self.db.close();self.closed=True
@@ -114,7 +115,7 @@ def recipe_setup(w,qualified):
     def cache_get(k,default=None):return w.cache.get(k,default)
     def cache_set(k,v,timeout=None):
         if w.control!='drop_cache':w.cache[k]=v
-    if i.get('cached_groups'):w.cache['GROUP_CACHE_1_1']=list(i['cached_groups'])
+    if i.get('cached_groups') is not None:w.cache['GROUP_CACHE_1_1']=list(i['cached_groups'])
     if i.get('share_cached'):w.cache['recipe_share_10_share-normal']=True
     share=record('ShareLink',request_count=i.get('share_count',1),space=w.space)
     share.writable=frozenset({'request_count'})
@@ -363,7 +364,8 @@ def webui_setup(w,qualified):
     def by_key(key):return None if i.get('missing_user') else w.user
     def by_id(pk):
         if i.get('missing_user'):return None
-        return w.user if pk=='u1' else w.other
+        if type(pk)is not str:raise AdmissionError('user identity is outside declared string-key lookup')
+        return {'u1':w.user,'u2':w.other}.get(pk)
     def last_active(pk):w.state['active_updates'].append(pk)
     def count():
         if i.get('usage_error'):raise SliceFault('DatabaseError')
@@ -408,4 +410,7 @@ def setup(w,contract):
     else:out=auth_setup(w,repo,q)
     if __package__:from .expansions import install
     else:from expansions import install
-    return install(w,contract,*out)
+    out=install(w,contract,*out)
+    if __package__:from .fidelity import install as install_fidelity
+    else:from fidelity import install as install_fidelity
+    return install_fidelity(w,contract,*out)

@@ -30,13 +30,14 @@ def observe(w,name,args,kwargs):
     w.events.append(dict(call=mapping[name],args=[w.normalize(a) for a in args],kwargs={k:w.normalize(v) for k,v in kwargs.items()}))
 def taiga(w,c,b):
     i=w.i;w.user.fields['is_anonymous']=not i.get('authenticated',True)
-    raw=i.get('project_policy',{})
-    role=list(raw.get('role_permissions',[p for p,k in (('view','permission'),('comment','comment_allowed'),('update','update_allowed')) if i.get(k,False)]))
-    admin=raw.get('is_admin',i.get('admin',False));member=raw.get('is_member',True)
-    m=rec('Membership',is_admin=admin,role=rec('Role',permissions=role)) if member else None
-    def lookup(project):return m
+    def policy(pk):return i['project_policies'].get(str(pk),{'is_member':False,'role_permissions':[]}) if 'project_policies'in i else i.get('project_policy',{})
+    def membership(pk):
+        raw=policy(pk);role=list(raw.get('role_permissions',[p for p,k in (('view','permission'),('comment','comment_allowed'),('update','update_allowed')) if i.get(k,False)]))
+        return rec('Membership',is_admin=raw.get('is_admin',i.get('admin',False)),role=rec('Role',permissions=role)) if raw.get('is_member',True) else None
+    def lookup(project):return membership(project.fields['pk'])
     w.user.fields['cached_membership_for_project']=w.cap('membership_lookup',lookup)
     def project(pk):
+        raw=policy(pk)
         p=w.named('project-'+str(pk),rec('Project',pk=pk,anon_permissions=list(raw.get('anon_permissions',[])),public_permissions=list(raw.get('public_permissions',[]))))
         leave_admin=raw.get('leave_admin',not i.get('can_leave',True))
         owner=raw.get('is_owner',not i.get('can_leave',True));p.fields['owner']=w.user if owner else w.other
@@ -45,17 +46,17 @@ def taiga(w,c,b):
         def query(rs):
             return rec('MembershipQuery',exclude=w.cap('members.exclude',lambda **k:query([v for v in rs if v.fields['user'] is not k.get('user')])),count=w.cap('members.count',lambda:len(rs)))
         def get(**k):
-            if i.get('membership_missing'):raise SliceFault('MembershipDoesNotExist')
+            if i.get('membership_missing') or not raw.get('is_member',True):raise SliceFault('MembershipDoesNotExist')
             return own
         def filt(**k):return query([v for v in rows if (not k.get('is_admin') or v.fields['is_admin']) and (not k.get('user__is_active') or v.fields['user'].fields['is_active'])])
         p.fields['memberships']=rec('MembershipManager',get=w.cap('members.get',get),filter=w.cap('members.filter',filt))
-        p.fields['cached_memberships_for_user']=w.cap('project_membership_lookup',lambda user:m)
+        p.fields['cached_memberships_for_user']=w.cap('project_membership_lookup',lambda user:membership(pk))
         return p
     p1=project(1);w.obj.fields['project']=p1;w.obj.fields['webhook']=rec('Webhook',project=p1)
     if c['function']=='CanLeaveProject.check_permissions':w.obj.kind='Project';w.obj.fields.update(p1.fields)
     def model(*a):return rec('ModelType',instance_kind='Project',objects=rec('Manager',get=w.cap('project.get',lambda **k:project(k['pk']))))
     b['apps']=rec('Apps',get_model=w.cap('project_model',model))
-    w.receiver.fields['project_perm']=raw.get('permission_name','view')
+    w.receiver.fields['project_perm']=policy(1).get('permission_name','view')
     rows=c['batch_constants']['taiga_permission_tables']
     b.update({key:[(s,s) for s in names] for key,names in rows.items()})
     services=b['services']
@@ -130,6 +131,7 @@ def webui(w,c,b):
         return deepcopy(i.get('claims',{'id':'u2' if token=='cookie-normal' else 'u1'}))
     b['decode_token']=w.cap('decode',decode)
     auth=rec('AuthRow',session_stamp=i.get('account_stamp',None if i.get('token_current',True) else 'changed'),mfa=rec('MfaRow',secret='owned-secret' if i.get('mfa_secret') else '',reset_required=i.get('mfa_reset',False)))
+    w.auth_record=auth
     conf=rec('MfaConfig',ENABLE_MFA=i.get('mfa_enabled',False),MFA_ALLOW_OAUTH_BYPASS=i.get('mfa_oauth_bypass',False),MFA_ALLOW_TRUSTED_HEADER_BYPASS=i.get('mfa_header_bypass',False))
     def mfa_required(method,config):return w.source('is_mfa_required',[method,config])
     b['_declared_imports']={('open_webui.utils.mfa',0,(('get_auth',None),('get_mfa_config',None),('is_mfa_required',None))):{'get_auth':w.cap('auth_row',lambda uid:auth,True),'get_mfa_config':w.cap('mfa_config',lambda:conf,True),'is_mfa_required':Capability('source MFA policy',mfa_required)}}
