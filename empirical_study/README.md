@@ -8,7 +8,9 @@ Run the offline evidence and original-source checks:
 
 ```sh
 python -B empirical_study/verify.py
+python -B empirical_study/review.py
 python -B -m unittest discover -s tests -p test_fixed_source_empirical.py -v
+python -B -m unittest discover -s tests -p test_review_completion.py -v
 ```
 
 The primary selection has 76 source functions and 328 finite contexts. Ten
@@ -68,14 +70,23 @@ the fresh native/model processes of the delegated and extension strata.
 
 ## Contract review
 
-Submitted source-contract review covers 99 items: two initial assessments and
-a separate final adjudication. Final labels are 52 concrete behavior contracts,
-45 conditional contracts and two interface obligations. Method and design
-review each have eight separate topics. These are source-scope classifications,
-not an independent business-intent oracle or confirmed application defects.
+The planned paired review and separate adjudication are complete: six initial
+response files contain 230 answers and three final files resolve all 115 items.
+Source-contract review covers 99 items; method and design review each have eight
+separate topics. Final source labels are 52 concrete behavior contracts,
+45 conditional contracts and two interface obligations. The initial source
+category agreement is 83/99 (kappa 0.692); the original sixteen differing labels
+are retained rather than replaced by final consensus. These are adjudicated
+source-behavior classifications, not a business-intent oracle or confirmed defects.
 Raw submitted opinions and identifying coordination records remain outside the
-public artifact. Aggregate outcomes and their limitations are recorded in
-`methods.json`; implementation-derived functional expectations remain separate.
+public artifact. `methods.json` includes all 99 label-to-source bindings: 59
+redistributable selected entries and forty selected project boundaries. Each
+binding records its exact source revision, function anchors, original context
+denominators, initial category pair and final resolution. All sixteen method
+and design dispositions are also linked. `review.py` checks completeness,
+source identity, category totals and their consistency with the executed study.
+It does not rerun the original review or infer reviewer identities. Functional
+expectations and source-scope adjudications remain distinct evidence layers.
 Original source comments and upstream tests remain primary evidence. Upstream
 licenses and attribution apply to those original materials; the project license
 does not replace them.

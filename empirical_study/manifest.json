@@ -4,12 +4,13 @@
     "data/observations.json.gz": "26e3365f29f430e91909d97c8c2e9b3111d6f0048242b0748dacf8f5b90c7edd",
     "data/sources.json.gz": "aeb8bc692c2bc2a6ec55e4af6a4244b1014cecbc07028db6e0d87b403dd6948f",
     "delegated_runtime.py": "345ade41656a54d5fbefa0447810cda76c7b2cd6f8fed57034220bcbea217387",
-    "methods.json": "e88424dcb2fd396797c6ece543ace69b5e82a81ba8f01ef75a31a1f0685d3afd",
+    "methods.json": "130ab5f9eed2ed25889b0cfe670f4b167f0742d98e93a4553125afd22a0817f6",
     "predicate_runtime.py": "f2513415e9f5618fa9935f4835179456db84e954d589ed23f91998d0eeed13eb",
-    "README.md": "86935e17a5fec4ff637d0c39ce55c6c74932ceea56c662a66f885cae8b95d1b2",
+    "README.md": "0bddb569a1a6125e4df61de152eb851c9a4a7a41d610a5012e0319d4568abefd",
     "remaining_worker.py": "56f9e8b29ce893a92b9f7adbaec5c8353291af7fe6d0f02dc142d60acf7ef8db",
     "remaining_worlds.py": "4ad1ffec0613b6490ffc5c3c8bfec36b5014630e99fa4997048064d7c91c0333",
     "replay.py": "2a9a0ae2504602216110c6bfcb0f493b8e286f5a8bb44969c3af2f83e6eafc02",
+    "review.py": "0c7c63a322471aa384b3a9d011245da334574447e2cdaf22a26a947f63531bc6",
     "scope_followup_worker.py": "e3bf0bbf655f4e26f2d494bf1d9b9998b6e7522bf258869bbcf7230a6546107a",
     "scope_followup_worlds.py": "c520cca00e2d480d54bc5912c9987721327b5f9efc16b3db0db9c3cf6d107aec",
     "SEMANTICS.md": "ecc35459ded5d86b25a1fe315a12d493b05f3343deebc1a591804778f9fbe369",
@@ -18,7 +19,7 @@
     "tests/test_portable_binding.py": "a79b6e499e4b52094625f7c9d36b0785fb56975514ffa813b9e7a73bbe24f1f6",
     "tests/test_predicate_runtime.py": "3efeb1007db3418dd23f5e2a0e541a36a959f16d052f2307af16d1358fc511a0",
     "tests/test_review_semantics.py": "73d387fcf6d60264194354a10c800163b9e04d72e98b999d346e1641de48101c",
-    "verify.py": "8331a32a46b81c2f2d13b7237950bf23e8345ede2dafb8ca849fe63a03aa4a22"
+    "verify.py": "c918007d519cb69ce003a82d2c3787994f647911d44fc7045ca7bbc04badd0b5"
   },
   "source_byte_identity_not_a_security_certificate": true
 }

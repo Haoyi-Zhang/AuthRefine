@@ -66,9 +66,2707 @@
         "meaning": "Judgment-category agreement only;not semantic accuracy or a final adjudication."
       }
     ],
-    "meaning": "Submitted source-scope classifications,not an independently established business-intent oracle. Category agreement is not semantic accuracy.",
+    "meaning": "Completed paired source-contract assessments and separate adjudication,with exact entry/project bindings. Not a business-intent oracle;initial category agreement is not semantic accuracy.",
     "raw_response_text_or_reviewer_identities_distributed": false,
-    "independent_semantic_gold_claimed": false
+    "independent_semantic_gold_claimed": false,
+    "completed_workflow": {
+      "status": "complete",
+      "initial_response_files": 6,
+      "final_response_files": 3,
+      "initial_items": 230,
+      "final_items": 115,
+      "missing_final_items": [],
+      "initial_pairs_and_adjudications_complete": true,
+      "raw_responses_preserved_unchanged": true
+    },
+    "source_binding_crosswalk": [
+      {
+        "id": "S001",
+        "scope": "selected_entry",
+        "repository": "baserow/baserow",
+        "snapshot": "d36fc12e105d99112fb455b7c482d214903fe70f",
+        "reference_id": "boundary-01",
+        "source_anchors": [
+          {
+            "path": "backend/src/baserow/api/authentication.py",
+            "function": "JSONWebTokenAuthentication.authenticate",
+            "line": 49,
+            "end_line": 82,
+            "source_sha256": "118923abc0fa6ef4b19e78dd6b4713fe9496507eac85a11cebb9ece5176480de"
+          }
+        ],
+        "existing_contexts": 5,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S002",
+        "scope": "selected_entry",
+        "repository": "baserow/baserow",
+        "snapshot": "d36fc12e105d99112fb455b7c482d214903fe70f",
+        "reference_id": "boundary-02",
+        "source_anchors": [
+          {
+            "path": "backend/src/baserow/api/user_sources/authentication.py",
+            "function": "UserSourceJSONWebTokenAuthentication.authenticate",
+            "line": 75,
+            "end_line": 182,
+            "source_sha256": "4211b22c1e3156a446d3ebbd3b06df1c37ef88fa9e3a1fec08ca2f7f4cc11244"
+          }
+        ],
+        "existing_contexts": 18,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S003",
+        "scope": "selected_entry",
+        "repository": "baserow/baserow",
+        "snapshot": "d36fc12e105d99112fb455b7c482d214903fe70f",
+        "reference_id": "boundary-03",
+        "source_anchors": [
+          {
+            "path": "backend/src/baserow/contrib/builder/preview/authentication.py",
+            "function": "BuilderPreviewAuthentication.authenticate",
+            "line": 30,
+            "end_line": 47,
+            "source_sha256": "04ad747125d6a098b70fd0033ee24e8480887aae84329381e8dbdf93bc7a966c"
+          }
+        ],
+        "existing_contexts": 10,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S004",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-05",
+        "source_anchors": [
+          {
+            "path": "taiga/users/permissions.py",
+            "function": "CanRetrieveUser.check_permissions",
+            "line": 24,
+            "end_line": 28,
+            "source_sha256": "4492551156c441224286908a565976f5d73c46fa456791cab1d44707513fc620"
+          }
+        ],
+        "existing_contexts": 8,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S005",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-06",
+        "source_anchors": [
+          {
+            "path": "taiga/auth/authentication.py",
+            "function": "JWTAuthentication.authenticate",
+            "line": 61,
+            "end_line": 72,
+            "source_sha256": "b21c95b81e8394f6485d7c9580b8b48780af632830033797ce670e8bf57fae05"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S006",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-07",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/permissions.py",
+            "function": "PermissionComponent.check_permissions",
+            "line": 69,
+            "end_line": 70,
+            "source_sha256": "084c1d27d64258e9e54d5ad591a0423d5f78d67c6dce5f9fc2f31a7f38a3d835"
+          }
+        ],
+        "existing_contexts": 1,
+        "final_label": "interface_obligation",
+        "initial_left_label": "interface_obligation",
+        "initial_right_label": "interface_obligation",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S007",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-08",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/permissions.py",
+            "function": "Not.check_permissions",
+            "line": 102,
+            "end_line": 104,
+            "source_sha256": "084c1d27d64258e9e54d5ad591a0423d5f78d67c6dce5f9fc2f31a7f38a3d835"
+          }
+        ],
+        "existing_contexts": 6,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S008",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-09",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/permissions.py",
+            "function": "Or.check_permissions",
+            "line": 112,
+            "end_line": 120,
+            "source_sha256": "084c1d27d64258e9e54d5ad591a0423d5f78d67c6dce5f9fc2f31a7f38a3d835"
+          }
+        ],
+        "existing_contexts": 7,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S009",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-10",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/permissions.py",
+            "function": "And.check_permissions",
+            "line": 128,
+            "end_line": 136,
+            "source_sha256": "084c1d27d64258e9e54d5ad591a0423d5f78d67c6dce5f9fc2f31a7f38a3d835"
+          }
+        ],
+        "existing_contexts": 7,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S010",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-11",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/permissions.py",
+            "function": "HasProjectPerm.check_permissions",
+            "line": 168,
+            "end_line": 169,
+            "source_sha256": "084c1d27d64258e9e54d5ad591a0423d5f78d67c6dce5f9fc2f31a7f38a3d835"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S011",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-12",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/permissions.py",
+            "function": "IsProjectAdmin.check_permissions",
+            "line": 173,
+            "end_line": 174,
+            "source_sha256": "084c1d27d64258e9e54d5ad591a0423d5f78d67c6dce5f9fc2f31a7f38a3d835"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S012",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-13",
+        "source_anchors": [
+          {
+            "path": "taiga/projects/permissions.py",
+            "function": "CanLeaveProject.check_permissions",
+            "line": 28,
+            "end_line": 38,
+            "source_sha256": "429d2c2cd1f120e78588fea2789e59a7f438365b11839fd937a0900922fc032a"
+          }
+        ],
+        "existing_contexts": 5,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "synthesized"
+      },
+      {
+        "id": "S013",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-14",
+        "source_anchors": [
+          {
+            "path": "taiga/webhooks/permissions.py",
+            "function": "IsWebhookProjectAdmin.check_permissions",
+            "line": 15,
+            "end_line": 16,
+            "source_sha256": "dd5ce894e4b400d9359da351cf38513252751d2701e4cb6cd824c57958da40d1"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S014",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-15",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/authentication.py",
+            "function": "BaseAuthentication.authenticate",
+            "line": 71,
+            "end_line": 75,
+            "source_sha256": "0dd3a05a0f4468a3c3db0d33806a3c0d053d384d56b3121d4146aa0f5bba2548"
+          }
+        ],
+        "existing_contexts": 1,
+        "final_label": "interface_obligation",
+        "initial_left_label": "interface_obligation",
+        "initial_right_label": "interface_obligation",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S015",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-16",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/authentication.py",
+            "function": "BasicAuthentication.authenticate",
+            "line": 92,
+            "end_line": 116,
+            "source_sha256": "0dd3a05a0f4468a3c3db0d33806a3c0d053d384d56b3121d4146aa0f5bba2548"
+          }
+        ],
+        "existing_contexts": 18,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S016",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-17",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/authentication.py",
+            "function": "BasicAuthentication.authenticate_credentials",
+            "line": 118,
+            "end_line": 125,
+            "source_sha256": "0dd3a05a0f4468a3c3db0d33806a3c0d053d384d56b3121d4146aa0f5bba2548"
+          }
+        ],
+        "existing_contexts": 3,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S017",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-18",
+        "source_anchors": [
+          {
+            "path": "taiga/base/api/authentication.py",
+            "function": "SessionAuthentication.authenticate",
+            "line": 136,
+            "end_line": 153,
+            "source_sha256": "0dd3a05a0f4468a3c3db0d33806a3c0d053d384d56b3121d4146aa0f5bba2548"
+          }
+        ],
+        "existing_contexts": 3,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S018",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-19",
+        "source_anchors": [
+          {
+            "path": "taiga/permissions/permissions.py",
+            "function": "HasProjectPerm.check_permissions",
+            "line": 24,
+            "end_line": 25,
+            "source_sha256": "e2a2855ba5b73857dfcde698fdaebb9956ee42e7651efd5b1e3a9a3a2a414c58"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S019",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-20",
+        "source_anchors": [
+          {
+            "path": "taiga/permissions/permissions.py",
+            "function": "IsObjectOwner.check_permissions",
+            "line": 29,
+            "end_line": 33,
+            "source_sha256": "e2a2855ba5b73857dfcde698fdaebb9956ee42e7651efd5b1e3a9a3a2a414c58"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S020",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-21",
+        "source_anchors": [
+          {
+            "path": "taiga/permissions/permissions.py",
+            "function": "IsProjectAdmin.check_permissions",
+            "line": 41,
+            "end_line": 42,
+            "source_sha256": "e2a2855ba5b73857dfcde698fdaebb9956ee42e7651efd5b1e3a9a3a2a414c58"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S021",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-22",
+        "source_anchors": [
+          {
+            "path": "taiga/permissions/permissions.py",
+            "function": "CommentAndOrUpdatePerm.check_permissions",
+            "line": 55,
+            "end_line": 71,
+            "source_sha256": "e2a2855ba5b73857dfcde698fdaebb9956ee42e7651efd5b1e3a9a3a2a414c58"
+          }
+        ],
+        "existing_contexts": 21,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S022",
+        "scope": "selected_entry",
+        "repository": "taigaio/taiga-back",
+        "snapshot": "8ab6a4e3b5f6fbbfcbf108a6449011f07b7308aa",
+        "reference_id": "boundary-23",
+        "source_anchors": [
+          {
+            "path": "taiga/external_apps/permissions.py",
+            "function": "CanUseToken.check_permissions",
+            "line": 20,
+            "end_line": 24,
+            "source_sha256": "0b883e542c95416676375d15d50211a00f8e11cd05e52962b1e5e1b4c02a8aa5"
+          }
+        ],
+        "existing_contexts": 5,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S023",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-24",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsOwner.has_permission",
+            "line": 255,
+            "end_line": 256,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S024",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-25",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsOwner.has_object_permission",
+            "line": 258,
+            "end_line": 259,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S025",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-26",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsOwnerReadOnly.has_permission",
+            "line": 263,
+            "end_line": 264,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S026",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-27",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsOwnerReadOnly.has_object_permission",
+            "line": 266,
+            "end_line": 267,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S027",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-28",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsOwnerDestroyOnly.has_permission",
+            "line": 271,
+            "end_line": 272,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S028",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-29",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsOwnerDestroyOnly.has_object_permission",
+            "line": 274,
+            "end_line": 275,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S029",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-30",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsSpaceOwner.has_permission",
+            "line": 285,
+            "end_line": 286,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S030",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-31",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsSpaceOwner.has_object_permission",
+            "line": 288,
+            "end_line": 289,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S031",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-32",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsShared.has_permission",
+            "line": 300,
+            "end_line": 301,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S032",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-33",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsShared.has_object_permission",
+            "line": 303,
+            "end_line": 304,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S033",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-34",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsHousehold.has_permission",
+            "line": 314,
+            "end_line": 315,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S034",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-35",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsHousehold.has_object_permission",
+            "line": 317,
+            "end_line": 318,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S035",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-36",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsGuest.has_permission",
+            "line": 328,
+            "end_line": 329,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S036",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-37",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsGuest.has_object_permission",
+            "line": 331,
+            "end_line": 332,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S037",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-38",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsUser.has_permission",
+            "line": 342,
+            "end_line": 343,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S038",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-39",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsAdmin.has_permission",
+            "line": 353,
+            "end_line": 354,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S039",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-40",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsShare.has_permission",
+            "line": 364,
+            "end_line": 365,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 60,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S040",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-41",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomIsShare.has_object_permission",
+            "line": 367,
+            "end_line": 371,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 60,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S041",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-42",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomRecipePermission.has_permission",
+            "line": 411,
+            "end_line": 414,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 60,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S042",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-43",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomRecipePermission.has_object_permission",
+            "line": 416,
+            "end_line": 417,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 60,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S043",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-44",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomAiProviderPermission.has_permission",
+            "line": 429,
+            "end_line": 430,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 50,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S044",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-45",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomAiProviderPermission.has_object_permission",
+            "line": 433,
+            "end_line": 436,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 50,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S045",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-46",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomUserPermission.has_permission",
+            "line": 445,
+            "end_line": 446,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S046",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-47",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomUserPermission.has_object_permission",
+            "line": 448,
+            "end_line": 454,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S047",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-48",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomTokenHasScope.has_permission",
+            "line": 464,
+            "end_line": 468,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 50,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S048",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-49",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "CustomTokenHasReadWriteScope.has_permission",
+            "line": 486,
+            "end_line": 490,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 50,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S049",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-50",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "IsReadOnlyDRF.has_permission",
+            "line": 551,
+            "end_line": 552,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S050",
+        "scope": "selected_entry",
+        "repository": "TandoorRecipes/recipes",
+        "snapshot": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+        "reference_id": "boundary-51",
+        "source_anchors": [
+          {
+            "path": "cookbook/helper/permission_helper.py",
+            "function": "IsCreateDRF.has_permission",
+            "line": 558,
+            "end_line": 559,
+            "source_sha256": "629d4f0727d8067fcbebe64f7d429406e8a1c383c0c78eed3c3378d62f6d629d"
+          }
+        ],
+        "existing_contexts": 42,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S051",
+        "scope": "selected_entry",
+        "repository": "argilla-io/argilla",
+        "snapshot": "5338519accb13ae422f8bf9c0642651c249c49af",
+        "reference_id": "boundary-52",
+        "source_anchors": [
+          {
+            "path": "argilla-server/src/argilla_server/security/authentication/oauth2/auth_backend.py",
+            "function": "OAuth2AuthenticationBackend.authenticate",
+            "line": 34,
+            "end_line": 42,
+            "source_sha256": "1c2eee50132e620f070c4f7aa0d5bb3c39258de935e5e41b51777b7eb3c35aa6"
+          }
+        ],
+        "existing_contexts": 4,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S052",
+        "scope": "selected_entry",
+        "repository": "langgenius/dify",
+        "snapshot": "0d97e3685eb5ca0dc27bb5851f5e2de98b410ae5",
+        "reference_id": "boundary-53",
+        "source_anchors": [
+          {
+            "path": "api/libs/oauth_bearer.py",
+            "function": "BearerAuthenticator.authenticate",
+            "line": 129,
+            "end_line": 151,
+            "source_sha256": "2e96444d16e6771f659404c877c214339fb10fd136f66851b73a797dc17400f0"
+          }
+        ],
+        "existing_contexts": 9,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S053",
+        "scope": "selected_entry",
+        "repository": "open-webui/open-webui",
+        "snapshot": "c38885a1a737da4968f157092f304f3b5481d0bf",
+        "reference_id": "boundary-54",
+        "source_anchors": [
+          {
+            "path": "backend/open_webui/utils/auth.py",
+            "function": "get_current_user",
+            "line": 386,
+            "end_line": 497,
+            "source_sha256": "ab51007619898163fa024878a9250bd6517f7233c9dad9c9dbacab33e7e211c0"
+          }
+        ],
+        "existing_contexts": 17,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S054",
+        "scope": "selected_entry",
+        "repository": "open-webui/open-webui",
+        "snapshot": "c38885a1a737da4968f157092f304f3b5481d0bf",
+        "reference_id": "boundary-55",
+        "source_anchors": [
+          {
+            "path": "backend/open_webui/utils/auth.py",
+            "function": "get_current_user_by_api_key",
+            "line": 500,
+            "end_line": 555,
+            "source_sha256": "ab51007619898163fa024878a9250bd6517f7233c9dad9c9dbacab33e7e211c0"
+          }
+        ],
+        "existing_contexts": 8,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S055",
+        "scope": "selected_entry",
+        "repository": "open-webui/open-webui",
+        "snapshot": "c38885a1a737da4968f157092f304f3b5481d0bf",
+        "reference_id": "boundary-56",
+        "source_anchors": [
+          {
+            "path": "backend/open_webui/main.py",
+            "function": "get_current_usage",
+            "line": 2708,
+            "end_line": 2729,
+            "source_sha256": "3d36935b716d396156d026d7d97e0f1c8e34351883721e08389ab207803e757b"
+          }
+        ],
+        "existing_contexts": 8,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S056",
+        "scope": "selected_entry",
+        "repository": "horilla/horilla-hr",
+        "snapshot": "3a7798bddb8a68e381aa5f40625368058d75b4ba",
+        "reference_id": "boundary-57",
+        "source_anchors": [
+          {
+            "path": "horilla_api/auth.py",
+            "function": "SwaggerAuthentication.authenticate",
+            "line": 15,
+            "end_line": 31,
+            "source_sha256": "6632e058133d7ddd341e1fb36c863bab8dca2610bd7279b2903a93e29d179dac"
+          }
+        ],
+        "existing_contexts": 10,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S057",
+        "scope": "selected_entry",
+        "repository": "horilla/horilla-hr",
+        "snapshot": "3a7798bddb8a68e381aa5f40625368058d75b4ba",
+        "reference_id": "boundary-58",
+        "source_anchors": [
+          {
+            "path": "horilla_api/auth.py",
+            "function": "RejectBasicAuthentication.authenticate",
+            "line": 39,
+            "end_line": 45,
+            "source_sha256": "6632e058133d7ddd341e1fb36c863bab8dca2610bd7279b2903a93e29d179dac"
+          }
+        ],
+        "existing_contexts": 3,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "S058",
+        "scope": "selected_entry",
+        "repository": "horilla/horilla-hr",
+        "snapshot": "3a7798bddb8a68e381aa5f40625368058d75b4ba",
+        "reference_id": "boundary-59",
+        "source_anchors": [
+          {
+            "path": "recruitment/auth.py",
+            "function": "CandidateAuthenticationBackend.authenticate",
+            "line": 13,
+            "end_line": 22,
+            "source_sha256": "550a21ee36ad889752b710ccf55bdf9b370c1f885cda66cce1a8ec61f5ecabe6"
+          }
+        ],
+        "existing_contexts": 7,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "S059",
+        "scope": "selected_entry",
+        "repository": "horilla/horilla-hr",
+        "snapshot": "3a7798bddb8a68e381aa5f40625368058d75b4ba",
+        "reference_id": "boundary-60",
+        "source_anchors": [
+          {
+            "path": "horilla_api/authentication.py",
+            "function": "TenantScopedJWTAuthentication.authenticate",
+            "line": 99,
+            "end_line": 118,
+            "source_sha256": "cc546da24d8776fc16792d4f55c6031e0a4d7e7fb877d9c1ee564d2d447b0d63"
+          }
+        ],
+        "existing_contexts": 11,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N001",
+        "scope": "selected_project_boundary",
+        "project": "R01",
+        "repository": "jupyterhub/jupyterhub",
+        "snapshot": "4224d01251779a37112d8ae26dc384244d31cb77",
+        "source_anchors": [
+          {
+            "path": "jupyterhub/auth.py",
+            "function": "Authenticator.check_allowed",
+            "line": 687,
+            "end_line": 716,
+            "source_sha256": "e00d9e83d6dd5d738a4de5c0abbfa3fb5ba44aa81e72a02206072b3c81ea75cd"
+          },
+          {
+            "path": "jupyterhub/auth.py",
+            "function": "Authenticator.is_admin",
+            "line": 857,
+            "end_line": 870,
+            "source_sha256": "e00d9e83d6dd5d738a4de5c0abbfa3fb5ba44aa81e72a02206072b3c81ea75cd"
+          }
+        ],
+        "existing_contexts": 17,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N002",
+        "scope": "selected_project_boundary",
+        "project": "R02",
+        "repository": "MaramHarsha/CogniMesh",
+        "snapshot": "c4ac25b10ee41c274a20507525d83c99971160f9",
+        "source_anchors": [
+          {
+            "path": "services/semantic-control/app/core/security.py",
+            "function": "authorize",
+            "line": 66,
+            "end_line": 75,
+            "source_sha256": "7c844833d3cefc6f590ead89ae7128576144e25a839e76c84c5bf7513fc72c16"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N003",
+        "scope": "selected_project_boundary",
+        "project": "R03",
+        "repository": "pretix/pretix",
+        "snapshot": "da622e67528c9ff15ecd998dc3e452ec42f0fc9c",
+        "source_anchors": [
+          {
+            "path": "src/pretix/base/models/devices.py",
+            "function": "Device._event_permission_set",
+            "line": 199,
+            "end_line": 204,
+            "source_sha256": "8a559e5706cbcd65a99ed04c47cc22193d484b6582a08506c3523e7f5ae130f0"
+          },
+          {
+            "path": "src/pretix/base/models/devices.py",
+            "function": "Device.has_event_permission",
+            "line": 236,
+            "end_line": 253,
+            "source_sha256": "8a559e5706cbcd65a99ed04c47cc22193d484b6582a08506c3523e7f5ae130f0"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 6,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N004",
+        "scope": "selected_project_boundary",
+        "project": "R04",
+        "repository": "healthchecks/healthchecks",
+        "snapshot": "51a503531d845fc11d5ef270d576c59c300e3620",
+        "source_anchors": [
+          {
+            "path": "hc/accounts/models.py",
+            "function": "Project.compare_api_key",
+            "line": 587,
+            "end_line": 599,
+            "source_sha256": "bea6b643ba108892a0f0310bd7af41fc46a82c00d9f46fd23551e73c3b5a7839"
+          },
+          {
+            "path": "hc/accounts/models.py",
+            "function": "ProjectManager.for_api_key",
+            "line": 404,
+            "end_line": 446,
+            "source_sha256": "bea6b643ba108892a0f0310bd7af41fc46a82c00d9f46fd23551e73c3b5a7839"
+          },
+          {
+            "path": "hc/api/decorators.py",
+            "function": "_get_api_version",
+            "line": 25,
+            "end_line": 30,
+            "source_sha256": "8c87db19c35849356cada2a1d60abeab966c39f158ed074ff503027dc78b4c92"
+          },
+          {
+            "path": "hc/api/decorators.py",
+            "function": "authorize",
+            "line": 33,
+            "end_line": 68,
+            "source_sha256": "8c87db19c35849356cada2a1d60abeab966c39f158ed074ff503027dc78b4c92"
+          },
+          {
+            "path": "hc/api/decorators.py",
+            "function": "authorize_read",
+            "line": 71,
+            "end_line": 93,
+            "source_sha256": "8c87db19c35849356cada2a1d60abeab966c39f158ed074ff503027dc78b4c92"
+          },
+          {
+            "path": "hc/api/decorators.py",
+            "function": "error",
+            "line": 21,
+            "end_line": 22,
+            "source_sha256": "8c87db19c35849356cada2a1d60abeab966c39f158ed074ff503027dc78b4c92"
+          },
+          {
+            "path": "hc/logs/admin.py",
+            "function": "RecordsAdmin.has_add_permission",
+            "line": 54,
+            "end_line": 55,
+            "source_sha256": "5e36f4c82b41a3fc11ebfca1365d42aa35ce667e40e4ff65a89d4588fababe69"
+          },
+          {
+            "path": "hc/logs/admin.py",
+            "function": "RecordsAdmin.has_change_permission",
+            "line": 57,
+            "end_line": 60,
+            "source_sha256": "5e36f4c82b41a3fc11ebfca1365d42aa35ce667e40e4ff65a89d4588fababe69"
+          }
+        ],
+        "existing_contexts": 2,
+        "existing_extension_contexts": 11,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N005",
+        "scope": "selected_project_boundary",
+        "project": "R05",
+        "repository": "babybuddy/babybuddy",
+        "snapshot": "09629cf633cf3a2059a21ade4cea7ea4d846422f",
+        "source_anchors": [
+          {
+            "path": "api/authentication.py",
+            "function": "TokenAuthentication.authenticate_credentials",
+            "line": 12,
+            "end_line": 16,
+            "source_sha256": "9b9f974dd164d7d83e36aaf964da5dabd5528a00c73e677eac6bc4e4fc705025"
+          },
+          {
+            "path": "babybuddy/models.py",
+            "function": "Settings.access_expired",
+            "line": 156,
+            "end_line": 157,
+            "source_sha256": "09bdc4c580b9c35424c2a21e5ff47b032658948c4de9b551c1369f8d80a9e99d"
+          },
+          {
+            "path": "babybuddy/models.py",
+            "function": "access_expired",
+            "line": 171,
+            "end_line": 180,
+            "source_sha256": "09bdc4c580b9c35424c2a21e5ff47b032658948c4de9b551c1369f8d80a9e99d"
+          },
+          {
+            "path": "webhooks/admin.py",
+            "function": "WebhookEventAdmin.has_add_permission",
+            "line": 38,
+            "end_line": 41,
+            "source_sha256": "a632f450dedc9ab581eea57f91e62ff138b7d607cc95dee5fe97809dead61d1d"
+          }
+        ],
+        "existing_contexts": 1,
+        "existing_extension_contexts": 15,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N006",
+        "scope": "selected_project_boundary",
+        "project": "R06",
+        "repository": "Mailu/Mailu",
+        "snapshot": "de941f0f861ab5b386d6cd1b3b05bc93cbc34fd1",
+        "source_anchors": [
+          {
+            "path": "core/admin/mailu/passkeys.py",
+            "function": "attestation_allowed",
+            "line": 207,
+            "end_line": 210,
+            "source_sha256": "a2689572aa65fc2814d8f872b20664ddfe697ef73750a0d36e0bd7e91c4b59cc"
+          },
+          {
+            "path": "core/admin/mailu/passkeys.py",
+            "function": "authenticator_flags_allowed",
+            "line": 197,
+            "end_line": 204,
+            "source_sha256": "a2689572aa65fc2814d8f872b20664ddfe697ef73750a0d36e0bd7e91c4b59cc"
+          },
+          {
+            "path": "core/admin/mailu/passkeys.py",
+            "function": "sign_count_allowed",
+            "line": 213,
+            "end_line": 214,
+            "source_sha256": "a2689572aa65fc2814d8f872b20664ddfe697ef73750a0d36e0bd7e91c4b59cc"
+          }
+        ],
+        "existing_contexts": 49,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N007",
+        "scope": "selected_project_boundary",
+        "project": "R07",
+        "repository": "jianghuaqi85-sys/ERP-MES-WMS-system",
+        "snapshot": "19e2e2eba95bc71cb02e9b1b8737bdf709622154",
+        "source_anchors": [
+          {
+            "path": "backend/app/apps/auth/dependencies.py",
+            "function": "require_permissions",
+            "line": 51,
+            "end_line": 74,
+            "source_sha256": "fab078102c815ea53c76ef3296afa5544f93d48d9c8d35b3e283efc715417236"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N008",
+        "scope": "selected_project_boundary",
+        "project": "R08",
+        "repository": "rommapp/romm",
+        "snapshot": "3a79911b2fd3831f6370ed04cd722f37e8bc3bd9",
+        "source_anchors": [
+          {
+            "path": "backend/handler/auth/permissions.py",
+            "function": "ResolvedPermissions.can_see_platform",
+            "line": 71,
+            "end_line": 72,
+            "source_sha256": "4e264630e316bd3f98465ea660867e6f49590c04b3769d46d311e81966dbd338"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N009",
+        "scope": "selected_project_boundary",
+        "project": "R09",
+        "repository": "caronc/apprise-api",
+        "snapshot": "308498f6f00389420c998c12019cceed315909f1",
+        "source_anchors": [
+          {
+            "path": "apprise_api/api/auth.py",
+            "function": "Authentication.config_lock_allows",
+            "line": 503,
+            "end_line": 507,
+            "source_sha256": "f0548779b00c17103a683809b56fe39ca40512c82ff9891997f5ce97c4f50d90"
+          },
+          {
+            "path": "apprise_api/api/auth.py",
+            "function": "Authentication.configuration_is_locked",
+            "line": 490,
+            "end_line": 500,
+            "source_sha256": "f0548779b00c17103a683809b56fe39ca40512c82ff9891997f5ce97c4f50d90"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N010",
+        "scope": "selected_project_boundary",
+        "project": "R10",
+        "repository": "wger-project/wger",
+        "snapshot": "a841e51c413843dfd16d8e51c6a3db2a119b84f5",
+        "source_anchors": [
+          {
+            "path": "wger/core/api/permissions.py",
+            "function": "AllowRegisterUser.has_permission",
+            "line": 27,
+            "end_line": 31,
+            "source_sha256": "7e636358c630d0a035f23e4e79057065b8bfa7c8bcbc04410511715a442330aa"
+          },
+          {
+            "path": "wger/manager/api/permissions.py",
+            "function": "RoutinePermission.has_permission",
+            "line": 25,
+            "end_line": 28,
+            "source_sha256": "345e9f4fc311a12dc8ca16389d9436b395f4a696547e78e62dc2fb7af6c09f59"
+          },
+          {
+            "path": "wger/utils/permissions.py",
+            "function": "CreateOnlyPermission.has_permission",
+            "line": 69,
+            "end_line": 72,
+            "source_sha256": "04f05ccda8162706a9c8e1c7017eda7e525ae2965097c9bba51e3f7ae3467f3e"
+          },
+          {
+            "path": "wger/utils/permissions.py",
+            "function": "UpdateOnlyPermission.has_permission",
+            "line": 81,
+            "end_line": 86,
+            "source_sha256": "04f05ccda8162706a9c8e1c7017eda7e525ae2965097c9bba51e3f7ae3467f3e"
+          }
+        ],
+        "existing_contexts": 43,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N011",
+        "scope": "selected_project_boundary",
+        "project": "R11",
+        "repository": "Satviksangamkar/RBAC-IMPROVED",
+        "snapshot": "75998fa86cc9a856e02c9c76e74c15cdcc833dde",
+        "source_anchors": [
+          {
+            "path": "app/core/rbac_manager.py",
+            "function": "RBACManager._is_cache_valid",
+            "line": 259,
+            "end_line": 263,
+            "source_sha256": "17a89006a0424fa20951352df025d64764502c03f5b6f995ed987cee6aab3548"
+          },
+          {
+            "path": "app/core/rbac_manager.py",
+            "function": "RBACManager.get_all_inherited_roles",
+            "line": 89,
+            "end_line": 134,
+            "source_sha256": "17a89006a0424fa20951352df025d64764502c03f5b6f995ed987cee6aab3548"
+          },
+          {
+            "path": "app/core/security.py",
+            "function": "check_permission",
+            "line": 255,
+            "end_line": 287,
+            "source_sha256": "29d8f35f74ed871236402cb16d410ba9482a31ece8a07ad9d45f997e19ef4911"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 6,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N012",
+        "scope": "selected_project_boundary",
+        "project": "R12",
+        "repository": "Zleap-AI/SAG",
+        "snapshot": "e68cdeb3a770ff9b35c90a516474e281d3c82a3a",
+        "source_anchors": [
+          {
+            "path": "apps/api/sag_api/core/deps.py",
+            "function": "_authenticate_user_principal",
+            "line": 41,
+            "end_line": 53,
+            "source_sha256": "71dcd90f1b0b4d27540942ed55ec888329d1d7c56a348f95ec2b2b667f873edf"
+          },
+          {
+            "path": "apps/api/sag_api/core/deps.py",
+            "function": "_require_matching_auth_mode",
+            "line": 28,
+            "end_line": 30,
+            "source_sha256": "71dcd90f1b0b4d27540942ed55ec888329d1d7c56a348f95ec2b2b667f873edf"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N013",
+        "scope": "selected_project_boundary",
+        "project": "R13",
+        "repository": "papermerge/papermerge-core",
+        "snapshot": "14397c33268f63b28a8bad55c343fcf497d8eb87",
+        "source_anchors": [
+          {
+            "path": "papermerge/core/features/auth/__init__.py",
+            "function": "_authenticate_with_jwt",
+            "line": 185,
+            "end_line": 235,
+            "source_sha256": "eb615e2799d53bbc7bd6db7310210f0fcefcd4e950622efe735681a976fc3a29"
+          },
+          {
+            "path": "papermerge/core/features/auth/__init__.py",
+            "function": "extract_token_data",
+            "line": 59,
+            "end_line": 122,
+            "source_sha256": "eb615e2799d53bbc7bd6db7310210f0fcefcd4e950622efe735681a976fc3a29"
+          },
+          {
+            "path": "papermerge/core/utils/base64.py",
+            "function": "decode",
+            "line": 6,
+            "end_line": 35,
+            "source_sha256": "dceb3e46eee5e4c2a65ba4ecb2ca394cda39a7ec1b3605bfd7e122afe0ba8997"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 6,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N014",
+        "scope": "selected_project_boundary",
+        "project": "R14",
+        "repository": "JohnEarle/coalmine",
+        "snapshot": "24ca0bbf200c11cc85d6717ed24ebf4e3c6b98fa",
+        "source_anchors": [
+          {
+            "path": "src/api/auth.py",
+            "function": "require_scope",
+            "line": 216,
+            "end_line": 231,
+            "source_sha256": "0186299099ba9f218afa7eeba5c888d04890f91addd7121b6eb92090e6502466"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N015",
+        "scope": "selected_project_boundary",
+        "project": "R15",
+        "repository": "mahimairaja/azure-fastapi-rag-app",
+        "snapshot": "f9a33b27e06a763e287c61a2132f07990ad352e5",
+        "source_anchors": [
+          {
+            "path": "rag-service/app/services/authorization.py",
+            "function": "authorization_middleware",
+            "line": 83,
+            "end_line": 105,
+            "source_sha256": "c7e09a9df5b8d094440b1d2f22d9fb6855e0cbae5cf8d1d36d0d979a14b25c09"
+          },
+          {
+            "path": "rag-service/app/services/authorization.py",
+            "function": "check_permission",
+            "line": 46,
+            "end_line": 81,
+            "source_sha256": "c7e09a9df5b8d094440b1d2f22d9fb6855e0cbae5cf8d1d36d0d979a14b25c09"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N016",
+        "scope": "selected_project_boundary",
+        "project": "R16",
+        "repository": "PM-Devs/conet",
+        "snapshot": "c042a9570d044098f32b6c02c0dda5d67d20f72c",
+        "source_anchors": [
+          {
+            "path": "src/conet/control/policy.py",
+            "function": "PolicyEngine.authorize",
+            "line": 28,
+            "end_line": 33,
+            "source_sha256": "1084e3eed7adbc32ffddd27585741fec1275fc571d4242dd0ca1296ad9dbff36"
+          }
+        ],
+        "existing_contexts": 3,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N017",
+        "scope": "selected_project_boundary",
+        "project": "R17",
+        "repository": "apache/airflow",
+        "snapshot": "09d0ea1c97acb7b31cd108d9de944ed1c71a884a",
+        "source_anchors": [
+          {
+            "path": "airflow-core/src/airflow/api_fastapi/auth/managers/simple/simple_auth_manager.py",
+            "function": "SimpleAuthManager._is_admin",
+            "line": 480,
+            "end_line": 488,
+            "source_sha256": "8addf25570840cc2f4949dbeb426a083c4a4ac04bffdde4daba3ff70e266f093"
+          },
+          {
+            "path": "airflow-core/src/airflow/api_fastapi/auth/managers/simple/simple_auth_manager.py",
+            "function": "SimpleAuthManager._is_authorized",
+            "line": 491,
+            "end_line": 526,
+            "source_sha256": "8addf25570840cc2f4949dbeb426a083c4a4ac04bffdde4daba3ff70e266f093"
+          },
+          {
+            "path": "airflow-core/src/airflow/api_fastapi/auth/managers/simple/simple_auth_manager.py",
+            "function": "SimpleAuthManager.is_authorized_configuration",
+            "line": 244,
+            "end_line": 256,
+            "source_sha256": "8addf25570840cc2f4949dbeb426a083c4a4ac04bffdde4daba3ff70e266f093"
+          },
+          {
+            "path": "airflow-core/src/airflow/api_fastapi/auth/managers/simple/simple_auth_manager.py",
+            "function": "SimpleAuthManager.is_authorized_connection",
+            "line": 258,
+            "end_line": 270,
+            "source_sha256": "8addf25570840cc2f4949dbeb426a083c4a4ac04bffdde4daba3ff70e266f093"
+          }
+        ],
+        "existing_contexts": 7,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N018",
+        "scope": "selected_project_boundary",
+        "project": "R18",
+        "repository": "saleor/saleor",
+        "snapshot": "c982006cc04c77a97def93218dedac8d715eb041",
+        "source_anchors": [
+          {
+            "path": "saleor/account/models.py",
+            "function": "User.can_login",
+            "line": 369,
+            "end_line": 374,
+            "source_sha256": "b90e40d8936225a8e382b1bd666085a5b7fceec881857b481950df247530b448"
+          }
+        ],
+        "existing_contexts": 16,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N019",
+        "scope": "selected_project_boundary",
+        "project": "R19",
+        "repository": "paperless-ngx/paperless-ngx",
+        "snapshot": "7d8147c21d4f3984c8b5195b719ed7e0a35f65a1",
+        "source_anchors": [
+          {
+            "path": "src/documents/permissions.py",
+            "function": "_is_active_and_authenticated",
+            "line": 97,
+            "end_line": 102,
+            "source_sha256": "2fbb14aa63a0297d9203aff142fc10b8a121110c1387a1644491ff0277a9fa7f"
+          },
+          {
+            "path": "src/documents/permissions.py",
+            "function": "has_global_statistics_permission",
+            "line": 105,
+            "end_line": 109,
+            "source_sha256": "2fbb14aa63a0297d9203aff142fc10b8a121110c1387a1644491ff0277a9fa7f"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 6,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N020",
+        "scope": "selected_project_boundary",
+        "project": "R20",
+        "repository": "dgtlmoon/changedetection.io",
+        "snapshot": "f4da467f11d31b433ebbbbb2de7449b087b270af",
+        "source_anchors": [
+          {
+            "path": "changedetectionio/flask_app.py",
+            "function": "User.check_password",
+            "line": 725,
+            "end_line": 747,
+            "source_sha256": "4264cfc2a8367dc31fd7d31a7055865c28f1b004bc0830953b48f3d114c2fd36"
+          },
+          {
+            "path": "changedetectionio/flask_app.py",
+            "function": "changedetection_app.login",
+            "line": 1066,
+            "end_line": 1098,
+            "source_sha256": "4264cfc2a8367dc31fd7d31a7055865c28f1b004bc0830953b48f3d114c2fd36"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "synthesized"
+      },
+      {
+        "id": "N021",
+        "scope": "selected_project_boundary",
+        "project": "R21",
+        "repository": "simonvanlaak/CyberneticAgents",
+        "snapshot": "879d5489b14f4d167a96ef8aec34ebbad0cfc273",
+        "source_anchors": [
+          {
+            "path": "src/cyberagent/channels/routing.py",
+            "function": "is_reply_route_allowed",
+            "line": 25,
+            "end_line": 38,
+            "source_sha256": "c68dc97d9afaa7c23ba2fe25969f32f4307603af2dc76b9044b09e06093c3992"
+          }
+        ],
+        "existing_contexts": 16,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N022",
+        "scope": "selected_project_boundary",
+        "project": "R22",
+        "repository": "navyapdh11/agentic-ux-factory",
+        "snapshot": "9f91aa55eaf1a6b937897fd839e3c55be85d5966",
+        "source_anchors": [
+          {
+            "path": "backend/app/security/rbac.py",
+            "function": "require_permission",
+            "line": 94,
+            "end_line": 108,
+            "source_sha256": "42b7cb87b943a2f080369f0e6ef95aaa0eab62f2b08afa4f688a4860cc2aba34"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N023",
+        "scope": "selected_project_boundary",
+        "project": "R23",
+        "repository": "bcurts/agentchattr",
+        "snapshot": "ff8d22e01eb57ef543d07556773ead5b2257c63a",
+        "source_anchors": [
+          {
+            "path": "app.py",
+            "function": "_extract_agent_token",
+            "line": 178,
+            "end_line": 182,
+            "source_sha256": "8f2d1fb1c2e2c73eccbf80c487d8f8e8aabc79e2875024826a6c39323a99fcc9"
+          },
+          {
+            "path": "app.py",
+            "function": "_resolve_authenticated_agent",
+            "line": 185,
+            "end_line": 191,
+            "source_sha256": "8f2d1fb1c2e2c73eccbf80c487d8f8e8aabc79e2875024826a6c39323a99fcc9"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N024",
+        "scope": "selected_project_boundary",
+        "project": "R24",
+        "repository": "janeczku/calibre-web",
+        "snapshot": "6e840acbda8d62fdd159bf3855c01872d629a914",
+        "source_anchors": [
+          {
+            "path": "cps/cw_login/mixins.py",
+            "function": "AnonymousUserMixin.is_active",
+            "line": 57,
+            "end_line": 58,
+            "source_sha256": "80f77ba2d311963c70d1e52150c6c7b2710173f8cad9c61dc60e4a14bb897282"
+          },
+          {
+            "path": "cps/cw_login/mixins.py",
+            "function": "AnonymousUserMixin.is_authenticated",
+            "line": 53,
+            "end_line": 54,
+            "source_sha256": "80f77ba2d311963c70d1e52150c6c7b2710173f8cad9c61dc60e4a14bb897282"
+          },
+          {
+            "path": "cps/cw_login/mixins.py",
+            "function": "UserMixin.is_active",
+            "line": 12,
+            "end_line": 13,
+            "source_sha256": "80f77ba2d311963c70d1e52150c6c7b2710173f8cad9c61dc60e4a14bb897282"
+          },
+          {
+            "path": "cps/cw_login/mixins.py",
+            "function": "UserMixin.is_authenticated",
+            "line": 16,
+            "end_line": 17,
+            "source_sha256": "80f77ba2d311963c70d1e52150c6c7b2710173f8cad9c61dc60e4a14bb897282"
+          },
+          {
+            "path": "cps/ub.py",
+            "function": "Anonymous.is_active",
+            "line": 318,
+            "end_line": 319,
+            "source_sha256": "e5a89cfe7eafa70cd5c8241a1dd8a615e8c4b4abaf8936e4c779dd46c94414dc"
+          },
+          {
+            "path": "cps/ub.py",
+            "function": "Anonymous.is_authenticated",
+            "line": 326,
+            "end_line": 327,
+            "source_sha256": "e5a89cfe7eafa70cd5c8241a1dd8a615e8c4b4abaf8936e4c779dd46c94414dc"
+          },
+          {
+            "path": "cps/ub.py",
+            "function": "UserBase.is_active",
+            "line": 176,
+            "end_line": 177,
+            "source_sha256": "e5a89cfe7eafa70cd5c8241a1dd8a615e8c4b4abaf8936e4c779dd46c94414dc"
+          },
+          {
+            "path": "cps/ub.py",
+            "function": "UserBase.is_authenticated",
+            "line": 142,
+            "end_line": 143,
+            "source_sha256": "e5a89cfe7eafa70cd5c8241a1dd8a615e8c4b4abaf8936e4c779dd46c94414dc"
+          }
+        ],
+        "existing_contexts": 2,
+        "existing_extension_contexts": 4,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N025",
+        "scope": "selected_project_boundary",
+        "project": "R25",
+        "repository": "donnel666/kanban",
+        "snapshot": "d62737589bae64242d2278e1defde818903f88c0",
+        "source_anchors": [
+          {
+            "path": "backend/app/core/deps.py",
+            "function": "require_only_system_admin",
+            "line": 269,
+            "end_line": 276,
+            "source_sha256": "624a2ac55c3c56d8beb2330eefadfdaa62445670b6768fc432976aa285f4326d"
+          },
+          {
+            "path": "backend/app/services/team.py",
+            "function": "TeamService.check_creator_permission",
+            "line": 196,
+            "end_line": 203,
+            "source_sha256": "afe86ec5a136057318525412435343654c33627293777cfd927c9932c3a88dfd"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N026",
+        "scope": "selected_project_boundary",
+        "project": "R26",
+        "repository": "Websoft9/websoft9",
+        "snapshot": "70a6054facbaf285ecd2f4a1fc696de71f1e6513",
+        "source_anchors": [
+          {
+            "path": "apphub/src/services/docker_mirror_store.py",
+            "function": "MirrorEntry.auth_config",
+            "line": 164,
+            "end_line": 168,
+            "source_sha256": "d05993b50bbc939cf7001eed2e2f9f7175a1c5cf24a0200a43817f278cf29fb6"
+          },
+          {
+            "path": "apphub/src/services/docker_mirror_store.py",
+            "function": "MirrorEntry.has_credentials",
+            "line": 161,
+            "end_line": 162,
+            "source_sha256": "d05993b50bbc939cf7001eed2e2f9f7175a1c5cf24a0200a43817f278cf29fb6"
+          },
+          {
+            "path": "apphub/src/services/mirror_registry.py",
+            "function": "Accelerator.auth_config",
+            "line": 61,
+            "end_line": 64,
+            "source_sha256": "7ba5c90ccb5ad5145c0f4e0d95e60f6b63d50cf4d3842275082cd378e1b086da"
+          },
+          {
+            "path": "apphub/src/services/mirror_registry.py",
+            "function": "Accelerator.has_credentials",
+            "line": 58,
+            "end_line": 59,
+            "source_sha256": "7ba5c90ccb5ad5145c0f4e0d95e60f6b63d50cf4d3842275082cd378e1b086da"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 8,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N027",
+        "scope": "selected_project_boundary",
+        "project": "R27",
+        "repository": "faiyaz7283/dashtam-api",
+        "snapshot": "ca3308ca296d49b80456016d3097e87bbafaa6df",
+        "source_anchors": [
+          {
+            "path": "src/presentation/routers/api/middleware/auth_dependencies.py",
+            "function": "require_role",
+            "line": 285,
+            "end_line": 321,
+            "source_sha256": "06df8cf3910948c96cc046d726450bbe0d14ac7f64cd1d45ec1afcaf9099e143"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N028",
+        "scope": "selected_project_boundary",
+        "project": "R28",
+        "repository": "Evil0ctal/Douyin_TikTok_Download_API",
+        "snapshot": "0661234421fb8e1df24f97eb30958671f7a2ee08",
+        "source_anchors": [
+          {
+            "path": "src/dtk/api/deps.py",
+            "function": "Principal.permits",
+            "line": 61,
+            "end_line": 83,
+            "source_sha256": "d67b696d6c10ed8d1a5462513a83260b11639fa0c5a62ba4f802ba2dd0592cc5"
+          },
+          {
+            "path": "src/dtk/api/routes/content.py",
+            "function": "authorize",
+            "line": 251,
+            "end_line": 256,
+            "source_sha256": "769e03b79f1b3b27be6477d8ad4d49907565734aaca2bef490c244faae741410"
+          },
+          {
+            "path": "src/dtk/api/routes/content.py",
+            "function": "read_scope",
+            "line": 214,
+            "end_line": 224,
+            "source_sha256": "769e03b79f1b3b27be6477d8ad4d49907565734aaca2bef490c244faae741410"
+          },
+          {
+            "path": "src/dtk/api/routes/support.py",
+            "function": "has_scope",
+            "line": 188,
+            "end_line": 195,
+            "source_sha256": "18b742d3af5a641a89037ba95d38b7b996de06ed76f43cb63c2b7580e2f0cbff"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N029",
+        "scope": "selected_project_boundary",
+        "project": "R29",
+        "repository": "Sathisha/multi-agent-orchestrator",
+        "snapshot": "7f3d3fcb6ef34ef98531cfe0343d42af821bdae3",
+        "source_anchors": [
+          {
+            "path": "backend/shared/models/user.py",
+            "function": "User.has_permission",
+            "line": 83,
+            "end_line": 94,
+            "source_sha256": "2c33b70d6f6d433a370e3b84b020e576336fc9aedde73cef37a430c94ec9b75a"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService._check_global_permission",
+            "line": 97,
+            "end_line": 117,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService._check_resource_permission",
+            "line": 119,
+            "end_line": 138,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService._get_user_roles_with_permissions",
+            "line": 86,
+            "end_line": 95,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService._has_agent_access",
+            "line": 140,
+            "end_line": 161,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService._has_workflow_access",
+            "line": 163,
+            "end_line": 184,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService._is_access_type_sufficient",
+            "line": 186,
+            "end_line": 206,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          },
+          {
+            "path": "backend/shared/services/permission_service.py",
+            "function": "PermissionService.has_permission",
+            "line": 33,
+            "end_line": 84,
+            "source_sha256": "2b652392e5ec1a18a54a93a741897279eff62da9ba83c5b8acf707a06205d89b"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 18,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "synthesized"
+      },
+      {
+        "id": "N030",
+        "scope": "selected_project_boundary",
+        "project": "R30",
+        "repository": "QAQupupup/Conclave-internal",
+        "snapshot": "dbca85abf3b5ea87ec654e0b629e2b5e88182824",
+        "source_anchors": [
+          {
+            "path": "backend/app/auth_guard.py",
+            "function": "is_admin",
+            "line": 38,
+            "end_line": 46,
+            "source_sha256": "e3c0fce895733f20d8aeeb949d17745fcb9017c1d479e4cf6f782acaa491dfd3"
+          }
+        ],
+        "existing_contexts": 6,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N031",
+        "scope": "selected_project_boundary",
+        "project": "R31",
+        "repository": "hschoon-dev/secure-iot-gateway",
+        "snapshot": "453f98df141cd7cc4f9431eda88e1a1fc51a9be5",
+        "source_anchors": [
+          {
+            "path": "interface-partition/authorization_handler/authorization_handler.py",
+            "function": "AuthorizationHandler.check_admin_role",
+            "line": 40,
+            "end_line": 43,
+            "source_sha256": "4881727e9d9a622478605c0012c4c4149e7c793c0b73b171bf9772b3e735594e"
+          },
+          {
+            "path": "interface-partition/authorization_handler/authorization_handler.py",
+            "function": "AuthorizationHandler.check_permission",
+            "line": 34,
+            "end_line": 38,
+            "source_sha256": "4881727e9d9a622478605c0012c4c4149e7c793c0b73b171bf9772b3e735594e"
+          },
+          {
+            "path": "interface-partition/authorization_handler/authorization_handler.py",
+            "function": "AuthorizationHandler.verify_authorization",
+            "line": 31,
+            "end_line": 32,
+            "source_sha256": "4881727e9d9a622478605c0012c4c4149e7c793c0b73b171bf9772b3e735594e"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 3,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N032",
+        "scope": "selected_project_boundary",
+        "project": "R32",
+        "repository": "Anil-matcha/open-agent-email",
+        "snapshot": "0f307a6bf0341c8ff5b950a6dfa4aa23b919d079",
+        "source_anchors": [
+          {
+            "path": "server/app/security.py",
+            "function": "require_admin",
+            "line": 120,
+            "end_line": 123,
+            "source_sha256": "6d3fc0da4aab1fc53b9c61d4f614b107b6c7fbb1187cbdb94eff6ea66ea9830c"
+          },
+          {
+            "path": "server/app/security.py",
+            "function": "require_operator",
+            "line": 126,
+            "end_line": 130,
+            "source_sha256": "6d3fc0da4aab1fc53b9c61d4f614b107b6c7fbb1187cbdb94eff6ea66ea9830c"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N033",
+        "scope": "selected_project_boundary",
+        "project": "R33",
+        "repository": "azar-management-consulting/occp-core",
+        "snapshot": "c19c74b9a6b41972d3e9be89e13356c6fa646af6",
+        "source_anchors": [
+          {
+            "path": "security/break_glass.py",
+            "function": "BreakGlassProtocol.check_scope",
+            "line": 292,
+            "end_line": 297,
+            "source_sha256": "731256712658f8ead9cd37d083c000032386525ae4f21c75caeb9c59d83f4af4"
+          },
+          {
+            "path": "security/break_glass.py",
+            "function": "BreakGlassToken.is_active",
+            "line": 65,
+            "end_line": 67,
+            "source_sha256": "731256712658f8ead9cd37d083c000032386525ae4f21c75caeb9c59d83f4af4"
+          },
+          {
+            "path": "security/break_glass.py",
+            "function": "BreakGlassToken.is_approved",
+            "line": 55,
+            "end_line": 57,
+            "source_sha256": "731256712658f8ead9cd37d083c000032386525ae4f21c75caeb9c59d83f4af4"
+          },
+          {
+            "path": "security/break_glass.py",
+            "function": "BreakGlassToken.is_expired",
+            "line": 60,
+            "end_line": 62,
+            "source_sha256": "731256712658f8ead9cd37d083c000032386525ae4f21c75caeb9c59d83f4af4"
+          }
+        ],
+        "existing_contexts": 7,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N034",
+        "scope": "selected_project_boundary",
+        "project": "R34",
+        "repository": "flaskbb/flaskbb",
+        "snapshot": "8bee59e9ad626443e3d13dd0fb38c56223e6b2f4",
+        "source_anchors": [
+          {
+            "path": "flaskbb/core/auth/permissions.py",
+            "function": "UserPermissions.has_role",
+            "line": 86,
+            "end_line": 87,
+            "source_sha256": "e8095513fcf909f78c724f3a8aabc3a14119c3224d5f4c1abdb2049ba2153b14"
+          }
+        ],
+        "existing_contexts": 9,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N035",
+        "scope": "selected_project_boundary",
+        "project": "R35",
+        "repository": "rachelos/we-mp-rss",
+        "snapshot": "9fd4edb2a9311bffa571db050f53f415705db294",
+        "source_anchors": [
+          {
+            "path": "core/auth.py",
+            "function": "get_current_user",
+            "line": 297,
+            "end_line": 321,
+            "source_sha256": "5d6d0b4daae3988c1c94fc3e854e78d9538718bb2b4961c5ab3bfb994a667a22"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N036",
+        "scope": "selected_project_boundary",
+        "project": "R36",
+        "repository": "netbox-community/netbox",
+        "snapshot": "9b9844bdbc226bc0bacff6bfdf65a824a4be0eec",
+        "source_anchors": [
+          {
+            "path": "netbox/users/models/permissions.py",
+            "function": "ObjectPermission.can_view",
+            "line": 68,
+            "end_line": 69,
+            "source_sha256": "e5bbcb0ccffb99dd180d0834548e8341c508551f754fb168c8220a90dc3cff53"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N037",
+        "scope": "selected_project_boundary",
+        "project": "R37",
+        "repository": "mathesar-foundation/mathesar",
+        "snapshot": "3833c3ae5714f164dd6870f4d28865e78d60a4cc",
+        "source_anchors": [
+          {
+            "path": "mathesar/utils/forms.py",
+            "function": "has_permission_for_form",
+            "line": 131,
+            "end_line": 141,
+            "source_sha256": "d846256488a608e11c111d2ef680eb84a3cc8bf73cd7032fad889c9669a5fce5"
+          }
+        ],
+        "existing_contexts": 4,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N038",
+        "scope": "selected_project_boundary",
+        "project": "R38",
+        "repository": "rcortx/kiwiq",
+        "snapshot": "e1dc6486cbf8425ca146970d515415e29e569679",
+        "source_anchors": [
+          {
+            "path": "services/linkedin_integration/services.py",
+            "function": "LinkedinIntegrationService._can_user_post_to_organization",
+            "line": 1509,
+            "end_line": 1519,
+            "source_sha256": "621d1e9c9be7da67d0603a175761507d401fe31115566fe8e20d17bf572d92b7"
+          }
+        ],
+        "existing_contexts": 5,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_left"
+      },
+      {
+        "id": "N039",
+        "scope": "selected_project_boundary",
+        "project": "R39",
+        "repository": "inventree/InvenTree",
+        "snapshot": "60db8a924ec62acca557df3ad3e83056444e1e92",
+        "source_anchors": [
+          {
+            "path": "src/backend/InvenTree/common/models.py",
+            "function": "ProjectCode.check_permission",
+            "line": 175,
+            "end_line": 177,
+            "source_sha256": "83e1b2f8e4d80f9882d5ace5d358879447eb8f3c79b2b01a3d935ea59e8ca85c"
+          },
+          {
+            "path": "src/backend/InvenTree/users/models.py",
+            "function": "UserProfile.check_permission",
+            "line": 691,
+            "end_line": 697,
+            "source_sha256": "b7667f8ee8ae58e65ae70bcb959e2ecd326509ed416eb823793197bcabda0214"
+          }
+        ],
+        "existing_contexts": 18,
+        "existing_extension_contexts": 0,
+        "final_label": "concrete_source_contract",
+        "initial_left_label": "concrete_source_contract",
+        "initial_right_label": "concrete_source_contract",
+        "resolution": "adopt_right"
+      },
+      {
+        "id": "N040",
+        "scope": "selected_project_boundary",
+        "project": "R40",
+        "repository": "hugo617/ai-agent-platform",
+        "snapshot": "14a7063064fe6f1f978137229cbf159d6c51e171",
+        "source_anchors": [
+          {
+            "path": "app/services/permission_service.py",
+            "function": "CheckRule.applies",
+            "line": 810,
+            "end_line": 817,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "PermissionService.check",
+            "line": 60,
+            "end_line": 104,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "PermissionService.require",
+            "line": 106,
+            "end_line": 128,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "_is_group_admin_of",
+            "line": 737,
+            "end_line": 751,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "_rule_api_token_scope_gate",
+            "line": 820,
+            "end_line": 848,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "_rule_group_admin_knowledge",
+            "line": 880,
+            "end_line": 894,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "_rule_hq_staff_read",
+            "line": 856,
+            "end_line": 858,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "_rule_platform_writer",
+            "line": 861,
+            "end_line": 877,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "_rule_super_admin",
+            "line": 851,
+            "end_line": 853,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          },
+          {
+            "path": "app/services/permission_service.py",
+            "function": "is_platform_writer",
+            "line": 686,
+            "end_line": 697,
+            "source_sha256": "db6cc290aa6f4d67808f1cd06cb589b346cfbf6ec978a05d4a07169b465d6d02"
+          }
+        ],
+        "existing_contexts": 9,
+        "existing_extension_contexts": 0,
+        "final_label": "conditional_source_contract",
+        "initial_left_label": "conditional_source_contract",
+        "initial_right_label": "conditional_source_contract",
+        "resolution": "adopt_right"
+      }
+    ],
+    "method_and_design_dispositions": [
+      {
+        "id": "M01",
+        "title": "类型与短路",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "repaired_and_observation_scope_corrected"
+      },
+      {
+        "id": "M02",
+        "title": "闭包与参数",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "repaired"
+      },
+      {
+        "id": "M03",
+        "title": "协程与调用",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "repaired"
+      },
+      {
+        "id": "M04",
+        "title": "未知与异常",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "repaired"
+      },
+      {
+        "id": "M05",
+        "title": "依赖组合",
+        "submitted_judgment": "未发现需修正问题",
+        "current_disposition": "retained_and_rechecked"
+      },
+      {
+        "id": "M06",
+        "title": "状态与提供者",
+        "submitted_judgment": "未发现需修正问题",
+        "current_disposition": "retained_and_bounded"
+      },
+      {
+        "id": "M07",
+        "title": "源码绑定",
+        "submitted_judgment": "材料不足",
+        "current_disposition": "runtime_binding_supplied_not_full_source_equivalence"
+      },
+      {
+        "id": "M08",
+        "title": "形式化义务",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "known_counterexamples_repaired_conditional_obligation_retained"
+      },
+      {
+        "id": "E01",
+        "title": "样本单位与谱系",
+        "submitted_judgment": "材料不足",
+        "current_disposition": "selection_reproducible_independence_not_established"
+      },
+      {
+        "id": "E02",
+        "title": "开发暴露与留出",
+        "submitted_judgment": "未发现需修正问题",
+        "current_disposition": "retained"
+      },
+      {
+        "id": "E03",
+        "title": "范围与分母",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "corrected"
+      },
+      {
+        "id": "E04",
+        "title": "公平信息与成本",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "corrected"
+      },
+      {
+        "id": "E05",
+        "title": "结果与发现",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "repaired"
+      },
+      {
+        "id": "E06",
+        "title": "特殊情形",
+        "submitted_judgment": "材料不足",
+        "current_disposition": "selected_scope_classified_full_application_prevalence_not_established"
+      },
+      {
+        "id": "E07",
+        "title": "复现与缺失",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "distribution_and_records_corrected"
+      },
+      {
+        "id": "E08",
+        "title": "独立复核流程",
+        "submitted_judgment": "发现需修正问题",
+        "current_disposition": "paired_records_and_adjudication_preserved"
+      }
+    ]
   },
   "source_execution": {
     "projects": 40,

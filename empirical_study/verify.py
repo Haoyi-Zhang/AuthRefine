@@ -3,6 +3,7 @@ import ast,base64,gzip,hashlib,json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from predicate_runtime import body_identity
+from review import verify_review
 ROOT=Path(__file__).resolve().parent
 def load(name,root=ROOT):
     path=root/'data'/name
@@ -83,6 +84,7 @@ def verify(root=ROOT):
     methods=json.loads((root/'methods.json').read_text(encoding='utf-8'))
     if methods['source_contract_review']['items']!=99 or sum(methods['source_contract_review']['final_categories'].values())!=99 or methods['source_contract_review']['final_response_items']!=115:raise ValueError('structured assessment denominator')
     if methods['source_contract_review']['independent_semantic_gold_claimed'] or methods['source_contract_review']['raw_response_text_or_reviewer_identities_distributed']:raise ValueError('unsupported review provenance claim')
+    review=verify_review(root,methods)
     if len(methods['projects'])!=40 or methods['source_execution']['extension_function_bindings']!=declared:raise ValueError('method/source binding count')
     if len(methods['costs']['delegated_batch_wall_ns'])!=6 or methods['costs']['extension_worker_processes']!=60 or len(methods['costs']['static_runs'])!=240:raise ValueError('cost strata')
     followup=methods['repairs'].get('additional_owned_followup_controls',{})
@@ -96,5 +98,6 @@ def verify(root=ROOT):
     return dict(projects=40,primary_contexts=sum(len(c['inputs']) for c in primary['cases'])+sum(len(c['samples']) for c in remaining['cases']),
         extension_projects=len(extensions['cases']),extension_contexts=sum(len(c['samples']) for c in extensions['cases']),
         extension_source_functions=declared,all_recorded_observations_consistent=True,
-        whole_application_certificate=False,baseline_and_extension_counts_are_not_independent_samples=True)
+        whole_application_certificate=False,baseline_and_extension_counts_are_not_independent_samples=True,
+        completed_source_review_items=review['completed_final_items'])
 if __name__=='__main__':print(json.dumps(verify(),indent=2))
