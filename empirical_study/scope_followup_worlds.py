@@ -120,7 +120,7 @@ class FollowupWorld(World):
         self.entry_args={'check_permission':dict(required_permission=c['required'],user=self.record('user',username='alice'),storage=storage,enforcer=enforcer)}
     def setup_R24(self):
         owner=self.c['owner'];self.user=self.record('user')
-        if owner!='Anonymous':self.property(self.user,'is_active',owner+'_active')
+        self.property(self.user,'is_active',owner+'_active')
     def setup_R13(self):
         World.setup_R13(self)
         c=self.c
@@ -231,7 +231,7 @@ class FollowupWorld(World):
             policy=type('SourcePolicy',(self.permission_base,),{'perms_map':self.case['policy_map']})()
             return policy.has_permission(NS(user=user,method=c['method']),NS(queryset=self.dj.Child.objects.all()))
         if p=='R24':
-            return dict(authenticated=finish(g[c['owner']+'_authenticated'](self.user)),active=finish(g[c['owner']+'_active'](self.user)) if c['owner']!='Anonymous' else None)
+            return dict(authenticated=finish(g[c['owner']+'_authenticated'](self.user)),active=finish(g[c['owner']+'_active'](self.user)))
         if p=='R26':return finish(g[c['owner']+'_config'](self.user))
         if p=='R19':
             def observed(execute,sql,params,many,context):

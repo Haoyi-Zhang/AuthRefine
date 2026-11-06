@@ -29,45 +29,101 @@ class Returned(BaseException):
     def __init__(self,value):self.value=value
 class Broken(BaseException):pass
 class Continued(BaseException):pass
+UNBOUND=object()
+
+class Frame(ChainMap):
+    """Lexical locals do not fall back to globals before assignment."""
+    def __getitem__(self,key):
+        if key in self.maps[0]:
+            value=self.maps[0][key]
+            if value is UNBOUND:raise UnboundLocalError('local variable referenced before assignment:'+key)
+            return value
+        outer=self.maps[1]
+        return outer.free(key) if isinstance(outer,Frame) else outer[key]
+    def free(self,key):
+        if key in self.maps[0]:
+            value=self.maps[0][key]
+            if value is UNBOUND:raise NameError('free variable referenced before assignment:'+key)
+            return value
+        outer=self.maps[1]
+        return outer.free(key) if isinstance(outer,Frame) else outer[key]
+
+def local_names(node):
+    names={a.arg for a in [*node.args.posonlyargs,*node.args.args,*node.args.kwonlyargs]}
+    if node.args.vararg:names.add(node.args.vararg.arg)
+    if node.args.kwarg:names.add(node.args.kwarg.arg)
+    class Bindings(ast.NodeVisitor):
+        def visit_Name(self,n):
+            if isinstance(n.ctx,ast.Store):names.add(n.id)
+        def visit_FunctionDef(self,n):names.add(n.name)
+        visit_AsyncFunctionDef=visit_FunctionDef
+        def visit_ExceptHandler(self,n):
+            if n.name:names.add(n.name)
+            for s in n.body:self.visit(s)
+        def visit_Import(self,n):
+            names.update(a.asname or a.name.split('.')[0] for a in n.names)
+        def visit_ImportFrom(self,n):names.update(a.asname or a.name for a in n.names)
+        def visit_GeneratorExp(self,n):pass
+        visit_ListComp=visit_GeneratorExp
+        visit_SetComp=visit_GeneratorExp
+        visit_DictComp=visit_GeneratorExp
+    visitor=Bindings()
+    for n in node.body:visitor.visit(n)
+    return names
+
 class Deferred:
-    def __init__(self,work):self.work=work
-    def resolve(self):return self.work()
+    def __init__(self,work):self.work=work;self.state='pending'
+    def resolve(self):
+        if self.state!='pending':raise RuntimeError('cannot reuse already awaited coroutine')
+        self.state='running'
+        try:return self.work()
+        finally:self.state='done'
 
 def finish(v):
     if isinstance(v,Deferred):return v.resolve()
-    if inspect.isawaitable(v):return asyncio.run(v)
+    if inspect.isawaitable(v):
+        async def completed():return await v
+        return asyncio.run(completed())
     return v
+
+def await_value(v):
+    if not isinstance(v,Deferred) and not inspect.isawaitable(v):raise TypeError('object cannot be used in await expression')
+    return finish(v)
 
 class ModelFunction:
     def __init__(self,node,closure,vm):
         self.node=node;self.closure=closure;self.vm=vm
-        a=node.args;self.defaults={x.arg:vm.expr(v,closure) for x,v in zip(a.args[-len(a.defaults):],a.defaults)} if a.defaults else {}
+        a=node.args;pos=[*a.posonlyargs,*a.args]
+        self.defaults={x.arg:vm.expr(v,closure) for x,v in zip(pos[-len(a.defaults):],a.defaults)} if a.defaults else {}
         self.kwdefaults={x.arg:vm.expr(v,closure) for x,v in zip(a.kwonlyargs,a.kw_defaults) if v is not None}
+        self.local_names=local_names(node)
     def __call__(self,/,*args,**kwargs):
-        return Deferred(lambda:self.invoke(args,kwargs)) if isinstance(self.node,ast.AsyncFunctionDef) else self.invoke(args,kwargs)
-    def invoke(self,args,kwargs):
-        self.vm.tick();a=self.node.args;names=[x.arg for x in a.args];local={}
+        local=self.bind(args,kwargs)
+        return Deferred(lambda:self.run(local)) if isinstance(self.node,ast.AsyncFunctionDef) else self.run(local)
+    def bind(self,args,kwargs):
+        a=self.node.args;names=[x.arg for x in [*a.posonlyargs,*a.args]];only={x.arg for x in a.posonlyargs};known=set(names)|{x.arg for x in a.kwonlyargs};bound={};extras={}
         if len(args)>len(names) and not a.vararg:raise TypeError('too many arguments')
-        for name,value in zip(names,args):local[name]=value
+        for name,value in zip(names,args):bound[name]=value
         for name,value in kwargs.items():
-            if name in local:raise TypeError('multiple argument values')
-            local[name]=value
+            if name in only or name not in known:
+                if not a.kwarg:raise TypeError('unexpected or positional-only keyword:'+name)
+                extras[name]=value
+            else:
+                if name in bound:raise TypeError('multiple argument values')
+                bound[name]=value
         for name in names:
-            if name not in local:
+            if name not in bound:
                 if name not in self.defaults:raise TypeError('missing argument:'+name)
-                local[name]=self.defaults[name]
+                bound[name]=self.defaults[name]
         for item in a.kwonlyargs:
-            if item.arg not in local:
+            if item.arg not in bound:
                 if item.arg not in self.kwdefaults:raise TypeError('missing keyword:'+item.arg)
-                local[item.arg]=self.kwdefaults[item.arg]
-        known=set(names)|{x.arg for x in a.kwonlyargs}
-        extras={k:v for k,v in local.items() if k not in known}
-        if extras and not a.kwarg:raise TypeError('unexpected keyword')
-        if a.vararg:local[a.vararg.arg]=tuple(args[len(names):])
-        if a.kwarg:
-            for key in extras:del local[key]
-            local[a.kwarg.arg]=extras
-        env=ChainMap(local,self.closure)
+                bound[item.arg]=self.kwdefaults[item.arg]
+        if a.vararg:bound[a.vararg.arg]=tuple(args[len(names):])
+        if a.kwarg:bound[a.kwarg.arg]=extras
+        return {**dict.fromkeys(self.local_names,UNBOUND),**bound}
+    def run(self,local):
+        self.vm.tick();env=Frame(local,self.closure)
         try:self.vm.block(self.node.body,env)
         except Returned as r:return r.value
         return None
@@ -82,8 +138,8 @@ class Machine:
         if n is None:return None
         if isinstance(n,ast.Constant):return n.value
         if isinstance(n,ast.Name):
-            if n.id not in e:raise Unknown('unbound name:'+n.id)
-            return e[n.id]
+            try:return e[n.id]
+            except KeyError:raise Unknown('unbound name:'+n.id)
         if isinstance(n,ast.Attribute):
             if n.attr.startswith('__'):raise Unknown('hidden runtime attribute')
             obj=self.expr(n.value,e)
@@ -106,8 +162,12 @@ class Machine:
         if isinstance(n,ast.Dict):
             result={}
             for k,v in zip(n.keys,n.values):
-                if k is None:result.update(self.expr(v,e))
-                else:result[self.expr(k,e)]=self.expr(v,e)
+                if k is None:
+                    mapping=self.expr(v,e)
+                    if not hasattr(mapping,'keys'):raise TypeError('dictionary expansion requires a mapping')
+                    for key in mapping.keys():result[key]=mapping[key]
+                else:
+                    key=self.expr(k,e);value=self.expr(v,e);result[key]=value
             return result
         if isinstance(n,ast.UnaryOp):
             ops={ast.Not:operator.not_,ast.USub:operator.neg,ast.UAdd:operator.pos}
@@ -160,16 +220,20 @@ class Machine:
                     if key in kwargs:raise TypeError('multiple keyword argument values')
                     kwargs[key]=value
             return fn(*args,**kwargs)
-        if isinstance(n,ast.Await):return finish(self.expr(n.value,e))
+        if isinstance(n,ast.Await):return await_value(self.expr(n.value,e))
         if isinstance(n,(ast.GeneratorExp,ast.ListComp,ast.SetComp)):
+            if any(g.is_async for g in n.generators):raise Unknown('async comprehension')
+            first=iter(self.expr(n.generators[0].iter,e))
+            names={x.id for g in n.generators for x in ast.walk(g.target) if isinstance(x,ast.Name) and isinstance(x.ctx,ast.Store)}
+            scope=Frame(dict.fromkeys(names,UNBOUND),e)
             def generate(index,env):
                 if index==len(n.generators):yield self.expr(n.elt,env);return
                 g=n.generators[index]
-                if g.is_async:raise Unknown('async comprehension')
-                for value in self.expr(g.iter,env):
-                    local=ChainMap({},env);self.assign(g.target,value,local)
-                    if all(self.expr(cond,local) for cond in g.ifs):yield from generate(index+1,local)
-            gen=generate(0,e)
+                values=first if index==0 else iter(self.expr(g.iter,env))
+                for value in values:
+                    self.assign(g.target,value,env)
+                    if all(self.expr(cond,env) for cond in g.ifs):yield from generate(index+1,env)
+            gen=generate(0,scope)
             return gen if isinstance(n,ast.GeneratorExp) else list(gen) if isinstance(n,ast.ListComp) else set(gen)
         raise Unknown('expression:'+type(n).__name__)
     def assign(self,n,v,e):
@@ -191,11 +255,18 @@ class Machine:
             elif isinstance(n,ast.Assign):
                 v=self.expr(n.value,e)
                 for target in n.targets:self.assign(target,v,e)
-            elif isinstance(n,ast.AnnAssign):self.assign(n.target,self.expr(n.value,e),e)
+            elif isinstance(n,ast.AnnAssign):
+                if n.value is not None:self.assign(n.target,self.expr(n.value,e),e)
             elif isinstance(n,ast.AugAssign):
                 ops={ast.Add:operator.iadd,ast.BitOr:operator.ior,ast.BitAnd:operator.iand}
                 if type(n.op) not in ops:raise Unknown('in-place operation')
-                self.assign(n.target,ops[type(n.op)](self.expr(n.target,e),self.expr(n.value,e)),e)
+                if isinstance(n.target,ast.Name):
+                    before=self.expr(n.target,e);value=ops[type(n.op)](before,self.expr(n.value,e));e[n.target.id]=value
+                elif isinstance(n.target,ast.Attribute):
+                    obj=self.expr(n.target.value,e);before=getattr(obj,n.target.attr);value=ops[type(n.op)](before,self.expr(n.value,e));setattr(obj,n.target.attr,value)
+                elif isinstance(n.target,ast.Subscript):
+                    obj=self.expr(n.target.value,e);key=self.expr(n.target.slice,e);before=obj[key];obj[key]=ops[type(n.op)](before,self.expr(n.value,e))
+                else:raise Unknown('in-place target')
             elif isinstance(n,ast.If):self.block(n.body if self.expr(n.test,e) else n.orelse,e)
             elif isinstance(n,ast.For):
                 broke=False
@@ -229,7 +300,9 @@ class Machine:
                                 if h.name:e[h.name]=ex
                                 self.exceptions.append(ex)
                                 try:self.block(h.body,e)
-                                finally:self.exceptions.pop()
+                                finally:
+                                    self.exceptions.pop()
+                                    if h.name:e[h.name]=UNBOUND
                                 break
                         else:raise
                     else:self.block(n.orelse,e)

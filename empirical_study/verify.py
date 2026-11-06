@@ -61,6 +61,7 @@ def verify(root=ROOT):
                         value=result.get('value')
                         if case['project']=='R24':value=value.get('authenticated') if isinstance(value,dict) else None
                         if result['status']!='value' or not exact(value,fixture['expected']):raise ValueError('extension normal result')
+                    if 'expected_active' in fixture and (result['status']!='value' or not exact(result.get('value',{}).get('active'),fixture['expected_active'])):raise ValueError('source active property result')
                     if 'expected_status' in fixture:
                         status=result.get('status_code',200)
                         if case['project']=='R04' and result['status']=='value':status=result['value']['status_code']
@@ -79,8 +80,19 @@ def verify(root=ROOT):
     if not policy['normal_contract_recheck_passed'] or [len(x['mismatches']) for x in policy['variants']]!=[2,0]:raise ValueError('policy-copy repair')
     totals=observations['static_application_paths']
     if totals['baseline']['non_auxiliary_source_path']['declared_routes']!=2212 or totals['guarded']['non_auxiliary_source_path']['all_declared_dependencies_linked']!=1022:raise ValueError('static denominator')
+    methods=json.loads((root/'methods.json').read_text(encoding='utf-8'))
+    if methods['source_contract_review']['items']!=99 or sum(methods['source_contract_review']['final_categories'].values())!=99 or methods['source_contract_review']['final_response_items']!=115:raise ValueError('structured assessment denominator')
+    if methods['source_contract_review']['independent_semantic_gold_claimed'] or methods['source_contract_review']['raw_response_text_or_reviewer_identities_distributed']:raise ValueError('unsupported review provenance claim')
+    if len(methods['projects'])!=40 or methods['source_execution']['extension_function_bindings']!=declared:raise ValueError('method/source binding count')
+    if len(methods['costs']['delegated_batch_wall_ns'])!=6 or methods['costs']['extension_worker_processes']!=60 or len(methods['costs']['static_runs'])!=240:raise ValueError('cost strata')
+    anonymous=next(c for c in extensions['cases'] if c['project']=='R24')
+    if not any(r['function']=='Anonymous.is_active' for r in anonymous['functions']):raise ValueError('anonymous active source omitted')
+    for r in observations['extensions']:
+        if r['project']=='R24':
+            value=next(x['result'] for x in r['observations'] if x['id']=='R24-F04')
+            if not exact(value,dict(status='value',value=dict(authenticated=False,active=False))):raise ValueError('unobserved anonymous active field')
     return dict(projects=40,primary_contexts=sum(len(c['inputs']) for c in primary['cases'])+sum(len(c['samples']) for c in remaining['cases']),
         extension_projects=len(extensions['cases']),extension_contexts=sum(len(c['samples']) for c in extensions['cases']),
-        extension_source_functions=declared,all_recorded_observations_consistent=True,expert_returns=0,
+        extension_source_functions=declared,all_recorded_observations_consistent=True,
         whole_application_certificate=False,baseline_and_extension_counts_are_not_independent_samples=True)
 if __name__=='__main__':print(json.dumps(verify(),indent=2))

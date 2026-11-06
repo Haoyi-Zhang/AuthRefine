@@ -8,6 +8,8 @@ import ast,copy,hashlib,json,sys,textwrap,time
 from types import SimpleNamespace
 
 class Unsupported(Exception):pass
+UNBOUND=object()
+class Program(list):pass
 
 def digest(data):return hashlib.sha256(data).hexdigest()
 
@@ -34,11 +36,14 @@ def unpack(x):
 
 def pack(x):
     if type(x) in (str,int,bool,type(None)):return {'type':type(x).__name__,'value':x}
-    if type(x) in (list,tuple,set):
+    if type(x) in (list,tuple,set,frozenset):
         vals=[pack(v) for v in x]
-        if type(x) is set:vals.sort(key=lambda v:json.dumps(v,sort_keys=True))
+        if type(x) in (set,frozenset):vals.sort(key=lambda v:json.dumps(v,sort_keys=True))
         return {'type':type(x).__name__,'value':vals}
-    if type(x) is dict:return {'type':'dict','value':{k:pack(v) for k,v in sorted(x.items())}}
+    if type(x) is dict:
+        if all(type(k) is str for k in x):return {'type':'dict','value':{k:pack(v) for k,v in sorted(x.items())}}
+        entries=[[pack(k),pack(v)] for k,v in x.items()];entries.sort(key=lambda p:json.dumps(p[0],sort_keys=True))
+        return {'type':'dict-items','value':entries}
     if type(x) is SimpleNamespace:return {'type':'record','value':{k:pack(v) for k,v in sorted(vars(x).items())}}
     raise Unsupported('unknown result type')
 
@@ -83,7 +88,9 @@ def compile_source(source):
     f=parse_definition(source)
     if f.args.vararg or f.args.kwarg or f.args.posonlyargs:raise Unsupported('signature')
     if sum(1 for _ in ast.walk(f))>300:raise Unsupported('syntax envelope')
-    ir=statements(f.body)
+    ir=Program(statements(f.body))
+    ir.parameters={a.arg for a in [*f.args.args,*f.args.kwonlyargs]}
+    ir.locals={n.id for s in f.body for n in ast.walk(s) if isinstance(n,ast.Name) and isinstance(n.ctx,ast.Store)}
     # Defaults and annotations are outside the reviewed invocation body. Every
     # argument is explicit; nonliteral defaults are not evaluated or imported.
     for arg in [*f.args.args,*f.args.kwonlyargs]:arg.annotation=None
@@ -97,6 +104,7 @@ def evaluate(e,env):
     if tag=='literal':return e[1]
     if tag=='name':
         if e[1] not in env:raise Unsupported('unbound name:'+e[1])
+        if env[e[1]] is UNBOUND:raise UnboundLocalError('local variable referenced before assignment:'+e[1])
         return env[e[1]]
     if tag=='field':
         obj=evaluate(e[1],env)
@@ -134,19 +142,24 @@ def evaluate(e,env):
         return True
     raise Unsupported('unknown IR')
 
-def execute(ir,env):
+def execute(ir,env,initialize=True):
+    if initialize and isinstance(ir,Program):
+        for name in ir.locals-ir.parameters:env[name]=UNBOUND
     for s in ir:
         if s[0]=='return':return True,evaluate(s[1],env)
         if s[0]=='assign':env[s[1]]=evaluate(s[2],env)
         if s[0]=='if':
-            returned,value=execute(s[2] if evaluate(s[1],env) else s[3],env)
+            returned,value=execute(s[2] if evaluate(s[1],env) else s[3],env,initialize=False)
             if returned:return True,value
     return False,None
 
 def observation(call):
-    try:return dict(status='value',result=pack(call()))
+    try:value=call()
     except Unsupported as ex:return dict(status='unsupported',reason=str(ex))
-    except (AttributeError,KeyError,TypeError,ValueError,IndexError) as ex:return dict(status='source_exception',exception=type(ex).__name__)
+    except Exception as ex:return dict(status='source_exception',exception=type(ex).__name__)
+    try:return dict(status='value',result=pack(value))
+    except Unsupported as ex:return dict(status='unsupported',reason=str(ex),phase='result_projection')
+    except Exception as ex:return dict(status='harness_error',exception=type(ex).__name__,phase='result_projection')
 
 def measure(payload):
     if len(payload['cases'])>80:raise ValueError('case envelope')

@@ -4,7 +4,7 @@ These providers are NOT independent intent gold or whole application runtimes.
 Casbin uses actual source model text and the retained installed engine. External
 identity/ORM services remain named finite data providers,never live connections.
 """
-import base64,builtins,contextlib,hashlib,types
+import base64,builtins,contextlib,hashlib,json,types
 from datetime import datetime,timezone
 from enum import Enum
 from types import SimpleNamespace as NS
@@ -83,9 +83,12 @@ class World:
         if isinstance(v,bytes):return {'bytes_hex':v.hex()}
         if isinstance(v,datetime):return {'datetime':v.isoformat()}
         if isinstance(v,tuple):return {'tuple':[self.pack(x) for x in v]}
-        if isinstance(v,(set,frozenset)):return {'set':sorted([self.pack(x) for x in v],key=repr)}
+        if isinstance(v,(set,frozenset)):return {type(v).__name__:sorted([self.pack(x) for x in v],key=repr)}
         if isinstance(v,list):return [self.pack(x) for x in v]
-        if isinstance(v,dict):return {str(k):self.pack(x) for k,x in sorted(v.items(),key=lambda kv:str(kv[0]))}
+        if isinstance(v,dict):
+            if all(type(k) is str for k in v):return {k:self.pack(x) for k,x in sorted(v.items())}
+            entries=[[self.pack(k),self.pack(x)] for k,x in v.items()];entries.sort(key=lambda x:json.dumps(x[0],sort_keys=True))
+            return {'mapping':entries}
         if callable(v):return {'callable_boundary':True}
         if isinstance(v,NS):return {k:self.pack(x) for k,x in vars(v).items() if not k.startswith('_') and not callable(x)}
         raise Unknown('unserializable provider value:'+type(v).__name__)

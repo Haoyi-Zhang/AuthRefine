@@ -1,20 +1,23 @@
 {
   "files": {
-    "data/inputs.json.gz": "3da4741ecdef8bd7ac44c529d6916513d1728c978a9a0c11ca5ebc1db532f3e9",
-    "data/observations.json.gz": "4f8110bab479f45f45f004d74dad5908e66ac208a0862cfa6851a1655eca0d3e",
+    "data/inputs.json.gz": "d1e2f2ed77ae0434bbc21c24840fedf43fbaf3cbd79197b3f856deea1eed7c22",
+    "data/observations.json.gz": "26e3365f29f430e91909d97c8c2e9b3111d6f0048242b0748dacf8f5b90c7edd",
     "data/sources.json.gz": "aeb8bc692c2bc2a6ec55e4af6a4244b1014cecbc07028db6e0d87b403dd6948f",
-    "delegated_runtime.py": "45745838470d740745611196ba00de5410e4aa92ac324cc7b47b2b5e425eeff5",
-    "predicate_runtime.py": "0d770cc4d8e10f3773ac8fcc03f1e597f9983ce9401338f05a7ac6e881771c2d",
-    "README.md": "5f60b9fe706a7578fa1aa9d7a508e7a50f6d34ca43c7761ea27241e4ad09df97",
-    "remaining_worker.py": "7074e9521ad2708e40e02231b05676a020537e2d12336425364319a4a3e06631",
-    "remaining_worlds.py": "03f3bc82ad67a368ecb952138305eb64c00a530378da4f415d7beffde2165eb2",
+    "delegated_runtime.py": "0f9615efdeb0e89549cc00469c1e48c1ae34d4ccbb0739c6f42d2316f2c07b1c",
+    "methods.json": "7bf4c3fe6aa6cfabcc998f4718ac1947262a32eabf2f829fd9c83a82e470d3d2",
+    "predicate_runtime.py": "f2513415e9f5618fa9935f4835179456db84e954d589ed23f91998d0eeed13eb",
+    "README.md": "f9b16e7228ea628f89f95d7edf353d62236a9b5305459a5118c4abc087f76a7d",
+    "remaining_worker.py": "56f9e8b29ce893a92b9f7adbaec5c8353291af7fe6d0f02dc142d60acf7ef8db",
+    "remaining_worlds.py": "4ad1ffec0613b6490ffc5c3c8bfec36b5014630e99fa4997048064d7c91c0333",
     "replay.py": "2a9a0ae2504602216110c6bfcb0f493b8e286f5a8bb44969c3af2f83e6eafc02",
     "scope_followup_worker.py": "e3bf0bbf655f4e26f2d494bf1d9b9998b6e7522bf258869bbcf7230a6546107a",
-    "scope_followup_worlds.py": "be046bc473975bf629048a47085e12c5c7c036c55f1c93c3e6943584c58d60ae",
+    "scope_followup_worlds.py": "c520cca00e2d480d54bc5912c9987721327b5f9efc16b3db0db9c3cf6d107aec",
+    "SEMANTICS.md": "9efbb3cd85a3a3c678e882e843e89fce7e6acd53491a25cafefedfd110306656",
     "tests/test_delegated_runtime.py": "343327d4491dfd420d7d5288f94e9fa72d386aefa99e25b3282218db6c2490da",
     "tests/test_portable_binding.py": "a79b6e499e4b52094625f7c9d36b0785fb56975514ffa813b9e7a73bbe24f1f6",
     "tests/test_predicate_runtime.py": "3efeb1007db3418dd23f5e2a0e541a36a959f16d052f2307af16d1358fc511a0",
-    "verify.py": "2d9431314647cdcee45bd2e1f637594bb64874da5a413a365fbbeded84323415"
+    "tests/test_review_semantics.py": "73d387fcf6d60264194354a10c800163b9e04d72e98b999d346e1641de48101c",
+    "verify.py": "fd447f25fca0f49cb15391c5e1f283fadb8f087b819f859af629f83a929c7116"
   },
   "source_byte_identity_not_a_security_certificate": true
 }

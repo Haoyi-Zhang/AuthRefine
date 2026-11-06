@@ -1,0 +1,2902 @@
+{
+  "source_contract_review": {
+    "items": 99,
+    "final_categories": {
+      "仅能建立条件性契约": 45,
+      "可建立具体行为契约": 52,
+      "仅接口义务": 2
+    },
+    "method_topics": 8,
+    "design_topics": 8,
+    "initial_response_items": 230,
+    "final_response_items": 115,
+    "initial_judgment_agreement": [
+      {
+        "pair": "AB",
+        "items": 99,
+        "same_judgment": 83,
+        "different_judgment": 16,
+        "disagreement_ids": [
+          "S034",
+          "S035",
+          "S036",
+          "S037",
+          "S038",
+          "S040",
+          "S041",
+          "S042",
+          "S043",
+          "S044",
+          "S045",
+          "S046",
+          "S047",
+          "S048",
+          "N004",
+          "N005"
+        ],
+        "observed_agreement": 0.8383838383838383,
+        "cohen_kappa": 0.6915887850467289,
+        "meaning": "Judgment-category agreement only;not semantic accuracy or a final adjudication."
+      },
+      {
+        "pair": "CD",
+        "items": 8,
+        "same_judgment": 6,
+        "different_judgment": 2,
+        "disagreement_ids": [
+          "M01",
+          "M08"
+        ],
+        "observed_agreement": 0.75,
+        "cohen_kappa": 0.6097560975609756,
+        "meaning": "Judgment-category agreement only;not semantic accuracy or a final adjudication."
+      },
+      {
+        "pair": "EF",
+        "items": 8,
+        "same_judgment": 5,
+        "different_judgment": 3,
+        "disagreement_ids": [
+          "E03",
+          "E05",
+          "E07"
+        ],
+        "observed_agreement": 0.625,
+        "cohen_kappa": 0.35135135135135137,
+        "meaning": "Judgment-category agreement only;not semantic accuracy or a final adjudication."
+      }
+    ],
+    "meaning": "Submitted source-scope classifications,not an independently established business-intent oracle. Category agreement is not semantic accuracy.",
+    "raw_response_text_or_reviewer_identities_distributed": false,
+    "independent_semantic_gold_claimed": false
+  },
+  "source_execution": {
+    "projects": 40,
+    "primary_functions": 76,
+    "primary_contexts": 328,
+    "extension_projects": 10,
+    "extension_function_bindings": 41,
+    "extension_contexts": 83,
+    "counts_are_not_independent_samples": true,
+    "initial_constant_or_placeholder_functions": 4,
+    "initial_control_contexts": 7,
+    "whole_application_validation": false
+  },
+  "static_support": {
+    "projects": 40,
+    "statuses": {
+      "static_routes_found": 21,
+      "unsupported_framework_or_route_form": 19
+    },
+    "projects_with_non_auxiliary_routes": 20,
+    "whole_application_prevalence_inferred": false
+  },
+  "costs": {
+    "static_runs": [
+      {
+        "project": "R01",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.35041900000010173,
+        "process_cpu_seconds": 0.171875,
+        "returncode": 0
+      },
+      {
+        "project": "R01",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.3869549000000916,
+        "process_cpu_seconds": 0.28125,
+        "returncode": 0
+      },
+      {
+        "project": "R01",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.3712369000002127,
+        "process_cpu_seconds": 0.28125,
+        "returncode": 0
+      },
+      {
+        "project": "R01",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.2621723000002021,
+        "process_cpu_seconds": 0.171875,
+        "returncode": 0
+      },
+      {
+        "project": "R01",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.25684720000003836,
+        "process_cpu_seconds": 0.15625,
+        "returncode": 0
+      },
+      {
+        "project": "R01",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.36855359999981374,
+        "process_cpu_seconds": 0.265625,
+        "returncode": 0
+      },
+      {
+        "project": "R02",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.41014449999988756,
+        "process_cpu_seconds": 0.296875,
+        "returncode": 0
+      },
+      {
+        "project": "R02",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.2809454000000642,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R02",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.28532079999990856,
+        "process_cpu_seconds": 0.171875,
+        "returncode": 0
+      },
+      {
+        "project": "R02",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.4123008999999911,
+        "process_cpu_seconds": 0.296875,
+        "returncode": 0
+      },
+      {
+        "project": "R02",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.40753719999997884,
+        "process_cpu_seconds": 0.28125,
+        "returncode": 0
+      },
+      {
+        "project": "R02",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.2843350000000555,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R03",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 1.4224289999999655,
+        "process_cpu_seconds": 1.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R03",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 2.285374099999899,
+        "process_cpu_seconds": 2.171875,
+        "returncode": 0
+      },
+      {
+        "project": "R03",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 2.3557610000000295,
+        "process_cpu_seconds": 2.234375,
+        "returncode": 0
+      },
+      {
+        "project": "R03",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 1.3168379000001096,
+        "process_cpu_seconds": 1.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R03",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 1.2893432000000757,
+        "process_cpu_seconds": 1.15625,
+        "returncode": 0
+      },
+      {
+        "project": "R03",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 2.2493531000000075,
+        "process_cpu_seconds": 2.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R04",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.29709509999997863,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R04",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.21980550000012045,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R04",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.21950900000001639,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R04",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.29951459999983854,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R04",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.29678499999999985,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R04",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.21528739999985191,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R05",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.1942586999998639,
+        "process_cpu_seconds": 0.09375,
+        "returncode": 0
+      },
+      {
+        "project": "R05",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.2504398000000947,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R05",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.250434499999983,
+        "process_cpu_seconds": 0.15625,
+        "returncode": 0
+      },
+      {
+        "project": "R05",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.1956224000000475,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R05",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.18945769999982076,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R05",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.249432699999943,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R06",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.31242660000020805,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R06",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.2248707999999624,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R06",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.20863589999999022,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R06",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.30019529999981387,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R06",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.29991739999991296,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R06",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.20513099999993756,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R07",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.14091919999987113,
+        "process_cpu_seconds": 0.046875,
+        "returncode": 0
+      },
+      {
+        "project": "R07",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.1647566999999981,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R07",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.16619829999990543,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R07",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.1370824000000539,
+        "process_cpu_seconds": 0.046875,
+        "returncode": 0
+      },
+      {
+        "project": "R07",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.13224150000019108,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R07",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.15663810000000922,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R08",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 1.5136470999998437,
+        "process_cpu_seconds": 1.40625,
+        "returncode": 0
+      },
+      {
+        "project": "R08",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.8382948000000852,
+        "process_cpu_seconds": 0.734375,
+        "returncode": 0
+      },
+      {
+        "project": "R08",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.8172993000000588,
+        "process_cpu_seconds": 0.71875,
+        "returncode": 0
+      },
+      {
+        "project": "R08",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 1.453009700000166,
+        "process_cpu_seconds": 1.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R08",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 1.4632250999998178,
+        "process_cpu_seconds": 1.328125,
+        "returncode": 0
+      },
+      {
+        "project": "R08",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.8826434000000063,
+        "process_cpu_seconds": 0.765625,
+        "returncode": 0
+      },
+      {
+        "project": "R09",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.1561232999999902,
+        "process_cpu_seconds": 0.046875,
+        "returncode": 0
+      },
+      {
+        "project": "R09",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.1986675999999079,
+        "process_cpu_seconds": 0.09375,
+        "returncode": 0
+      },
+      {
+        "project": "R09",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.1904048999999759,
+        "process_cpu_seconds": 0.09375,
+        "returncode": 0
+      },
+      {
+        "project": "R09",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.14967849999993632,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R09",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.14715419999993173,
+        "process_cpu_seconds": 0.046875,
+        "returncode": 0
+      },
+      {
+        "project": "R09",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.1903932000000168,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R10",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.4468217999999524,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R10",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.30160269999987577,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R10",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.30114800000001196,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R10",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.459881600000017,
+        "process_cpu_seconds": 0.359375,
+        "returncode": 0
+      },
+      {
+        "project": "R10",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.45925659999988966,
+        "process_cpu_seconds": 0.359375,
+        "returncode": 0
+      },
+      {
+        "project": "R10",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.30609770000000935,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R11",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.13208650000001398,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R11",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.14448220000008405,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R11",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.13897240000005695,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R11",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.12349519999997938,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R11",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.12594640000020263,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R11",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.14185489999999845,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R12",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.6210754000001089,
+        "process_cpu_seconds": 0.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R12",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.42510760000004666,
+        "process_cpu_seconds": 0.3125,
+        "returncode": 0
+      },
+      {
+        "project": "R12",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.406970900000033,
+        "process_cpu_seconds": 0.3125,
+        "returncode": 0
+      },
+      {
+        "project": "R12",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.6044346000001042,
+        "process_cpu_seconds": 0.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R12",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.6316159000000425,
+        "process_cpu_seconds": 0.484375,
+        "returncode": 0
+      },
+      {
+        "project": "R12",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.40926909999984673,
+        "process_cpu_seconds": 0.296875,
+        "returncode": 0
+      },
+      {
+        "project": "R13",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.29879989999994905,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R13",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.4583147999999255,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R13",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.4490316999999777,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R13",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.2927666999999019,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R13",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.29062279999993734,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R13",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.45347540000011577,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R14",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.23838160000013886,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R14",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.17590640000003077,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R14",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.1774199999999837,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R14",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.23971000000005915,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R14",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.2452771999999186,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R14",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.17959350000000995,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R15",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.11442889999989347,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R15",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.12152850000006765,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R15",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.3230572999998458,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R15",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.1149563000001308,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R15",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.10951240000008511,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R15",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.11748820000002524,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R16",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.14121179999983724,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R16",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.12248439999984839,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R16",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.11466599999994287,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R16",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.13155230000006668,
+        "process_cpu_seconds": 0.046875,
+        "returncode": 0
+      },
+      {
+        "project": "R16",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.12887590000013915,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R16",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.1199906000001647,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R17",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 2.829777100000001,
+        "process_cpu_seconds": 2.65625,
+        "returncode": 0
+      },
+      {
+        "project": "R17",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 4.757075700000087,
+        "process_cpu_seconds": 4.546875,
+        "returncode": 0
+      },
+      {
+        "project": "R17",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 4.6637914000000364,
+        "process_cpu_seconds": 4.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R17",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 2.688581600000134,
+        "process_cpu_seconds": 2.5,
+        "returncode": 0
+      },
+      {
+        "project": "R17",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 2.7503269000001183,
+        "process_cpu_seconds": 2.625,
+        "returncode": 0
+      },
+      {
+        "project": "R17",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 4.8951604999999745,
+        "process_cpu_seconds": 4.734375,
+        "returncode": 0
+      },
+      {
+        "project": "R18",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 2.4886289999999462,
+        "process_cpu_seconds": 2.375,
+        "returncode": 0
+      },
+      {
+        "project": "R18",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 1.316362899999831,
+        "process_cpu_seconds": 1.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R18",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 1.386737999999923,
+        "process_cpu_seconds": 1.25,
+        "returncode": 0
+      },
+      {
+        "project": "R18",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 2.465647199999921,
+        "process_cpu_seconds": 2.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R18",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 2.461057100000062,
+        "process_cpu_seconds": 2.296875,
+        "returncode": 0
+      },
+      {
+        "project": "R18",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 1.281831000000011,
+        "process_cpu_seconds": 1.125,
+        "returncode": 0
+      },
+      {
+        "project": "R19",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3701392999998916,
+        "process_cpu_seconds": 0.265625,
+        "returncode": 0
+      },
+      {
+        "project": "R19",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.5454461000001629,
+        "process_cpu_seconds": 0.453125,
+        "returncode": 0
+      },
+      {
+        "project": "R19",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.5534812999999303,
+        "process_cpu_seconds": 0.453125,
+        "returncode": 0
+      },
+      {
+        "project": "R19",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.36244699999997465,
+        "process_cpu_seconds": 0.25,
+        "returncode": 0
+      },
+      {
+        "project": "R19",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.37222139999994397,
+        "process_cpu_seconds": 0.265625,
+        "returncode": 0
+      },
+      {
+        "project": "R19",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.5603657999999996,
+        "process_cpu_seconds": 0.46875,
+        "returncode": 0
+      },
+      {
+        "project": "R20",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.47760760000005575,
+        "process_cpu_seconds": 0.375,
+        "returncode": 0
+      },
+      {
+        "project": "R20",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3140592999998262,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R20",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.3111767000000327,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R20",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.47528200000010656,
+        "process_cpu_seconds": 0.375,
+        "returncode": 0
+      },
+      {
+        "project": "R20",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.5204777999999806,
+        "process_cpu_seconds": 0.40625,
+        "returncode": 0
+      },
+      {
+        "project": "R20",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.36650910000003023,
+        "process_cpu_seconds": 0.25,
+        "returncode": 0
+      },
+      {
+        "project": "R21",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.29299630000014076,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R21",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.42647599999986596,
+        "process_cpu_seconds": 0.3125,
+        "returncode": 0
+      },
+      {
+        "project": "R21",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.4397163000001001,
+        "process_cpu_seconds": 0.328125,
+        "returncode": 0
+      },
+      {
+        "project": "R21",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.29209750000018175,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R21",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.29563009999992573,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R21",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.4362762999999177,
+        "process_cpu_seconds": 0.328125,
+        "returncode": 0
+      },
+      {
+        "project": "R22",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.14970270000003438,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R22",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.1282507999999325,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R22",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.12272029999985534,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R22",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.14745230000016818,
+        "process_cpu_seconds": 0.046875,
+        "returncode": 0
+      },
+      {
+        "project": "R22",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.1470004999998764,
+        "process_cpu_seconds": 0.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R22",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.13505509999981768,
+        "process_cpu_seconds": 0.015625,
+        "returncode": 0
+      },
+      {
+        "project": "R23",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.1757374000001164,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R23",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.23767780000002858,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R23",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.2332687000000533,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R23",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.17142090000015742,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R23",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.16860259999998561,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R23",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.233523200000036,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R24",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.493512500000179,
+        "process_cpu_seconds": 0.390625,
+        "returncode": 0
+      },
+      {
+        "project": "R24",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3401756999999179,
+        "process_cpu_seconds": 0.234375,
+        "returncode": 0
+      },
+      {
+        "project": "R24",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.33336000000008426,
+        "process_cpu_seconds": 0.21875,
+        "returncode": 0
+      },
+      {
+        "project": "R24",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.4876675999998952,
+        "process_cpu_seconds": 0.390625,
+        "returncode": 0
+      },
+      {
+        "project": "R24",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.4929693999999927,
+        "process_cpu_seconds": 0.390625,
+        "returncode": 0
+      },
+      {
+        "project": "R24",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.3371641000001091,
+        "process_cpu_seconds": 0.234375,
+        "returncode": 0
+      },
+      {
+        "project": "R25",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.16131359999985762,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R25",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.20059439999999995,
+        "process_cpu_seconds": 0.09375,
+        "returncode": 0
+      },
+      {
+        "project": "R25",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.20074969999996028,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R25",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.16067130000010366,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R25",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.1607318999999734,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R25",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.20374730000003183,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R26",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.7013924000000316,
+        "process_cpu_seconds": 0.578125,
+        "returncode": 0
+      },
+      {
+        "project": "R26",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.4553975999999693,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R26",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.4522443999999268,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R26",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.6713560000000598,
+        "process_cpu_seconds": 0.578125,
+        "returncode": 0
+      },
+      {
+        "project": "R26",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.6805676999999832,
+        "process_cpu_seconds": 0.546875,
+        "returncode": 0
+      },
+      {
+        "project": "R26",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.44805730000007316,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R27",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3055005999999594,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R27",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.44915500000001884,
+        "process_cpu_seconds": 0.328125,
+        "returncode": 0
+      },
+      {
+        "project": "R27",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.43695449999995617,
+        "process_cpu_seconds": 0.34375,
+        "returncode": 0
+      },
+      {
+        "project": "R27",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.2861761999999999,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R27",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.3003830000000107,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R27",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.47060160000000906,
+        "process_cpu_seconds": 0.359375,
+        "returncode": 0
+      },
+      {
+        "project": "R28",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.718919600000163,
+        "process_cpu_seconds": 0.609375,
+        "returncode": 0
+      },
+      {
+        "project": "R28",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.4671465999999782,
+        "process_cpu_seconds": 0.359375,
+        "returncode": 0
+      },
+      {
+        "project": "R28",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.47004569999990053,
+        "process_cpu_seconds": 0.359375,
+        "returncode": 0
+      },
+      {
+        "project": "R28",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.7027657000001,
+        "process_cpu_seconds": 0.59375,
+        "returncode": 0
+      },
+      {
+        "project": "R28",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.7121380999999474,
+        "process_cpu_seconds": 0.609375,
+        "returncode": 0
+      },
+      {
+        "project": "R28",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.4575206999998045,
+        "process_cpu_seconds": 0.359375,
+        "returncode": 0
+      },
+      {
+        "project": "R29",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3311333999999988,
+        "process_cpu_seconds": 0.21875,
+        "returncode": 0
+      },
+      {
+        "project": "R29",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.525999800000136,
+        "process_cpu_seconds": 0.421875,
+        "returncode": 0
+      },
+      {
+        "project": "R29",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.5143133999999918,
+        "process_cpu_seconds": 0.40625,
+        "returncode": 0
+      },
+      {
+        "project": "R29",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.34351660000015727,
+        "process_cpu_seconds": 0.21875,
+        "returncode": 0
+      },
+      {
+        "project": "R29",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.3323235000000295,
+        "process_cpu_seconds": 0.21875,
+        "returncode": 0
+      },
+      {
+        "project": "R29",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.5125040000000354,
+        "process_cpu_seconds": 0.40625,
+        "returncode": 0
+      },
+      {
+        "project": "R30",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.9526981000001342,
+        "process_cpu_seconds": 0.828125,
+        "returncode": 0
+      },
+      {
+        "project": "R30",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.6171251000000666,
+        "process_cpu_seconds": 0.5,
+        "returncode": 0
+      },
+      {
+        "project": "R30",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.608388899999909,
+        "process_cpu_seconds": 0.484375,
+        "returncode": 0
+      },
+      {
+        "project": "R30",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.9697070000001986,
+        "process_cpu_seconds": 0.859375,
+        "returncode": 0
+      },
+      {
+        "project": "R30",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.9327482999999575,
+        "process_cpu_seconds": 0.8125,
+        "returncode": 0
+      },
+      {
+        "project": "R30",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.6211802000000262,
+        "process_cpu_seconds": 0.484375,
+        "returncode": 0
+      },
+      {
+        "project": "R31",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.16663499999981468,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R31",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.20634419999987585,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R31",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.2103493999998136,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R31",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.16431970000007823,
+        "process_cpu_seconds": 0.078125,
+        "returncode": 0
+      },
+      {
+        "project": "R31",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.16049769999995078,
+        "process_cpu_seconds": 0.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R31",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.20467690000009497,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R32",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.6277618000001439,
+        "process_cpu_seconds": 0.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R32",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.2643818999999894,
+        "process_cpu_seconds": 0.15625,
+        "returncode": 0
+      },
+      {
+        "project": "R32",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.25654529999997067,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R32",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.6123139999999694,
+        "process_cpu_seconds": 0.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R32",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.6196984999999131,
+        "process_cpu_seconds": 0.5,
+        "returncode": 0
+      },
+      {
+        "project": "R32",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.25407890000019506,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R33",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3580572000000757,
+        "process_cpu_seconds": 0.25,
+        "returncode": 0
+      },
+      {
+        "project": "R33",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.6149606000001313,
+        "process_cpu_seconds": 0.5,
+        "returncode": 0
+      },
+      {
+        "project": "R33",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.6224044999999023,
+        "process_cpu_seconds": 0.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R33",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.3622669000001224,
+        "process_cpu_seconds": 0.25,
+        "returncode": 0
+      },
+      {
+        "project": "R33",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.3648772999999892,
+        "process_cpu_seconds": 0.25,
+        "returncode": 0
+      },
+      {
+        "project": "R33",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.6550418999997873,
+        "process_cpu_seconds": 0.53125,
+        "returncode": 0
+      },
+      {
+        "project": "R34",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.31943390000014915,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R34",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.226909699999851,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R34",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.22083610000004228,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R34",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.3127055999998447,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R34",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.3105477999999948,
+        "process_cpu_seconds": 0.203125,
+        "returncode": 0
+      },
+      {
+        "project": "R34",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.21815189999983886,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R35",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.3963012000001527,
+        "process_cpu_seconds": 0.28125,
+        "returncode": 0
+      },
+      {
+        "project": "R35",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.5969589999999698,
+        "process_cpu_seconds": 0.484375,
+        "returncode": 0
+      },
+      {
+        "project": "R35",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.6044625000001815,
+        "process_cpu_seconds": 0.484375,
+        "returncode": 0
+      },
+      {
+        "project": "R35",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.4078805999999986,
+        "process_cpu_seconds": 0.28125,
+        "returncode": 0
+      },
+      {
+        "project": "R35",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.4105825999999979,
+        "process_cpu_seconds": 0.28125,
+        "returncode": 0
+      },
+      {
+        "project": "R35",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.625394500000084,
+        "process_cpu_seconds": 0.515625,
+        "returncode": 0
+      },
+      {
+        "project": "R36",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 1.867262299999993,
+        "process_cpu_seconds": 1.703125,
+        "returncode": 0
+      },
+      {
+        "project": "R36",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 1.1334782999999788,
+        "process_cpu_seconds": 1.0,
+        "returncode": 0
+      },
+      {
+        "project": "R36",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 1.1422661999999946,
+        "process_cpu_seconds": 0.984375,
+        "returncode": 0
+      },
+      {
+        "project": "R36",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 1.8810287000001154,
+        "process_cpu_seconds": 1.71875,
+        "returncode": 0
+      },
+      {
+        "project": "R36",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 1.9063526000002184,
+        "process_cpu_seconds": 1.78125,
+        "returncode": 0
+      },
+      {
+        "project": "R36",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 1.2406086999999388,
+        "process_cpu_seconds": 1.0625,
+        "returncode": 0
+      },
+      {
+        "project": "R37",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.2611144999998487,
+        "process_cpu_seconds": 0.109375,
+        "returncode": 0
+      },
+      {
+        "project": "R37",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.2994333999999981,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R37",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.2874100000001363,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R37",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.22759409999980562,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      },
+      {
+        "project": "R37",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.22909359999994194,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R37",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.2803951999999299,
+        "process_cpu_seconds": 0.1875,
+        "returncode": 0
+      },
+      {
+        "project": "R38",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 3.0974679999999353,
+        "process_cpu_seconds": 2.921875,
+        "returncode": 0
+      },
+      {
+        "project": "R38",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 1.7839702999999645,
+        "process_cpu_seconds": 1.65625,
+        "returncode": 0
+      },
+      {
+        "project": "R38",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 1.8190543999999136,
+        "process_cpu_seconds": 1.671875,
+        "returncode": 0
+      },
+      {
+        "project": "R38",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 2.893364600000041,
+        "process_cpu_seconds": 2.765625,
+        "returncode": 0
+      },
+      {
+        "project": "R38",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 2.957267699999875,
+        "process_cpu_seconds": 2.78125,
+        "returncode": 0
+      },
+      {
+        "project": "R38",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 1.6994857999998203,
+        "process_cpu_seconds": 1.578125,
+        "returncode": 0
+      },
+      {
+        "project": "R39",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 1.2701437999999143,
+        "process_cpu_seconds": 1.15625,
+        "returncode": 0
+      },
+      {
+        "project": "R39",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 2.11594550000018,
+        "process_cpu_seconds": 1.984375,
+        "returncode": 0
+      },
+      {
+        "project": "R39",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 2.0927156000000195,
+        "process_cpu_seconds": 1.96875,
+        "returncode": 0
+      },
+      {
+        "project": "R39",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 1.2023416999998062,
+        "process_cpu_seconds": 1.03125,
+        "returncode": 0
+      },
+      {
+        "project": "R39",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 1.2618201000000226,
+        "process_cpu_seconds": 1.09375,
+        "returncode": 0
+      },
+      {
+        "project": "R39",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 2.0981070000000273,
+        "process_cpu_seconds": 1.953125,
+        "returncode": 0
+      },
+      {
+        "project": "R40",
+        "method": "guarded",
+        "repeat": 1,
+        "wall_seconds": 0.4157628999998906,
+        "process_cpu_seconds": 0.3125,
+        "returncode": 0
+      },
+      {
+        "project": "R40",
+        "method": "baseline",
+        "repeat": 1,
+        "wall_seconds": 0.250110100000029,
+        "process_cpu_seconds": 0.15625,
+        "returncode": 0
+      },
+      {
+        "project": "R40",
+        "method": "baseline",
+        "repeat": 2,
+        "wall_seconds": 0.25052690000006805,
+        "process_cpu_seconds": 0.140625,
+        "returncode": 0
+      },
+      {
+        "project": "R40",
+        "method": "guarded",
+        "repeat": 2,
+        "wall_seconds": 0.40580080000017915,
+        "process_cpu_seconds": 0.296875,
+        "returncode": 0
+      },
+      {
+        "project": "R40",
+        "method": "guarded",
+        "repeat": 3,
+        "wall_seconds": 0.42243599999983417,
+        "process_cpu_seconds": 0.328125,
+        "returncode": 0
+      },
+      {
+        "project": "R40",
+        "method": "baseline",
+        "repeat": 3,
+        "wall_seconds": 0.26118819999987863,
+        "process_cpu_seconds": 0.125,
+        "returncode": 0
+      }
+    ],
+    "static_wall_window": "Worker startup through output transport.",
+    "static_CPU_window": "After worker imports;archive validation,scan and summarization;ends before JSON serialization.",
+    "primary_batch_wall_ns": [
+      122397814,
+      506910413,
+      518244174
+    ],
+    "primary_order": "Both arms in one batch process,sequential native then model within each input.",
+    "delegated_batch_wall_ns": [
+      {
+        "arm": "model",
+        "repeat": 1,
+        "wall_ns": 2438757938
+      },
+      {
+        "arm": "model",
+        "repeat": 2,
+        "wall_ns": 2512931530
+      },
+      {
+        "arm": "model",
+        "repeat": 3,
+        "wall_ns": 1998799155
+      },
+      {
+        "arm": "native",
+        "repeat": 1,
+        "wall_ns": 2389815019
+      },
+      {
+        "arm": "native",
+        "repeat": 2,
+        "wall_ns": 2351773597
+      },
+      {
+        "arm": "native",
+        "repeat": 3,
+        "wall_ns": 1506142051
+      }
+    ],
+    "delegated_wall_must_not_be_multiplied_by_projects": true,
+    "extension_worker_processes": 60,
+    "extension_elapsed_window": "Per-input fixture,installation,invocation and observation;not the delegated execution-only phase.",
+    "dynamic_process_CPU_or_engineering_effort_measured": false,
+    "unmeasured_costs_are_not_zero": true
+  },
+  "repairs": {
+    "identical_owned_control_tests": 22,
+    "before_failures": 16,
+    "before_errors": 3,
+    "after_all_pass": true,
+    "domain": "Research interpreter and observer,not upstream defects.",
+    "R24_current_observed_anonymous_active": false,
+    "old_unobserved_null_not_rewritten": true,
+    "old_frozen_eight_project_scope_text_superseded_by_actual_10_project_protocol": true,
+    "arbitrary_container_alias_graph_certified": false
+  },
+  "projects": [
+    {
+      "project": "R01",
+      "repository": "jupyterhub/jupyterhub",
+      "snapshot": "4224d01251779a37112d8ae26dc384244d31cb77",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 2,
+      "primary_contexts": 17,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "Authenticator.is_admin",
+          "role": "other_selected_predicate",
+          "contexts": 9
+        },
+        {
+          "function": "Authenticator.check_allowed",
+          "role": "other_selected_predicate",
+          "contexts": 8
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R02",
+      "repository": "MaramHarsha/CogniMesh",
+      "snapshot": "c4ac25b10ee41c274a20507525d83c99971160f9",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 274,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "RequestContext identity/roles already supplied by selected source context producer;role-set authorization body executes,not remote identity verification.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R03",
+      "repository": "pretix/pretix",
+      "snapshot": "da622e67528c9ff15ecd998dc3e452ec42f0fc9c",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 2,
+      "extension_contexts": 6,
+      "declared_provider_boundary": "Already authenticated device principal;selected-event query and derived permission cache are explicit finite providers. Organizer/event identity and ANY permission behavior execute from original body.",
+      "extension_boundary": "Actual source permission-set helper replaces arbitrary permission callback. Django 5.2.17 model equality and SQLite-selected events on owned Organizer/Event projections;not full Pretix models or token authentication.",
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R04",
+      "repository": "healthchecks/healthchecks",
+      "snapshot": "51a503531d845fc11d5ef270d576c59c300e3620",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 2,
+      "primary_contexts": 2,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "RecordsAdmin.has_add_permission",
+          "role": "constant_administrative_control",
+          "contexts": 1
+        },
+        {
+          "function": "RecordsAdmin.has_change_permission",
+          "role": "constant_administrative_control",
+          "contexts": 1
+        }
+      ],
+      "extension_functions": 6,
+      "extension_contexts": 11,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": "Original API key parsing, API-version extraction, manager lookup, HMAC comparison and read/write markers. Actual Django 6.1.2 Q/filter/get on owned SQLite Project projection;owned normal consumer writes only to its isolated scratch table,not a real business handler.",
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R05",
+      "repository": "babybuddy/babybuddy",
+      "snapshot": "09629cf633cf3a2059a21ade4cea7ea4d846422f",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 1,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "WebhookEventAdmin.has_add_permission",
+          "role": "constant_administrative_control",
+          "contexts": 1
+        }
+      ],
+      "extension_functions": 3,
+      "extension_contexts": 15,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": "Original BabyBuddy policy map + token-expiry override + original expiry property;actual pinned DRF 3.18.1/Django 5.2.17 Token/User/Permission/related Settings queries on owned in-memory schema,with fixed clock. Full BabyBuddy models and HTTP dispatch not started. Framework integration check,not an independent second implementation of DRF.",
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R06",
+      "repository": "Mailu/Mailu",
+      "snapshot": "de941f0f861ab5b386d6cd1b3b05bc93cbc34fd1",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 3,
+      "primary_contexts": 49,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "sign_count_allowed",
+          "role": "other_selected_predicate",
+          "contexts": 16
+        },
+        {
+          "function": "attestation_allowed",
+          "role": "other_selected_predicate",
+          "contexts": 6
+        },
+        {
+          "function": "authenticator_flags_allowed",
+          "role": "other_selected_predicate",
+          "contexts": 27
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R07",
+      "repository": "jianghuaqi85-sys/ERP-MES-WMS-system",
+      "snapshot": "19e2e2eba95bc71cb02e9b1b8737bdf709622154",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 55,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original dependency factory and returned closure execute;role/permission objects are explicit post-authentication records,not JWT/ORM validation.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R08",
+      "repository": "rommapp/romm",
+      "snapshot": "3a79911b2fd3831f6370ed04cd722f37e8bc3bd9",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "ResolvedPermissions.can_see_platform",
+          "role": "other_selected_predicate",
+          "contexts": 6
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R09",
+      "repository": "caronc/apprise-api",
+      "snapshot": "308498f6f00389420c998c12019cceed315909f1",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Global-authentication flag is an upstream premise;stateful mode and per-key config-state lookup explicit. Both original lock decision bodies execute through a closed utils import.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R10",
+      "repository": "wger-project/wger",
+      "snapshot": "a841e51c413843dfd16d8e51c6a3db2a119b84f5",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 4,
+      "primary_contexts": 43,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "RoutinePermission.has_permission",
+          "role": "other_selected_predicate",
+          "contexts": 3
+        },
+        {
+          "function": "UpdateOnlyPermission.has_permission",
+          "role": "other_selected_predicate",
+          "contexts": 18
+        },
+        {
+          "function": "CreateOnlyPermission.has_permission",
+          "role": "other_selected_predicate",
+          "contexts": 18
+        },
+        {
+          "function": "AllowRegisterUser.has_permission",
+          "role": "other_selected_predicate",
+          "contexts": 4
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R11",
+      "repository": "Satviksangamkar/RBAC-IMPROVED",
+      "snapshot": "75998fa86cc9a856e02c9c76e74c15cdcc833dde",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 34,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 3,
+      "extension_contexts": 6,
+      "declared_provider_boundary": "Storage and hierarchy produce declared finite role sets;actual source Casbin model and retained Casbin engine evaluate selected normal policy rows. Redis/cache startup not executed.",
+      "extension_boundary": "Source BFS and cache validity replace precomputed role closure. Normal acyclic graph up to three nodes;fixed clock;finite storage rows and actual Casbin model. No Redis startup,cycle exploit or cache-concurrency certification.",
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R12",
+      "repository": "Zleap-AI/SAG",
+      "snapshot": "e68cdeb3a770ff9b35c90a516474e281d3c82a3a",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 114,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original auth-mode gate/JWT-versus-connector routing and active-user check execute. Token verification and identity lookup are named providers,not real issuer/database validation.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R13",
+      "repository": "papermerge/papermerge-core",
+      "snapshot": "14397c33268f63b28a8bad55c343fcf497d8eb87",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 100,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 3,
+      "extension_contexts": 6,
+      "declared_provider_boundary": "Decoded token payload,user lookup/create and role-scope lookup are declared providers;original user creation,scope union,required-scope checks and user-state mutation execute. The source extractor only decodes payload;no verified-signature claim is made. Upstream auth-server/OAuth2-Proxy verification and actual SQLAlchemy database are not executed.",
+      "extension_boundary": "Original token payload extractor and base64/JSON decoder execute in distinct source-module namespaces before original scope/user-state consumer. Normal owned HS256 token fixtures;no signature verification claim. TokenData is a schema-conforming record projection;user/role database services remain declared providers.",
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R14",
+      "repository": "JohnEarle/coalmine",
+      "snapshot": "24ca0bbf200c11cc85d6717ed24ebf4e3c6b98fa",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 52,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Factory and asynchronous scope closure execute after validated auth context;session/API key acquisition remains explicit provider. all scope is source-defined bypass,not fabricated role elevation.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R15",
+      "repository": "mahimairaja/azure-fastapi-rag-app",
+      "snapshot": "f9a33b27e06a763e287c61a2132f07990ad352e5",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 13,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original method/path normalization and middleware consume a validated role. Actual source model/policy text is evaluated with retained Casbin;auth-service HTTP calls and deployment proxy behavior not executed.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R16",
+      "repository": "PM-Devs/conet",
+      "snapshot": "c042a9570d044098f32b6c02c0dda5d67d20f72c",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 3,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Source policy-engine authorization wrapper delegates to actual source exact-match model with explicit normal configured policies;no MCP tool or approval action executes.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R17",
+      "repository": "apache/airflow",
+      "snapshot": "09d0ea1c97acb7b31cd108d9de944ed1c71a884a",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 20,
+      "primary_stratum": "delegated",
+      "primary_functions": 4,
+      "primary_contexts": 7,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Actual role ordering is extracted from source enum;original admin/team/minimum-role helper and public resource wrappers execute. Identity creation and Airflow deployment are outside this capsule.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R18",
+      "repository": "saleor/saleor",
+      "snapshot": "c982006cc04c77a97def93218dedac8d715eb041",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 16,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "User.can_login",
+          "role": "other_selected_predicate",
+          "contexts": 16
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R19",
+      "repository": "paperless-ngx/paperless-ngx",
+      "snapshot": "7d8147c21d4f3984c8b5195b719ed7e0a35f65a1",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 2,
+      "extension_contexts": 6,
+      "declared_provider_boundary": "Original active/authenticated/superuser composition executes;Django has_perm is a finite exact-permission provider. This is not a validation of all object-level permissions.",
+      "extension_boundary": "Original statistics-permission entry calls actual Django 5.2.17 ModelBackend/User.has_perm and SQLite user/permission queries,within the source django~=5.2.13 requirement. AnonymousUser replaces inconsistent active-but-unauthenticated concrete User. No full Paperless middleware or object-level permission claim.",
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R20",
+      "repository": "dgtlmoon/changedetection.io",
+      "snapshot": "f4da467f11d31b433ebbbbb2de7449b087b270af",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original login branch and PBKDF2 password body execute with real stdlib cryptography;request/session/rendering are owned normal projections,no Flask server starts. Only safe internal redirects are supplied.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R21",
+      "repository": "simonvanlaak/CyberneticAgents",
+      "snapshot": "879d5489b14f4d167a96ef8aec34ebbad0cfc273",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 16,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "is_reply_route_allowed",
+          "role": "other_selected_predicate",
+          "contexts": 16
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R22",
+      "repository": "navyapdh11/agentic-ux-factory",
+      "snapshot": "9f91aa55eaf1a6b937897fd839e3c55be85d5966",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 8,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original tenant/roles factory and closure execute against actual source model/policy using Casbin;JWT decoding and production tenancy acquisition are not executed.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R23",
+      "repository": "bcurts/agentchattr",
+      "snapshot": "ff8d22e01eb57ef543d07556773ead5b2257c63a",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original header extraction and registry-consumer logic execute;registry is a finite token-to-agent provider. No HTTP/WebSocket server or agent command runs.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R24",
+      "repository": "janeczku/calibre-web",
+      "snapshot": "6e840acbda8d62fdd159bf3855c01872d629a914",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 2,
+      "primary_contexts": 2,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "UserMixin.is_authenticated",
+          "role": "identity_status_projection",
+          "contexts": 1
+        },
+        {
+          "function": "UserBase.is_authenticated",
+          "role": "identity_status_projection",
+          "contexts": 1
+        }
+      ],
+      "extension_functions": 8,
+      "extension_contexts": 4,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": "Original concrete and both anonymous is_active/is_authenticated source properties are executed and observed,including Anonymous.is_active previously omitted. No login/session/SQLAlchemy User constructor claim.",
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R25",
+      "repository": "donnel666/kanban",
+      "snapshot": "d62737589bae64242d2278e1defde818903f88c0",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 73,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original system-admin and team-creator checks execute on typed source enum/normal team records;Tortoise ORM user production is not executed.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R26",
+      "repository": "Websoft9/websoft9",
+      "snapshot": "70a6054facbaf285ecd2f4a1fc696de71f1e6513",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 186,
+      "primary_stratum": "primary",
+      "primary_functions": 2,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "Accelerator.auth_config",
+          "role": "credential_handoff",
+          "contexts": 2
+        },
+        {
+          "function": "MirrorEntry.auth_config",
+          "role": "credential_handoff",
+          "contexts": 2
+        }
+      ],
+      "extension_functions": 4,
+      "extension_contexts": 8,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": "Original has_credentials property is evaluated from actual supplied username/password,then original auth_config. Still credential handoff only,not authentication or Docker deployment.",
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R27",
+      "repository": "faiyaz7283/dashtam-api",
+      "snapshot": "ca3308ca296d49b80456016d3097e87bbafaa6df",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 6,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original asynchronous dependency closure executes after explicit authenticated CurrentUser boundary;role membership is checked,not replaced by a stubbed allow/deny result.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R28",
+      "repository": "Evil0ctal/Douyin_TikTok_Download_API",
+      "snapshot": "0661234421fb8e1df24f97eb30958671f7a2ee08",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 130,
+      "primary_stratum": "delegated",
+      "primary_functions": 4,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Current original platform-specific authorization is composed with permits;source Scope/Platform enums are exact. Only ordinary platform read credentials are exercised;no vulnerability PoC or archive/export operation runs.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R29",
+      "repository": "Sathisha/multi-agent-orchestrator",
+      "snapshot": "7f3d3fcb6ef34ef98531cfe0343d42af821bdae3",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 210,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "User.has_permission",
+          "role": "placeholder_control",
+          "contexts": 4
+        }
+      ],
+      "extension_functions": 7,
+      "extension_contexts": 18,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": "Actual PermissionService call chain and SQLAlchemy 2.0.55 select/selectinload/WHERE/role-resource filtering on owned SQLite schema projection. Async execute facade serially calls real Session.execute;not PostgreSQL/async-driver/full-app validation. Replaces abstract User.has_permission as empirical authorization evidence.",
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R30",
+      "repository": "QAQupupup/Conclave-internal",
+      "snapshot": "dbca85abf3b5ea87ec654e0b629e2b5e88182824",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 167,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 6,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "is_admin",
+          "role": "other_selected_predicate",
+          "contexts": 6
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R31",
+      "repository": "hschoon-dev/secure-iot-gateway",
+      "snapshot": "453f98df141cd7cc4f9431eda88e1a1fc51a9be5",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 3,
+      "extension_contexts": 3,
+      "declared_provider_boundary": "Original handler forwards exact subject/resource/action to real Casbin using source dual-role model;grouping policies are explicit normal configuration. No gateway/device/server starts.",
+      "extension_boundary": "Original direct-role and admin-role queries plus original actual Casbin enforcement. check_permission returns a role list,not a Boolean access verdict;not misused as a prerequisite authorization guard.",
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R32",
+      "repository": "Anil-matcha/open-agent-email",
+      "snapshot": "0f307a6bf0341c8ff5b950a6dfa4aa23b919d079",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 137,
+      "primary_stratum": "delegated",
+      "primary_functions": 2,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Dependency graph is extracted from source:require_operator principal depends on require_admin,which consumes an external authenticated principal. Both guards execute before operator acceptance.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R33",
+      "repository": "azar-management-consulting/occp-core",
+      "snapshot": "c19c74b9a6b41972d3e9be89e13356c6fa646af6",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 123,
+      "primary_stratum": "delegated",
+      "primary_functions": 4,
+      "primary_contexts": 7,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original approval/expiry/revocation properties feed original scope check;clock is fixed and token store is owned normal data. No emergency operation or external target is invoked.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R34",
+      "repository": "flaskbb/flaskbb",
+      "snapshot": "8bee59e9ad626443e3d13dd0fb38c56223e6b2f4",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 9,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "UserPermissions.has_role",
+          "role": "other_selected_predicate",
+          "contexts": 9
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R35",
+      "repository": "rachelos/we-mp-rss",
+      "snapshot": "9fd4edb2a9311bffa571db050f53f415705db294",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 166,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original claim-presence,known-user rejection and returned identity construction execute;JWT verification and database are finite named providers,not real issuer/server execution.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R36",
+      "repository": "netbox-community/netbox",
+      "snapshot": "9b9844bdbc226bc0bacff6bfdf65a824a4be0eec",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "ObjectPermission.can_view",
+          "role": "other_selected_predicate",
+          "contexts": 4
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R37",
+      "repository": "mathesar-foundation/mathesar",
+      "snapshot": "3833c3ae5714f164dd6870f4d28865e78d60a4cc",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "delegated",
+      "primary_functions": 1,
+      "primary_contexts": 4,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original public-form/authenticated-database-collaborator branching executes;UserDatabaseRoleMap query is an exact user/database finite provider,not actual Django/Postgres execution.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R38",
+      "repository": "rcortx/kiwiq",
+      "snapshot": "e1dc6486cbf8425ca146970d515415e29e569679",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 198,
+      "primary_stratum": "primary",
+      "primary_functions": 1,
+      "primary_contexts": 5,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "LinkedinIntegrationService._can_user_post_to_organization",
+          "role": "other_selected_predicate",
+          "contexts": 5
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R39",
+      "repository": "inventree/InvenTree",
+      "snapshot": "60db8a924ec62acca557df3ad3e83056444e1e92",
+      "static_status": "unsupported_framework_or_route_form",
+      "static_non_auxiliary_routes": 0,
+      "primary_stratum": "primary",
+      "primary_functions": 2,
+      "primary_contexts": 18,
+      "primary_control_and_projection_roles": [
+        {
+          "function": "UserProfile.check_permission",
+          "role": "other_selected_predicate",
+          "contexts": 12
+        },
+        {
+          "function": "ProjectCode.check_permission",
+          "role": "other_selected_predicate",
+          "contexts": 6
+        }
+      ],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Explicit owned data at selected predicate boundary;not source identity/session producers.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "可建立具体行为契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    },
+    {
+      "project": "R40",
+      "repository": "hugo617/ai-agent-platform",
+      "snapshot": "14a7063064fe6f1f978137229cbf159d6c51e171",
+      "static_status": "static_routes_found",
+      "static_non_auxiliary_routes": 146,
+      "primary_stratum": "delegated",
+      "primary_functions": 10,
+      "primary_contexts": 9,
+      "primary_control_and_projection_roles": [],
+      "extension_functions": 0,
+      "extension_contexts": 0,
+      "declared_provider_boundary": "Original ordered deny/allow rules,scope gate,group/HQ membership checks,Casbin fallback and require-to-check db forwarding execute. Token context and ORM repositories remain explicit providers;business writes not executed.",
+      "extension_boundary": null,
+      "submitted_source_contract_category": "仅能建立条件性契约",
+      "whole_application_entries_or_writes_exhaustively_classified": false
+    }
+  ]
+}

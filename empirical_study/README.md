@@ -12,7 +12,7 @@ python -B -m unittest discover -s tests -p test_fixed_source_empirical.py -v
 ```
 
 The primary selection has 76 source functions and 328 finite contexts. Ten
-post-exposure path extensions have forty original functions and 83 contexts.
+post-exposure path extensions have forty-one original functions and 83 contexts.
 They strengthen existing projects rather than add independent samples. Native
 and model arms are checked for typed returns, exceptions, provider arguments and
 order, and state. Exact source-function entry is observed separately. Prior
@@ -44,6 +44,9 @@ engine site; Django 5.2.17, DRF 3.18.1, asgiref 3.12.1 and sqlparse 0.6.0 in a
 framework site; and the Django 6.1.2 package directory for Healthchecks.
 The existing `requirements-test.txt` supplies the engine versions. Pure-wheel
 dependency preparation is separate from replay; replay has no network access.
+Only the Django module is overlaid for Healthchecks; the other framework
+packages remain from the framework site. This is not a conflict between the
+separate Django paths.
 
 ```sh
 python -B empirical_study/replay.py \
@@ -63,11 +66,32 @@ the fresh native/model processes of the delegated and extension strata.
 
 ## Contract review
 
-Blank contract-review materials are distributed separately: two independent
-initial reviewers per item, followed by a distinct adjudicator. The semantic
-packet excludes earlier rules, expected results and proposed repairs. Method
-and study-design review have different roles. No returned expert judgments or
-independently confirmed new vulnerabilities are asserted by this dataset.
+Submitted source-contract review covers 99 items: two initial assessments and
+a separate final adjudication. Final labels are 52 concrete behavior contracts,
+45 conditional contracts and two interface obligations. Method and design
+review each have eight separate topics. These are source-scope classifications,
+not an independent business-intent oracle or confirmed application defects.
+Raw submitted opinions and identifying coordination records remain outside the
+public artifact. Aggregate outcomes and their limitations are recorded in
+`methods.json`; implementation-derived functional expectations remain separate.
 Original source comments and upstream tests remain primary evidence. Upstream
 licenses and attribution apply to those original materials; the project license
 does not replace them.
+
+## Costs and support denominators
+
+Static baseline/guarded scans and dynamic native/model replay are different
+experiments. Static wall time includes worker startup and output transport;
+its process-CPU window starts after imports and ends before serialization.
+Primary dynamic repetitions contain both sequential arms in each of three
+batches. Delegated repetitions have six arm batches, whose wall values must be
+counted once rather than 24 times. The extensions have sixty project/arm
+processes. Per-context execution and extension elapsed windows differ. No
+unmeasured engineering, preparation or review effort is replaced by zero.
+
+The forty-project table in `methods.json` separates static support, selected
+dynamic boundaries and controls. It does not describe every entry of each
+application. Nineteen snapshots have unsupported static route forms; R01 has
+example routes only. Whole-application prevalence, exhaustive authentication/
+write-path coverage and statistical independence are not inferred from these
+selected entries. See `SEMANTICS.md` for the observation relation and repairs.

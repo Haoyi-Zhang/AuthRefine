@@ -12,4 +12,7 @@ class FixedSourceEmpiricalTests(unittest.TestCase):
     def test_portable_source_identity_controls(self):
         p=subprocess.run([sys.executable,'-B','-m','unittest','discover','-s','tests','-p','test_portable_binding.py'],cwd=ROOT/'empirical_study',capture_output=True,text=True,timeout=30)
         self.assertEqual(p.returncode,0,p.stdout+p.stderr)
+    def test_received_review_semantic_repairs(self):
+        p=subprocess.run([sys.executable,'-B','-W','error','-m','unittest','discover','-s','tests','-p','test_review_semantics.py'],cwd=ROOT/'empirical_study',capture_output=True,text=True,timeout=30)
+        self.assertEqual(p.returncode,0,p.stdout+p.stderr)
 if __name__=='__main__':unittest.main()

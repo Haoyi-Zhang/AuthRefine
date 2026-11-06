@@ -7,12 +7,16 @@ from remaining_worlds import World
 
 def observe(world,fn):
     with capture_unknowns() as unresolved:
-        try:result=dict(status='value',value=world.pack(fn()))
+        try:value=fn()
         except Unknown as ex:result=dict(status='unsupported',reason=str(ex))
         except Exception as ex:
             result=dict(status='source_exception',exception=type(ex).__name__)
             if hasattr(ex,'status_code'):result['status_code']=ex.status_code
             if isinstance(ex,(TypeError,AttributeError,NameError)):result['diagnostic']=str(ex)
+        else:
+            try:result=dict(status='value',value=world.pack(value))
+            except Unknown as ex:result=dict(status='unsupported',reason=str(ex),phase='result_projection')
+            except Exception as ex:result=dict(status='harness_error',exception=type(ex).__name__,phase='result_projection')
     return dict(status='unsupported',reason='; '.join(unresolved)) if unresolved else result
 
 def main():
