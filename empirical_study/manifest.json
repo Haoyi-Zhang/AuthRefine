@@ -3,8 +3,8 @@
     "data/inputs.json.gz": "d1e2f2ed77ae0434bbc21c24840fedf43fbaf3cbd79197b3f856deea1eed7c22",
     "data/observations.json.gz": "26e3365f29f430e91909d97c8c2e9b3111d6f0048242b0748dacf8f5b90c7edd",
     "data/sources.json.gz": "aeb8bc692c2bc2a6ec55e4af6a4244b1014cecbc07028db6e0d87b403dd6948f",
-    "delegated_runtime.py": "0f9615efdeb0e89549cc00469c1e48c1ae34d4ccbb0739c6f42d2316f2c07b1c",
-    "methods.json": "7bf4c3fe6aa6cfabcc998f4718ac1947262a32eabf2f829fd9c83a82e470d3d2",
+    "delegated_runtime.py": "345ade41656a54d5fbefa0447810cda76c7b2cd6f8fed57034220bcbea217387",
+    "methods.json": "e88424dcb2fd396797c6ece543ace69b5e82a81ba8f01ef75a31a1f0685d3afd",
     "predicate_runtime.py": "f2513415e9f5618fa9935f4835179456db84e954d589ed23f91998d0eeed13eb",
     "README.md": "f9b16e7228ea628f89f95d7edf353d62236a9b5305459a5118c4abc087f76a7d",
     "remaining_worker.py": "56f9e8b29ce893a92b9f7adbaec5c8353291af7fe6d0f02dc142d60acf7ef8db",
@@ -12,12 +12,13 @@
     "replay.py": "2a9a0ae2504602216110c6bfcb0f493b8e286f5a8bb44969c3af2f83e6eafc02",
     "scope_followup_worker.py": "e3bf0bbf655f4e26f2d494bf1d9b9998b6e7522bf258869bbcf7230a6546107a",
     "scope_followup_worlds.py": "c520cca00e2d480d54bc5912c9987721327b5f9efc16b3db0db9c3cf6d107aec",
-    "SEMANTICS.md": "9efbb3cd85a3a3c678e882e843e89fce7e6acd53491a25cafefedfd110306656",
+    "SEMANTICS.md": "ecc35459ded5d86b25a1fe315a12d493b05f3343deebc1a591804778f9fbe369",
     "tests/test_delegated_runtime.py": "343327d4491dfd420d7d5288f94e9fa72d386aefa99e25b3282218db6c2490da",
+    "tests/test_followup_semantics.py": "64126d67733666cd5fc8e4431916902f9b2e791f6dfd24c147c31c803ec87dae",
     "tests/test_portable_binding.py": "a79b6e499e4b52094625f7c9d36b0785fb56975514ffa813b9e7a73bbe24f1f6",
     "tests/test_predicate_runtime.py": "3efeb1007db3418dd23f5e2a0e541a36a959f16d052f2307af16d1358fc511a0",
     "tests/test_review_semantics.py": "73d387fcf6d60264194354a10c800163b9e04d72e98b999d346e1641de48101c",
-    "verify.py": "fd447f25fca0f49cb15391c5e1f283fadb8f087b819f859af629f83a929c7116"
+    "verify.py": "8331a32a46b81c2f2d13b7237950bf23e8345ede2dafb8ca849fe63a03aa4a22"
   },
   "source_byte_identity_not_a_security_certificate": true
 }

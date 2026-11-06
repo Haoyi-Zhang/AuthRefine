@@ -31,6 +31,14 @@ assignment evaluates its target once. Exception-target names are cleared when
 their handler exits. Global/nonlocal writes, arbitrary runtime introspection,
 unadmitted imports and other unsupported operations remain outside this model.
 
+Keyword expansion uses the host call-merge primitive for mapping admissibility,
+string keys and duplicate rejection. A mapping needs `keys` and item lookup,
+not an `items` method. This primitive is shared trusted runtime behavior, not
+an independently proved keyword-binding engine. Context-target binding occurs
+inside the cleanup region: a failed unpack still invokes the context exit,
+which may suppress an ordinary target exception. Five owned follow-up controls
+exercise these cases in addition to the original 22 review controls.
+
 ## What the observation establishes
 
 Observations distinguish typed values, target exception classes and declared

@@ -90,6 +90,10 @@ def await_value(v):
     if not isinstance(v,Deferred) and not inspect.isawaitable(v):raise TypeError('object cannot be used in await expression')
     return finish(v)
 
+def keyword_arguments(**values):
+    """Use the host's mapping/duplicate-key primitive,not an items() shortcut."""
+    return values
+
 class ModelFunction:
     def __init__(self,node,closure,vm):
         self.node=node;self.closure=closure;self.vm=vm
@@ -214,11 +218,11 @@ class Machine:
                 if isinstance(a,ast.Starred):args.extend(self.expr(a.value,e))
                 else:args.append(self.expr(a,e))
             for k in n.keywords:
-                extra=self.expr(k.value,e) if k.arg is None else {k.arg:self.expr(k.value,e)}
-                for key,value in extra.items():
-                    if not isinstance(key,str):raise TypeError('keywords must be strings')
-                    if key in kwargs:raise TypeError('multiple keyword argument values')
-                    kwargs[key]=value
+                value=self.expr(k.value,e)
+                if k.arg is None:kwargs=keyword_arguments(**kwargs,**value)
+                else:
+                    if k.arg in kwargs:raise TypeError('multiple keyword argument values')
+                    kwargs[k.arg]=value
             return fn(*args,**kwargs)
         if isinstance(n,ast.Await):return await_value(self.expr(n.value,e))
         if isinstance(n,(ast.GeneratorExp,ast.ListComp,ast.SetComp)):
@@ -311,8 +315,9 @@ class Machine:
             elif isinstance(n,ast.With):
                 if len(n.items)!=1:raise Unknown('multiple context managers')
                 manager=self.expr(n.items[0].context_expr,e);value=manager.__enter__()
-                if n.items[0].optional_vars:self.assign(n.items[0].optional_vars,value,e)
-                try:self.block(n.body,e)
+                try:
+                    if n.items[0].optional_vars:self.assign(n.items[0].optional_vars,value,e)
+                    self.block(n.body,e)
                 except BaseException as ex:
                     # Return/break are operational control flow,not exceptions
                     # that a context manager may suppress.

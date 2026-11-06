@@ -2069,7 +2069,14 @@
     "R24_current_observed_anonymous_active": false,
     "old_unobserved_null_not_rewritten": true,
     "old_frozen_eight_project_scope_text_superseded_by_actual_10_project_protocol": true,
-    "arbitrary_container_alias_graph_certified": false
+    "arbitrary_container_alias_graph_certified": false,
+    "additional_owned_followup_controls": {
+      "tests": 5,
+      "before_failures": 4,
+      "before_errors": 1,
+      "after_all_pass": true,
+      "scope": "Context-target cleanup and keyword mapping forwarding;research-runtime repairs,not upstream findings."
+    }
   },
   "projects": [
     {

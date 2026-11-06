@@ -9,7 +9,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "before",
           "--baseline-checker",
@@ -140,7 +140,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "reuse",
           "--baseline-checker",
@@ -298,7 +298,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "before",
           "--baseline-checker",
@@ -429,7 +429,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "reuse",
           "--baseline-checker",
@@ -587,7 +587,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "before",
           "--baseline-checker",
@@ -718,7 +718,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "reuse",
           "--baseline-checker",
@@ -876,7 +876,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "before",
           "--baseline-checker",
@@ -6858,7 +6858,7 @@
         "command": [
           "<PYTHON_ROOT>\\python.exe",
           "-B",
-          "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+          "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
           "--child",
           "reuse",
           "--baseline-checker",
@@ -13089,7 +13089,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -13220,7 +13220,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -13351,7 +13351,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -13482,7 +13482,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -13613,7 +13613,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -13744,7 +13744,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -13875,7 +13875,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -14008,7 +14008,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -14164,7 +14164,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -14320,7 +14320,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -14476,7 +14476,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -14632,7 +14632,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -14788,7 +14788,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -14944,7 +14944,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -15104,7 +15104,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -15235,7 +15235,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -15366,7 +15366,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -15497,7 +15497,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -15628,7 +15628,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -15759,7 +15759,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -15890,7 +15890,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -16023,7 +16023,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -16179,7 +16179,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -16335,7 +16335,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -16491,7 +16491,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -16647,7 +16647,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -16803,7 +16803,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -16959,7 +16959,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -17119,7 +17119,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -17250,7 +17250,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -17381,7 +17381,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -17512,7 +17512,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -17643,7 +17643,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -17774,7 +17774,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -17905,7 +17905,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -18038,7 +18038,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -18194,7 +18194,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -18350,7 +18350,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -18506,7 +18506,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -18662,7 +18662,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -18818,7 +18818,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -18974,7 +18974,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -19134,7 +19134,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -25116,7 +25116,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -31098,7 +31098,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -37080,7 +37080,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -43062,7 +43062,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -49044,7 +49044,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -55026,7 +55026,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "before",
             "--baseline-checker",
@@ -61010,7 +61010,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -67236,7 +67236,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -73462,7 +73462,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -79688,7 +79688,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -85914,7 +85914,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -92140,7 +92140,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",
@@ -98366,7 +98366,7 @@
           "command": [
             "<PYTHON_ROOT>\\python.exe",
             "-B",
-            "<PROJECTS_ROOT>\\wg-check\\substantive-library\\P020\\artifact\\src\\reuse_benchmark.py",
+            "<ARTIFACT_ROOT>/src/reuse_benchmark.py",
             "--child",
             "reuse",
             "--baseline-checker",

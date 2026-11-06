@@ -85,6 +85,8 @@ def verify(root=ROOT):
     if methods['source_contract_review']['independent_semantic_gold_claimed'] or methods['source_contract_review']['raw_response_text_or_reviewer_identities_distributed']:raise ValueError('unsupported review provenance claim')
     if len(methods['projects'])!=40 or methods['source_execution']['extension_function_bindings']!=declared:raise ValueError('method/source binding count')
     if len(methods['costs']['delegated_batch_wall_ns'])!=6 or methods['costs']['extension_worker_processes']!=60 or len(methods['costs']['static_runs'])!=240:raise ValueError('cost strata')
+    followup=methods['repairs'].get('additional_owned_followup_controls',{})
+    if followup.get('tests')!=5 or not followup.get('after_all_pass'):raise ValueError('context/keyword follow-up controls')
     anonymous=next(c for c in extensions['cases'] if c['project']=='R24')
     if not any(r['function']=='Anonymous.is_active' for r in anonymous['functions']):raise ValueError('anonymous active source omitted')
     for r in observations['extensions']:
