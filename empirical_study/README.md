@@ -85,7 +85,9 @@ binding records its exact source revision, function anchors, original context
 denominators, initial category pair and final resolution. All sixteen method
 and design dispositions are also linked. `review.py` checks completeness,
 source identity, category totals and their consistency with the executed study.
-It does not rerun the original review or infer reviewer identities. Functional
+It resolves every function name and line interval against the original source
+syntax, and recomputes agreement counts, disagreement identifiers and kappa for
+all three initial pairs. It does not rerun the review or infer reviewer identities. Functional
 expectations and source-scope adjudications remain distinct evidence layers.
 Original source comments and upstream tests remain primary evidence. Upstream
 licenses and attribution apply to those original materials; the project license

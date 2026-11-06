@@ -2674,97 +2674,145 @@
         "id": "M01",
         "title": "类型与短路",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "repaired_and_observation_scope_corrected"
+        "current_disposition": "repaired_and_observation_scope_corrected",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "未发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "M02",
         "title": "闭包与参数",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "repaired"
+        "current_disposition": "repaired",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "M03",
         "title": "协程与调用",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "repaired"
+        "current_disposition": "repaired",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "M04",
         "title": "未知与异常",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "repaired"
+        "current_disposition": "repaired",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "M05",
         "title": "依赖组合",
         "submitted_judgment": "未发现需修正问题",
-        "current_disposition": "retained_and_rechecked"
+        "current_disposition": "retained_and_rechecked",
+        "initial_left_judgment": "未发现需修正问题",
+        "initial_right_judgment": "未发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "M06",
         "title": "状态与提供者",
         "submitted_judgment": "未发现需修正问题",
-        "current_disposition": "retained_and_bounded"
+        "current_disposition": "retained_and_bounded",
+        "initial_left_judgment": "未发现需修正问题",
+        "initial_right_judgment": "未发现需修正问题",
+        "resolution": "adopt_right"
       },
       {
         "id": "M07",
         "title": "源码绑定",
         "submitted_judgment": "材料不足",
-        "current_disposition": "runtime_binding_supplied_not_full_source_equivalence"
+        "current_disposition": "runtime_binding_supplied_not_full_source_equivalence",
+        "initial_left_judgment": "材料不足",
+        "initial_right_judgment": "材料不足",
+        "resolution": "synthesized"
       },
       {
         "id": "M08",
         "title": "形式化义务",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "known_counterexamples_repaired_conditional_obligation_retained"
+        "current_disposition": "known_counterexamples_repaired_conditional_obligation_retained",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "材料不足",
+        "resolution": "synthesized"
       },
       {
         "id": "E01",
         "title": "样本单位与谱系",
         "submitted_judgment": "材料不足",
-        "current_disposition": "selection_reproducible_independence_not_established"
+        "current_disposition": "selection_reproducible_independence_not_established",
+        "initial_left_judgment": "材料不足",
+        "initial_right_judgment": "材料不足",
+        "resolution": "synthesized"
       },
       {
         "id": "E02",
         "title": "开发暴露与留出",
         "submitted_judgment": "未发现需修正问题",
-        "current_disposition": "retained"
+        "current_disposition": "retained",
+        "initial_left_judgment": "未发现需修正问题",
+        "initial_right_judgment": "未发现需修正问题",
+        "resolution": "adopt_right"
       },
       {
         "id": "E03",
         "title": "范围与分母",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "corrected"
+        "current_disposition": "corrected",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "材料不足",
+        "resolution": "synthesized"
       },
       {
         "id": "E04",
         "title": "公平信息与成本",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "corrected"
+        "current_disposition": "corrected",
+        "initial_left_judgment": "发现需修正问题",
+        "initial_right_judgment": "发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "E05",
         "title": "结果与发现",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "repaired"
+        "current_disposition": "repaired",
+        "initial_left_judgment": "材料不足",
+        "initial_right_judgment": "发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "E06",
         "title": "特殊情形",
         "submitted_judgment": "材料不足",
-        "current_disposition": "selected_scope_classified_full_application_prevalence_not_established"
+        "current_disposition": "selected_scope_classified_full_application_prevalence_not_established",
+        "initial_left_judgment": "材料不足",
+        "initial_right_judgment": "材料不足",
+        "resolution": "synthesized"
       },
       {
         "id": "E07",
         "title": "复现与缺失",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "distribution_and_records_corrected"
+        "current_disposition": "distribution_and_records_corrected",
+        "initial_left_judgment": "材料不足",
+        "initial_right_judgment": "发现需修正问题",
+        "resolution": "synthesized"
       },
       {
         "id": "E08",
         "title": "独立复核流程",
         "submitted_judgment": "发现需修正问题",
-        "current_disposition": "paired_records_and_adjudication_preserved"
+        "current_disposition": "paired_records_and_adjudication_preserved",
+        "initial_left_judgment": "材料不足",
+        "initial_right_judgment": "材料不足",
+        "resolution": "synthesized"
       }
     ]
   },
