@@ -56,8 +56,10 @@ python -B empirical_study/replay.py \
   --output /absolute/new-empty-output
 ```
 
-This reruns the sixteen pure-boundary projects,the 24 delegated projects and ten strengthened paths in alternating
-native/model order over three repetitions. It stops on any scientific-field
+This reruns the sixteen pure-boundary projects, the 24 delegated projects and
+ten strengthened paths over three repetitions. Each pure-predicate batch runs
+native then model within each context. Delegated and extension repetitions
+alternate native/model process order. It stops on any scientific-field
 difference; it does not compare machine-dependent timing values for equality.
 It never imports full source applications, runs their startup hooks or accesses
 live systems. Use `--suite primary`, `--suite delegated` or `--suite extensions`

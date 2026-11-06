@@ -3,9 +3,20 @@
 The protocol selected twelve named Python-server projects before source outcomes,
 excluding the earlier 286-name candidate inventory. Ten snapshots were acquired;
 two public entries were unavailable and were not replaced. The selected scopes
-contain 160 modules and 69 candidate authorization interfaces. Nine complete-body
-reference boundaries in three projects have 78 normal contexts; sixty other
-interfaces lack complete reference contracts and are not counted as passing.
+contain 160 modules and 69 candidate authorization interfaces. At the original
+transfer evaluation, nine complete-body reference boundaries in three projects
+had 78 normal contexts; sixty other interfaces lacked complete references and
+were not counted as passing in that frozen result.
+
+The later `../reference_completion/` followup supplies those sixty entries with
+58 concrete source-functional contracts and two abstract protocol obligations,
+over 1,512 finite contexts. Its distributed packet reconstructs 57 concrete
+entries; the remaining enterprise-source entry was checked locally and requires
+separately supplied licensed source for receiver replay. This post-exposure
+completion does not rewrite the original transfer result or create a second
+blind holdout. The earlier two acquisition failures were subsequently resolved
+through corrected official addresses; their 32 passive modules are separate
+from semantic successes. See that followup's README for the current state.
 
 The frozen method completes five of nine reference boundaries and leaves 55
 contexts unknown. The separate source-adaptation result completes all nine
