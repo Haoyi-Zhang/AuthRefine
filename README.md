@@ -35,6 +35,14 @@ For the accompanying manuscript, use the `preferred-citation` entry in
 `CITATION.cff`: Haoyi Zhang, Huaijin Ran, Jiongchi Yu, Yuqiang Sun, and Yang Liu.
 The software citation and manuscript use this same approved author order.
 
+The forty-project source-bound replication is in `empirical_study/`. It adds
+three-repeat paired source observations and ten strengthened real-source paths,
+including actual framework/database consumers, with original source bytes,
+licenses, explicit provider boundaries and an offline verifier. The 328 primary
+contexts and 83 post-exposure extension contexts have distinct roles; they are
+not additional independent projects or independent expert gold. See its README
+for the optional non-root, network-isolated normal-path replay and dependencies.
+
 ## Start here
 
 Use Linux CPython for the complete release checks. Create an isolated environment

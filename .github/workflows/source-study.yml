@@ -18,6 +18,10 @@ jobs:
           python-version: '3.12'
       - name: Check the shipped source study and unknown propagation
         run: python -B -m unittest discover -s tests -p test_source_study.py -v
+      - name: Check fixed-source empirical inputs and recorded scientific observations
+        run: |
+          python -B empirical_study/verify.py
+          python -B -W error -m unittest discover -s tests -p test_fixed_source_empirical.py -v
       - name: Replay fixed token/event and minimum-source field profiles
         run: python -B source_study/complete_profiles.py
       - name: Replay frozen project transfer and separate source adaptation

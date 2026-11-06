@@ -1,0 +1,86 @@
+"""Offline verification of the fixed-source empirical evidence and source bodies."""
+import ast,base64,gzip,hashlib,json,sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from predicate_runtime import body_identity
+ROOT=Path(__file__).resolve().parent
+def load(name,root=ROOT):
+    path=root/'data'/name
+    with gzip.open(path,'rb') as f:raw=f.read(64000001)
+    if len(raw)>64000000:raise ValueError('data envelope')
+    return json.loads(raw)
+def exact(a,b):return json.dumps(a,sort_keys=True,separators=(',',':'))==json.dumps(b,sort_keys=True,separators=(',',':'))
+def canonical(row,keys):return json.dumps({k:row[k] for k in keys},sort_keys=True,separators=(',',':'))
+def verify(root=ROOT):
+    root=Path(root);manifest=json.loads((root/'manifest.json').read_text(encoding='utf-8'))
+    for name,expected in manifest['files'].items():
+        p=(root/name).resolve()
+        if not p.is_relative_to(root.resolve()) or hashlib.sha256(p.read_bytes()).hexdigest()!=expected:raise ValueError('file identity:'+name)
+    inputs=load('inputs.json.gz',root);observations=load('observations.json.gz',root);sources=load('sources.json.gz',root)
+    population=inputs['population'];projects={p['project'] for p in population}
+    if len(population)!=40 or len(projects)!=40 or len({p['repository_id'] for p in population})!=40:raise ValueError('population')
+    bysource={(s['project'],s['path']):s for s in sources}
+    rawsources={}
+    for key,s in bysource.items():
+        raw=base64.b64decode(s['content_base64'],validate=True)
+        if hashlib.sha256(raw).hexdigest()!=s['sha256']:raise ValueError('original source bytes')
+        rawsources[key]=raw
+    def capsule(row):
+        raw=rawsources[row['project'],row['member']]
+        if hashlib.sha256(raw).hexdigest()!=row['source_sha256']:raise ValueError('capsule source file')
+        nodes=[n for n in ast.walk(ast.parse(raw)) if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef)) and n.lineno==row['line'] and n.end_lineno==row['end_line']]
+        text='\n'.join(raw.decode('utf-8-sig').splitlines()[row['line']-1:row['end_line']])+'\n'
+        if len(nodes)!=1 or body_identity(nodes[0].body)!=row['portable_body_sha256'] or text!=row['source']:raise ValueError('original source capsule')
+    primary=inputs['primary'];remaining=inputs['delegated'];extensions=inputs['extensions']
+    for row in primary['cases']+[r for c in remaining['cases']+extensions['cases'] for r in c['functions']]:capsule(row)
+    primary_projects={c['project'] for c in primary['cases']};delegated_projects={c['project'] for c in remaining['cases']}
+    if primary_projects&delegated_projects or primary_projects|delegated_projects!=projects:raise ValueError('selected project partition')
+    for repeat in observations['primary']:
+        if [r['id'] for r in repeat['rows']]!=[c['id'] for c in primary['cases']]:raise ValueError('primary case order')
+        for c,row in zip(primary['cases'],repeat['rows']):
+            if [s['id'] for s in c['inputs']]!=[s['id'] for s in row['observations']]:raise ValueError('primary input omission')
+            for s,v in zip(c['inputs'],row['observations']):
+                if not exact(v['native'],v['model']) or not exact(v['native'],s['expected']):raise ValueError('primary observation')
+    def check_suite(label,cases,keys):
+        runs=observations[label]
+        for case in cases:
+            selected=[r for r in runs if r['project']==case['project']]
+            if {(r['arm'],r['repeat']) for r in selected}!={(a,n) for a in ('native','model') for n in (1,2,3)}:raise ValueError('paired run omission')
+            base=None
+            for run in selected:
+                if [r['id'] for r in run['observations']]!=[r['id'] for r in case['samples']]:raise ValueError('context omission')
+                current=[canonical(r,keys) for r in run['observations']]
+                if base is None:base=current
+                elif current!=base:raise ValueError('paired return/trace/state difference')
+                for sample,row in zip(case['samples'],run['observations']):
+                    if row['result']['status'] in ('harness_error','unsupported'):raise ValueError('incomplete result')
+                    expected=sample.get('expected',sample['fixture'].get('expected_result'))
+                    result=row['result'];fixture=sample['fixture']
+                    if expected and not all(k in result and exact(result[k],v) for k,v in expected.items()):raise ValueError('functional contract difference')
+                    if 'expected' in fixture:
+                        value=result.get('value')
+                        if case['project']=='R24':value=value.get('authenticated') if isinstance(value,dict) else None
+                        if result['status']!='value' or not exact(value,fixture['expected']):raise ValueError('extension normal result')
+                    if 'expected_status' in fixture:
+                        status=result.get('status_code',200)
+                        if case['project']=='R04' and result['status']=='value':status=result['value']['status_code']
+                        if status!=fixture['expected_status']:raise ValueError('extension status')
+                    if label=='extensions' and case['project']=='R26':
+                        value=dict(username=fixture['username'],password=fixture['password']) if fixture['username'] or fixture['password'] else None
+                        if not exact(result,dict(status='value',value=value)):raise ValueError('credential handoff')
+                    if label=='extensions' and case['project']=='R31':
+                        value=dict(roles=['reader'] if fixture['subject']=='alice' else [],admin=False,allowed=fixture['subject']=='alice' and fixture['action']=='read')
+                        if not exact(result,dict(status='value',value=value)):raise ValueError('role-list versus authorization verdict')
+    check_suite('delegated',remaining['cases'],('id','result','provider_trace','state'))
+    check_suite('extensions',extensions['cases'],('id','result','trace','state'))
+    declared=sum(len(c['functions']) for c in extensions['cases'])
+    if declared!=sum(len(r['entered']) for r in observations['extension_coverage']['rows']) or any(r['unentered'] for r in observations['extension_coverage']['rows']):raise ValueError('actual function-object entry')
+    policy=observations['policy_recheck']
+    if not policy['normal_contract_recheck_passed'] or [len(x['mismatches']) for x in policy['variants']]!=[2,0]:raise ValueError('policy-copy repair')
+    totals=observations['static_application_paths']
+    if totals['baseline']['non_auxiliary_source_path']['declared_routes']!=2212 or totals['guarded']['non_auxiliary_source_path']['all_declared_dependencies_linked']!=1022:raise ValueError('static denominator')
+    return dict(projects=40,primary_contexts=sum(len(c['inputs']) for c in primary['cases'])+sum(len(c['samples']) for c in remaining['cases']),
+        extension_projects=len(extensions['cases']),extension_contexts=sum(len(c['samples']) for c in extensions['cases']),
+        extension_source_functions=declared,all_recorded_observations_consistent=True,expert_returns=0,
+        whole_application_certificate=False,baseline_and_extension_counts_are_not_independent_samples=True)
+if __name__=='__main__':print(json.dumps(verify(),indent=2))
