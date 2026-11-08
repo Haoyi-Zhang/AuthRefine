@@ -1,12 +1,10 @@
 # AuthRefine manuscript figures
 
-The manuscript uses six schematics and five vector plots. The workflow and
-credential handoff use text-free pictograms from an [illustration atlas](artwork/interface-icons.png)
-generated using OpenAI image generation ([prompt](diagram-prompts.md)).
-The atlas pixels are unchanged. Its pictograms are clipped at placement and
-kept in their own slots; all boxes, arrows, labels and formulas are vector PDF
-elements. The other four schematics are entirely vector. The diagram renderer
-checks margins, label spacing, icon placement and arrow clearance before saving.
+The manuscript uses six schematics and six quantitative figures, all with
+embedded type and vector paths. Text is selectable. The schematic renderer
+checks margins, label separation and clearance from connectors before export.
+The diagrams define the actual transitions and comparisons, without raster
+artwork or external rendering services.
 
 | Vector plot | Retained input |
 | --- | --- |
@@ -15,8 +13,9 @@ checks margins, label spacing, icon placement and arrow clearance before saving.
 | `credential-algorithm-cost.pdf` | `source_study/data/credential-cost.json.gz` |
 | `width.pdf` | `results/width.csv` |
 | `source-screening.pdf` | `adaptation_study/survey.json.gz` |
+| `frontend-batch-cost.pdf` | `source_study/data/frontend-cost.json.gz` |
 
-To redraw the figures, use Python with ReportLab and Pillow. Put the
+To redraw the figures, use Python with ReportLab. Put the
 manuscript's Linux Libertine TeX fonts on the `kpsewhich` search path; the
 schematic renderer also requires `STIXGeneralItalic.ttf` for the math labels.
 From the artifact directory, pass a fresh output directory to both commands:
