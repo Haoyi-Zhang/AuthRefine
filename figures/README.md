@@ -1,11 +1,12 @@
 # AuthRefine manuscript figures
 
-The manuscript uses five schematic PDFs and four vector plots. The schematic
-artwork in [artwork](artwork/) was generated using OpenAI image generation
-([prompts](diagram-prompts.md)). The artwork is kept as supplied; the crop and
-scientific labels are set independently in the PDF. The diagrams describe the
-workflow, an identity handoff, a commuting square, a two-request witness and a
-transfer protocol. They do not depict measured results.
+The manuscript uses six schematics and five vector plots. The workflow and
+credential handoff use text-free pictograms from an [illustration atlas](artwork/interface-icons.png)
+generated using OpenAI image generation ([prompt](diagram-prompts.md)).
+The atlas pixels are unchanged. Its pictograms are clipped at placement and
+kept in their own slots; all boxes, arrows, labels and formulas are vector PDF
+elements. The other four schematics are entirely vector. The diagram renderer
+checks margins, label spacing, icon placement and arrow clearance before saving.
 
 | Vector plot | Retained input |
 | --- | --- |
@@ -13,6 +14,7 @@ transfer protocol. They do not depict measured results.
 | `adaptation-handling.pdf` | `adaptation_study/casebook.json` |
 | `credential-algorithm-cost.pdf` | `source_study/data/credential-cost.json.gz` |
 | `width.pdf` | `results/width.csv` |
+| `source-screening.pdf` | `adaptation_study/survey.json.gz` |
 
 To redraw the figures, use Python with ReportLab and Pillow. Put the
 manuscript's Linux Libertine TeX fonts on the `kpsewhich` search path; the
