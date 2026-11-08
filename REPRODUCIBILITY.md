@@ -1,6 +1,7 @@
 # Reproducibility Contract
 
 The integrated source workflow is documented in `source_study/README.md`.
+The manuscript diagrams and offline Python plot recipe are in [figures](figures/README.md).
 Run `python -B source_study/workflow.py replay` for fresh discovery, source-body
 interpretation and complete diagnosis on the two packaged source projections;
 run its `check` command for the existing case and executed repair consumers.
