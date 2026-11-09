@@ -205,13 +205,10 @@ The organization/header laws can be checked in the same way. These results
 apply to the stated complete predicates and handoffs, not to arbitrary source
 extraction, authentication, ORM, concurrency or deployment.
 
-The paper's structural coverage figure is reproducible from the retained
-source-transfer records. With Matplotlib installed (the paper build used
-3.11.2), run from the artifact root:
-
-```sh
-python -B source_study/draw_coverage.py --output ../paper/figures/source-interface-coverage.pdf
-```
+Figure 6 uses the structural coverage counts in the retained source-transfer
+records. Follow the [manuscript figure recipe](../figures/README.md) and run
+its evaluation renderer into a separate output directory. It produces
+`source-interface-coverage.pdf` with the other statistical figures.
 
 These are route-linkage counts, not measured semantic accuracy. Plotting is
 optional and does not add a dependency to the finite checker or native replay.

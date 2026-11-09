@@ -1,9 +1,11 @@
 # AuthRefine manuscript figures
 
-The manuscript uses six schematics and six quantitative figures, all with
-embedded type and vector paths. Text is selectable. Diagram sources define
-the labels, arrows and geometry and check margins and connector clearance
-before export. No bitmap assets are needed for the current figures.
+The manuscript uses six illustrated schematics and six vector quantitative
+figures. Text, mathematical notation and connectors are typeset separately
+from the high-resolution transparent pictograms in `pictograms/`.
+Each pictogram denotes a specific input, component, state or outcome.
+The diagram source checks margins, label and connector clearance, and a
+minimum embedded image resolution of 450 dpi at the manuscript size.
 
 | Vector plot | Retained input |
 | --- | --- |

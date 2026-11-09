@@ -1,9 +1,10 @@
-"""Compose vector-only source, trace, and evaluation diagrams."""
+"""Compose source, trace and evaluation diagrams from glyphs and vector routes."""
 
 import argparse
 from dataclasses import dataclass
 from pathlib import Path
 
+from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen.canvas import Canvas
@@ -12,6 +13,8 @@ from figure_typography import (
     ACCENT, COMPACT_WIDTH, GUIDE, INK, MATH, SECONDARY, TEXT, WIDTH,
     label_size, register_fonts,
 )
+
+PICTOGRAMS = Path(__file__).resolve().parent / "pictograms"
 
 
 @dataclass(frozen=True)
@@ -71,18 +74,16 @@ class Diagram:
         self.c.line(x, self.h - start, x, self.h - end)
         self.c.setDash()
 
-    def mark(self, x, y, kind, color=ACCENT, radius=2.8):
-        self.reserve(Rect(x-radius, y-radius, 2*radius, 2*radius), f"{kind} mark")
-        self.c.setStrokeColor(color)
-        self.c.setFillColor(color)
-        self.c.setLineWidth(.8)
-        yy = self.h - y
-        if kind == "record":
-            self.c.rect(x-radius, yy-radius, 2*radius, 2*radius, stroke=0, fill=1)
-        elif kind in ("open", "solid"):
-            self.c.circle(x, yy, radius, stroke=1, fill=int(kind == "solid"))
-        else:
-            raise ValueError(f"Unknown mark {kind}")
+    def icon(self, x, y, name, size):
+        asset = ImageReader(str(PICTOGRAMS / f"{name}.png"))
+        pixels_x, pixels_y = asset.getSize()
+        scale = size / max(pixels_x, pixels_y)
+        w, h = pixels_x * scale, pixels_y * scale
+        if 72 / scale < 450:
+            raise ValueError(f"{name}: less than 450 dpi at manuscript size")
+        box = Rect(x-w/2, y-h/2, w, h)
+        self.reserve(box, name)
+        self.c.drawImage(asset, box.x, self.h-box.y-h, w, h, mask="auto")
 
     def connectors(self, routes, color=INK, dashed=False):
         """Clearance-check routed segments; joins within this group are intentional."""
@@ -142,72 +143,87 @@ def math(s, size=MATH, shift=0):
 
 
 def workflow(output):
-    d = Diagram(output, "analysis-workflow", 89)
-    d.text(9, 20, "Source snapshot", 10.8, align="left")
-    d.text(9, 48, "Entry conditions", 10.8, align="left")
-    d.text(153, 34, "Observe", 11.2, "Bold")
-    d.text(330, 34, "Compare", 11.2, "Bold")
-    d.text(330, 78, "Replay repair", 11.2, "Bold")
+    d = Diagram(output, "analysis-workflow", 143)
+    d.icon(20, 31, "workflow-source", 20)
+    d.icon(20, 76, "workflow-conditions", 20)
+    d.text(35, 34.5, "Source snapshot", align="left")
+    d.text(35, 79.5, "Entry conditions", align="left")
+    d.icon(165, 53, "workflow-observe", 23)
+    d.text(165, 30, "Observe", 10, "Bold")
+    d.icon(285, 53, "workflow-compare", 23)
+    d.text(285, 30, "Compare", 10, "Bold")
+    d.icon(360, 99, "workflow-replay", 21)
+    d.text(360, 135, "Replay repair", 10, "Bold")
     d.connectors([
-        ([(86, 17), (106, 17), (106, 45), (86, 45)], False),
-        ([(106, 30), (125, 30)], True),
+        ([(110, 31), (125, 31), (125, 76), (110, 76)], False),
+        ([(125, 53), (150, 53)], True),
     ], INK)
-    d.arrow(180, 30, 298, 30, INK)
-    d.text(238, 21, "Decisions, identities, states", 10.1)
-    d.arrow(330, 43, 330, 65, INK)
-    d.text(342, 56, "Witnesses", 9.9, align="left")
-    d.text(121, 78, "Reference contract", 10.8, "Bold", align="left")
+    d.arrow(180, 53, 270, 53, INK)
+    d.text(224, 42, "Decision, identity, state", 9.4)
+    d.connectors([([(300, 53), (360, 53), (360, 85)], True)], INK)
+    d.text(332, 44, "Witnesses", 9.4)
+    d.icon(158, 105, "workflow-contract", 18)
+    d.text(172, 108.5, "Reference contract", 10, "Bold", align="left")
     d.connectors([
-        ([(219, 74), (289, 74)], True),
-        ([(267, 74), (267, 53), (309, 53), (309, 43)], True),
+        ([(270, 105), (335, 105), (335, 99), (346, 99)], True),
+        ([(285, 105), (285, 67)], True),
     ], SECONDARY, dashed=True)
+    d.text(278, 125, "Edited boundary", 9.4)
+    d.connectors([([(317, 122), (360, 122), (360, 113)], True)], INK)
     d.save()
 
 
 def handoff(output):
-    d = Diagram(output, "credential-handoff", 79, COMPACT_WIDTH)
-    for x, title in ((52, "Key manager"), (176, "Request wrapper"),
-                     (300, "Object endpoint")):
-        d.text(x, 16, title, 11.0, "Bold")
-        d.lifeline(x, 24, 73)
+    d = Diagram(output, "credential-handoff", 104, COMPACT_WIDTH)
+    for x, title, icon in ((52, "Key manager", "handoff-key"),
+                           (176, "Request wrapper", "handoff-wrapper"),
+                           (300, "Object endpoint", "handoff-endpoint")):
+        d.icon(x, 19, icon, 23)
+        d.text(x, 42, title, 10, "Bold")
+        d.lifeline(x, 49, 98)
     for x0, x1, y, label, tag_x in (
-        (52, 176, 41, "Project record", 82),
-        (176, 300, 65, "Same record + access mode", 181),
+        (52, 176, 68, "Project record", 85),
+        (176, 300, 91, "Same record + access mode", 183),
     ):
-        d.mark(tag_x, y - 12, "record", radius=2.3)
-        d.text(tag_x + 7, y - 9, label, 10.1, color=ACCENT, align="left")
+        d.icon(tag_x, y - 12, "handoff-record", 9)
+        d.text(tag_x + 8, y - 9, label, 9.3, color=ACCENT, align="left")
         d.arrow(x0, y, x1, y, ACCENT)
     d.save()
 
 
 def mapping(output):
-    d = Diagram(output, "ownership-witness", 97)
-    d.text(14, 25, "Read-only key", 10.7, "Bold", align="left")
-    d.text(14, 39, "Project 1", 10.5, align="left")
-    d.text(14, 74, "GET Object 2", 10.7, "Bold", align="left")
+    d = Diagram(output, "ownership-witness", 101)
+    d.icon(22, 34, "ownership-key", 20)
+    d.icon(22, 78, "ownership-object", 20)
+    d.text(37, 31, "Read-only key", 10, "Bold", align="left")
+    d.text(37, 45, "Project 1", align="left")
+    d.text(37, 81, "GET Object 2", 10, "Bold", align="left")
     d.connectors([
-        ([(91, 31), (128, 31), (128, 71), (91, 71)], False),
-        ([(128, 51), (155, 51)], False),
-        ([(155, 51), (155, 25), (186, 25)], True),
-        ([(155, 51), (155, 71), (186, 71)], True),
+        ([(112, 34), (126, 34), (126, 78), (112, 78)], False),
+        ([(126, 55), (146, 55)], False),
+        ([(146, 55), (146, 29), (165, 29)], True),
+        ([(146, 55), (146, 79), (165, 79)], True),
     ], ACCENT)
-    for y, title, owner, decision, tone, mark in (
-        (25, "Observed", "Owner: Project 2", "Deny", SECONDARY, "open"),
-        (71, "Alternative", "Owner: Project 1", "Allow", ACCENT, "solid"),
+    for y, title, owner, decision, tone, sign in (
+        (29, "Observed binding", "Owner: Project 2", "Deny", SECONDARY, "deny"),
+        (79, "Alternative binding", "Owner: Project 1", "Allow", ACCENT, "allow"),
     ):
-        d.text(197, y - 2, title, 10.9, "Bold", align="left")
-        d.text(197, y + 13, owner, 10.5, align="left")
-        d.arrow(284, y, 317, y, tone)
-        d.mark(329, y, mark, tone)
-        d.text(339, y + 3.5, decision, 11.4, "Bold", tone, "left")
+        d.icon(178, y, "ownership-project", 16)
+        d.text(191, y - 1, title, 9.6, "Bold", align="left")
+        d.text(191, y + 13, owner, align="left")
+        d.arrow(287, y, 316, y, tone)
+        d.icon(330, y, f"ownership-{sign}", 14)
+        d.text(342, y + 3.5, decision, 10, "Bold", tone, "left")
     d.save()
 
 
 def square(output):
     d = Diagram(output, "semantic-square", 98, COMPACT_WIDTH)
     prime = math("'", 9.8, 1.5)
-    d.text(18, 31, "Source", 11.0, "Bold", align="left")
-    d.text(18, 79, "Target", 11.0, "Bold", align="left")
+    d.icon(17, 27, "commutation-valuation", 16)
+    d.icon(17, 75, "commutation-state", 16)
+    d.text(30, 31, "Source", 10, "Bold", align="left")
+    d.text(30, 79, "Target", 10, "Bold", align="left")
     d.runs(105, 31, [math("s = ν(q)")])
     d.runs(291, 31, [math("s"), prime, math(" = ν(q"), prime, math(")")])
     d.runs(105, 79, [math("q")])
@@ -223,44 +239,50 @@ def square(output):
 
 
 def trace(output):
-    d = Diagram(output, "diagnostic-trace", 122)
+    d = Diagram(output, "diagnostic-trace", 118)
     for x, value in ((37, 0), (135, 1)):
-        d.text(x, 64, f"p = {value}", 13.0, "Math")
-    d.arrow(59, 60, 114, 60, ACCENT)
-    d.text(86.5, 49, "a / allow", 10.3)
+        d.icon(x, 56, f"diagnosis-register-{value}", 19)
+        d.text(x, 80, f"p = {value}", MATH, "Math")
+    d.arrow(51, 56, 121, 56, ACCENT)
+    d.text(86, 45, "a / allow", 9.5)
+    d.text(86, 101, "Shared prefix", 9.3, color=SECONDARY)
     d.connectors([
-        ([(156, 60), (187, 60)], False),
+        ([(149, 56), (187, 56)], False),
         ([(187, 29), (187, 90)], False),
-        ([(187, 29), (311, 29)], True, ACCENT),
-        ([(187, 90), (311, 90)], True, SECONDARY),
+        ([(187, 29), (305, 29)], True, ACCENT),
+        ([(187, 90), (305, 90)], True, SECONDARY),
     ], ACCENT)
-    for y, title, value, action, tone, mark in (
-        (29, "Target (r, r)", 0, "b / allow", ACCENT, "solid"),
-        (90, "Reference (r, t)", 1, "b / deny", SECONDARY, "open"),
+    for y, title, value, action, tone, sign in (
+        (29, "Target (r, r)", 0, "b / allow", ACCENT, "allow"),
+        (90, "Reference (r, t)", 1, "b / deny", SECONDARY, "deny"),
     ):
-        d.mark(229, y - 14, mark, tone, 2.5)
-        d.text(237, y - 10, action, 10.7, "Bold", tone, "left")
-        d.text(337, y + 4, f"p = {value}", 13.0, "Math", tone)
-        d.text(337, y + 21, title, 10.7, color=SECONDARY)
+        d.icon(228, y - 14, f"diagnosis-{sign}", 11)
+        d.text(238, y - 10, action, 10, "Bold", tone, "left")
+        d.icon(319, y, f"diagnosis-register-{value}", 18)
+        d.text(348, y + 4, f"p = {value}", MATH, "Math", tone)
+        d.text(348, y + 21, title, 9.5, color=SECONDARY)
     d.save()
 
 
 def transfer(output):
-    d = Diagram(output, "evaluation-design", 79, COMPACT_WIDTH)
-    d.text(43, 36, "9 boundaries", 10.7, "Bold")
-    d.text(43, 52, "78 contexts", 10.5)
+    d = Diagram(output, "evaluation-design", 85, COMPACT_WIDTH)
+    d.icon(43, 29, "transfer-cohort", 20)
+    d.text(43, 53, "9 boundaries", 10, "Bold")
+    d.text(43, 67, "78 contexts")
+    d.text(304, 13, "Boundaries complete", 9.3, color=SECONDARY)
     d.connectors([
-        ([(76, 39), (99, 39)], False),
-        ([(99, 39), (99, 19), (129, 19)], True),
-        ([(99, 39), (99, 60), (129, 60)], True),
+        ([(76, 51), (99, 51)], False),
+        ([(99, 51), (99, 24), (119, 24)], True),
+        ([(99, 51), (99, 72), (119, 72)], True),
     ], ACCENT)
-    for y, method, result, tone in (
-        (19, "Frozen transfer", "5/9 complete", SECONDARY),
-        (60, "Source adaptation", "9/9 complete", ACCENT),
+    for y, method, result, tone, icon in (
+        (24, "Frozen transfer", "5/9", SECONDARY, "frozen"),
+        (72, "Then adapt source", "9/9", ACCENT, "adapt"),
     ):
-        d.text(142, y + 3.6, method, 10.8, "Bold", align="left")
+        d.icon(133, y, f"transfer-{icon}", 16)
+        d.text(145, y + 3.6, method, 10, "Bold", align="left")
         d.arrow(234, y, 263, y, tone)
-        d.text(276, y + 3.6, result, 10.8, "Bold", tone, "left")
+        d.text(304, y + 3.6, result, 10, "Bold", tone)
     d.save()
 
 

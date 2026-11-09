@@ -327,7 +327,7 @@ Original code, proof notes and generated data are provided under the MIT license
 ## Manuscript diagrams
 
 The manuscript uses twelve PDFs assembled offline from `figures/`: six
-schematics with selectable text and six vector plots based on retained data.
+illustrated schematics with selectable text and six vector plots based on retained data.
 The plot and diagram sources, font requirements, and reproduction
 commands are in [figures/README.md](figures/README.md).
 
