@@ -9,17 +9,16 @@ import math
 from pathlib import Path
 from statistics import median
 
-from reportlab.lib.colors import HexColor, white
+from reportlab.lib.colors import white
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfgen.canvas import Canvas
 
-from figure_typography import register_fonts
+from figure_typography import (
+    ACCENT as NAVY, GRID, INK, LIGHT, SECONDARY as MUTED, TEXT, WIDTH,
+    count_tint, label_size, register_fonts,
+)
 
 ARTIFACT = Path(__file__).resolve().parents[1]
-WIDTH = 396
-INK = HexColor("#18242a")
-NAVY = HexColor("#24596c")
-GRID = HexColor("#d1d7da")
 
 
 def chart(output, name, height):
@@ -32,8 +31,9 @@ def chart(output, name, height):
     return c
 
 
-def text(c, x, y, value, align="center", size=10.5, color=INK, font="Body"):
+def text(c, x, y, value, align="center", size=TEXT, color=INK, font="Body"):
     value = str(value)
+    size = label_size(font, size)
     w = pdfmetrics.stringWidth(value, font, size)
     x0 = x - {"center": w / 2, "left": 0, "right": w}[align]
     y0, y1 = y - .23 * size, y + .76 * size
@@ -60,6 +60,26 @@ def dot(c, x, y, radius=2.5, open_marker=False, color=NAVY):
     c.setStrokeColor(color)
     c.setLineWidth(.8)
     c.circle(x, y, radius, fill=1, stroke=int(open_marker))
+
+
+def rect(c, x, y, w, h, color):
+    c.setFillColor(color)
+    c.rect(x, y, w, h, fill=1, stroke=0)
+
+
+def square(c, x, y, r, color=NAVY):
+    rect(c, x - r, y - r, 2*r, 2*r, color)
+
+
+def diamond(c, x, y, r, color=INK):
+    c.setFillColor(color)
+    p = c.beginPath()
+    p.moveTo(x - r, y)
+    p.lineTo(x, y + r)
+    p.lineTo(x + r, y)
+    p.lineTo(x, y - r)
+    p.close()
+    c.drawPath(p, fill=1, stroke=0)
 
 
 def axis(c, left, right, y, low, high, ticks):
@@ -93,17 +113,21 @@ def coverage(output):
     ]
     if len(rows) != 48 or counts != [(1591, 564), (1591, 757)]:
         raise ValueError("The matched source cohort no longer matches the manuscript")
-    c = chart(output, "source-interface-coverage", 100)
-    left, right = 86, 280
-    x = axis(c, left, right, 32, 0, 1591,
-             ((0, "0"), (400, "400"), (800, "800"), (1200, "1,200"), (1591, "1,591")))
-    text(c, 341, 85, "Linked / declared", size=10.1, font="Bold")
-    for y, label, (total, complete) in zip((69, 49), ("Baseline", "Guarded"), counts):
-        line(c, left, y, right, y)
-        dot(c, x(complete), y, 2.75, open_marker=(label == "Baseline"))
-        text(c, left - 9, y - 3.4, label, "right")
-        text(c, 341, y - 3.4, f"{complete:,} / {total:,}", font="Bold")
-    text(c, (left + right) / 2, 6.5, "Complete direct links")
+    c = chart(output, "source-interface-coverage", 101)
+    left, right = 80, 385
+    for y, label, (total, complete) in zip((65, 40), ("Baseline", "Guarded"), counts):
+        end = left + (right - left) * complete / total
+        rect(c, left, y - 8, right - left, 16, LIGHT)
+        rect(c, left, y - 8, end - left, 16, NAVY)
+        text(c, left - 10, y - 3.4, label, "right", font="Bold")
+        text(c, (left + end) / 2, y - 3.4, f"{complete:,} ({complete / total:.1%})",
+             size=10.4, color=white, font="Bold")
+        text(c, (end + right) / 2, y - 3.4, f"{total - complete:,}", color=INK)
+    rect(c, left, 85, 10, 8, NAVY)
+    text(c, left + 15, 85, "Fully linked", "left")
+    rect(c, 224, 85, 10, 8, LIGHT)
+    text(c, 239, 85, "Not fully linked", "left")
+    text(c, (left + right) / 2, 10, "1,591 declared routes per method", color=MUTED)
     finish(c)
 
 
@@ -126,17 +150,21 @@ def adaptation(output):
                                        (2, 1, 4, 1), (0, 2, 3, 3)]:
         raise ValueError("Adaptation handling no longer matches the manuscript")
     c = chart(output, "adaptation-handling", 131)
-    cols = (174, 234, 295, 353)
-    text(c, 8, 116, "Adaptation axis", "left", font="Bold")
+    cols = (167, 229, 291, 353)
+    colors = [count_tint(value, 8) for value in range(9)]
     for (_, label), x in zip(handling, cols):
-        text(c, x, 116, label, font="Bold")
-    line(c, 8, 108, 388, 108, INK)
-    for i, (y, name, row) in enumerate(zip((92, 73, 54, 35, 16), axes, matrix)):
+        text(c, x, 115, label, font="Bold")
+    for y, name, row in zip((96, 78, 60, 42, 24), axes, matrix):
         text(c, 8, y, name[0].upper() + name[1:], "left")
         for x, count in zip(cols, row):
-            text(c, x, y, count, color=NAVY if count == max(row) else INK,
+            rect(c, x - 29, y - 5, 58, 16, colors[count])
+            text(c, x, y, count, color=white if count >= 6 else INK,
                  font="Bold" if count == max(row) else "Body")
-        line(c, 8, y - 7, 388, y - 7, INK if i == 4 else GRID, .45)
+    text(c, 141, 7, "Cases", "right", size=9.5, color=MUTED)
+    text(c, 156, 7, "0", size=9.5, color=MUTED)
+    for i, color in enumerate(colors):
+        rect(c, 163 + 11*i, 5, 11, 8, color)
+    text(c, 270, 7, "8", "left", size=9.5, color=MUTED)
     finish(c)
 
 
@@ -160,17 +188,21 @@ def costs(output):
             or round(total["common_table_build_seconds"], 5) != 0.00877):
         raise ValueError("Cost data differs from the numbers in the manuscript")
     c = chart(output, "credential-algorithm-cost", 148)
-    left, right = 120, 328
+    left, right = 119, 324
     x = axis(c, left, right, 31, 0, 50, tuple((v, str(v)) for v in range(0, 51, 10)))
-    dot(c, 131, 135, 1.8)
-    text(c, 139, 132, "Individual runs", "left", size=10.2)
-    text(c, 364, 132, "Median", size=10.3, font="Bold")
-    for y, (key, label), value in zip((111, 89, 67, 45), names, ms):
-        line(c, left, y, right, y, GRID, .38)
-        for i, row in enumerate(observed):
-            dot(c, x(1000 * row["seconds"][key]), y + (i - 2) * 3.3, radius=1.45)
+    dot(c, 129, 135, 2.0, True)
+    text(c, 138, 132, "Individual run", "left", size=10.3)
+    diamond(c, 323, 135, 3.1)
+    text(c, 335, 132, "Median (ms)", "left", size=10.0, font="Bold")
+    ordered = sorted(zip(names, ms), key=lambda item: item[1])
+    for y, ((key, label), value) in zip((111, 89, 67, 45), ordered):
+        run_ms = [1000 * row["seconds"][key] for row in observed]
+        line(c, x(min(run_ms)), y, x(max(run_ms)), y, NAVY, 1)
+        for i, sample in enumerate(run_ms):
+            dot(c, x(sample), y + 4.5 + i * 2.85, radius=1.35, open_marker=True)
+        diamond(c, x(value), y, 3.4)
         text(c, left - 11, y - 3.5, label, "right")
-        text(c, 364, y - 3.5, f"{value:.2f}", font="Bold")
+        text(c, 362, y - 3.5, f"{value:.2f}", font="Bold")
     text(c, (left + right) / 2, 5.5, "Family-analysis time (ms)")
     finish(c)
 
@@ -198,7 +230,7 @@ def width(output):
         if n >= 8:
             derived.append((n, bound))
     c = chart(output, "width", 151)
-    left, right, bottom, top = 62, 382, 29, 117
+    left, right, bottom, top = 78, 382, 29, 120
 
     def loc(x, y):
         return (left + 5 + (x - 1) / 15 * (right - left - 5),
@@ -219,7 +251,13 @@ def width(output):
     c.line(left, bottom, right, bottom)
     c.line(left, bottom, left, top)
     text(c, (left + right) / 2, 4.7, "Declared aliases")
-    text(c, left, 121, "Binding evaluations (log scale)", "left", 10.3)
+    c.saveState()
+    c.translate(13, (bottom + top) / 2)
+    c.rotate(90)
+    c.setFillColor(INK)
+    c.setFont("Body", TEXT)
+    c.drawCentredString(0, 0, "Binding evaluations (log)")
+    c.restoreState()
 
     def series(points, color, marker):
         c.setStrokeColor(color)
@@ -236,6 +274,11 @@ def width(output):
                 c.rect(x - 1.65, y - 1.65, 3.3, 3.3, fill=1, stroke=0)
         c.setDash()
 
+    # Mark the boundary on the plot; the line continues only as a derivation.
+    split, _ = loc(8, 2)
+    c.setDash(1.5, 2.5)
+    line(c, split, bottom, split, top, GRID, .65)
+    c.setDash()
     series(derived, INK, "dash")
     series(executed, INK, "square")
     series(local, NAVY, "circle")
@@ -243,9 +286,9 @@ def width(output):
     c.setFillColor(INK)
     c.circle(x, y, 1.85, fill=1, stroke=0)
     for x, color, symbol, label in (
-        (48, NAVY, "circle", "Local: executed"),
-        (161, INK, "square", "Global: executed"),
-        (280, INK, "dash", "Global: derived"),
+        (48, NAVY, "circle", "Local (executed)"),
+        (161, INK, "square", "Global (executed)"),
+        (280, INK, "dash", "Global (derived)"),
     ):
         c.setStrokeColor(color)
         c.setFillColor(color)
@@ -278,16 +321,16 @@ def screening(output):
         if sum(row["features"][key] == "observed" for row in survey["rows"]) != count:
             raise ValueError(f"Screening summary does not match snapshot rows: {key}")
     c = chart(output, "source-screening", 156)
-    left, right = 133, 327
-    x = axis(c, left, right, 30, 0, 48, tuple((v, str(v)) for v in range(0, 49, 12)))
-    text(c, 361, 145, "Count", size=10.2, font="Bold")
-    for y, (_, label), count in zip((133, 116, 99, 82, 65, 48), keys, counts):
-        line(c, left, y, right, y, GRID, .4)
-        line(c, left, y, x(count), y, NAVY, .8)
-        dot(c, x(count), y, 2.4)
+    left, right = 135, 372
+    x = axis(c, left, right, 30, 0, 48, tuple((v, f"{v / total:.0%}") for v in range(0, 49, 12)))
+    for tick in (12, 24, 36, 48):
+        line(c, x(tick), 30, x(tick), 149, GRID, .45)
+    ordered = sorted(zip(keys, counts), key=lambda item: -item[1])
+    for y, ((_, label), count) in zip((140, 122, 104, 86, 68, 50), ordered):
+        rect(c, left, y - 4, x(count) - left, 8, NAVY)
         text(c, left - 10, y - 3.4, label, "right")
-        text(c, 361, y - 3.4, f"{count}/48")
-    text(c, 230, 5, "Snapshots with the construct in selected functions")
+        text(c, x(count) + 6, y - 3.4, f"{count}/{total}", "left", font="Bold")
+    text(c, (left + right) / 2, 5, "Share of 48 snapshots")
     finish(c)
 
 
@@ -309,21 +352,27 @@ def frontend(output):
            or median(totals[m]) != data["summaries"][m]["median_whole48_batch_wall_ns"]
            for m in modes):
         raise ValueError("Recorded batch summary disagrees with the process rows")
-    c = chart(output, "frontend-batch-cost", 113)
-    left, right = 81, 292
-    x = axis(c, left, right, 30, 20, 40, tuple((v, str(v)) for v in range(20, 41, 5)))
-    for p, m, open_marker in ((106, "Baseline", True), (195, "Guarded", False)):
-        dot(c, p, 101, 2.55, open_marker)
-        text(c, p + 8, 98, m, "left", 10.3)
-    text(c, 348, 98, "Extra time", font="Bold")
+    c = chart(output, "frontend-batch-cost", 118)
+    left, right = 77, 378
+    x = axis(c, left, right, 31, 20, 40, tuple((v, str(v)) for v in range(20, 41, 5)))
+    for p, m, open_marker in ((99, "Baseline", True), (259, "Guarded", False)):
+        if open_marker:
+            dot(c, p, 106, 2.55, True)
+        else:
+            square(c, p, 106, 2.55)
+        text(c, p + 8, 103, m, "left", 10.3)
     for i, (a, b) in enumerate(zip(*(totals[m] for m in modes)), 1):
-        y = 95 - 16 * i
+        y = 103 - 21 * i
         start, end = a / 1e9, b / 1e9
-        line(c, x(start), y, x(end), y, INK, .55)
+        mid = (x(start) + x(end)) / 2
+        line(c, x(start), y, mid - 27, y, GRID, .75)
+        line(c, mid + 27, y, x(end), y, GRID, .75)
         dot(c, x(start), y, 2.8, True)
-        dot(c, x(end), y, 2.8)
+        square(c, x(end), y, 2.65)
         text(c, left - 12, y - 3.3, f"Batch {i}", "right")
-        text(c, 348, y - 3.3, f"+{end - start:.2f} s")
+        text(c, x(start) - 6, y - 3.3, f"{start:.3f}", "right", size=9.5)
+        text(c, x(end) + 6, y - 3.3, f"{end:.3f}", "left", size=9.5)
+        text(c, mid, y - 3.3, f"+{end - start:.2f} s", font="Bold")
     text(c, (left + right) / 2, 5, "Summed process wall time over 48 snapshots (s)")
     finish(c)
 

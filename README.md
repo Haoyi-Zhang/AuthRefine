@@ -23,7 +23,7 @@ At that evaluation point, sixty other candidate interfaces lacked complete
 reference contracts. `reference_completion/` now supplies their post-exposure
 source-functional contracts: 58 concrete entries and two abstract declarations.
 It interprets the available route/company helpers and checks typed observations
-and actual dependency arguments,not just returns or invocation counts.
+and actual dependency arguments, alongside returns and invocation counts.
 The distributed offline packet reconstructs 57 concrete entries; one enterprise
 entry was checked locally and requires separately supplied licensed source for
 receiver replay. Two official source-address corrections recover the missing
@@ -326,11 +326,10 @@ Original code, proof notes and generated data are provided under the MIT license
 
 ## Manuscript diagrams
 
-The workflow, credential handoff and semantic-square diagrams are editable TikZ
-sources in `figures/`. The manuscript inputs these files directly, so labels
-inherit its Libertine text and mathematical fonts. Build with pdfLaTeX and
-PGF/TikZ; no separate schematic PDF cache is required. Statistical plots use
-Python and retained data, with executed and derived points labeled separately.
+The manuscript uses twelve PDFs assembled offline from `figures/`: six
+schematics with selectable text and six vector plots based on retained data.
+The plot and diagram sources, font requirements, and reproduction
+commands are in [figures/README.md](figures/README.md).
 
 The Linux checker workflow also runs the full quick-release validator: runtime
 admission, retained scientific assets, frozen-result structure, example replay,

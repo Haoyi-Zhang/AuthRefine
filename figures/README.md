@@ -1,10 +1,9 @@
 # AuthRefine manuscript figures
 
 The manuscript uses six schematics and six quantitative figures, all with
-embedded type and vector paths. Text is selectable. The schematic renderer
-checks margins, label separation and clearance from connectors before export.
-The diagrams define the actual transitions and comparisons, without raster
-artwork or external rendering services.
+embedded type and vector paths. Text is selectable. Diagram sources define
+the labels, arrows and geometry and check margins and connector clearance
+before export. No bitmap assets are needed for the current figures.
 
 | Vector plot | Retained input |
 | --- | --- |
@@ -16,8 +15,9 @@ artwork or external rendering services.
 | `frontend-batch-cost.pdf` | `source_study/data/frontend-cost.json.gz` |
 
 To redraw the figures, use Python with ReportLab. Put the
-manuscript's Linux Libertine TeX fonts on the `kpsewhich` search path; the
-schematic renderer also requires `STIXGeneralItalic.ttf` for the math labels.
+manuscript's Linux Libertine TeX fonts on the `kpsewhich` search path
+(or set `AUTHREFINE_TEXMF` to their TeX font tree). The schematic renderer
+also requires `STIXGeneralItalic.ttf` for the math labels.
 From the artifact directory, pass a fresh output directory to both commands:
 
     python -B figures/draw_evaluation.py --output-directory /path/to/output

@@ -1,14 +1,49 @@
 """Embedded manuscript fonts shared by the Python figure renderers."""
 
 from pathlib import Path
+import os
 import re
 import struct
 import subprocess
 
+from reportlab.lib.colors import HexColor, linearlyInterpolatedColor
 from reportlab.pdfbase import pdfmetrics
 
 
+# PDF points at native size. Match the approximately 10 pt acmsmall body.
+WIDTH = 396
+COMPACT_WIDTH = 352
+TEXT = 9.8
+EMPHASIS = 10.0
+MATH = 10.9
+INK = HexColor("#24282b")
+SECONDARY = HexColor("#50595d")
+ACCENT = HexColor("#1d5965")
+GUIDE = HexColor("#9ca7a9")
+GRID = HexColor("#dbe1e2")
+LIGHT = HexColor("#edf1f1")
+
+
+def label_size(font, requested):
+    return min(requested, {"Body": TEXT, "Bold": EMPHASIS, "Math": MATH}[font])
+
+
+def count_tint(value, maximum):
+    # Keep adjacent integer levels on opposite sides of the text-contrast break.
+    t = value / maximum
+    if 0.6 < t < 0.7:
+        t = 0.6
+    elif 0.7 <= t < 0.775:
+        t = 0.775
+    return linearlyInterpolatedColor(LIGHT, ACCENT, 0, 1, t)
+
+
 def tex_file(name):
+    if tree := os.environ.get("AUTHREFINE_TEXMF"):
+        paths = tuple(Path(tree).rglob(name))
+        if len(paths) != 1:
+            raise FileNotFoundError(f"Expected exactly one {name} in the supplied font tree")
+        return str(paths[0])
     path = subprocess.check_output(["kpsewhich", name], text=True).strip()
     if not path or not Path(path).is_file():
         raise FileNotFoundError(f"Missing manuscript font resource: {name}")
