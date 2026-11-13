@@ -80,6 +80,10 @@ without changing the upstream source or the expected outcomes. The remaining
 38 records are scoped verification. None of these records establishes an
 upstream defect. The verifier checks row identities, extension membership
 and the retained local policy comparison before reporting these counts.
+`data/evidence-trace.json` links the two exceptions to their retained records
+and the upstream material checked. These links provide context; the offline
+verifier checks the frozen source identity, record links and mismatch counts
+without contacting the upstream projects.
 
 ## Contract review
 

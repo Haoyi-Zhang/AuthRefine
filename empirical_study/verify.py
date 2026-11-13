@@ -33,6 +33,35 @@ def verify_evidence_categories(root,population,observations):
             or policy['normal_contract_recheck_passed'] is not True):
         raise ValueError('local mismatch cannot be classified as an upstream repair')
     return dict(Counter(r['evidence_category'] for r in rows))
+def verify_evidence_trace(root,inputs,observations):
+    trace=json.loads((root/'data/evidence-trace.json').read_text(encoding='utf-8'))
+    cases={r['project']:r for r in trace['cases']}
+    if len(trace['cases'])!=2 or set(cases)!={'R01','R22'}:
+        raise ValueError('evidence trace case set')
+    with (root/'data/evidence-classification.csv').open(encoding='utf-8',newline='') as f:
+        rows={r['project']:r for r in csv.DictReader(f)}
+    for key,case in cases.items():
+        if (case['category']!=rows[key]['evidence_category']
+                or case['upstream_defect_status']!=rows[key]['upstream_defect_status']):
+            raise ValueError('evidence trace classification')
+    documentation=cases['R01']
+    expected=[r for r in inputs['primary']['cases'] if r['project']=='R01']
+    if (documentation['retained_entries']!=[r['id'] for r in expected]
+            or [r['function'] for r in expected if r['id']==documentation['documentation_entry']]
+            !=['Authenticator.check_allowed']
+            or any(r['snapshot'] not in documentation['frozen_source'] for r in expected)):
+        raise ValueError('documentation trace source identity')
+    local=cases['R22']
+    if local['observation_key']!='policy_recheck':
+        raise ValueError('local comparison record identity')
+    policy=observations[local['observation_key']]
+    variants={r['variant']:r for r in policy['variants']}
+    original,copy=variants['original'],variants['proposed_repair']
+    if (original['normal_contexts']!=local['contexts'] or copy['normal_contexts']!=local['contexts']
+            or len(original['mismatches'])!=local['original_mismatches']
+            or len(copy['mismatches'])!=local['local_copy_mismatches']
+            or local['upstream_files_changed'] is not False or policy['upstream_files_changed'] is not False):
+        raise ValueError('local comparison trace counts')
 def verify(root=ROOT):
     root=Path(root);manifest=json.loads((root/'manifest.json').read_text(encoding='utf-8'))
     for name,expected in manifest['files'].items():
@@ -42,6 +71,7 @@ def verify(root=ROOT):
     population=inputs['population'];projects={p['project'] for p in population}
     if len(population)!=40 or len(projects)!=40 or len({p['repository_id'] for p in population})!=40:raise ValueError('population')
     verify_evidence_categories(root,population,observations)
+    verify_evidence_trace(root,inputs,observations)
     bysource={(s['project'],s['path']):s for s in sources}
     rawsources={}
     for key,s in bysource.items():

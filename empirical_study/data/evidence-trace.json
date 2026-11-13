@@ -1,0 +1,30 @@
+{
+  "scope": "Trace for the two exceptions in the forty-project evidence classification. The other projects have scoped verification records, not defect findings.",
+  "cases": [
+    {
+      "project": "R01",
+      "category": "documentation_scope_difference",
+      "retained_entries": ["N01", "N02"],
+      "documentation_entry": "N02",
+      "maintainer_documentation": "https://jupyterhub.readthedocs.io/en/stable/reference/authenticators.html#allowing-access",
+      "frozen_source": "https://github.com/jupyterhub/jupyterhub/blob/4224d01251779a37112d8ae26dc384244d31cb77/jupyterhub/auth.py",
+      "interpretation": "The pinned source retains wording about an empty allow-list from the earlier behavior. The maintainer documentation describes the changed admission semantics. The selected predicate comparison does not cover caller or subclass behavior.",
+      "upstream_defect_status": "not_established"
+    },
+    {
+      "project": "R22",
+      "category": "local_contract_mismatch",
+      "observation_key": "policy_recheck",
+      "contexts": 7,
+      "original_mismatches": 2,
+      "local_copy_mismatches": 0,
+      "upstream_files_changed": false,
+      "maintainer_record_checked": [
+        "https://github.com/navyapdh11/agentic-ux-factory/issues",
+        "https://github.com/navyapdh11/agentic-ux-factory/pulls"
+      ],
+      "interpretation": "The retained comparisons establish agreement with the local reference after the model change. No corresponding maintainer confirmation was found in the public records checked. This is not an exhaustive upstream search.",
+      "upstream_defect_status": "not_established"
+    }
+  ]
+}

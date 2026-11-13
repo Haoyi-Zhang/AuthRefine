@@ -32,6 +32,19 @@
     "passing_distinct_pairs": 15,
     "interpretation": "The count describes distinct outputs, not distinct participants."
   },
+  "return_binding_check": {
+    "original_archives_matched": 16,
+    "member_files_matched": 32,
+    "basis": "Original archives and both member files match the frozen scoring identities. The recheck does not execute or rescore submissions."
+  },
+  "task_rows": [
+    {"task": "Report export", "submitted": 3, "passed": 3, "contract_edits": [17, 19], "observer_edits": [6, 8]},
+    {"task": "Review-object handoff", "submitted": 3, "passed": 3, "contract_edits": [21, 21], "observer_edits": [13, 13]},
+    {"task": "Receipt filing and readback", "submitted": 3, "passed": 3, "contract_edits": [12, 15], "observer_edits": [6, 6]},
+    {"task": "Workspace document selection", "submitted": 3, "passed": 3, "contract_edits": [26, 26], "observer_edits": [8, 8]},
+    {"task": "Django admin permissions", "submitted": 2, "passed": 2, "contract_edits": [43, 48], "observer_edits": [6, 7], "reference_cells": 20},
+    {"task": "Django/Guardian object grants", "submitted": 2, "passed": 2, "contract_edits": [31, 31], "observer_edits": [6, 6], "reference_cells": 32}
+  ],
   "missing_observations": ["elapsed_task_time", "help", "author_intervention", "first_attempt"],
   "scope": "Final-file checks on supplied tasks with local fixtures; no developer adoption, workload, or generalization to new repositories is measured."
 }

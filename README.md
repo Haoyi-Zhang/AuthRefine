@@ -85,6 +85,8 @@ Both use local fixture data. The aggregate excludes raw submissions and
 session records. Final correctness and nonblank-line changes to
 the contract and adapter are observed; timing, help, and first-attempt
 behavior are not.
+The aggregate also records the recheck of the original return identities
+and the six task rows printed in the paper. The original files remain private.
 
 `results/direct-observation-summary.json` reports the retained paired
 comparisons with direct runs of selected original functions. It records the
