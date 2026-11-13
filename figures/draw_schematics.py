@@ -1,18 +1,23 @@
 """Compose source, trace and evaluation diagrams from glyphs and vector routes."""
 
 import argparse
+from contextlib import contextmanager
 from dataclasses import dataclass
 from pathlib import Path
 
+from reportlab.lib.colors import white
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen.canvas import Canvas
+from PIL import Image
 
 from figure_typography import (
-    ACCENT, COMPACT_WIDTH, GUIDE, INK, MATH, SECONDARY, TEXT, WIDTH,
+    ACCENT, COMPACT_WIDTH, GUIDE, INK, LIGHT, MATH, SECONDARY, TEXT, WIDTH,
     label_size, register_fonts,
 )
+from binding_overview import draw as worked_overview, run as checked_example
+from credential_pair import draw as observed_pair
 
 PICTOGRAMS = Path(__file__).resolve().parent / "pictograms"
 
@@ -66,16 +71,43 @@ class Diagram:
             self.c.drawString(pos, self.h - y + shift, s)
             pos += width
 
-    def lifeline(self, x, start, end):
-        # Horizontal handoff edges meet these lifelines intentionally.
-        self.c.setStrokeColor(GUIDE)
-        self.c.setLineWidth(.55)
-        self.c.setDash(1.5, 2.5)
-        self.c.line(x, self.h - start, x, self.h - end)
-        self.c.setDash()
+    @contextmanager
+    def outline(self, x, y, w, h, name, tone=SECONDARY, tinted=False):
+        """Keep the contents inside the outline and the routes outside it."""
+        box = Rect(x-w/2, y-h/2, w, h)
+        self.reserve(box, name)
+        self.marks.pop()
+        start = len(self.marks)
+        self.c.setLineWidth(.72)
+        self.c.setStrokeColor(tone)
+        self.c.setFillColor(LIGHT if tinted else white)
+        self.c.roundRect(box.x, self.h-box.y-h, w, h, 4, stroke=1, fill=1)
+        yield
+        for inner, label in self.marks[start:]:
+            if not (box.x + 2 <= inner.x and inner.x + inner.w <= box.x + w - 2
+                    and box.y + 2 <= inner.y and inner.y + inner.h <= box.y + h - 2):
+                raise ValueError(f"{self.name}: {label} does not fit inside {name}")
+        del self.marks[start:]
+        self.marks.append((box, name))
 
-    def icon(self, x, y, name, size):
-        asset = ImageReader(str(PICTOGRAMS / f"{name}.png"))
+    def node(self, x, y, w, h, runs, *, tone=SECONDARY, color=INK, tinted=False):
+        name = "".join(run[0] for run in runs)
+        with self.outline(x, y, w, h, name, tone, tinted):
+            self.runs(x, y+3.4, runs, color=color)
+
+    def icon(self, x, y, name, size, cell=None):
+        path = PICTOGRAMS / f"{name}.png"
+        if cell is None:
+            asset = ImageReader(str(path))
+        else:
+            with Image.open(path) as plate:
+                plate = plate.convert("RGBA")
+                w, h = plate.size
+                image = plate.crop((w * cell // 3, 0, w * (cell + 1) // 3, h))
+                bounds = image.getchannel("A").point(lambda n: 255 if n > 32 else 0).getbbox()
+                if not bounds:
+                    raise ValueError(f"Empty pictogram at {cell}")
+                asset = ImageReader(image.crop(bounds))
         pixels_x, pixels_y = asset.getSize()
         scale = size / max(pixels_x, pixels_y)
         w, h = pixels_x * scale, pixels_y * scale
@@ -85,21 +117,38 @@ class Diagram:
         self.reserve(box, name)
         self.c.drawImage(asset, box.x, self.h-box.y-h, w, h, mask="auto")
 
+    def rule(self, x1, y1, x2, y2):
+        self.connectors([([(x1, y1), (x2, y2)], False)], GUIDE)
+
+    def mark(self, x, y, filled, name, radius=2.9, joined=False):
+        box = Rect(x-radius, y-radius, 2*radius, 2*radius)
+        # A joint intentionally touches the connectors of the same branch.
+        if joined:
+            if any(box.intersects(other, 2) for other, label in self.marks
+                   if label != "connector"):
+                raise ValueError(f"{name}: junction overlaps another mark")
+        else:
+            self.reserve(box, name)
+        self.c.setLineWidth(.6)
+        self.c.setStrokeColor(ACCENT if filled else SECONDARY)
+        self.c.setFillColor(ACCENT)
+        self.c.circle(x, self.h-y, radius, fill=int(filled), stroke=1)
+
     def connectors(self, routes, color=INK, dashed=False):
         """Clearance-check routed segments; joins within this group are intentional."""
         segments = []
         for points, arrowhead, *stroke in routes:
             last = len(points) - 2
             for i, ((x1, y1), (x2, y2)) in enumerate(zip(points, points[1:])):
-                if (x1 == x2) == (y1 == y2):
-                    raise ValueError("Use nonzero orthogonal connectors")
                 dx, dy = x2 - x1, y2 - y1
+                distance = (dx * dx + dy * dy) ** .5
+                if not distance:
+                    raise ValueError("A connector segment must have nonzero length")
                 tip = arrowhead and i == last
-                px = 2.2 if tip and not dx else .55
-                py = 2.2 if tip and not dy else .55
+                px = max(.55, 2.25 * abs(dy) / distance) if tip else .55
+                py = max(.55, 2.25 * abs(dx) / distance) if tip else .55
                 box = Rect(min(x1, x2) - px, min(y1, y2) - py,
                            abs(dx) + 2 * px, abs(dy) + 2 * py)
-                distance = abs(dx) + abs(dy)
                 if tip and distance < 8:
                     raise ValueError("Insufficient arrowhead clearance")
                 segments.append((box, (x1, y1, x2, y2, dx / distance, dy / distance), tip,
@@ -142,148 +191,63 @@ def math(s, size=MATH, shift=0):
     return (s, "Math", size, shift)
 
 
-def workflow(output):
-    d = Diagram(output, "analysis-workflow", 143)
-    d.icon(20, 31, "workflow-source", 20)
-    d.icon(20, 76, "workflow-conditions", 20)
-    d.text(35, 34.5, "Source snapshot", align="left")
-    d.text(35, 79.5, "Entry conditions", align="left")
-    d.icon(165, 53, "workflow-observe", 23)
-    d.text(165, 30, "Observe", 10, "Bold")
-    d.icon(285, 53, "workflow-compare", 23)
-    d.text(285, 30, "Compare", 10, "Bold")
-    d.icon(360, 99, "workflow-replay", 21)
-    d.text(360, 135, "Replay repair", 10, "Bold")
-    d.connectors([
-        ([(110, 31), (125, 31), (125, 76), (110, 76)], False),
-        ([(125, 53), (150, 53)], True),
-    ], INK)
-    d.arrow(180, 53, 270, 53, INK)
-    d.text(224, 42, "Decision, identity, state", 9.4)
-    d.connectors([([(300, 53), (360, 53), (360, 85)], True)], INK)
-    d.text(332, 44, "Witnesses", 9.4)
-    d.icon(158, 105, "workflow-contract", 18)
-    d.text(172, 108.5, "Reference contract", 10, "Bold", align="left")
-    d.connectors([
-        ([(270, 105), (335, 105), (335, 99), (346, 99)], True),
-        ([(285, 105), (285, 67)], True),
-    ], SECONDARY, dashed=True)
-    d.text(278, 125, "Edited boundary", 9.4)
-    d.connectors([([(317, 122), (360, 122), (360, 113)], True)], INK)
-    d.save()
-
-
-def handoff(output):
-    d = Diagram(output, "credential-handoff", 104, COMPACT_WIDTH)
-    for x, title, icon in ((52, "Key manager", "handoff-key"),
-                           (176, "Request wrapper", "handoff-wrapper"),
-                           (300, "Object endpoint", "handoff-endpoint")):
-        d.icon(x, 19, icon, 23)
-        d.text(x, 42, title, 10, "Bold")
-        d.lifeline(x, 49, 98)
-    for x0, x1, y, label, tag_x in (
-        (52, 176, 68, "Project record", 85),
-        (176, 300, 91, "Same record + access mode", 183),
-    ):
-        d.icon(tag_x, y - 12, "handoff-record", 9)
-        d.text(tag_x + 8, y - 9, label, 9.3, color=ACCENT, align="left")
-        d.arrow(x0, y, x1, y, ACCENT)
-    d.save()
-
-
-def mapping(output):
-    d = Diagram(output, "ownership-witness", 101)
-    d.icon(22, 34, "ownership-key", 20)
-    d.icon(22, 78, "ownership-object", 20)
-    d.text(37, 31, "Read-only key", 10, "Bold", align="left")
-    d.text(37, 45, "Project 1", align="left")
-    d.text(37, 81, "GET Object 2", 10, "Bold", align="left")
-    d.connectors([
-        ([(112, 34), (126, 34), (126, 78), (112, 78)], False),
-        ([(126, 55), (146, 55)], False),
-        ([(146, 55), (146, 29), (165, 29)], True),
-        ([(146, 55), (146, 79), (165, 79)], True),
-    ], ACCENT)
-    for y, title, owner, decision, tone, sign in (
-        (29, "Observed binding", "Owner: Project 2", "Deny", SECONDARY, "deny"),
-        (79, "Alternative binding", "Owner: Project 1", "Allow", ACCENT, "allow"),
-    ):
-        d.icon(178, y, "ownership-project", 16)
-        d.text(191, y - 1, title, 9.6, "Bold", align="left")
-        d.text(191, y + 13, owner, align="left")
-        d.arrow(287, y, 316, y, tone)
-        d.icon(330, y, f"ownership-{sign}", 14)
-        d.text(342, y + 3.5, decision, 10, "Bold", tone, "left")
-    d.save()
-
-
 def square(output):
-    d = Diagram(output, "semantic-square", 98, COMPACT_WIDTH)
+    # Two routes around the same commuting square: decode then step,
+    # or step then decode. The decision d is emitted by both transitions.
+    d = Diagram(output, "semantic-square", 101, COMPACT_WIDTH)
     prime = math("'", 9.8, 1.5)
-    d.icon(17, 27, "commutation-valuation", 16)
-    d.icon(17, 75, "commutation-state", 16)
-    d.text(30, 31, "Source", 10, "Bold", align="left")
-    d.text(30, 79, "Target", 10, "Bold", align="left")
-    d.runs(105, 31, [math("s = ν(q)")])
-    d.runs(291, 31, [math("s"), prime, math(" = ν(q"), prime, math(")")])
-    d.runs(105, 79, [math("q")])
-    d.runs(291, 79, [math("q"), prime])
-    d.arrow(144, 27, 252, 27)
-    d.arrow(126, 75, 270, 75)
-    d.runs(198, 16, [math("P"), math("β", 8.5, -1.6), math(" : x / d")])
-    d.runs(198, 64, [math("M : x / d")])
-    for x in (105, 291):
-        d.arrow(x, 65, x, 43, ACCENT, dashed=True)
-        d.text(x + 14, 57, "ν", MATH, "Math", ACCENT)
+    d.text(26, 36, "Source", font="Bold", align="left")
+    d.text(26, 88, "Target", font="Bold", align="left")
+    d.node(117, 32, 78, 22, [math("s = ν(q)")], tone=ACCENT, tinted=True)
+    d.node(284, 32, 78, 22, [math("s"), prime, math(" = ν(q"), prime, math(")")],
+           tone=ACCENT, tinted=True)
+    d.node(117, 84, 42, 22, [math("q")])
+    d.node(284, 84, 42, 22, [math("q"), prime])
+    d.runs(190, 21, [math("P"), math("β", 8.5, -1.6), math(" : x / d")])
+    d.runs(190, 73, [math("M : x / d")])
+    d.arrow(160, 32, 241, 32, INK)
+    d.arrow(142, 84, 259, 84, INK)
+    for x in (117, 284):
+        d.arrow(x, 69, x, 47, ACCENT, dashed=True)
+        d.runs(x+12, 65, [math("ν")], color=ACCENT, align="left")
     d.save()
 
 
 def trace(output):
-    d = Diagram(output, "diagnostic-trace", 118)
-    for x, value in ((37, 0), (135, 1)):
-        d.icon(x, 56, f"diagnosis-register-{value}", 19)
-        d.text(x, 80, f"p = {value}", MATH, "Math")
-    d.arrow(51, 56, 121, 56, ACCENT)
-    d.text(86, 45, "a / allow", 9.5)
-    d.text(86, 101, "Shared prefix", 9.3, color=SECONDARY)
+    example = checked_example()
+    row = next(r for r in example["profiles"] if r["binding"] == {"z_a": "r", "z_b": "t"})
+    first, second = row["trace"]
+    if ([s["request"][-1] for s in (first, second)] != ["a", "b"]
+            or first["target"] != ["allow", 1] or first["source"] != ["allow", 1]
+            or second["target"] != ["allow", 0] or second["source"] != ["deny", 1]
+            or not (first["decision_equal"] and first["state_equal"])
+            or second["decision_equal"] or second["state_equal"]):
+        raise ValueError("Illustrated trace differs from the checked example")
+
+    d = Diagram(output, "diagnostic-trace", 97)
+    # Draw the agreed starting observation and the agreed successor only
+    # once. Each branch then shows its own decision and successor state.
+    d.node(32, 44, 38, 22, [math("p=0")])
+    d.node(136, 44, 38, 22, [math(f"p={first['target'][1]}")])
+    d.text(84, 36, "a / allow", color=SECONDARY)
+    d.arrow(55, 44, 113, 44, ACCENT)
     d.connectors([
-        ([(149, 56), (187, 56)], False),
-        ([(187, 29), (187, 90)], False),
-        ([(187, 29), (305, 29)], True, ACCENT),
-        ([(187, 90), (305, 90)], True, SECONDARY),
-    ], ACCENT)
-    for y, title, value, action, tone, sign in (
-        (29, "Target (r, r)", 0, "b / allow", ACCENT, "allow"),
-        (90, "Reference (r, t)", 1, "b / deny", SECONDARY, "deny"),
-    ):
-        d.icon(228, y - 14, f"diagnosis-{sign}", 11)
-        d.text(238, y - 10, action, 10, "Bold", tone, "left")
-        d.icon(319, y, f"diagnosis-register-{value}", 18)
-        d.text(348, y + 4, f"p = {value}", MATH, "Math", tone)
-        d.text(348, y + 21, title, 9.5, color=SECONDARY)
+        ([(159, 44), (181, 44)], False),
+        ([(181, 23), (181, 73)], False),
+        ([(181, 23), (273, 23)], True, ACCENT),
+        ([(181, 73), (273, 73)], True, INK),
+    ], SECONDARY)
+    d.mark(181, 44, True, "shared successor", radius=1.4, joined=True)
+    for y, title, key, color in ((23, "Target", "target", ACCENT),
+                                 (73, "Reference", "source", INK)):
+        decision, state = second[key]
+        d.text(227, y-8, f"b / {decision}", font="Bold", color=color)
+        d.node(296, y, 38, 22, [math(f"p={state}")], tone=color,
+               color=color, tinted=key == "target")
+        d.text(322, y+4, title, color=SECONDARY, align="left")
     d.save()
 
 
-def transfer(output):
-    d = Diagram(output, "evaluation-design", 85, COMPACT_WIDTH)
-    d.icon(43, 29, "transfer-cohort", 20)
-    d.text(43, 53, "9 boundaries", 10, "Bold")
-    d.text(43, 67, "78 contexts")
-    d.text(304, 13, "Boundaries complete", 9.3, color=SECONDARY)
-    d.connectors([
-        ([(76, 51), (99, 51)], False),
-        ([(99, 51), (99, 24), (119, 24)], True),
-        ([(99, 51), (99, 72), (119, 72)], True),
-    ], ACCENT)
-    for y, method, result, tone, icon in (
-        (24, "Frozen transfer", "5/9", SECONDARY, "frozen"),
-        (72, "Then adapt source", "9/9", ACCENT, "adapt"),
-    ):
-        d.icon(133, y, f"transfer-{icon}", 16)
-        d.text(145, y + 3.6, method, 10, "Bold", align="left")
-        d.arrow(234, y, 263, y, tone)
-        d.text(304, y + 3.6, result, 10, "Bold", tone)
-    d.save()
 
 
 def main():
@@ -297,7 +261,7 @@ def main():
     if any(ord(c) not in font.face.charToGlyph for c in "νβ'pqrts"):
         raise ValueError("Diagram math font lacks required glyphs")
     pdfmetrics.registerFont(font)
-    for compose in (workflow, handoff, mapping, square, trace, transfer):
+    for compose in (worked_overview, observed_pair, square, trace):
         compose(args.output_directory)
 
 

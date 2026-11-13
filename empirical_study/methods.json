@@ -1,5 +1,6 @@
 {
   "source_contract_review": {
+    "provenance": "The nine assessment files were produced in Codex sessions. The workflow provides traceable technical classifications, not independent human judgments.",
     "items": 99,
     "final_categories": {
       "仅能建立条件性契约": 45,

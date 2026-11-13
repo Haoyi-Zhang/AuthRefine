@@ -68,9 +68,23 @@ live systems. Use `--suite primary`, `--suite delegated` or `--suite extensions`
 to replay one declared stratum. Pure-predicate repetitions remain separate from
 the fresh native/model processes of the delegated and extension strata.
 
+## Interpreting the forty project outcomes
+
+`data/evidence-classification.csv` maps each frozen project to its evidence
+category. The project keys resolve to the exact repository and snapshot in
+`data/inputs.json.gz`. Ten source-boundary extensions deepen the verification
+of the same projects, not the number of findings. R01 is a difference between
+documentation and the selected entry contract. R22 records two mismatches in
+seven Agentic UX policy/test contexts; both are resolved on a local model copy
+without changing the upstream source or the expected outcomes. The remaining
+38 records are scoped verification. None of these records establishes an
+upstream defect. The verifier checks row identities, extension membership
+and the retained local policy comparison before reporting these counts.
+
 ## Contract review
 
-The planned paired review and separate adjudication are complete: six initial
+The archived assessments are tool-assisted, not independent human judgments.
+Six initial
 response files contain 230 answers and three final files resolve all 115 items.
 Source-contract review covers 99 items; method and design review each have eight
 separate topics. Final source labels are 52 concrete behavior contracts,

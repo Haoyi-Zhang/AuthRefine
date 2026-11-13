@@ -1,0 +1,44 @@
+{
+  "scope": "Retained comparisons between direct runs of selected pinned functions on owned local fixtures and AuthRefine observations. This is not a new run, a deployment test, or a source-defect inventory.",
+  "profiles": {
+    "healthchecks_read": {
+      "pairs": 54,
+      "disagreements": 0,
+      "serializer_boundary_reached": 18,
+      "ownership_denials": 36,
+      "includes_both_manuscript_example_reads": true,
+      "compared": ["response", "transferred project record", "serializer arguments when reached"],
+      "entry_boundary": "Selected lookup, wrapper and read endpoint; does not execute full serialization"
+    },
+    "healthchecks_resume": {
+      "pairs": 24,
+      "disagreements": 0,
+      "first_resume_changed_record_and_inserted_event": 12,
+      "repeat_left_store_unchanged": 12,
+      "compared": ["response", "persisted records", "events"],
+      "entry_boundary": "Starts with the resolved project; uses an owned schema and fixed clock"
+    },
+    "pretix_read": {
+      "pairs": 192,
+      "disagreements": 0,
+      "compared": ["decision", "event identity", "organizer", "grants"],
+      "entry_boundary": "Starts with a validated token and supplied view inputs"
+    },
+    "wger_creation": {
+      "pairs": 2,
+      "disagreements": 0,
+      "compared": ["saved record", "owner"],
+      "direct_date_trials_including_paired_cases": 8,
+      "accepted": 4,
+      "rejected_without_insertion": 4
+    }
+  },
+  "saved_record_controls": {
+    "profiles": ["healthchecks_read", "healthchecks_resume", "pretix_read"],
+    "unmodified_pairs": 270,
+    "unmodified_field_agreements": 270,
+    "edited_records_with_same_response": 300,
+    "field_differences_detected": 300,
+    "response_differences_detected": 0
+  }
+}

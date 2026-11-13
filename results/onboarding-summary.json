@@ -1,0 +1,37 @@
+{
+  "unit": "one final pair of contract and observation adapter files per prepared task slot",
+  "file_pairs": 16,
+  "coordinator_report": "The study coordinator reported that people who did not develop AuthRefine completed the prepared tasks.",
+  "provenance": "All submitted archives match Codex session outputs, and the session records include assistant-written code. The verified outcomes concern the files, not how much work each person did.",
+  "cohorts": {
+    "constructed": {
+      "task_types": 4,
+      "submitted": 12,
+      "contract_reference_pass": 12,
+      "observation_reference_pass": 12,
+      "source_path_review_pass": 12,
+      "contract_nonblank_insertions_plus_deletions": {"n": 12, "min": 12, "median": 20, "max": 26},
+      "adapter_nonblank_insertions_plus_deletions": {"n": 12, "min": 6, "median": 8, "max": 13}
+    },
+    "upstream": {
+      "task_types": 2,
+      "submitted": 4,
+      "contract_reference_pass": 4,
+      "observation_reference_pass": 4,
+      "source_path_review_pass": 4,
+      "contract_nonblank_insertions_plus_deletions": {"n": 4, "min": 31, "median": 37, "max": 48},
+      "adapter_nonblank_insertions_plus_deletions": {"n": 4, "min": 6, "median": 6, "max": 7},
+      "scopes": [
+        {"implementation": "Django", "source_scope": "administration model permission summary", "submitted": 2},
+        {"implementation": "Django Guardian", "source_scope": "Django user permission dispatch to object grants", "submitted": 2}
+      ]
+    }
+  },
+  "duplicate_file_pair_sensitivity": {
+    "distinct_pairs": 15,
+    "passing_distinct_pairs": 15,
+    "interpretation": "The count describes distinct outputs, not distinct participants."
+  },
+  "missing_observations": ["elapsed_task_time", "help", "author_intervention", "first_attempt"],
+  "scope": "Final-file checks on supplied tasks with local fixtures; no developer adoption, workload, or generalization to new repositories is measured."
+}

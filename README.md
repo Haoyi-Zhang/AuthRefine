@@ -71,6 +71,43 @@ For the paper's claims, use `claim_evidence_ledger.csv`; bibliography identity
 and claim-specific source support are recorded in `reference_inventory.csv`
 and `reference_audit.csv`. These are the current bibliography records.
 
+`results/onboarding-summary.json` summarizes 16 final file pairs from six
+prepared integration tasks. The study coordinator reported that people who did
+not develop AuthRefine completed the tasks. The archives match Codex session
+outputs, and the session records include assistant-written code. The checks
+verify the files, not who produced each part. Frozen references score the
+contract and observer separately, and source review verifies invocation and state
+readback. The two upstream tasks exercise Django's
+[administration permission summary](https://docs.djangoproject.com/en/5.2/ref/contrib/admin/)
+and Django Guardian's
+[object permission backend](https://django-guardian.readthedocs.io/en/stable/userguide/checks/).
+Both use local fixture data. The aggregate excludes raw submissions and
+session records. Final correctness and nonblank-line changes to
+the contract and adapter are observed; timing, help, and first-attempt
+behavior are not.
+
+`results/direct-observation-summary.json` reports the retained paired
+comparisons with direct runs of selected original functions. It records the
+observation fields and entry assumptions for each profile. The Wger date
+trials include its paired creations. The saved-record controls preserve the
+response by design; they test the comparison rather than the applications.
+
+Run `python -B src/check_saved_observations.py` from the artifact root to
+recompute agreement and counts from the paired data. Complex observations
+are represented by field-local codes shared between the two paths, preserving
+typed equality without exporting fixture values. Statuses, write deltas and
+the running-example tags remain explicit. For each saved control, the checker
+applies the archived comparison value to its paired record and recomputes
+both the response-only and field-level result. The controls use the same
+field-local equality codes as the paired data, not raw fixture values.
+This audits saved evidence; it does not rerun the original functions or
+validate unobserved entry paths.
+
+The [finite model conversion arguments](proofs/model-conversion.md) give the
+outside-name abstraction, ordinary conversion, and domain embedding used
+for the retained public inputs. The [source study](source_study/README.md)
+retains the historical repair comparisons and scope exclusions.
+
 Set `PYTHONDONTWRITEBYTECODE=1` before the commands below (`export
 PYTHONDONTWRITEBYTECODE=1` in a POSIX shell, or
 `$env:PYTHONDONTWRITEBYTECODE='1'` in PowerShell). This also applies to child
@@ -326,8 +363,8 @@ Original code, proof notes and generated data are provided under the MIT license
 
 ## Manuscript diagrams
 
-The manuscript uses twelve PDFs assembled offline from `figures/`: six
-illustrated schematics with selectable text and six vector plots based on retained data.
+The manuscript uses eleven PDFs assembled offline from `figures/`: four
+schematics with selectable text and seven vector plots based on retained data.
 The plot and diagram sources, font requirements, and reproduction
 commands are in [figures/README.md](figures/README.md).
 

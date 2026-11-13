@@ -6,7 +6,7 @@ import re
 import struct
 import subprocess
 
-from reportlab.lib.colors import HexColor, linearlyInterpolatedColor
+from reportlab.lib.colors import HexColor
 from reportlab.pdfbase import pdfmetrics
 
 
@@ -26,16 +26,6 @@ LIGHT = HexColor("#edf1f1")
 
 def label_size(font, requested):
     return min(requested, {"Body": TEXT, "Bold": EMPHASIS, "Math": MATH}[font])
-
-
-def count_tint(value, maximum):
-    # Keep adjacent integer levels on opposite sides of the text-contrast break.
-    t = value / maximum
-    if 0.6 < t < 0.7:
-        t = 0.6
-    elif 0.7 <= t < 0.775:
-        t = 0.775
-    return linearlyInterpolatedColor(LIGHT, ACCENT, 0, 1, t)
 
 
 def tex_file(name):

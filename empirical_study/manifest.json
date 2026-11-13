@@ -1,12 +1,13 @@
 {
   "files": {
+    "data/evidence-classification.csv": "212c382c92ecf5b82a4fc1852281b65a6426863ae007667a4e942da8da978f3a",
     "data/inputs.json.gz": "d1e2f2ed77ae0434bbc21c24840fedf43fbaf3cbd79197b3f856deea1eed7c22",
     "data/observations.json.gz": "26e3365f29f430e91909d97c8c2e9b3111d6f0048242b0748dacf8f5b90c7edd",
     "data/sources.json.gz": "aeb8bc692c2bc2a6ec55e4af6a4244b1014cecbc07028db6e0d87b403dd6948f",
     "delegated_runtime.py": "345ade41656a54d5fbefa0447810cda76c7b2cd6f8fed57034220bcbea217387",
-    "methods.json": "412690f9ec765c2842c9061f1a9790214da3555bf018c6eb65dec0692f0bd717",
+    "methods.json": "47934d3980ae0b3c6cd8004339cf8faddb250e553e593124a78cb94a4946f0fc",
     "predicate_runtime.py": "f2513415e9f5618fa9935f4835179456db84e954d589ed23f91998d0eeed13eb",
-    "README.md": "5c6abe6dac878650ded254717aa2501815949a28185c49f77865568db65473c8",
+    "README.md": "d42534cafca1462865bce695534ad8f2b91b282ff25a94490b0980d2465b2af9",
     "remaining_worker.py": "56f9e8b29ce893a92b9f7adbaec5c8353291af7fe6d0f02dc142d60acf7ef8db",
     "remaining_worlds.py": "4ad1ffec0613b6490ffc5c3c8bfec36b5014630e99fa4997048064d7c91c0333",
     "replay.py": "2a9a0ae2504602216110c6bfcb0f493b8e286f5a8bb44969c3af2f83e6eafc02",
@@ -19,7 +20,7 @@
     "tests/test_portable_binding.py": "a79b6e499e4b52094625f7c9d36b0785fb56975514ffa813b9e7a73bbe24f1f6",
     "tests/test_predicate_runtime.py": "3efeb1007db3418dd23f5e2a0e541a36a959f16d052f2307af16d1358fc511a0",
     "tests/test_review_semantics.py": "73d387fcf6d60264194354a10c800163b9e04d72e98b999d346e1641de48101c",
-    "verify.py": "c918007d519cb69ce003a82d2c3787994f647911d44fc7045ca7bbc04badd0b5"
+    "verify.py": "524b4d331ff17c6532c596ada29d4e7e7cbf477fd0f08c16394821a5bde74550"
   },
   "source_byte_identity_not_a_security_certificate": true
 }

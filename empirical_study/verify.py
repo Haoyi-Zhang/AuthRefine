@@ -1,5 +1,6 @@
 """Offline verification of the fixed-source empirical evidence and source bodies."""
-import ast,base64,gzip,hashlib,json,sys
+import ast,base64,csv,gzip,hashlib,json,sys
+from collections import Counter
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from predicate_runtime import body_identity
@@ -12,6 +13,26 @@ def load(name,root=ROOT):
     return json.loads(raw)
 def exact(a,b):return json.dumps(a,sort_keys=True,separators=(',',':'))==json.dumps(b,sort_keys=True,separators=(',',':'))
 def canonical(row,keys):return json.dumps({k:row[k] for k in keys},sort_keys=True,separators=(',',':'))
+def verify_evidence_categories(root,population,observations):
+    with (root/'data/evidence-classification.csv').open(encoding='utf-8',newline='') as f:
+        reader=csv.DictReader(f)
+        fields=['project','repository','extended_source_scope','evidence_category','upstream_defect_status']
+        if reader.fieldnames!=fields:raise ValueError('evidence classification schema')
+        rows=list(reader)
+    if [(r['project'],r['repository']) for r in rows]!=[(p['project'],p['repository']) for p in population]:
+        raise ValueError('evidence classification project identity')
+    expected_extensions={r['project'] for r in observations['extension_coverage']['rows']}
+    if any(r['extended_source_scope']!=('yes' if r['project'] in expected_extensions else 'no') for r in rows):
+        raise ValueError('evidence classification extension coverage')
+    exceptions={'R01':'documentation_scope_difference','R22':'local_contract_mismatch'}
+    if any(set(r)!=set(fields) or r['evidence_category']!=exceptions.get(r['project'],'scoped_verification')
+           or r['upstream_defect_status']!='not_established' for r in rows):
+        raise ValueError('unsubstantiated evidence classification')
+    policy=observations['policy_recheck']
+    if (policy['upstream_files_changed'] is not False or policy['new_defects_claimed']!=0
+            or policy['normal_contract_recheck_passed'] is not True):
+        raise ValueError('local mismatch cannot be classified as an upstream repair')
+    return dict(Counter(r['evidence_category'] for r in rows))
 def verify(root=ROOT):
     root=Path(root);manifest=json.loads((root/'manifest.json').read_text(encoding='utf-8'))
     for name,expected in manifest['files'].items():
@@ -20,6 +41,7 @@ def verify(root=ROOT):
     inputs=load('inputs.json.gz',root);observations=load('observations.json.gz',root);sources=load('sources.json.gz',root)
     population=inputs['population'];projects={p['project'] for p in population}
     if len(population)!=40 or len(projects)!=40 or len({p['repository_id'] for p in population})!=40:raise ValueError('population')
+    verify_evidence_categories(root,population,observations)
     bysource={(s['project'],s['path']):s for s in sources}
     rawsources={}
     for key,s in bysource.items():

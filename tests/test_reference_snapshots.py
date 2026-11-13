@@ -1,6 +1,7 @@
 """Check the current claim-support record against the bibliography inventory."""
 import csv
 from pathlib import Path
+import re
 import unittest
 
 
@@ -23,11 +24,25 @@ class ReferenceSnapshotTests(unittest.TestCase):
         with (root / 'claim_evidence_ledger.csv').open(encoding='utf-8', newline='') as stream:
             claims = list(csv.DictReader(stream))
         self.assertEqual(len(claims), len({row['claim'] for row in claims}))
+        paper = root.parent / 'paper'
+        artifact_only = {'resource-body', 'clean-reproduction', 'unit-regressions',
+                         'reproduction-timeout', 'release-entry-contract'}
         for claim in claims:
-            self.assertRegex(claim['manuscript_location'], r'(?:^| )sections/[\w-]+\.tex:[1-9]\d*')
+            location = claim['manuscript_location']
+            if claim['claim'] in artifact_only:
+                self.assertIn('REPRODUCIBILITY.md', location)
+                self.assertTrue((root / 'REPRODUCIBILITY.md').is_file())
+                continue
+            for anchor in location.split('; '):
+                match = re.fullmatch(r'((?:sections|technical)/[\w-]+\.tex):([1-9]\d*)', anchor)
+                self.assertIsNotNone(match, anchor)
+                if paper.is_dir():
+                    source = (paper / match[1]).read_text(encoding='utf-8').splitlines()
+                    self.assertLessEqual(int(match[2]), len(source), anchor)
+                    self.assertTrue(source[int(match[2])-1].strip(), anchor)
             if claim['claim'].startswith('literature-'):
                 key = claim['claim'].removeprefix('literature-')
-                self.assertEqual(claim['manuscript_location'], support[key]['manuscript_locations'])
+                self.assertEqual(location, support[key]['manuscript_locations'])
 
 
 if __name__ == '__main__':

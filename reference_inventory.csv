@@ -1,13 +1,13 @@
 citation_key,title,authors,year,publication_identifier,identifier_type,citation_occurrences
 xing2025cnlp,When Prompt Engineering Meets Software Engineering: {CNL-P} as Natural and Robust ``{APIs}'' for Human-{AI} Interaction,Zhenchang Xing and Yang Liu and Zhuo Cheng and Qing Huang and Dehai Zhao and Daniel Sun and Chenhua Liu,2025,https://arxiv.org/abs/2508.06942,arxiv,1
 swamy2010fine,Enforcing Stateful Authorization and Information Flow Policies in {FINE},Nikhil Swamy and Juan Chen and Ravi Chugh,2010,https://doi.org/10.1007/978-3-642-11957-6_28,doi,1
-cutler2024cedar,"{Cedar}: A New Language for Expressive, Fast, Safe, and Analyzable Authorization",Joseph W. Cutler and Craig Disselkoen and Aaron Eline and Shaobo He and Kyle Headley and Michael Hicks and Kesha Hietala and Eleftherios Ioannidis and John Kastner and Anwar Mamat and Darin McAdams and Matt McCutchen and Neha Rungta and Emina Torlak and Andrew M. Wells,2024,https://doi.org/10.1145/3649835,doi,2
+cutler2024cedar,"{Cedar}: A New Language for Expressive, Fast, Safe, and Analyzable Authorization",Joseph W. Cutler and Craig Disselkoen and Aaron Eline and Shaobo He and Kyle Headley and Michael Hicks and Kesha Hietala and Eleftherios Ioannidis and John Kastner and Anwar Mamat and Darin McAdams and Matt McCutchen and Neha Rungta and Emina Torlak and Andrew M. Wells,2024,https://doi.org/10.1145/3649835,doi,1
 liu2009linearizability,Model Checking Linearizability via Refinement,Yang Liu and Wei Chen and Yanhong A. Liu and Jun Sun,2009,https://doi.org/10.1007/978-3-642-05089-3_21,doi,2
 foster2007lenses,Combinators for Bidirectional Tree Transformations: A Linguistic Approach to the View-Update Problem,J. Nathan Foster and Michael B. Greenwald and Jonathan T. Moore and Benjamin C. Pierce and Alan Schmitt,2007,https://doi.org/10.1145/1232420.1232424,doi,2
 lamport1996refinement,Refinement in State-Based Formalisms,Leslie Lamport,1996,https://lamport.azurewebsites.net/pubs/refinement.pdf,technical_report,2
 leroy2009backend,A Formally Verified Compiler Back-End,Xavier Leroy,2009,https://doi.org/10.1007/s10817-009-9155-4,doi,1
 lang2003independence,Propositional Independence: Formula-Variable Independence and Forgetting,J{\'e}r{\^o}me Lang and Paolo Liberatore and Pierre Marquis,2003,https://doi.org/10.1613/jair.1113,doi,2
-bryant1986graphs,Graph-Based Algorithms for Boolean Function Manipulation,Randal E. Bryant,1986,https://doi.org/10.1109/TC.1986.1676819,doi,2
+bryant1986graphs,Graph-Based Algorithms for Boolean Function Manipulation,Randal E. Bryant,1986,https://doi.org/10.1109/TC.1986.1676819,doi,3
 vatsa2026autocedar,{AutoCedar}: An Agentic Framework for Verifier-Guided Access Control Policy Synthesis,Adarsh Vatsa and Sachi Shome and Yingming Zhou and William Eiers,2026,https://arxiv.org/abs/2607.03656,arxiv,1
 fournet2007authorization,A Type Discipline for Authorization Policies,C{\'e}dric Fournet and Andrew D. Gordon and Sergio Maffeis,2007,https://doi.org/10.1145/1275497.1275500,doi,1
 bengtson2008refinement,Refinement Types for Secure Implementations,Jesper Bengtson and Karthikeyan Bhargavan and C{\'e}dric Fournet and Andrew D. Gordon and Sergio Maffeis,2011,https://doi.org/10.1145/1890028.1890031,doi,1
@@ -36,12 +36,12 @@ abadi1991mappings,The Existence of Refinement Mappings,Mart{\'i}n Abadi and Lesl
 lynch1995simulations,Forward and Backward Simulations. Part {I}: Untimed Systems,Nancy Lynch and Frits Vaandrager,1995,https://doi.org/10.1006/inco.1995.1134,doi,1
 necula1997pcc,Proof-Carrying Code,George C. Necula,1997,https://doi.org/10.1145/263699.263712,doi,1
 pnueli1998validation,Translation Validation,Amir Pnueli and Michael Siegel and Eli Singerman,1998,https://doi.org/10.1007/BFb0054170,doi,1
-fisler2005margrave,Verification and Change-Impact Analysis of Access-Control Policies,Kathi Fisler and Shriram Krishnamurthi and Leo A. Meyerovich and Michael Carl Tschantz,2005,https://doi.org/10.1145/1062455.1062502,doi,3
-dougherty2006dynamic,Specifying and Reasoning about Dynamic Access-Control Policies,Daniel J. Dougherty and Kathi Fisler and Shriram Krishnamurthi,2006,https://doi.org/10.1007/11814771_51,doi,3
+fisler2005margrave,Verification and Change-Impact Analysis of Access-Control Policies,Kathi Fisler and Shriram Krishnamurthi and Leo A. Meyerovich and Michael Carl Tschantz,2005,https://doi.org/10.1145/1062455.1062502,doi,1
+dougherty2006dynamic,Specifying and Reasoning about Dynamic Access-Control Policies,Daniel J. Dougherty and Kathi Fisler and Shriram Krishnamurthi,2006,https://doi.org/10.1007/11814771_51,doi,1
 backes2018zelkova,Semantic-based Automated Reasoning for {AWS} Access Policies using {SMT},John Backes and Pauline Bolignano and Byron Cook and Catherine Dodge and Andrew Gacek and Kasper Luckow and Neha Rungta and Oksana Tkachuk and Carsten Varming,2018,https://doi.org/10.23919/FMCAD.2018.8602994,doi,1
 bouchet2020public,Block Public Access: Trust Safety Verification of Access Control Policies,Malik Bouchet and Byron Cook and Bryant Cutler and Anna Druzkina and Andrew Gacek and Liana Hadarean and Ranjit Jhala and Brad Marshall and Dan Peebles and Neha Rungta and Cole Schlesinger and Chriss Stephens and Carsten Varming and Andy Warfield,2020,https://doi.org/10.1145/3368089.3409728,doi,1
 abadi1993access,A Calculus for Access Control in Distributed Systems,Mart{\'i}n Abadi and Michael Burrows and Butler Lampson and Gordon Plotkin,1993,https://doi.org/10.1145/155183.155225,doi,1
-becker2009dynpal,Specification and Analysis of Dynamic Authorisation Policies,Moritz Y. Becker,2009,https://doi.org/10.1109/CSF.2009.14,doi,2
+becker2009dynpal,Specification and Analysis of Dynamic Authorisation Policies,Moritz Y. Becker,2009,https://doi.org/10.1109/CSF.2009.14,doi,1
 kozen1997kat,Kleene Algebra with Tests,Dexter Kozen,1997,https://doi.org/10.1145/256167.256195,doi,1
 anderson2014netkat,{NetKAT}: Semantic Foundations for Networks,Carolyn Jane Anderson and Nate Foster and Arjun Guha and Jean-Baptiste Jeannin and Dexter Kozen and Cole Schlesinger and David Walker,2014,https://doi.org/10.1145/2535838.2535862,doi,1
 foster2015coalgebraic,A Coalgebraic Decision Procedure for {NetKAT},Nate Foster and Dexter Kozen and Matthew Milano and Alexandra Silva and Laure Thompson,2015,https://doi.org/10.1145/2676726.2677011,doi,1
@@ -56,7 +56,7 @@ fuchs2008attempto,Attempto Controlled {English} for Knowledge Representation,Nor
 park2004ucon,The {UCON$_{ABC}$} Usage Control Model,Jaehong Park and Ravi Sandhu,2004,https://doi.org/10.1145/984334.984339,doi,1
 moeller2024katch,{KATch}: A Fast Symbolic Verifier for {NetKAT},Mark Moeller and Jules Jacobs and Olivier Savary B{\'e}langer and David Darais and Cole Schlesinger and Steffen Smolka and Nate Foster and Alexandra Silva,2024,https://doi.org/10.1145/3656454,doi,1
 harrison1976protection,Protection in Operating Systems,Michael A. Harrison and Walter L. Ruzzo and Jeffrey D. Ullman,1976,https://doi.org/10.1145/360303.360333,doi,1
-xu2026relational,Network Change Validation with Relational {NetKAT},Han Xu and Zachary Kincaid and Ratul Mahajan and David Walker,2026,https://doi.org/10.1145/3776656,doi,2
+xu2026relational,Network Change Validation with Relational {NetKAT},Han Xu and Zachary Kincaid and Ratul Mahajan and David Walker,2026,https://doi.org/10.1145/3776656,doi,1
 xu2026parametric,Network Analysis with Parametric {NetKAT},Han Xu and Zachary Kincaid and David Walker,2026,https://arxiv.org/abs/2607.09637v1,arxiv,1
 hardt2012oauth,The {OAuth} 2.0 Authorization Framework,Dick Hardt,2012,https://doi.org/10.17487/RFC6749,doi,1
 lodderstedt2013revocation,{OAuth} 2.0 Token Revocation,Torsten Lodderstedt and Stefanie Dronia and Marius Scurtescu,2013,https://doi.org/10.17487/RFC7009,doi,1
